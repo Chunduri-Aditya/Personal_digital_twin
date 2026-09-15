@@ -1,0 +1,1899 @@
+{
+ "version": "1.0",
+ "frozen": "2026-09-14",
+ "notes": "Frozen item bank v1.0 for the twin evaluation (docs/PLAN_UNIFIED.md section 3.5, docs/research/D4). ipip50: Goldberg's 50 Big-Five Factor Markers verbatim from ipip.ori.org (public domain); ids IPIP_<domain><n> follow the key page order within each factor (+ keyed items first, then - keyed); domains E, A, C, N, O where N = Factor IV Emotional Stability (a HIGH scale score = more stable) and O = Factor V Intellect/Imagination; likert5 answers are 1-5 on the IPIP anchors, reverse = (key == '-'). game: five economic games with D4's fixed parameters, wording written for this project. gold: the profile's 20 frozen Eval questions (items.py overrides text by Q-id from the current profile; an item with an 'excluded' key is skipped and reported, GOLD_Q-12 = politics). gss: 37 non-political GSS Replicating Core items; wording and value labels verified from NORC's GSS 2022 Codebook PDF (and the cumulative codebook where the 2022 label is clipped); interviewer instructions in parentheses were dropped; options are the NORC value labels verbatim except three codebook misspellings corrected to the question wording (noted per item). Political blacklist and every excluded candidate are in docs/items_licensing.md. Do not edit items in place after this date; bump version instead.",
+ "items": [
+  {
+   "id": "IPIP_E1",
+   "instrument": "ipip50",
+   "domain": "E",
+   "key": "+",
+   "reverse": false,
+   "type": "likert5",
+   "text": "Am the life of the party.",
+   "options": [
+    "Very Inaccurate",
+    "Moderately Inaccurate",
+    "Neither Accurate Nor Inaccurate",
+    "Moderately Accurate",
+    "Very Accurate"
+   ],
+   "range": [
+    1,
+    5
+   ],
+   "source_url": "https://ipip.ori.org/newBigFive5broadKey.htm",
+   "source_note": "Factor I (Surgency or Extraversion), 10-item scale, + keyed; Extraversion. Response anchors from https://ipip.ori.org/New_IPIP-50-item-scale.htm. Public domain (IPIP)."
+  },
+  {
+   "id": "IPIP_E2",
+   "instrument": "ipip50",
+   "domain": "E",
+   "key": "+",
+   "reverse": false,
+   "type": "likert5",
+   "text": "Feel comfortable around people.",
+   "options": [
+    "Very Inaccurate",
+    "Moderately Inaccurate",
+    "Neither Accurate Nor Inaccurate",
+    "Moderately Accurate",
+    "Very Accurate"
+   ],
+   "range": [
+    1,
+    5
+   ],
+   "source_url": "https://ipip.ori.org/newBigFive5broadKey.htm",
+   "source_note": "Factor I (Surgency or Extraversion), 10-item scale, + keyed; Extraversion. Response anchors from https://ipip.ori.org/New_IPIP-50-item-scale.htm. Public domain (IPIP)."
+  },
+  {
+   "id": "IPIP_E3",
+   "instrument": "ipip50",
+   "domain": "E",
+   "key": "+",
+   "reverse": false,
+   "type": "likert5",
+   "text": "Start conversations.",
+   "options": [
+    "Very Inaccurate",
+    "Moderately Inaccurate",
+    "Neither Accurate Nor Inaccurate",
+    "Moderately Accurate",
+    "Very Accurate"
+   ],
+   "range": [
+    1,
+    5
+   ],
+   "source_url": "https://ipip.ori.org/newBigFive5broadKey.htm",
+   "source_note": "Factor I (Surgency or Extraversion), 10-item scale, + keyed; Extraversion. Response anchors from https://ipip.ori.org/New_IPIP-50-item-scale.htm. Public domain (IPIP)."
+  },
+  {
+   "id": "IPIP_E4",
+   "instrument": "ipip50",
+   "domain": "E",
+   "key": "+",
+   "reverse": false,
+   "type": "likert5",
+   "text": "Talk to a lot of different people at parties.",
+   "options": [
+    "Very Inaccurate",
+    "Moderately Inaccurate",
+    "Neither Accurate Nor Inaccurate",
+    "Moderately Accurate",
+    "Very Accurate"
+   ],
+   "range": [
+    1,
+    5
+   ],
+   "source_url": "https://ipip.ori.org/newBigFive5broadKey.htm",
+   "source_note": "Factor I (Surgency or Extraversion), 10-item scale, + keyed; Extraversion. Response anchors from https://ipip.ori.org/New_IPIP-50-item-scale.htm. Public domain (IPIP)."
+  },
+  {
+   "id": "IPIP_E5",
+   "instrument": "ipip50",
+   "domain": "E",
+   "key": "+",
+   "reverse": false,
+   "type": "likert5",
+   "text": "Don't mind being the center of attention.",
+   "options": [
+    "Very Inaccurate",
+    "Moderately Inaccurate",
+    "Neither Accurate Nor Inaccurate",
+    "Moderately Accurate",
+    "Very Accurate"
+   ],
+   "range": [
+    1,
+    5
+   ],
+   "source_url": "https://ipip.ori.org/newBigFive5broadKey.htm",
+   "source_note": "Factor I (Surgency or Extraversion), 10-item scale, + keyed; Extraversion. Response anchors from https://ipip.ori.org/New_IPIP-50-item-scale.htm. Public domain (IPIP)."
+  },
+  {
+   "id": "IPIP_E6",
+   "instrument": "ipip50",
+   "domain": "E",
+   "key": "-",
+   "reverse": true,
+   "type": "likert5",
+   "text": "Don't talk a lot.",
+   "options": [
+    "Very Inaccurate",
+    "Moderately Inaccurate",
+    "Neither Accurate Nor Inaccurate",
+    "Moderately Accurate",
+    "Very Accurate"
+   ],
+   "range": [
+    1,
+    5
+   ],
+   "source_url": "https://ipip.ori.org/newBigFive5broadKey.htm",
+   "source_note": "Factor I (Surgency or Extraversion), 10-item scale, - keyed; Extraversion. Response anchors from https://ipip.ori.org/New_IPIP-50-item-scale.htm. Public domain (IPIP)."
+  },
+  {
+   "id": "IPIP_E7",
+   "instrument": "ipip50",
+   "domain": "E",
+   "key": "-",
+   "reverse": true,
+   "type": "likert5",
+   "text": "Keep in the background.",
+   "options": [
+    "Very Inaccurate",
+    "Moderately Inaccurate",
+    "Neither Accurate Nor Inaccurate",
+    "Moderately Accurate",
+    "Very Accurate"
+   ],
+   "range": [
+    1,
+    5
+   ],
+   "source_url": "https://ipip.ori.org/newBigFive5broadKey.htm",
+   "source_note": "Factor I (Surgency or Extraversion), 10-item scale, - keyed; Extraversion. Response anchors from https://ipip.ori.org/New_IPIP-50-item-scale.htm. Public domain (IPIP)."
+  },
+  {
+   "id": "IPIP_E8",
+   "instrument": "ipip50",
+   "domain": "E",
+   "key": "-",
+   "reverse": true,
+   "type": "likert5",
+   "text": "Have little to say.",
+   "options": [
+    "Very Inaccurate",
+    "Moderately Inaccurate",
+    "Neither Accurate Nor Inaccurate",
+    "Moderately Accurate",
+    "Very Accurate"
+   ],
+   "range": [
+    1,
+    5
+   ],
+   "source_url": "https://ipip.ori.org/newBigFive5broadKey.htm",
+   "source_note": "Factor I (Surgency or Extraversion), 10-item scale, - keyed; Extraversion. Response anchors from https://ipip.ori.org/New_IPIP-50-item-scale.htm. Public domain (IPIP)."
+  },
+  {
+   "id": "IPIP_E9",
+   "instrument": "ipip50",
+   "domain": "E",
+   "key": "-",
+   "reverse": true,
+   "type": "likert5",
+   "text": "Don't like to draw attention to myself.",
+   "options": [
+    "Very Inaccurate",
+    "Moderately Inaccurate",
+    "Neither Accurate Nor Inaccurate",
+    "Moderately Accurate",
+    "Very Accurate"
+   ],
+   "range": [
+    1,
+    5
+   ],
+   "source_url": "https://ipip.ori.org/newBigFive5broadKey.htm",
+   "source_note": "Factor I (Surgency or Extraversion), 10-item scale, - keyed; Extraversion. Response anchors from https://ipip.ori.org/New_IPIP-50-item-scale.htm. Public domain (IPIP)."
+  },
+  {
+   "id": "IPIP_E10",
+   "instrument": "ipip50",
+   "domain": "E",
+   "key": "-",
+   "reverse": true,
+   "type": "likert5",
+   "text": "Am quiet around strangers.",
+   "options": [
+    "Very Inaccurate",
+    "Moderately Inaccurate",
+    "Neither Accurate Nor Inaccurate",
+    "Moderately Accurate",
+    "Very Accurate"
+   ],
+   "range": [
+    1,
+    5
+   ],
+   "source_url": "https://ipip.ori.org/newBigFive5broadKey.htm",
+   "source_note": "Factor I (Surgency or Extraversion), 10-item scale, - keyed; Extraversion. Response anchors from https://ipip.ori.org/New_IPIP-50-item-scale.htm. Public domain (IPIP)."
+  },
+  {
+   "id": "IPIP_A1",
+   "instrument": "ipip50",
+   "domain": "A",
+   "key": "+",
+   "reverse": false,
+   "type": "likert5",
+   "text": "Am interested in people.",
+   "options": [
+    "Very Inaccurate",
+    "Moderately Inaccurate",
+    "Neither Accurate Nor Inaccurate",
+    "Moderately Accurate",
+    "Very Accurate"
+   ],
+   "range": [
+    1,
+    5
+   ],
+   "source_url": "https://ipip.ori.org/newBigFive5broadKey.htm",
+   "source_note": "Factor II (Agreeableness), 10-item scale, + keyed; Agreeableness. Response anchors from https://ipip.ori.org/New_IPIP-50-item-scale.htm. Public domain (IPIP)."
+  },
+  {
+   "id": "IPIP_A2",
+   "instrument": "ipip50",
+   "domain": "A",
+   "key": "+",
+   "reverse": false,
+   "type": "likert5",
+   "text": "Sympathize with others' feelings.",
+   "options": [
+    "Very Inaccurate",
+    "Moderately Inaccurate",
+    "Neither Accurate Nor Inaccurate",
+    "Moderately Accurate",
+    "Very Accurate"
+   ],
+   "range": [
+    1,
+    5
+   ],
+   "source_url": "https://ipip.ori.org/newBigFive5broadKey.htm",
+   "source_note": "Factor II (Agreeableness), 10-item scale, + keyed; Agreeableness. Response anchors from https://ipip.ori.org/New_IPIP-50-item-scale.htm. Public domain (IPIP)."
+  },
+  {
+   "id": "IPIP_A3",
+   "instrument": "ipip50",
+   "domain": "A",
+   "key": "+",
+   "reverse": false,
+   "type": "likert5",
+   "text": "Have a soft heart.",
+   "options": [
+    "Very Inaccurate",
+    "Moderately Inaccurate",
+    "Neither Accurate Nor Inaccurate",
+    "Moderately Accurate",
+    "Very Accurate"
+   ],
+   "range": [
+    1,
+    5
+   ],
+   "source_url": "https://ipip.ori.org/newBigFive5broadKey.htm",
+   "source_note": "Factor II (Agreeableness), 10-item scale, + keyed; Agreeableness. Response anchors from https://ipip.ori.org/New_IPIP-50-item-scale.htm. Public domain (IPIP)."
+  },
+  {
+   "id": "IPIP_A4",
+   "instrument": "ipip50",
+   "domain": "A",
+   "key": "+",
+   "reverse": false,
+   "type": "likert5",
+   "text": "Take time out for others.",
+   "options": [
+    "Very Inaccurate",
+    "Moderately Inaccurate",
+    "Neither Accurate Nor Inaccurate",
+    "Moderately Accurate",
+    "Very Accurate"
+   ],
+   "range": [
+    1,
+    5
+   ],
+   "source_url": "https://ipip.ori.org/newBigFive5broadKey.htm",
+   "source_note": "Factor II (Agreeableness), 10-item scale, + keyed; Agreeableness. Response anchors from https://ipip.ori.org/New_IPIP-50-item-scale.htm. Public domain (IPIP)."
+  },
+  {
+   "id": "IPIP_A5",
+   "instrument": "ipip50",
+   "domain": "A",
+   "key": "+",
+   "reverse": false,
+   "type": "likert5",
+   "text": "Feel others' emotions.",
+   "options": [
+    "Very Inaccurate",
+    "Moderately Inaccurate",
+    "Neither Accurate Nor Inaccurate",
+    "Moderately Accurate",
+    "Very Accurate"
+   ],
+   "range": [
+    1,
+    5
+   ],
+   "source_url": "https://ipip.ori.org/newBigFive5broadKey.htm",
+   "source_note": "Factor II (Agreeableness), 10-item scale, + keyed; Agreeableness. Response anchors from https://ipip.ori.org/New_IPIP-50-item-scale.htm. Public domain (IPIP)."
+  },
+  {
+   "id": "IPIP_A6",
+   "instrument": "ipip50",
+   "domain": "A",
+   "key": "+",
+   "reverse": false,
+   "type": "likert5",
+   "text": "Make people feel at ease.",
+   "options": [
+    "Very Inaccurate",
+    "Moderately Inaccurate",
+    "Neither Accurate Nor Inaccurate",
+    "Moderately Accurate",
+    "Very Accurate"
+   ],
+   "range": [
+    1,
+    5
+   ],
+   "source_url": "https://ipip.ori.org/newBigFive5broadKey.htm",
+   "source_note": "Factor II (Agreeableness), 10-item scale, + keyed; Agreeableness. Response anchors from https://ipip.ori.org/New_IPIP-50-item-scale.htm. Public domain (IPIP)."
+  },
+  {
+   "id": "IPIP_A7",
+   "instrument": "ipip50",
+   "domain": "A",
+   "key": "-",
+   "reverse": true,
+   "type": "likert5",
+   "text": "Am not really interested in others.",
+   "options": [
+    "Very Inaccurate",
+    "Moderately Inaccurate",
+    "Neither Accurate Nor Inaccurate",
+    "Moderately Accurate",
+    "Very Accurate"
+   ],
+   "range": [
+    1,
+    5
+   ],
+   "source_url": "https://ipip.ori.org/newBigFive5broadKey.htm",
+   "source_note": "Factor II (Agreeableness), 10-item scale, - keyed; Agreeableness. Response anchors from https://ipip.ori.org/New_IPIP-50-item-scale.htm. Public domain (IPIP)."
+  },
+  {
+   "id": "IPIP_A8",
+   "instrument": "ipip50",
+   "domain": "A",
+   "key": "-",
+   "reverse": true,
+   "type": "likert5",
+   "text": "Insult people.",
+   "options": [
+    "Very Inaccurate",
+    "Moderately Inaccurate",
+    "Neither Accurate Nor Inaccurate",
+    "Moderately Accurate",
+    "Very Accurate"
+   ],
+   "range": [
+    1,
+    5
+   ],
+   "source_url": "https://ipip.ori.org/newBigFive5broadKey.htm",
+   "source_note": "Factor II (Agreeableness), 10-item scale, - keyed; Agreeableness. Response anchors from https://ipip.ori.org/New_IPIP-50-item-scale.htm. Public domain (IPIP)."
+  },
+  {
+   "id": "IPIP_A9",
+   "instrument": "ipip50",
+   "domain": "A",
+   "key": "-",
+   "reverse": true,
+   "type": "likert5",
+   "text": "Am not interested in other people's problems.",
+   "options": [
+    "Very Inaccurate",
+    "Moderately Inaccurate",
+    "Neither Accurate Nor Inaccurate",
+    "Moderately Accurate",
+    "Very Accurate"
+   ],
+   "range": [
+    1,
+    5
+   ],
+   "source_url": "https://ipip.ori.org/newBigFive5broadKey.htm",
+   "source_note": "Factor II (Agreeableness), 10-item scale, - keyed; Agreeableness. Response anchors from https://ipip.ori.org/New_IPIP-50-item-scale.htm. Public domain (IPIP)."
+  },
+  {
+   "id": "IPIP_A10",
+   "instrument": "ipip50",
+   "domain": "A",
+   "key": "-",
+   "reverse": true,
+   "type": "likert5",
+   "text": "Feel little concern for others.",
+   "options": [
+    "Very Inaccurate",
+    "Moderately Inaccurate",
+    "Neither Accurate Nor Inaccurate",
+    "Moderately Accurate",
+    "Very Accurate"
+   ],
+   "range": [
+    1,
+    5
+   ],
+   "source_url": "https://ipip.ori.org/newBigFive5broadKey.htm",
+   "source_note": "Factor II (Agreeableness), 10-item scale, - keyed; Agreeableness. Response anchors from https://ipip.ori.org/New_IPIP-50-item-scale.htm. Public domain (IPIP)."
+  },
+  {
+   "id": "IPIP_C1",
+   "instrument": "ipip50",
+   "domain": "C",
+   "key": "+",
+   "reverse": false,
+   "type": "likert5",
+   "text": "Am always prepared.",
+   "options": [
+    "Very Inaccurate",
+    "Moderately Inaccurate",
+    "Neither Accurate Nor Inaccurate",
+    "Moderately Accurate",
+    "Very Accurate"
+   ],
+   "range": [
+    1,
+    5
+   ],
+   "source_url": "https://ipip.ori.org/newBigFive5broadKey.htm",
+   "source_note": "Factor III (Conscientiousness), 10-item scale, + keyed; Conscientiousness. Response anchors from https://ipip.ori.org/New_IPIP-50-item-scale.htm. Public domain (IPIP)."
+  },
+  {
+   "id": "IPIP_C2",
+   "instrument": "ipip50",
+   "domain": "C",
+   "key": "+",
+   "reverse": false,
+   "type": "likert5",
+   "text": "Pay attention to details.",
+   "options": [
+    "Very Inaccurate",
+    "Moderately Inaccurate",
+    "Neither Accurate Nor Inaccurate",
+    "Moderately Accurate",
+    "Very Accurate"
+   ],
+   "range": [
+    1,
+    5
+   ],
+   "source_url": "https://ipip.ori.org/newBigFive5broadKey.htm",
+   "source_note": "Factor III (Conscientiousness), 10-item scale, + keyed; Conscientiousness. Response anchors from https://ipip.ori.org/New_IPIP-50-item-scale.htm. Public domain (IPIP)."
+  },
+  {
+   "id": "IPIP_C3",
+   "instrument": "ipip50",
+   "domain": "C",
+   "key": "+",
+   "reverse": false,
+   "type": "likert5",
+   "text": "Get chores done right away.",
+   "options": [
+    "Very Inaccurate",
+    "Moderately Inaccurate",
+    "Neither Accurate Nor Inaccurate",
+    "Moderately Accurate",
+    "Very Accurate"
+   ],
+   "range": [
+    1,
+    5
+   ],
+   "source_url": "https://ipip.ori.org/newBigFive5broadKey.htm",
+   "source_note": "Factor III (Conscientiousness), 10-item scale, + keyed; Conscientiousness. Response anchors from https://ipip.ori.org/New_IPIP-50-item-scale.htm. Public domain (IPIP)."
+  },
+  {
+   "id": "IPIP_C4",
+   "instrument": "ipip50",
+   "domain": "C",
+   "key": "+",
+   "reverse": false,
+   "type": "likert5",
+   "text": "Like order.",
+   "options": [
+    "Very Inaccurate",
+    "Moderately Inaccurate",
+    "Neither Accurate Nor Inaccurate",
+    "Moderately Accurate",
+    "Very Accurate"
+   ],
+   "range": [
+    1,
+    5
+   ],
+   "source_url": "https://ipip.ori.org/newBigFive5broadKey.htm",
+   "source_note": "Factor III (Conscientiousness), 10-item scale, + keyed; Conscientiousness. Response anchors from https://ipip.ori.org/New_IPIP-50-item-scale.htm. Public domain (IPIP)."
+  },
+  {
+   "id": "IPIP_C5",
+   "instrument": "ipip50",
+   "domain": "C",
+   "key": "+",
+   "reverse": false,
+   "type": "likert5",
+   "text": "Follow a schedule.",
+   "options": [
+    "Very Inaccurate",
+    "Moderately Inaccurate",
+    "Neither Accurate Nor Inaccurate",
+    "Moderately Accurate",
+    "Very Accurate"
+   ],
+   "range": [
+    1,
+    5
+   ],
+   "source_url": "https://ipip.ori.org/newBigFive5broadKey.htm",
+   "source_note": "Factor III (Conscientiousness), 10-item scale, + keyed; Conscientiousness. Response anchors from https://ipip.ori.org/New_IPIP-50-item-scale.htm. Public domain (IPIP)."
+  },
+  {
+   "id": "IPIP_C6",
+   "instrument": "ipip50",
+   "domain": "C",
+   "key": "+",
+   "reverse": false,
+   "type": "likert5",
+   "text": "Am exacting in my work.",
+   "options": [
+    "Very Inaccurate",
+    "Moderately Inaccurate",
+    "Neither Accurate Nor Inaccurate",
+    "Moderately Accurate",
+    "Very Accurate"
+   ],
+   "range": [
+    1,
+    5
+   ],
+   "source_url": "https://ipip.ori.org/newBigFive5broadKey.htm",
+   "source_note": "Factor III (Conscientiousness), 10-item scale, + keyed; Conscientiousness. Response anchors from https://ipip.ori.org/New_IPIP-50-item-scale.htm. Public domain (IPIP)."
+  },
+  {
+   "id": "IPIP_C7",
+   "instrument": "ipip50",
+   "domain": "C",
+   "key": "-",
+   "reverse": true,
+   "type": "likert5",
+   "text": "Leave my belongings around.",
+   "options": [
+    "Very Inaccurate",
+    "Moderately Inaccurate",
+    "Neither Accurate Nor Inaccurate",
+    "Moderately Accurate",
+    "Very Accurate"
+   ],
+   "range": [
+    1,
+    5
+   ],
+   "source_url": "https://ipip.ori.org/newBigFive5broadKey.htm",
+   "source_note": "Factor III (Conscientiousness), 10-item scale, - keyed; Conscientiousness. Response anchors from https://ipip.ori.org/New_IPIP-50-item-scale.htm. Public domain (IPIP)."
+  },
+  {
+   "id": "IPIP_C8",
+   "instrument": "ipip50",
+   "domain": "C",
+   "key": "-",
+   "reverse": true,
+   "type": "likert5",
+   "text": "Make a mess of things.",
+   "options": [
+    "Very Inaccurate",
+    "Moderately Inaccurate",
+    "Neither Accurate Nor Inaccurate",
+    "Moderately Accurate",
+    "Very Accurate"
+   ],
+   "range": [
+    1,
+    5
+   ],
+   "source_url": "https://ipip.ori.org/newBigFive5broadKey.htm",
+   "source_note": "Factor III (Conscientiousness), 10-item scale, - keyed; Conscientiousness. Response anchors from https://ipip.ori.org/New_IPIP-50-item-scale.htm. Public domain (IPIP)."
+  },
+  {
+   "id": "IPIP_C9",
+   "instrument": "ipip50",
+   "domain": "C",
+   "key": "-",
+   "reverse": true,
+   "type": "likert5",
+   "text": "Often forget to put things back in their proper place.",
+   "options": [
+    "Very Inaccurate",
+    "Moderately Inaccurate",
+    "Neither Accurate Nor Inaccurate",
+    "Moderately Accurate",
+    "Very Accurate"
+   ],
+   "range": [
+    1,
+    5
+   ],
+   "source_url": "https://ipip.ori.org/newBigFive5broadKey.htm",
+   "source_note": "Factor III (Conscientiousness), 10-item scale, - keyed; Conscientiousness. Response anchors from https://ipip.ori.org/New_IPIP-50-item-scale.htm. Public domain (IPIP)."
+  },
+  {
+   "id": "IPIP_C10",
+   "instrument": "ipip50",
+   "domain": "C",
+   "key": "-",
+   "reverse": true,
+   "type": "likert5",
+   "text": "Shirk my duties.",
+   "options": [
+    "Very Inaccurate",
+    "Moderately Inaccurate",
+    "Neither Accurate Nor Inaccurate",
+    "Moderately Accurate",
+    "Very Accurate"
+   ],
+   "range": [
+    1,
+    5
+   ],
+   "source_url": "https://ipip.ori.org/newBigFive5broadKey.htm",
+   "source_note": "Factor III (Conscientiousness), 10-item scale, - keyed; Conscientiousness. Response anchors from https://ipip.ori.org/New_IPIP-50-item-scale.htm. Public domain (IPIP)."
+  },
+  {
+   "id": "IPIP_N1",
+   "instrument": "ipip50",
+   "domain": "N",
+   "key": "+",
+   "reverse": false,
+   "type": "likert5",
+   "text": "Am relaxed most of the time.",
+   "options": [
+    "Very Inaccurate",
+    "Moderately Inaccurate",
+    "Neither Accurate Nor Inaccurate",
+    "Moderately Accurate",
+    "Very Accurate"
+   ],
+   "range": [
+    1,
+    5
+   ],
+   "source_url": "https://ipip.ori.org/newBigFive5broadKey.htm",
+   "source_note": "Factor IV (Emotional Stability), 10-item scale, + keyed; Emotional Stability (domain code 'N' per the plan contract; a HIGH scale score means MORE emotionally stable, i.e. LOW neuroticism). Response anchors from https://ipip.ori.org/New_IPIP-50-item-scale.htm. Public domain (IPIP)."
+  },
+  {
+   "id": "IPIP_N2",
+   "instrument": "ipip50",
+   "domain": "N",
+   "key": "+",
+   "reverse": false,
+   "type": "likert5",
+   "text": "Seldom feel blue.",
+   "options": [
+    "Very Inaccurate",
+    "Moderately Inaccurate",
+    "Neither Accurate Nor Inaccurate",
+    "Moderately Accurate",
+    "Very Accurate"
+   ],
+   "range": [
+    1,
+    5
+   ],
+   "source_url": "https://ipip.ori.org/newBigFive5broadKey.htm",
+   "source_note": "Factor IV (Emotional Stability), 10-item scale, + keyed; Emotional Stability (domain code 'N' per the plan contract; a HIGH scale score means MORE emotionally stable, i.e. LOW neuroticism). Response anchors from https://ipip.ori.org/New_IPIP-50-item-scale.htm. Public domain (IPIP)."
+  },
+  {
+   "id": "IPIP_N3",
+   "instrument": "ipip50",
+   "domain": "N",
+   "key": "-",
+   "reverse": true,
+   "type": "likert5",
+   "text": "Get stressed out easily.",
+   "options": [
+    "Very Inaccurate",
+    "Moderately Inaccurate",
+    "Neither Accurate Nor Inaccurate",
+    "Moderately Accurate",
+    "Very Accurate"
+   ],
+   "range": [
+    1,
+    5
+   ],
+   "source_url": "https://ipip.ori.org/newBigFive5broadKey.htm",
+   "source_note": "Factor IV (Emotional Stability), 10-item scale, - keyed; Emotional Stability (domain code 'N' per the plan contract; a HIGH scale score means MORE emotionally stable, i.e. LOW neuroticism). Response anchors from https://ipip.ori.org/New_IPIP-50-item-scale.htm. Public domain (IPIP)."
+  },
+  {
+   "id": "IPIP_N4",
+   "instrument": "ipip50",
+   "domain": "N",
+   "key": "-",
+   "reverse": true,
+   "type": "likert5",
+   "text": "Worry about things.",
+   "options": [
+    "Very Inaccurate",
+    "Moderately Inaccurate",
+    "Neither Accurate Nor Inaccurate",
+    "Moderately Accurate",
+    "Very Accurate"
+   ],
+   "range": [
+    1,
+    5
+   ],
+   "source_url": "https://ipip.ori.org/newBigFive5broadKey.htm",
+   "source_note": "Factor IV (Emotional Stability), 10-item scale, - keyed; Emotional Stability (domain code 'N' per the plan contract; a HIGH scale score means MORE emotionally stable, i.e. LOW neuroticism). Response anchors from https://ipip.ori.org/New_IPIP-50-item-scale.htm. Public domain (IPIP)."
+  },
+  {
+   "id": "IPIP_N5",
+   "instrument": "ipip50",
+   "domain": "N",
+   "key": "-",
+   "reverse": true,
+   "type": "likert5",
+   "text": "Am easily disturbed.",
+   "options": [
+    "Very Inaccurate",
+    "Moderately Inaccurate",
+    "Neither Accurate Nor Inaccurate",
+    "Moderately Accurate",
+    "Very Accurate"
+   ],
+   "range": [
+    1,
+    5
+   ],
+   "source_url": "https://ipip.ori.org/newBigFive5broadKey.htm",
+   "source_note": "Factor IV (Emotional Stability), 10-item scale, - keyed; Emotional Stability (domain code 'N' per the plan contract; a HIGH scale score means MORE emotionally stable, i.e. LOW neuroticism). Response anchors from https://ipip.ori.org/New_IPIP-50-item-scale.htm. Public domain (IPIP)."
+  },
+  {
+   "id": "IPIP_N6",
+   "instrument": "ipip50",
+   "domain": "N",
+   "key": "-",
+   "reverse": true,
+   "type": "likert5",
+   "text": "Get upset easily.",
+   "options": [
+    "Very Inaccurate",
+    "Moderately Inaccurate",
+    "Neither Accurate Nor Inaccurate",
+    "Moderately Accurate",
+    "Very Accurate"
+   ],
+   "range": [
+    1,
+    5
+   ],
+   "source_url": "https://ipip.ori.org/newBigFive5broadKey.htm",
+   "source_note": "Factor IV (Emotional Stability), 10-item scale, - keyed; Emotional Stability (domain code 'N' per the plan contract; a HIGH scale score means MORE emotionally stable, i.e. LOW neuroticism). Response anchors from https://ipip.ori.org/New_IPIP-50-item-scale.htm. Public domain (IPIP)."
+  },
+  {
+   "id": "IPIP_N7",
+   "instrument": "ipip50",
+   "domain": "N",
+   "key": "-",
+   "reverse": true,
+   "type": "likert5",
+   "text": "Change my mood a lot.",
+   "options": [
+    "Very Inaccurate",
+    "Moderately Inaccurate",
+    "Neither Accurate Nor Inaccurate",
+    "Moderately Accurate",
+    "Very Accurate"
+   ],
+   "range": [
+    1,
+    5
+   ],
+   "source_url": "https://ipip.ori.org/newBigFive5broadKey.htm",
+   "source_note": "Factor IV (Emotional Stability), 10-item scale, - keyed; Emotional Stability (domain code 'N' per the plan contract; a HIGH scale score means MORE emotionally stable, i.e. LOW neuroticism). Response anchors from https://ipip.ori.org/New_IPIP-50-item-scale.htm. Public domain (IPIP)."
+  },
+  {
+   "id": "IPIP_N8",
+   "instrument": "ipip50",
+   "domain": "N",
+   "key": "-",
+   "reverse": true,
+   "type": "likert5",
+   "text": "Have frequent mood swings.",
+   "options": [
+    "Very Inaccurate",
+    "Moderately Inaccurate",
+    "Neither Accurate Nor Inaccurate",
+    "Moderately Accurate",
+    "Very Accurate"
+   ],
+   "range": [
+    1,
+    5
+   ],
+   "source_url": "https://ipip.ori.org/newBigFive5broadKey.htm",
+   "source_note": "Factor IV (Emotional Stability), 10-item scale, - keyed; Emotional Stability (domain code 'N' per the plan contract; a HIGH scale score means MORE emotionally stable, i.e. LOW neuroticism). Response anchors from https://ipip.ori.org/New_IPIP-50-item-scale.htm. Public domain (IPIP)."
+  },
+  {
+   "id": "IPIP_N9",
+   "instrument": "ipip50",
+   "domain": "N",
+   "key": "-",
+   "reverse": true,
+   "type": "likert5",
+   "text": "Get irritated easily.",
+   "options": [
+    "Very Inaccurate",
+    "Moderately Inaccurate",
+    "Neither Accurate Nor Inaccurate",
+    "Moderately Accurate",
+    "Very Accurate"
+   ],
+   "range": [
+    1,
+    5
+   ],
+   "source_url": "https://ipip.ori.org/newBigFive5broadKey.htm",
+   "source_note": "Factor IV (Emotional Stability), 10-item scale, - keyed; Emotional Stability (domain code 'N' per the plan contract; a HIGH scale score means MORE emotionally stable, i.e. LOW neuroticism). Response anchors from https://ipip.ori.org/New_IPIP-50-item-scale.htm. Public domain (IPIP)."
+  },
+  {
+   "id": "IPIP_N10",
+   "instrument": "ipip50",
+   "domain": "N",
+   "key": "-",
+   "reverse": true,
+   "type": "likert5",
+   "text": "Often feel blue.",
+   "options": [
+    "Very Inaccurate",
+    "Moderately Inaccurate",
+    "Neither Accurate Nor Inaccurate",
+    "Moderately Accurate",
+    "Very Accurate"
+   ],
+   "range": [
+    1,
+    5
+   ],
+   "source_url": "https://ipip.ori.org/newBigFive5broadKey.htm",
+   "source_note": "Factor IV (Emotional Stability), 10-item scale, - keyed; Emotional Stability (domain code 'N' per the plan contract; a HIGH scale score means MORE emotionally stable, i.e. LOW neuroticism). Response anchors from https://ipip.ori.org/New_IPIP-50-item-scale.htm. Public domain (IPIP)."
+  },
+  {
+   "id": "IPIP_O1",
+   "instrument": "ipip50",
+   "domain": "O",
+   "key": "+",
+   "reverse": false,
+   "type": "likert5",
+   "text": "Have a rich vocabulary.",
+   "options": [
+    "Very Inaccurate",
+    "Moderately Inaccurate",
+    "Neither Accurate Nor Inaccurate",
+    "Moderately Accurate",
+    "Very Accurate"
+   ],
+   "range": [
+    1,
+    5
+   ],
+   "source_url": "https://ipip.ori.org/newBigFive5broadKey.htm",
+   "source_note": "Factor V (Intellect or Imagination), 10-item scale, + keyed; Intellect/Imagination (domain code 'O'). Response anchors from https://ipip.ori.org/New_IPIP-50-item-scale.htm. Public domain (IPIP)."
+  },
+  {
+   "id": "IPIP_O2",
+   "instrument": "ipip50",
+   "domain": "O",
+   "key": "+",
+   "reverse": false,
+   "type": "likert5",
+   "text": "Have a vivid imagination.",
+   "options": [
+    "Very Inaccurate",
+    "Moderately Inaccurate",
+    "Neither Accurate Nor Inaccurate",
+    "Moderately Accurate",
+    "Very Accurate"
+   ],
+   "range": [
+    1,
+    5
+   ],
+   "source_url": "https://ipip.ori.org/newBigFive5broadKey.htm",
+   "source_note": "Factor V (Intellect or Imagination), 10-item scale, + keyed; Intellect/Imagination (domain code 'O'). Response anchors from https://ipip.ori.org/New_IPIP-50-item-scale.htm. Public domain (IPIP)."
+  },
+  {
+   "id": "IPIP_O3",
+   "instrument": "ipip50",
+   "domain": "O",
+   "key": "+",
+   "reverse": false,
+   "type": "likert5",
+   "text": "Have excellent ideas.",
+   "options": [
+    "Very Inaccurate",
+    "Moderately Inaccurate",
+    "Neither Accurate Nor Inaccurate",
+    "Moderately Accurate",
+    "Very Accurate"
+   ],
+   "range": [
+    1,
+    5
+   ],
+   "source_url": "https://ipip.ori.org/newBigFive5broadKey.htm",
+   "source_note": "Factor V (Intellect or Imagination), 10-item scale, + keyed; Intellect/Imagination (domain code 'O'). Response anchors from https://ipip.ori.org/New_IPIP-50-item-scale.htm. Public domain (IPIP)."
+  },
+  {
+   "id": "IPIP_O4",
+   "instrument": "ipip50",
+   "domain": "O",
+   "key": "+",
+   "reverse": false,
+   "type": "likert5",
+   "text": "Am quick to understand things.",
+   "options": [
+    "Very Inaccurate",
+    "Moderately Inaccurate",
+    "Neither Accurate Nor Inaccurate",
+    "Moderately Accurate",
+    "Very Accurate"
+   ],
+   "range": [
+    1,
+    5
+   ],
+   "source_url": "https://ipip.ori.org/newBigFive5broadKey.htm",
+   "source_note": "Factor V (Intellect or Imagination), 10-item scale, + keyed; Intellect/Imagination (domain code 'O'). Response anchors from https://ipip.ori.org/New_IPIP-50-item-scale.htm. Public domain (IPIP)."
+  },
+  {
+   "id": "IPIP_O5",
+   "instrument": "ipip50",
+   "domain": "O",
+   "key": "+",
+   "reverse": false,
+   "type": "likert5",
+   "text": "Use difficult words.",
+   "options": [
+    "Very Inaccurate",
+    "Moderately Inaccurate",
+    "Neither Accurate Nor Inaccurate",
+    "Moderately Accurate",
+    "Very Accurate"
+   ],
+   "range": [
+    1,
+    5
+   ],
+   "source_url": "https://ipip.ori.org/newBigFive5broadKey.htm",
+   "source_note": "Factor V (Intellect or Imagination), 10-item scale, + keyed; Intellect/Imagination (domain code 'O'). Response anchors from https://ipip.ori.org/New_IPIP-50-item-scale.htm. Public domain (IPIP)."
+  },
+  {
+   "id": "IPIP_O6",
+   "instrument": "ipip50",
+   "domain": "O",
+   "key": "+",
+   "reverse": false,
+   "type": "likert5",
+   "text": "Spend time reflecting on things.",
+   "options": [
+    "Very Inaccurate",
+    "Moderately Inaccurate",
+    "Neither Accurate Nor Inaccurate",
+    "Moderately Accurate",
+    "Very Accurate"
+   ],
+   "range": [
+    1,
+    5
+   ],
+   "source_url": "https://ipip.ori.org/newBigFive5broadKey.htm",
+   "source_note": "Factor V (Intellect or Imagination), 10-item scale, + keyed; Intellect/Imagination (domain code 'O'). Response anchors from https://ipip.ori.org/New_IPIP-50-item-scale.htm. Public domain (IPIP)."
+  },
+  {
+   "id": "IPIP_O7",
+   "instrument": "ipip50",
+   "domain": "O",
+   "key": "+",
+   "reverse": false,
+   "type": "likert5",
+   "text": "Am full of ideas.",
+   "options": [
+    "Very Inaccurate",
+    "Moderately Inaccurate",
+    "Neither Accurate Nor Inaccurate",
+    "Moderately Accurate",
+    "Very Accurate"
+   ],
+   "range": [
+    1,
+    5
+   ],
+   "source_url": "https://ipip.ori.org/newBigFive5broadKey.htm",
+   "source_note": "Factor V (Intellect or Imagination), 10-item scale, + keyed; Intellect/Imagination (domain code 'O'). Response anchors from https://ipip.ori.org/New_IPIP-50-item-scale.htm. Public domain (IPIP)."
+  },
+  {
+   "id": "IPIP_O8",
+   "instrument": "ipip50",
+   "domain": "O",
+   "key": "-",
+   "reverse": true,
+   "type": "likert5",
+   "text": "Have difficulty understanding abstract ideas.",
+   "options": [
+    "Very Inaccurate",
+    "Moderately Inaccurate",
+    "Neither Accurate Nor Inaccurate",
+    "Moderately Accurate",
+    "Very Accurate"
+   ],
+   "range": [
+    1,
+    5
+   ],
+   "source_url": "https://ipip.ori.org/newBigFive5broadKey.htm",
+   "source_note": "Factor V (Intellect or Imagination), 10-item scale, - keyed; Intellect/Imagination (domain code 'O'). Response anchors from https://ipip.ori.org/New_IPIP-50-item-scale.htm. Public domain (IPIP)."
+  },
+  {
+   "id": "IPIP_O9",
+   "instrument": "ipip50",
+   "domain": "O",
+   "key": "-",
+   "reverse": true,
+   "type": "likert5",
+   "text": "Am not interested in abstract ideas.",
+   "options": [
+    "Very Inaccurate",
+    "Moderately Inaccurate",
+    "Neither Accurate Nor Inaccurate",
+    "Moderately Accurate",
+    "Very Accurate"
+   ],
+   "range": [
+    1,
+    5
+   ],
+   "source_url": "https://ipip.ori.org/newBigFive5broadKey.htm",
+   "source_note": "Factor V (Intellect or Imagination), 10-item scale, - keyed; Intellect/Imagination (domain code 'O'). Response anchors from https://ipip.ori.org/New_IPIP-50-item-scale.htm. Public domain (IPIP)."
+  },
+  {
+   "id": "IPIP_O10",
+   "instrument": "ipip50",
+   "domain": "O",
+   "key": "-",
+   "reverse": true,
+   "type": "likert5",
+   "text": "Do not have a good imagination.",
+   "options": [
+    "Very Inaccurate",
+    "Moderately Inaccurate",
+    "Neither Accurate Nor Inaccurate",
+    "Moderately Accurate",
+    "Very Accurate"
+   ],
+   "range": [
+    1,
+    5
+   ],
+   "source_url": "https://ipip.ori.org/newBigFive5broadKey.htm",
+   "source_note": "Factor V (Intellect or Imagination), 10-item scale, - keyed; Intellect/Imagination (domain code 'O'). Response anchors from https://ipip.ori.org/New_IPIP-50-item-scale.htm. Public domain (IPIP)."
+  },
+  {
+   "id": "GAME_dictator",
+   "instrument": "game",
+   "domain": "dictator",
+   "type": "number",
+   "text": "Dictator game. You have been given 10 tokens. You may give any whole number of tokens, from 0 to 10, to an anonymous stranger who has nothing; you keep the rest. The stranger cannot respond. How many tokens do you give?",
+   "range": [
+    0,
+    10
+   ],
+   "source_url": "https://doi.org/10.1006/game.1994.1021",
+   "source_note": "Forsythe, Horowitz, Savin & Sefton (1994), Games and Economic Behavior 6(3). Standard parametrization (endowment 10, give 0-10); wording is this project's own."
+  },
+  {
+   "id": "GAME_trust_send",
+   "instrument": "game",
+   "domain": "trust",
+   "type": "number",
+   "text": "Trust game, as the sender. You have 10 tokens. You may send any whole number of tokens, from 0 to 10, to an anonymous stranger. Whatever you send is tripled before it reaches them; they then decide how much of the tripled amount, if any, to return to you. How many tokens do you send?",
+   "range": [
+    0,
+    10
+   ],
+   "source_url": "https://doi.org/10.1006/game.1995.1027",
+   "source_note": "Berg, Dickhaut & McCabe (1995), Games and Economic Behavior 10(1). Endowment 10, sent amount tripled; wording is this project's own."
+  },
+  {
+   "id": "GAME_trust_return",
+   "instrument": "game",
+   "domain": "trust",
+   "type": "fraction",
+   "text": "Trust game, as the receiver. An anonymous stranger sent you tokens; the amount was tripled on the way, so you now hold the tripled amount. You decide what fraction of it to send back to them, from 0 (keep everything) to 1 (return everything). What fraction do you return?",
+   "range": [
+    0,
+    1
+   ],
+   "source_url": "https://doi.org/10.1006/game.1995.1027",
+   "source_note": "Berg, Dickhaut & McCabe (1995) trustee decision, expressed as a fraction 0-1 of the tripled amount; wording is this project's own."
+  },
+  {
+   "id": "GAME_public_goods",
+   "instrument": "game",
+   "domain": "public_goods",
+   "type": "number",
+   "text": "Public goods game. You are in a group of 4 people; each of you has 10 tokens. Each person chooses how many tokens, from 0 to 10, to put into a shared pot and keeps the rest. The pot is multiplied by 1.6 and split equally among all 4 members no matter what each contributed. How many tokens do you contribute?",
+   "range": [
+    0,
+    10
+   ],
+   "source_url": "docs/research/D4_item_bank_and_scoring.md",
+   "source_note": "Standard linear public goods game with D4's parameters (group of 4, endowment 10, multiplier 1.6, i.e. marginal per-capita return 0.4); wording is this project's own."
+  },
+  {
+   "id": "GAME_prisoners_dilemma",
+   "instrument": "game",
+   "domain": "prisoners_dilemma",
+   "type": "binary",
+   "text": "Prisoner's dilemma, one shot. You and an anonymous stranger each choose, at the same time and without talking, to cooperate or defect. If you both cooperate you each get 3 tokens. If you both defect you each get 1 token. If you defect while the other cooperates you get 5 tokens and they get 0; if you cooperate while the other defects you get 0 and they get 5. Do you cooperate or defect?",
+   "options": [
+    "cooperate",
+    "defect"
+   ],
+   "source_url": "docs/research/D4_item_bank_and_scoring.md",
+   "source_note": "Standard one-shot prisoner's dilemma with D4's payoff matrix (T=5, R=3, P=1, S=0) stated in the text; wording is this project's own."
+  },
+  {
+   "id": "GOLD_Q-01",
+   "instrument": "gold",
+   "type": "open",
+   "text": "How do you decide whether to trust a new person?",
+   "source_url": "data/twin_profile.example.v2.md",
+   "source_note": "Eval section Q-01 of the example profile (eval_frozen: true). items.py replaces the text with the current profile's Eval Q-01 at run time; the user's own question, no external license."
+  },
+  {
+   "id": "GOLD_Q-02",
+   "instrument": "gold",
+   "type": "open",
+   "text": "What do you do when a client is unhappy with your work?",
+   "source_url": "data/twin_profile.example.v2.md",
+   "source_note": "Eval section Q-02 of the example profile (eval_frozen: true). items.py replaces the text with the current profile's Eval Q-02 at run time; the user's own question, no external license."
+  },
+  {
+   "id": "GOLD_Q-03",
+   "instrument": "gold",
+   "type": "open",
+   "text": "How do you handle carrying debt?",
+   "source_url": "data/twin_profile.example.v2.md",
+   "source_note": "Eval section Q-03 of the example profile (eval_frozen: true). items.py replaces the text with the current profile's Eval Q-03 at run time; the user's own question, no external license."
+  },
+  {
+   "id": "GOLD_Q-04",
+   "instrument": "gold",
+   "type": "open",
+   "text": "Would you rather have a stable job or freelance freedom?",
+   "source_url": "data/twin_profile.example.v2.md",
+   "source_note": "Eval section Q-04 of the example profile (eval_frozen: true). items.py replaces the text with the current profile's Eval Q-04 at run time; the user's own question, no external license."
+  },
+  {
+   "id": "GOLD_Q-05",
+   "instrument": "gold",
+   "type": "open",
+   "text": "How do you spend a free evening?",
+   "source_url": "data/twin_profile.example.v2.md",
+   "source_note": "Eval section Q-05 of the example profile (eval_frozen: true). items.py replaces the text with the current profile's Eval Q-05 at run time; the user's own question, no external license."
+  },
+  {
+   "id": "GOLD_Q-06",
+   "instrument": "gold",
+   "type": "open",
+   "text": "What's your relationship with money?",
+   "source_url": "data/twin_profile.example.v2.md",
+   "source_note": "Eval section Q-06 of the example profile (eval_frozen: true). items.py replaces the text with the current profile's Eval Q-06 at run time; the user's own question, no external license."
+  },
+  {
+   "id": "GOLD_Q-07",
+   "instrument": "gold",
+   "type": "open",
+   "text": "How do you react when someone micromanages you?",
+   "source_url": "data/twin_profile.example.v2.md",
+   "source_note": "Eval section Q-07 of the example profile (eval_frozen: true). items.py replaces the text with the current profile's Eval Q-07 at run time; the user's own question, no external license."
+  },
+  {
+   "id": "GOLD_Q-08",
+   "instrument": "gold",
+   "type": "open",
+   "text": "Do you prefer big groups or one-on-one?",
+   "source_url": "data/twin_profile.example.v2.md",
+   "source_note": "Eval section Q-08 of the example profile (eval_frozen: true). items.py replaces the text with the current profile's Eval Q-08 at run time; the user's own question, no external license."
+  },
+  {
+   "id": "GOLD_Q-09",
+   "instrument": "gold",
+   "type": "open",
+   "text": "How do you make big decisions?",
+   "source_url": "data/twin_profile.example.v2.md",
+   "source_note": "Eval section Q-09 of the example profile (eval_frozen: true). items.py replaces the text with the current profile's Eval Q-09 at run time; the user's own question, no external license."
+  },
+  {
+   "id": "GOLD_Q-10",
+   "instrument": "gold",
+   "type": "open",
+   "text": "What would make you quit a project?",
+   "source_url": "data/twin_profile.example.v2.md",
+   "source_note": "Eval section Q-10 of the example profile (eval_frozen: true). items.py replaces the text with the current profile's Eval Q-10 at run time; the user's own question, no external license."
+  },
+  {
+   "id": "GOLD_Q-11",
+   "instrument": "gold",
+   "type": "open",
+   "text": "How do you feel about AI in your field?",
+   "source_url": "data/twin_profile.example.v2.md",
+   "source_note": "Eval section Q-11 of the example profile (eval_frozen: true). items.py replaces the text with the current profile's Eval Q-11 at run time; the user's own question, no external license."
+  },
+  {
+   "id": "GOLD_Q-12",
+   "instrument": "gold",
+   "type": "open",
+   "text": "What's your political outlook in one line?",
+   "excluded": "politics",
+   "source_url": "data/twin_profile.example.v2.md",
+   "source_note": "Eval section Q-12 of the example profile (eval_frozen: true). EXCLUDED from scoring ('excluded': 'politics'): the project keeps politics out and the twin's Boundaries deflect it, so items.py skips any item carrying an 'excluded' key and reports it as 'excluded: politics'. Kept in the bank so the GOLD ids stay Q-01..Q-20; items.py still overrides the text by Q-id from the current profile and should also skip a Q-12 whose text matches a politics regex."
+  },
+  {
+   "id": "GOLD_Q-13",
+   "instrument": "gold",
+   "type": "open",
+   "text": "How do you deal with stress?",
+   "source_url": "data/twin_profile.example.v2.md",
+   "source_note": "Eval section Q-13 of the example profile (eval_frozen: true). items.py replaces the text with the current profile's Eval Q-13 at run time; the user's own question, no external license."
+  },
+  {
+   "id": "GOLD_Q-14",
+   "instrument": "gold",
+   "type": "open",
+   "text": "Whats your take on the hustle/grind culture?",
+   "source_url": "data/twin_profile.example.v2.md",
+   "source_note": "Eval section Q-14 of the example profile (eval_frozen: true). items.py replaces the text with the current profile's Eval Q-14 at run time; the user's own question, no external license."
+  },
+  {
+   "id": "GOLD_Q-15",
+   "instrument": "gold",
+   "type": "open",
+   "text": "How do you choose where to live?",
+   "source_url": "data/twin_profile.example.v2.md",
+   "source_note": "Eval section Q-15 of the example profile (eval_frozen: true). items.py replaces the text with the current profile's Eval Q-15 at run time; the user's own question, no external license."
+  },
+  {
+   "id": "GOLD_Q-16",
+   "instrument": "gold",
+   "type": "open",
+   "text": "What do you splurge on?",
+   "source_url": "data/twin_profile.example.v2.md",
+   "source_note": "Eval section Q-16 of the example profile (eval_frozen: true). items.py replaces the text with the current profile's Eval Q-16 at run time; the user's own question, no external license."
+  },
+  {
+   "id": "GOLD_Q-17",
+   "instrument": "gold",
+   "type": "open",
+   "text": "How do you handle a friend who hurt you?",
+   "source_url": "data/twin_profile.example.v2.md",
+   "source_note": "Eval section Q-17 of the example profile (eval_frozen: true). items.py replaces the text with the current profile's Eval Q-17 at run time; the user's own question, no external license."
+  },
+  {
+   "id": "GOLD_Q-18",
+   "instrument": "gold",
+   "type": "open",
+   "text": "Whats your ideal work schedule?",
+   "source_url": "data/twin_profile.example.v2.md",
+   "source_note": "Eval section Q-18 of the example profile (eval_frozen: true). items.py replaces the text with the current profile's Eval Q-18 at run time; the user's own question, no external license."
+  },
+  {
+   "id": "GOLD_Q-19",
+   "instrument": "gold",
+   "type": "open",
+   "text": "How attached are you to where you grew up?",
+   "source_url": "data/twin_profile.example.v2.md",
+   "source_note": "Eval section Q-19 of the example profile (eval_frozen: true). items.py replaces the text with the current profile's Eval Q-19 at run time; the user's own question, no external license."
+  },
+  {
+   "id": "GOLD_Q-20",
+   "instrument": "gold",
+   "type": "open",
+   "text": "What does success look like to you?",
+   "source_url": "data/twin_profile.example.v2.md",
+   "source_note": "Eval section Q-20 of the example profile (eval_frozen: true). items.py replaces the text with the current profile's Eval Q-20 at run time; the user's own question, no external license."
+  },
+  {
+   "id": "GSS_HAPPY",
+   "instrument": "gss",
+   "domain": "wellbeing",
+   "type": "categorical",
+   "text": "Taken all together, how would you say things are these days--would you say that you are very happy, pretty happy, or not too happy?",
+   "options": [
+    "VERY HAPPY",
+    "PRETTY HAPPY",
+    "NOT TOO HAPPY"
+   ],
+   "source_url": "https://gss.norc.org/content/dam/gss/get-documentation/pdf/codebook/GSS%202022%20Codebook.pdf",
+   "source_note": "GSS 2022 Codebook (Release 4, November 21, 2024), 'Replicating Core', codebook page 235; value labels verbatim."
+  },
+  {
+   "id": "GSS_HEALTH",
+   "instrument": "gss",
+   "domain": "wellbeing",
+   "type": "categorical",
+   "text": "Would you say your own health, in general, is excellent, good, fair, or poor?",
+   "options": [
+    "EXCELLENT",
+    "GOOD",
+    "FAIR",
+    "POOR"
+   ],
+   "source_url": "https://gss.norc.org/content/dam/gss/get-documentation/pdf/codebook/GSS%202022%20Codebook.pdf",
+   "source_note": "GSS 2022 Codebook (Release 4, November 21, 2024), 'Replicating Core', codebook page 237; value labels verbatim. The codebook's value label for code 1 is misspelled 'EXCELLET'; 'EXCELLENT' follows the question wording."
+  },
+  {
+   "id": "GSS_LIFE",
+   "instrument": "gss",
+   "domain": "wellbeing",
+   "type": "categorical",
+   "text": "In general, do you find life exciting, pretty routine, or dull?",
+   "options": [
+    "EXCITING",
+    "ROUTINE",
+    "DULL"
+   ],
+   "source_url": "https://gss.norc.org/content/dam/gss/get-documentation/pdf/codebook/GSS%202022%20Codebook.pdf",
+   "source_note": "GSS 2022 Codebook (Release 4, November 21, 2024), 'Replicating Core', codebook page 238; value labels verbatim."
+  },
+  {
+   "id": "GSS_HELPFUL",
+   "instrument": "gss",
+   "domain": "trust",
+   "type": "categorical",
+   "text": "Would you say that most of the time people try to be helpful, or that they are mostly just looking out for themselves?",
+   "options": [
+    "TRY TO BE HELPFUL",
+    "LOOKING OUT FOR THEMSELVES",
+    "DEPENDS"
+   ],
+   "source_url": "https://gss.norc.org/content/dam/gss/get-documentation/pdf/codebook/GSS%202022%20Codebook.pdf",
+   "source_note": "GSS 2022 Codebook (Release 4, November 21, 2024), 'Replicating Core', codebook page 238; value labels verbatim."
+  },
+  {
+   "id": "GSS_FAIR",
+   "instrument": "gss",
+   "domain": "trust",
+   "type": "categorical",
+   "text": "Do you think most people would try to take advantage of you if they got a chance, or would they try to be fair?",
+   "options": [
+    "WOULD TAKE ADVANTAGE OF YOU",
+    "WOULD TRY TO BE FAIR",
+    "DEPENDS"
+   ],
+   "source_url": "https://gss.norc.org/content/dam/gss/get-documentation/pdf/codebook/GSS%202022%20Codebook.pdf",
+   "source_note": "GSS 2022 Codebook (Release 4, November 21, 2024), 'Replicating Core', codebook page 239; value labels verbatim."
+  },
+  {
+   "id": "GSS_TRUST",
+   "instrument": "gss",
+   "domain": "trust",
+   "type": "categorical",
+   "text": "Generally speaking, would you say that most people can be trusted or that you can't be too careful in dealing with people?",
+   "options": [
+    "CAN TRUST",
+    "CAN'T BE TOO CAREFUL",
+    "DEPENDS"
+   ],
+   "source_url": "https://gss.norc.org/content/dam/gss/get-documentation/pdf/codebook/GSS%202022%20Codebook.pdf",
+   "source_note": "GSS 2022 Codebook (Release 4, November 21, 2024), 'Replicating Core', codebook page 239; value labels verbatim."
+  },
+  {
+   "id": "GSS_SATFIN",
+   "instrument": "gss",
+   "domain": "finance",
+   "type": "categorical",
+   "text": "We are interested in how people are getting along financially these days. So far as you and your family are concerned, would you say that you are pretty well satisfied with your present financial situation, more or less satisfied, or not satisfied at all?",
+   "options": [
+    "PRETTY WELL SATISFIED",
+    "MORE OR LESS SATISFIED",
+    "NOT SATISFIED AT ALL"
+   ],
+   "source_url": "https://gss.norc.org/content/dam/gss/get-documentation/pdf/codebook/GSS%202022%20Codebook.pdf",
+   "source_note": "GSS 2022 Codebook (Release 4, November 21, 2024), 'Replicating Core', codebook page 261; value labels verbatim."
+  },
+  {
+   "id": "GSS_FINALTER",
+   "instrument": "gss",
+   "domain": "finance",
+   "type": "categorical",
+   "text": "During the last few years, has your financial situation been getting better, worse, or has it stayed the same?",
+   "options": [
+    "GETTING BETTER",
+    "GETTING WORSE",
+    "STAYED THE SAME"
+   ],
+   "source_url": "https://gss.norc.org/content/dam/gss/get-documentation/pdf/codebook/GSS%202022%20Codebook.pdf",
+   "source_note": "GSS 2022 Codebook (Release 4, November 21, 2024), 'Replicating Core', codebook page 261; value labels verbatim."
+  },
+  {
+   "id": "GSS_FINRELA",
+   "instrument": "gss",
+   "domain": "finance",
+   "type": "categorical",
+   "text": "Compared with American families in general, would you say your family income is far below average, below average, average, above average, or far above average?",
+   "options": [
+    "FAR BELOW AVERAGE",
+    "BELOW AVERAGE",
+    "AVERAGE",
+    "ABOVE AVERAGE",
+    "FAR ABOVE AVERAGE"
+   ],
+   "source_url": "https://gss.norc.org/content/dam/gss/get-documentation/pdf/codebook/GSS%202022%20Codebook.pdf",
+   "source_note": "GSS 2022 Codebook (Release 4, November 21, 2024), 'Replicating Core', codebook page 262; value labels verbatim. Interviewer probe '(PROBE: Just your best guess.)' dropped from the text. The codebook's value label for code 5 is misspelled 'FAR ABOUT AVERAGE'; 'FAR ABOVE AVERAGE' follows the question wording."
+  },
+  {
+   "id": "GSS_CLASS",
+   "instrument": "gss",
+   "domain": "finance",
+   "type": "categorical",
+   "text": "If you were asked to use one of four names for your social class, which would you say you belong in: the lower class, the working class, the middle class, or the upper class?",
+   "options": [
+    "LOWER CLASS",
+    "WORKING CLASS",
+    "MIDDLE CLASS",
+    "UPPER CLASS"
+   ],
+   "source_url": "https://gss.norc.org/content/dam/gss/get-documentation/pdf/codebook/GSS%202022%20Codebook.pdf",
+   "source_note": "GSS 2022 Codebook (Release 4, November 21, 2024), 'Replicating Core', codebook page 259; value labels verbatim."
+  },
+  {
+   "id": "GSS_GETAHEAD",
+   "instrument": "gss",
+   "domain": "work",
+   "type": "categorical",
+   "text": "Some people say that people get ahead by their own hard work; others say that lucky breaks or help from other people are more important. Which do you think is most important?",
+   "options": [
+    "HARD WORK MOST IMPORTANT",
+    "HARD WORK, LUCK EQUALLY IMPORTANT",
+    "LUCK MOST IMPORTANT"
+   ],
+   "source_url": "https://gss.norc.org/content/dam/gss/get-documentation/pdf/codebook/GSS%202022%20Codebook.pdf",
+   "source_note": "GSS 2022 Codebook (Release 4, November 21, 2024), 'Replicating Core', codebook page 268; value labels verbatim."
+  },
+  {
+   "id": "GSS_RICHWORK",
+   "instrument": "gss",
+   "domain": "work",
+   "type": "categorical",
+   "text": "If you were to get enough money to live as comfortably as you would like for the rest of your life, would you continue to work or would you stop working?",
+   "options": [
+    "CONTINUE TO WORK",
+    "STOP WORKING"
+   ],
+   "source_url": "https://gss.norc.org/content/dam/gss/get-documentation/pdf/codebook/GSS%202022%20Codebook.pdf",
+   "source_note": "GSS 2022 Codebook (Release 4, November 21, 2024), 'Replicating Core', codebook page 258; value labels verbatim. Asked of respondents currently working or temporarily not at work (codebook prefix '(IF CURRENTLY WORKING OR TEMPORARILY NOT AT WORK, ASK RICHWORK.)' dropped from the text); the example subject is self-employed."
+  },
+  {
+   "id": "GSS_JOBLOSE",
+   "instrument": "gss",
+   "domain": "work",
+   "type": "categorical",
+   "text": "Thinking about the next 12 months, how likely do you think it is that you will lose your job or be laid off--very likely, fairly likely, not too likely, or not at all likely?",
+   "options": [
+    "VERY LIKELY",
+    "SOMEWHAT LIKELY",
+    "NOT VERY LIKELY",
+    "NOT AT ALL LIKELY"
+   ],
+   "source_url": "https://gss.norc.org/content/dam/gss/get-documentation/pdf/codebook/GSS%202022%20Codebook.pdf",
+   "source_note": "GSS 2022 Codebook (Release 4, November 21, 2024), 'Replicating Core', codebook page 257; value labels verbatim. Asked of currently working respondents. The codebook value labels (SOMEWHAT LIKELY, NOT VERY LIKELY) differ slightly from the question wording (fairly likely, not too likely); the value labels are used as options."
+  },
+  {
+   "id": "GSS_JOBFIND",
+   "instrument": "gss",
+   "domain": "work",
+   "type": "categorical",
+   "text": "About how easy would it be for you to find a job with another employer with approximately the same income and fringe benefits you now have? Would you say very easy, somewhat easy, or not easy at all?",
+   "options": [
+    "VERY EASY",
+    "SOMEWHAT EASY",
+    "NOT EASY"
+   ],
+   "source_url": "https://gss.norc.org/content/dam/gss/get-documentation/pdf/codebook/GSS%202022%20Codebook.pdf",
+   "source_note": "GSS 2022 Codebook (Release 4, November 21, 2024), 'Replicating Core', codebook page 257; value labels verbatim. Asked of currently working respondents."
+  },
+  {
+   "id": "GSS_SATJOB",
+   "instrument": "gss",
+   "domain": "work",
+   "type": "categorical",
+   "text": "On the whole, how satisfied are you with the work you do -- would you say you are very satisfied, moderately satisfied, a little dissatisfied, or very dissatisfied?",
+   "options": [
+    "VERY SATISFIED",
+    "MODERATELY SATISFIED",
+    "A LITTLE DISSATISFIED",
+    "VERY DISSATISFIED"
+   ],
+   "source_url": "https://gss.norc.org/content/dam/gss/get-documentation/pdf/codebook/GSS%202022%20Codebook.pdf",
+   "source_note": "GSS 2022 Codebook (Release 4, November 21, 2024), 'Replicating Core', codebook page 258; value labels verbatim. Asked of respondents who work (or worked); the example subject is self-employed."
+  },
+  {
+   "id": "GSS_FEFAM",
+   "instrument": "gss",
+   "domain": "family",
+   "type": "categorical",
+   "text": "Please indicate whether you strongly agree, agree, disagree, or strongly disagree with the following statement: It is much better for everyone involved if the man is the achiever outside the home and the woman takes care of the home and family.",
+   "options": [
+    "STRONGLY AGREE",
+    "AGREE",
+    "DISAGREE",
+    "STRONGLY DISAGREE"
+   ],
+   "source_url": "https://gss.norc.org/content/dam/gss/get-documentation/pdf/codebook/GSS%202022%20Codebook.pdf",
+   "source_note": "GSS 2022 Codebook (Release 4, November 21, 2024), 'Replicating Core', codebook page 294; value labels verbatim. The 2022 codebook clips the statement at 'takes care of the'; the full statement is verified from NORC's cumulative 1972-2018 codebook main body, item 272 D (https://gss.norc.org/content/dam/gss/get-documentation/pdf/codebook/GSS_Codebook_mainbody.pdf)."
+  },
+  {
+   "id": "GSS_FEPRESCH",
+   "instrument": "gss",
+   "domain": "family",
+   "type": "categorical",
+   "text": "Please indicate whether you strongly agree, agree, disagree, or strongly disagree with the following statement: A preschool child is likely to suffer if his or her mother works.",
+   "options": [
+    "STRONGLY AGREE",
+    "AGREE",
+    "DISAGREE",
+    "STRONGLY DISAGREE"
+   ],
+   "source_url": "https://gss.norc.org/content/dam/gss/get-documentation/pdf/codebook/GSS%202022%20Codebook.pdf",
+   "source_note": "GSS 2022 Codebook (Release 4, November 21, 2024), 'Replicating Core', codebook page 294; value labels verbatim."
+  },
+  {
+   "id": "GSS_SPANKING",
+   "instrument": "gss",
+   "domain": "family",
+   "type": "categorical",
+   "text": "Do you strongly agree, agree, disagree, or strongly disagree that it is sometimes necessary to discipline a child with a good, hard spanking?",
+   "options": [
+    "STRONGLY AGREE",
+    "AGREE",
+    "DISAGREE",
+    "STRONGLY DISAGREE"
+   ],
+   "source_url": "https://gss.norc.org/content/dam/gss/get-documentation/pdf/codebook/GSS%202022%20Codebook.pdf",
+   "source_note": "GSS 2022 Codebook (Release 4, November 21, 2024), 'Replicating Core', codebook page 280; value labels verbatim."
+  },
+  {
+   "id": "GSS_AGED",
+   "instrument": "gss",
+   "domain": "family",
+   "type": "categorical",
+   "text": "As you know, many older people share a home with their grown children. Do you think this is generally a good idea or a bad idea?",
+   "options": [
+    "A GOOD IDEA",
+    "A BAD IDEA",
+    "DEPENDS"
+   ],
+   "source_url": "https://gss.norc.org/content/dam/gss/get-documentation/pdf/codebook/GSS%202022%20Codebook.pdf",
+   "source_note": "GSS 2022 Codebook (Release 4, November 21, 2024), 'Replicating Core', codebook page 255; value labels verbatim."
+  },
+  {
+   "id": "GSS_PREMARSX",
+   "instrument": "gss",
+   "domain": "morals",
+   "type": "categorical",
+   "text": "There's been a lot of discussion about the way morals and attitudes about sex are changing in this country. If a man and a woman have sexual relations before marriage, do you think it is always wrong, almost always wrong, wrong only sometimes, or not wrong at all?",
+   "options": [
+    "ALWAYS WRONG",
+    "ALMOST ALWAYS WRONG",
+    "WRONG ONLY SOMETIMES",
+    "NOT WRONG AT ALL"
+   ],
+   "source_url": "https://gss.norc.org/content/dam/gss/get-documentation/pdf/codebook/GSS%202022%20Codebook.pdf",
+   "source_note": "GSS 2022 Codebook (Release 4, November 21, 2024), 'Replicating Core', codebook page 276; value labels verbatim. The 2022 codebook clips the question at 'not wron'; the ending 'not wrong at all?' is verified from NORC's cumulative codebook main body, item 237 (https://gss.norc.org/content/dam/gss/get-documentation/pdf/codebook/GSS_Codebook_mainbody.pdf)."
+  },
+  {
+   "id": "GSS_XMARSEX",
+   "instrument": "gss",
+   "domain": "morals",
+   "type": "categorical",
+   "text": "What is your opinion about a married person having sexual relations with someone other than the marriage partner--is it always wrong, almost always wrong, wrong only sometimes, or not wrong at all?",
+   "options": [
+    "ALWAYS WRONG",
+    "ALMOST ALWAYS WRONG",
+    "WRONG ONLY SOMETIMES",
+    "NOT WRONG AT ALL"
+   ],
+   "source_url": "https://gss.norc.org/content/dam/gss/get-documentation/pdf/codebook/GSS%202022%20Codebook.pdf",
+   "source_note": "GSS 2022 Codebook (Release 4, November 21, 2024), 'Replicating Core', codebook page 278; value labels verbatim."
+  },
+  {
+   "id": "GSS_PRAY",
+   "instrument": "gss",
+   "domain": "religion",
+   "type": "categorical",
+   "text": "About how often do you pray?",
+   "options": [
+    "SEVERAL TIMES A DAY",
+    "ONCE A DAY",
+    "SEVERAL TIMES A WEEK",
+    "ONCE A WEEK",
+    "LESS THAN ONCE A WEEK",
+    "NEVER"
+   ],
+   "source_url": "https://gss.norc.org/content/dam/gss/get-documentation/pdf/codebook/GSS%202022%20Codebook.pdf",
+   "source_note": "GSS 2022 Codebook (Release 4, November 21, 2024), 'Replicating Core', codebook page 216; value labels verbatim. Interviewer instruction '(USE CATEGORIES AS PROBES.)' dropped from the text."
+  },
+  {
+   "id": "GSS_ATTEND",
+   "instrument": "gss",
+   "domain": "religion",
+   "type": "categorical",
+   "text": "How often do you attend religious services?",
+   "options": [
+    "NEVER",
+    "LESS THAN ONCE A YEAR",
+    "ABOUT ONCE OR TWICE A YEAR",
+    "SEVERAL TIMES A YEAR",
+    "ABOUT ONCE A MONTH",
+    "2-3 TIMES A MONTH",
+    "NEARLY EVERY WEEK",
+    "EVERY WEEK",
+    "SEVERAL TIMES A WEEK"
+   ],
+   "source_url": "https://gss.norc.org/content/dam/gss/get-documentation/pdf/codebook/GSS%202022%20Codebook.pdf",
+   "source_note": "GSS 2022 Codebook (Release 4, November 21, 2024), 'Replicating Core', codebook page 214; value labels verbatim. 9 response options (codes 0-8): kept above the 6-option guideline because the item is on the plan's example list and well under D4's 25-option cap. Interviewer instruction '(USE CATEGORIES AS PROBES, IF NECESSARY.)' dropped from the text."
+  },
+  {
+   "id": "GSS_POSTLIFE",
+   "instrument": "gss",
+   "domain": "religion",
+   "type": "categorical",
+   "text": "Do you believe there is a life after death?",
+   "options": [
+    "YES",
+    "NO"
+   ],
+   "source_url": "https://gss.norc.org/content/dam/gss/get-documentation/pdf/codebook/GSS%202022%20Codebook.pdf",
+   "source_note": "GSS 2022 Codebook (Release 4, November 21, 2024), 'Replicating Core', codebook page 216; value labels verbatim."
+  },
+  {
+   "id": "GSS_GOD",
+   "instrument": "gss",
+   "domain": "religion",
+   "type": "categorical",
+   "text": "Which of the statements comes closest to expressing what you believe about God? I don't believe in God (DON'T BELIEVE). I don't know whether there is a God and I don't believe there is any way to find out (DON'T KNOW, NO WAY TO FIND OUT). I don't believe in a personal God, but I do believe in a Higher Power of some kind (HIGHER POWER). I find myself believing in God some of the time, but not at others (BELIEVE SOMETIMES). While I have doubts, I feel that I do believe in God (BELIEVE WITH DOUBTS). I know God really exists and I have no doubts about it (NO DOUBTS).",
+   "options": [
+    "DON'T BELIEVE",
+    "DON'T KNOW, NO WAY TO FIND OUT",
+    "HIGHER POWER",
+    "BELIEVE SOMETIMES",
+    "BELIEVE WITH DOUBTS",
+    "NO DOUBTS"
+   ],
+   "source_url": "https://gss.norc.org/content/dam/gss/get-documentation/pdf/codebook/GSS%202022%20Codebook.pdf",
+   "source_note": "GSS 2022 Codebook (Release 4, November 21, 2024), 'Replicating Core', codebook page 300; value labels verbatim. The six full statements are verified from NORC's cumulative codebook main body, item 391 (https://gss.norc.org/content/dam/gss/get-documentation/pdf/codebook/GSS_Codebook_mainbody.pdf); the option labels are the 2022 codebook value labels."
+  },
+  {
+   "id": "GSS_BIBLE",
+   "instrument": "gss",
+   "domain": "religion",
+   "type": "categorical",
+   "text": "Which of these statements comes closest to describing your feelings about the Bible? A. The Bible is the actual word of God and is to be taken literally, word for word (WORD OF GOD). B. The Bible is the inspired word of God but not everything in it should be taken literally, word for word (INSPIRED WORD). C. The Bible is an ancient book of fables, legends, history, and moral precepts recorded by man (ANCIENT BOOK).",
+   "options": [
+    "WORD OF GOD",
+    "INSPIRED WORD",
+    "ANCIENT BOOK",
+    "OTHER"
+   ],
+   "source_url": "https://gss.norc.org/content/dam/gss/get-documentation/pdf/codebook/GSS%202022%20Codebook.pdf",
+   "source_note": "GSS 2022 Codebook (Release 4, November 21, 2024), 'Replicating Core', codebook page 231; value labels verbatim. The 2022 codebook clips statement B and omits C; the three statements are verified from NORC's cumulative codebook main body, item 137 A (https://gss.norc.org/content/dam/gss/get-documentation/pdf/codebook/GSS_Codebook_mainbody.pdf). 'OTHER' is the codebook's volunteered-response label (code 4)."
+  },
+  {
+   "id": "GSS_RELPERSN",
+   "instrument": "gss",
+   "domain": "religion",
+   "type": "categorical",
+   "text": "To what extent do you consider yourself a religious person? Are you very religious, moderately religious, slightly religious, or not religious at all?",
+   "options": [
+    "VERY RELIGIOUS",
+    "MODERATELY RELIGIOUS",
+    "SLIGHTLY RELIGIOUS",
+    "NOT RELIGIOUS AT ALL"
+   ],
+   "source_url": "https://gss.norc.org/content/dam/gss/get-documentation/pdf/codebook/GSS%202022%20Codebook.pdf",
+   "source_note": "GSS 2022 Codebook (Release 4, November 21, 2024), 'Replicating Core', codebook page 318; value labels verbatim."
+  },
+  {
+   "id": "GSS_SPRTPRSN",
+   "instrument": "gss",
+   "domain": "religion",
+   "type": "categorical",
+   "text": "To what extent do you consider yourself a spiritual person? Are you very spiritual, moderately spiritual, slightly spiritual, or not spiritual at all?",
+   "options": [
+    "VERY SPIRITUAL",
+    "MODERATELY SPIRITUAL",
+    "SLIGHTLY SPIRITUAL",
+    "NOT SPIRITUAL AT ALL"
+   ],
+   "source_url": "https://gss.norc.org/content/dam/gss/get-documentation/pdf/codebook/GSS%202022%20Codebook.pdf",
+   "source_note": "GSS 2022 Codebook (Release 4, November 21, 2024), 'Replicating Core', codebook page 319; value labels verbatim. The codebook's value label for code 2 is misspelled 'MODERATELY SPIRTUAL'; 'MODERATELY SPIRITUAL' follows the question wording."
+  },
+  {
+   "id": "GSS_NEWS",
+   "instrument": "gss",
+   "domain": "media",
+   "type": "categorical",
+   "text": "How often do you read the newspaper--every day, a few times a week, once a week, less than once a week, or never?",
+   "options": [
+    "EVERY DAY",
+    "A FEW TIMES A WEEK",
+    "ONCE A WEEK",
+    "LESS THAN ONCE A WEEK",
+    "NEVER"
+   ],
+   "source_url": "https://gss.norc.org/content/dam/gss/get-documentation/pdf/codebook/GSS%202022%20Codebook.pdf",
+   "source_note": "GSS 2022 Codebook (Release 4, November 21, 2024), 'Replicating Core', codebook page 290; value labels verbatim."
+  },
+  {
+   "id": "GSS_SOCREL",
+   "instrument": "gss",
+   "domain": "social",
+   "type": "categorical",
+   "text": "How often do you spend a social evening with relatives?",
+   "options": [
+    "ALMOST EVERY DAY",
+    "ONCE OR TWICE A WEEK",
+    "SEVERAL TIMES A MONTH",
+    "ABOUT ONCE A MONTH",
+    "SEVERAL TIMES A YEAR",
+    "ABOUT ONCE A YEAR",
+    "NEVER"
+   ],
+   "source_url": "https://gss.norc.org/content/dam/gss/get-documentation/pdf/codebook/GSS%202022%20Codebook.pdf",
+   "source_note": "GSS 2022 Codebook (Release 4, November 21, 2024), 'Replicating Core', codebook page 252; value labels verbatim. 7 response options: kept above the 6-option guideline because the item is on the plan's example list and well under D4's 25-option cap. Codebook stem '(For each of the next four questions, please select the answer that comes closest to how often you do the following things...)' rendered as 'How often do you...'."
+  },
+  {
+   "id": "GSS_SOCFREND",
+   "instrument": "gss",
+   "domain": "social",
+   "type": "categorical",
+   "text": "How often do you spend a social evening with friends who live outside the neighborhood?",
+   "options": [
+    "ALMOST EVERY DAY",
+    "ONCE OR TWICE A WEEK",
+    "SEVERAL TIMES A MONTH",
+    "ABOUT ONCE A MONTH",
+    "SEVERAL TIMES A YEAR",
+    "ABOUT ONCE A YEAR",
+    "NEVER"
+   ],
+   "source_url": "https://gss.norc.org/content/dam/gss/get-documentation/pdf/codebook/GSS%202022%20Codebook.pdf",
+   "source_note": "GSS 2022 Codebook (Release 4, November 21, 2024), 'Replicating Core', codebook page 253; value labels verbatim. 7 response options: kept above the 6-option guideline because the item is on the plan's example list and well under D4's 25-option cap. Codebook stem '(For each of the next four questions, please select the answer that comes closest to how often you do the following things...)' rendered as 'How often do you...'."
+  },
+  {
+   "id": "GSS_SOCBAR",
+   "instrument": "gss",
+   "domain": "social",
+   "type": "categorical",
+   "text": "How often do you go to a bar or tavern?",
+   "options": [
+    "ALMOST EVERY DAY",
+    "ONCE OR TWICE A WEEK",
+    "SEVERAL TIMES A MONTH",
+    "ABOUT ONCE A MONTH",
+    "SEVERAL TIMES A YEAR",
+    "ABOUT ONCE A YEAR",
+    "NEVER"
+   ],
+   "source_url": "https://gss.norc.org/content/dam/gss/get-documentation/pdf/codebook/GSS%202022%20Codebook.pdf",
+   "source_note": "GSS 2022 Codebook (Release 4, November 21, 2024), 'Replicating Core', codebook page 254; value labels verbatim. 7 response options: kept above the 6-option guideline because the item is on the plan's example list and well under D4's 25-option cap. Codebook stem '(For each of the next four questions, please select the answer that comes closest to how often you do the following things...)' rendered as 'How often do you...'."
+  },
+  {
+   "id": "GSS_OBEY",
+   "instrument": "gss",
+   "domain": "childvalues",
+   "type": "categorical",
+   "text": "If you had to choose, which thing on this list would you pick as the most important for a child to learn to prepare him or her for life? Which comes next in importance? Which comes third? Which comes fourth? Rank: To obey",
+   "options": [
+    "FIRST",
+    "SECOND",
+    "THIRD",
+    "FOURTH",
+    "FIFTH"
+   ],
+   "source_url": "https://gss.norc.org/content/dam/gss/get-documentation/pdf/codebook/GSS%202022%20Codebook.pdf",
+   "source_note": "GSS 2022 Codebook (Release 4, November 21, 2024), 'Replicating Core', codebook page 249; value labels verbatim. One of five child-quality items (OBEY, POPULAR, THNKSELF, WORKHARD, HELPOTH) that together form a single forced ranking; each is scored here as its own categorical item, so a set of answers need not be a permutation. Interviewer stem in parentheses in the codebook rendered as the question stem."
+  },
+  {
+   "id": "GSS_POPULAR",
+   "instrument": "gss",
+   "domain": "childvalues",
+   "type": "categorical",
+   "text": "If you had to choose, which thing on this list would you pick as the most important for a child to learn to prepare him or her for life? Which comes next in importance? Which comes third? Which comes fourth? Rank: To be well-liked or popular",
+   "options": [
+    "FIRST",
+    "SECOND",
+    "THIRD",
+    "FOURTH",
+    "FIFTH"
+   ],
+   "source_url": "https://gss.norc.org/content/dam/gss/get-documentation/pdf/codebook/GSS%202022%20Codebook.pdf",
+   "source_note": "GSS 2022 Codebook (Release 4, November 21, 2024), 'Replicating Core', codebook page 249; value labels verbatim. One of five child-quality items (OBEY, POPULAR, THNKSELF, WORKHARD, HELPOTH) that together form a single forced ranking; each is scored here as its own categorical item, so a set of answers need not be a permutation. Interviewer stem in parentheses in the codebook rendered as the question stem."
+  },
+  {
+   "id": "GSS_THNKSELF",
+   "instrument": "gss",
+   "domain": "childvalues",
+   "type": "categorical",
+   "text": "If you had to choose, which thing on this list would you pick as the most important for a child to learn to prepare him or her for life? Which comes next in importance? Which comes third? Which comes fourth? Rank: To think for himself or herself",
+   "options": [
+    "FIRST",
+    "SECOND",
+    "THIRD",
+    "FOURTH",
+    "FIFTH"
+   ],
+   "source_url": "https://gss.norc.org/content/dam/gss/get-documentation/pdf/codebook/GSS%202022%20Codebook.pdf",
+   "source_note": "GSS 2022 Codebook (Release 4, November 21, 2024), 'Replicating Core', codebook page 250; value labels verbatim. One of five child-quality items (OBEY, POPULAR, THNKSELF, WORKHARD, HELPOTH) that together form a single forced ranking; each is scored here as its own categorical item, so a set of answers need not be a permutation. Interviewer stem in parentheses in the codebook rendered as the question stem."
+  },
+  {
+   "id": "GSS_WORKHARD",
+   "instrument": "gss",
+   "domain": "childvalues",
+   "type": "categorical",
+   "text": "If you had to choose, which thing on this list would you pick as the most important for a child to learn to prepare him or her for life? Which comes next in importance? Which comes third? Which comes fourth? Rank: To work hard",
+   "options": [
+    "FIRST",
+    "SECOND",
+    "THIRD",
+    "FOURTH",
+    "FIFTH"
+   ],
+   "source_url": "https://gss.norc.org/content/dam/gss/get-documentation/pdf/codebook/GSS%202022%20Codebook.pdf",
+   "source_note": "GSS 2022 Codebook (Release 4, November 21, 2024), 'Replicating Core', codebook page 251; value labels verbatim. One of five child-quality items (OBEY, POPULAR, THNKSELF, WORKHARD, HELPOTH) that together form a single forced ranking; each is scored here as its own categorical item, so a set of answers need not be a permutation. Interviewer stem in parentheses in the codebook rendered as the question stem."
+  },
+  {
+   "id": "GSS_HELPOTH",
+   "instrument": "gss",
+   "domain": "childvalues",
+   "type": "categorical",
+   "text": "If you had to choose, which thing on this list would you pick as the most important for a child to learn to prepare him or her for life? Which comes next in importance? Which comes third? Which comes fourth? Rank: To help others when they need help.",
+   "options": [
+    "FIRST",
+    "SECOND",
+    "THIRD",
+    "FOURTH",
+    "FIFTH"
+   ],
+   "source_url": "https://gss.norc.org/content/dam/gss/get-documentation/pdf/codebook/GSS%202022%20Codebook.pdf",
+   "source_note": "GSS 2022 Codebook (Release 4, November 21, 2024), 'Replicating Core', codebook page 251; value labels verbatim. One of five child-quality items (OBEY, POPULAR, THNKSELF, WORKHARD, HELPOTH) that together form a single forced ranking; each is scored here as its own categorical item, so a set of answers need not be a permutation. Interviewer stem in parentheses in the codebook rendered as the question stem."
+  }
+ ]
+}

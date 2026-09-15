@@ -1,0 +1,1378 @@
+{
+ "sha": "ea2a2d0c92e8b5780f1d30731b8d9650ebc8385089c0772eca19d776269fb322",
+ "profile_path": "C:\\Users\\Adity\\Personal_digital_twin\\data\\twin_profile.example.v2.md",
+ "updated": "2026-09-14T10:59:56+00:00",
+ "conditions": [
+  "demographic",
+  "persona",
+  "interview"
+ ],
+ "n_boot": 1000,
+ "seed": 0,
+ "waves": {
+  "wave1": "C:\\Users\\Adity\\Personal_digital_twin\\data\\items\\self_answers.example.json",
+  "wave2": "C:\\Users\\Adity\\Personal_digital_twin\\data\\items\\self_answers_retest.example.json",
+  "example": true,
+  "ground_truth": "wave2",
+  "retest": true
+ },
+ "rows": [
+  {
+   "condition": "demographic",
+   "instrument": "ipip50",
+   "domain": "E",
+   "n": 10,
+   "n_items": 10,
+   "metric": "mae",
+   "value": 1.5,
+   "ci95": [
+    1.1,
+    1.8
+   ],
+   "retest": 0.3,
+   "normalized": 5.0
+  },
+  {
+   "condition": "demographic",
+   "instrument": "ipip50",
+   "domain": "E",
+   "n": 10,
+   "n_items": 10,
+   "metric": "r",
+   "value": 0.4165,
+   "ci95": [
+    -0.0725,
+    0.8357
+   ],
+   "retest": 0.9187,
+   "normalized": 0.453
+  },
+  {
+   "condition": "demographic",
+   "instrument": "ipip50",
+   "domain": "E",
+   "n": 10,
+   "n_items": 10,
+   "metric": "acc",
+   "value": 0.625,
+   "ci95": [
+    0.55,
+    0.725
+   ],
+   "retest": 0.925,
+   "normalized": 0.676
+  },
+  {
+   "condition": "demographic",
+   "instrument": "ipip50",
+   "domain": "A",
+   "n": 10,
+   "n_items": 10,
+   "metric": "mae",
+   "value": 0.5,
+   "ci95": [
+    0.1,
+    1.0
+   ],
+   "retest": 0.3,
+   "normalized": 1.667
+  },
+  {
+   "condition": "demographic",
+   "instrument": "ipip50",
+   "domain": "A",
+   "n": 10,
+   "n_items": 10,
+   "metric": "r",
+   "value": 0.1041,
+   "ci95": [
+    -0.3694,
+    0.6742
+   ],
+   "retest": 0.5738,
+   "normalized": 0.181
+  },
+  {
+   "condition": "demographic",
+   "instrument": "ipip50",
+   "domain": "A",
+   "n": 10,
+   "n_items": 10,
+   "metric": "acc",
+   "value": 0.875,
+   "ci95": [
+    0.75,
+    0.975
+   ],
+   "retest": 0.925,
+   "normalized": 0.946
+  },
+  {
+   "condition": "demographic",
+   "instrument": "ipip50",
+   "domain": "C",
+   "n": 10,
+   "n_items": 10,
+   "metric": "mae",
+   "value": 0.5,
+   "ci95": [
+    0.1,
+    0.9
+   ],
+   "retest": 0.3,
+   "normalized": 1.667
+  },
+  {
+   "condition": "demographic",
+   "instrument": "ipip50",
+   "domain": "C",
+   "n": 10,
+   "n_items": 10,
+   "metric": "r",
+   "value": 0.6692,
+   "ci95": [
+    -0.1667,
+    0.954
+   ],
+   "retest": 0.8715,
+   "normalized": 0.768
+  },
+  {
+   "condition": "demographic",
+   "instrument": "ipip50",
+   "domain": "C",
+   "n": 10,
+   "n_items": 10,
+   "metric": "acc",
+   "value": 0.875,
+   "ci95": [
+    0.775,
+    0.975
+   ],
+   "retest": 0.925,
+   "normalized": 0.946
+  },
+  {
+   "condition": "demographic",
+   "instrument": "ipip50",
+   "domain": "N",
+   "n": 10,
+   "n_items": 10,
+   "metric": "mae",
+   "value": 0.8,
+   "ci95": [
+    0.2,
+    1.4
+   ],
+   "retest": 0.3,
+   "normalized": 2.667
+  },
+  {
+   "condition": "demographic",
+   "instrument": "ipip50",
+   "domain": "N",
+   "n": 10,
+   "n_items": 10,
+   "metric": "r",
+   "value": -0.3115,
+   "ci95": [
+    -0.7923,
+    0.5576
+   ],
+   "retest": 0.7335,
+   "normalized": -0.425
+  },
+  {
+   "condition": "demographic",
+   "instrument": "ipip50",
+   "domain": "N",
+   "n": 10,
+   "n_items": 10,
+   "metric": "acc",
+   "value": 0.8,
+   "ci95": [
+    0.65,
+    0.95
+   ],
+   "retest": 0.925,
+   "normalized": 0.865
+  },
+  {
+   "condition": "demographic",
+   "instrument": "ipip50",
+   "domain": "O",
+   "n": 10,
+   "n_items": 10,
+   "metric": "mae",
+   "value": 0.6,
+   "ci95": [
+    0.2,
+    1.0025
+   ],
+   "retest": 0.3,
+   "normalized": 2.0
+  },
+  {
+   "condition": "demographic",
+   "instrument": "ipip50",
+   "domain": "O",
+   "n": 10,
+   "n_items": 10,
+   "metric": "r",
+   "value": 0.7775,
+   "ci95": [
+    0.3443,
+    0.955
+   ],
+   "retest": 0.857,
+   "normalized": 0.907
+  },
+  {
+   "condition": "demographic",
+   "instrument": "ipip50",
+   "domain": "O",
+   "n": 10,
+   "n_items": 10,
+   "metric": "acc",
+   "value": 0.85,
+   "ci95": [
+    0.7494,
+    0.95
+   ],
+   "retest": 0.925,
+   "normalized": 0.919
+  },
+  {
+   "condition": "demographic",
+   "instrument": "ipip50",
+   "domain": "all",
+   "n": 50,
+   "n_items": 50,
+   "metric": "mae",
+   "value": 0.78,
+   "ci95": [
+    0.54,
+    1.02
+   ],
+   "retest": 0.3,
+   "normalized": 2.6
+  },
+  {
+   "condition": "demographic",
+   "instrument": "ipip50",
+   "domain": "all",
+   "n": 50,
+   "n_items": 50,
+   "metric": "r",
+   "value": 0.5199,
+   "ci95": [
+    0.2842,
+    0.7114
+   ],
+   "retest": 0.8959,
+   "normalized": 0.58
+  },
+  {
+   "condition": "demographic",
+   "instrument": "ipip50",
+   "domain": "all",
+   "n": 50,
+   "n_items": 50,
+   "metric": "acc",
+   "value": 0.805,
+   "ci95": [
+    0.745,
+    0.865
+   ],
+   "retest": 0.925,
+   "normalized": 0.87
+  },
+  {
+   "condition": "demographic",
+   "instrument": "gss",
+   "domain": "all",
+   "n": 37,
+   "n_items": 37,
+   "metric": "accuracy",
+   "value": 0.5676,
+   "ci95": [
+    0.4054,
+    0.7297
+   ],
+   "retest": 0.8378,
+   "normalized": 0.677
+  },
+  {
+   "condition": "demographic",
+   "instrument": "game",
+   "domain": "dictator",
+   "n": 1,
+   "n_items": 1,
+   "metric": "mae",
+   "value": 1.0,
+   "ci95": [
+    1.0,
+    1.0
+   ],
+   "retest": 1.0,
+   "normalized": 1.0
+  },
+  {
+   "condition": "demographic",
+   "instrument": "game",
+   "domain": "dictator",
+   "n": 1,
+   "n_items": 1,
+   "metric": "acc",
+   "value": 0.9,
+   "ci95": [
+    0.9,
+    0.9
+   ],
+   "retest": 0.9,
+   "normalized": 1.0
+  },
+  {
+   "condition": "demographic",
+   "instrument": "game",
+   "domain": "trust_send",
+   "n": 1,
+   "n_items": 1,
+   "metric": "mae",
+   "value": 5.0,
+   "ci95": [
+    5.0,
+    5.0
+   ],
+   "retest": 1.0,
+   "normalized": 5.0
+  },
+  {
+   "condition": "demographic",
+   "instrument": "game",
+   "domain": "trust_send",
+   "n": 1,
+   "n_items": 1,
+   "metric": "acc",
+   "value": 0.5,
+   "ci95": [
+    0.5,
+    0.5
+   ],
+   "retest": 0.9,
+   "normalized": 0.556
+  },
+  {
+   "condition": "demographic",
+   "instrument": "game",
+   "domain": "trust_return",
+   "n": 1,
+   "n_items": 1,
+   "metric": "mae",
+   "value": 0.0,
+   "ci95": [
+    0.0,
+    0.0
+   ],
+   "retest": 0.0,
+   "normalized": null
+  },
+  {
+   "condition": "demographic",
+   "instrument": "game",
+   "domain": "trust_return",
+   "n": 1,
+   "n_items": 1,
+   "metric": "acc",
+   "value": 1.0,
+   "ci95": [
+    1.0,
+    1.0
+   ],
+   "retest": 1.0,
+   "normalized": 1.0
+  },
+  {
+   "condition": "demographic",
+   "instrument": "game",
+   "domain": "public_goods",
+   "n": 1,
+   "n_items": 1,
+   "metric": "mae",
+   "value": 6.0,
+   "ci95": [
+    6.0,
+    6.0
+   ],
+   "retest": 1.0,
+   "normalized": 6.0
+  },
+  {
+   "condition": "demographic",
+   "instrument": "game",
+   "domain": "public_goods",
+   "n": 1,
+   "n_items": 1,
+   "metric": "acc",
+   "value": 0.4,
+   "ci95": [
+    0.4,
+    0.4
+   ],
+   "retest": 0.9,
+   "normalized": 0.444
+  },
+  {
+   "condition": "demographic",
+   "instrument": "game",
+   "domain": "all",
+   "n": 4,
+   "n_items": 4,
+   "metric": "acc",
+   "value": 0.7,
+   "ci95": [
+    0.45,
+    0.95
+   ],
+   "retest": 0.925,
+   "normalized": 0.757
+  },
+  {
+   "condition": "demographic",
+   "instrument": "game",
+   "domain": "prisoners_dilemma",
+   "n": 1,
+   "n_items": 1,
+   "metric": "accuracy",
+   "value": 0.0,
+   "ci95": [
+    0.0,
+    0.0
+   ],
+   "retest": 1.0,
+   "normalized": 0.0
+  },
+  {
+   "condition": "demographic",
+   "instrument": "gold",
+   "domain": "all",
+   "n": 19,
+   "n_items": 19,
+   "metric": "judge_overall",
+   "value": 0.6158,
+   "ci95": [
+    0.5579,
+    0.6737
+   ],
+   "retest": null,
+   "normalized": "n/a"
+  },
+  {
+   "condition": "persona",
+   "instrument": "ipip50",
+   "domain": "E",
+   "n": 10,
+   "n_items": 10,
+   "metric": "mae",
+   "value": 0.5,
+   "ci95": [
+    0.2,
+    0.8
+   ],
+   "retest": 0.3,
+   "normalized": 1.667
+  },
+  {
+   "condition": "persona",
+   "instrument": "ipip50",
+   "domain": "E",
+   "n": 10,
+   "n_items": 10,
+   "metric": "r",
+   "value": 0.8519,
+   "ci95": [
+    0.5531,
+    0.9648
+   ],
+   "retest": 0.9187,
+   "normalized": 0.927
+  },
+  {
+   "condition": "persona",
+   "instrument": "ipip50",
+   "domain": "E",
+   "n": 10,
+   "n_items": 10,
+   "metric": "acc",
+   "value": 0.875,
+   "ci95": [
+    0.8,
+    0.95
+   ],
+   "retest": 0.925,
+   "normalized": 0.946
+  },
+  {
+   "condition": "persona",
+   "instrument": "ipip50",
+   "domain": "A",
+   "n": 10,
+   "n_items": 10,
+   "metric": "mae",
+   "value": 0.6,
+   "ci95": [
+    0.2,
+    1.0
+   ],
+   "retest": 0.3,
+   "normalized": 2.0
+  },
+  {
+   "condition": "persona",
+   "instrument": "ipip50",
+   "domain": "A",
+   "n": 10,
+   "n_items": 10,
+   "metric": "r",
+   "value": 0.2195,
+   "ci95": [
+    -0.1152,
+    0.7157
+   ],
+   "retest": 0.5738,
+   "normalized": 0.383
+  },
+  {
+   "condition": "persona",
+   "instrument": "ipip50",
+   "domain": "A",
+   "n": 10,
+   "n_items": 10,
+   "metric": "acc",
+   "value": 0.85,
+   "ci95": [
+    0.75,
+    0.95
+   ],
+   "retest": 0.925,
+   "normalized": 0.919
+  },
+  {
+   "condition": "persona",
+   "instrument": "ipip50",
+   "domain": "C",
+   "n": 10,
+   "n_items": 10,
+   "metric": "mae",
+   "value": 0.8,
+   "ci95": [
+    0.3,
+    1.3
+   ],
+   "retest": 0.3,
+   "normalized": 2.667
+  },
+  {
+   "condition": "persona",
+   "instrument": "ipip50",
+   "domain": "C",
+   "n": 10,
+   "n_items": 10,
+   "metric": "r",
+   "value": 0.4686,
+   "ci95": [
+    -0.4088,
+    0.8709
+   ],
+   "retest": 0.8715,
+   "normalized": 0.538
+  },
+  {
+   "condition": "persona",
+   "instrument": "ipip50",
+   "domain": "C",
+   "n": 10,
+   "n_items": 10,
+   "metric": "acc",
+   "value": 0.8,
+   "ci95": [
+    0.675,
+    0.925
+   ],
+   "retest": 0.925,
+   "normalized": 0.865
+  },
+  {
+   "condition": "persona",
+   "instrument": "ipip50",
+   "domain": "N",
+   "n": 10,
+   "n_items": 10,
+   "metric": "mae",
+   "value": 0.9,
+   "ci95": [
+    0.5,
+    1.3
+   ],
+   "retest": 0.3,
+   "normalized": 3.0
+  },
+  {
+   "condition": "persona",
+   "instrument": "ipip50",
+   "domain": "N",
+   "n": 10,
+   "n_items": 10,
+   "metric": "r",
+   "value": -0.4481,
+   "ci95": [
+    -0.9086,
+    0.2722
+   ],
+   "retest": 0.7335,
+   "normalized": -0.611
+  },
+  {
+   "condition": "persona",
+   "instrument": "ipip50",
+   "domain": "N",
+   "n": 10,
+   "n_items": 10,
+   "metric": "acc",
+   "value": 0.775,
+   "ci95": [
+    0.675,
+    0.875
+   ],
+   "retest": 0.925,
+   "normalized": 0.838
+  },
+  {
+   "condition": "persona",
+   "instrument": "ipip50",
+   "domain": "O",
+   "n": 10,
+   "n_items": 10,
+   "metric": "mae",
+   "value": 0.7,
+   "ci95": [
+    0.2,
+    1.2
+   ],
+   "retest": 0.3,
+   "normalized": 2.333
+  },
+  {
+   "condition": "persona",
+   "instrument": "ipip50",
+   "domain": "O",
+   "n": 10,
+   "n_items": 10,
+   "metric": "r",
+   "value": 0.6365,
+   "ci95": [
+    0.1561,
+    0.9186
+   ],
+   "retest": 0.857,
+   "normalized": 0.743
+  },
+  {
+   "condition": "persona",
+   "instrument": "ipip50",
+   "domain": "O",
+   "n": 10,
+   "n_items": 10,
+   "metric": "acc",
+   "value": 0.825,
+   "ci95": [
+    0.7,
+    0.95
+   ],
+   "retest": 0.925,
+   "normalized": 0.892
+  },
+  {
+   "condition": "persona",
+   "instrument": "ipip50",
+   "domain": "all",
+   "n": 50,
+   "n_items": 50,
+   "metric": "mae",
+   "value": 0.7,
+   "ci95": [
+    0.5,
+    0.9
+   ],
+   "retest": 0.3,
+   "normalized": 2.333
+  },
+  {
+   "condition": "persona",
+   "instrument": "ipip50",
+   "domain": "all",
+   "n": 50,
+   "n_items": 50,
+   "metric": "r",
+   "value": 0.6033,
+   "ci95": [
+    0.365,
+    0.7798
+   ],
+   "retest": 0.8959,
+   "normalized": 0.673
+  },
+  {
+   "condition": "persona",
+   "instrument": "ipip50",
+   "domain": "all",
+   "n": 50,
+   "n_items": 50,
+   "metric": "acc",
+   "value": 0.825,
+   "ci95": [
+    0.775,
+    0.875
+   ],
+   "retest": 0.925,
+   "normalized": 0.892
+  },
+  {
+   "condition": "persona",
+   "instrument": "gss",
+   "domain": "all",
+   "n": 37,
+   "n_items": 37,
+   "metric": "accuracy",
+   "value": 0.4595,
+   "ci95": [
+    0.2973,
+    0.6216
+   ],
+   "retest": 0.8378,
+   "normalized": 0.548
+  },
+  {
+   "condition": "persona",
+   "instrument": "game",
+   "domain": "dictator",
+   "n": 1,
+   "n_items": 1,
+   "metric": "mae",
+   "value": 1.0,
+   "ci95": [
+    1.0,
+    1.0
+   ],
+   "retest": 1.0,
+   "normalized": 1.0
+  },
+  {
+   "condition": "persona",
+   "instrument": "game",
+   "domain": "dictator",
+   "n": 1,
+   "n_items": 1,
+   "metric": "acc",
+   "value": 0.9,
+   "ci95": [
+    0.9,
+    0.9
+   ],
+   "retest": 0.9,
+   "normalized": 1.0
+  },
+  {
+   "condition": "persona",
+   "instrument": "game",
+   "domain": "trust_send",
+   "n": 1,
+   "n_items": 1,
+   "metric": "mae",
+   "value": 3.0,
+   "ci95": [
+    3.0,
+    3.0
+   ],
+   "retest": 1.0,
+   "normalized": 3.0
+  },
+  {
+   "condition": "persona",
+   "instrument": "game",
+   "domain": "trust_send",
+   "n": 1,
+   "n_items": 1,
+   "metric": "acc",
+   "value": 0.7,
+   "ci95": [
+    0.7,
+    0.7
+   ],
+   "retest": 0.9,
+   "normalized": 0.778
+  },
+  {
+   "condition": "persona",
+   "instrument": "game",
+   "domain": "trust_return",
+   "n": 1,
+   "n_items": 1,
+   "metric": "mae",
+   "value": 0.2,
+   "ci95": [
+    0.2,
+    0.2
+   ],
+   "retest": 0.0,
+   "normalized": null
+  },
+  {
+   "condition": "persona",
+   "instrument": "game",
+   "domain": "trust_return",
+   "n": 1,
+   "n_items": 1,
+   "metric": "acc",
+   "value": 0.8,
+   "ci95": [
+    0.8,
+    0.8
+   ],
+   "retest": 1.0,
+   "normalized": 0.8
+  },
+  {
+   "condition": "persona",
+   "instrument": "game",
+   "domain": "public_goods",
+   "n": 1,
+   "n_items": 1,
+   "metric": "mae",
+   "value": 1.0,
+   "ci95": [
+    1.0,
+    1.0
+   ],
+   "retest": 1.0,
+   "normalized": 1.0
+  },
+  {
+   "condition": "persona",
+   "instrument": "game",
+   "domain": "public_goods",
+   "n": 1,
+   "n_items": 1,
+   "metric": "acc",
+   "value": 0.9,
+   "ci95": [
+    0.9,
+    0.9
+   ],
+   "retest": 0.9,
+   "normalized": 1.0
+  },
+  {
+   "condition": "persona",
+   "instrument": "game",
+   "domain": "all",
+   "n": 4,
+   "n_items": 4,
+   "metric": "acc",
+   "value": 0.825,
+   "ci95": [
+    0.75,
+    0.9
+   ],
+   "retest": 0.925,
+   "normalized": 0.892
+  },
+  {
+   "condition": "persona",
+   "instrument": "game",
+   "domain": "prisoners_dilemma",
+   "n": 1,
+   "n_items": 1,
+   "metric": "accuracy",
+   "value": 0.0,
+   "ci95": [
+    0.0,
+    0.0
+   ],
+   "retest": 1.0,
+   "normalized": 0.0
+  },
+  {
+   "condition": "persona",
+   "instrument": "gold",
+   "domain": "all",
+   "n": 19,
+   "n_items": 19,
+   "metric": "judge_overall",
+   "value": 0.8053,
+   "ci95": [
+    0.7579,
+    0.8526
+   ],
+   "retest": null,
+   "normalized": "n/a"
+  },
+  {
+   "condition": "interview",
+   "instrument": "ipip50",
+   "domain": "E",
+   "n": 10,
+   "n_items": 10,
+   "metric": "mae",
+   "value": 0.3,
+   "ci95": [
+    0.0,
+    0.6
+   ],
+   "retest": 0.3,
+   "normalized": 1.0
+  },
+  {
+   "condition": "interview",
+   "instrument": "ipip50",
+   "domain": "E",
+   "n": 10,
+   "n_items": 10,
+   "metric": "r",
+   "value": 0.8427,
+   "ci95": [
+    0.488,
+    1.0
+   ],
+   "retest": 0.9187,
+   "normalized": 0.917
+  },
+  {
+   "condition": "interview",
+   "instrument": "ipip50",
+   "domain": "E",
+   "n": 10,
+   "n_items": 10,
+   "metric": "acc",
+   "value": 0.925,
+   "ci95": [
+    0.85,
+    1.0
+   ],
+   "retest": 0.925,
+   "normalized": 1.0
+  },
+  {
+   "condition": "interview",
+   "instrument": "ipip50",
+   "domain": "A",
+   "n": 10,
+   "n_items": 10,
+   "metric": "mae",
+   "value": 0.7,
+   "ci95": [
+    0.3,
+    1.1
+   ],
+   "retest": 0.3,
+   "normalized": 2.333
+  },
+  {
+   "condition": "interview",
+   "instrument": "ipip50",
+   "domain": "A",
+   "n": 10,
+   "n_items": 10,
+   "metric": "r",
+   "value": 0.3749,
+   "ci95": [
+    0.0765,
+    0.8271
+   ],
+   "retest": 0.5738,
+   "normalized": 0.653
+  },
+  {
+   "condition": "interview",
+   "instrument": "ipip50",
+   "domain": "A",
+   "n": 10,
+   "n_items": 10,
+   "metric": "acc",
+   "value": 0.825,
+   "ci95": [
+    0.725,
+    0.925
+   ],
+   "retest": 0.925,
+   "normalized": 0.892
+  },
+  {
+   "condition": "interview",
+   "instrument": "ipip50",
+   "domain": "C",
+   "n": 10,
+   "n_items": 10,
+   "metric": "mae",
+   "value": 0.7,
+   "ci95": [
+    0.2,
+    1.2
+   ],
+   "retest": 0.3,
+   "normalized": 2.333
+  },
+  {
+   "condition": "interview",
+   "instrument": "ipip50",
+   "domain": "C",
+   "n": 10,
+   "n_items": 10,
+   "metric": "r",
+   "value": 0.5118,
+   "ci95": [
+    -0.3127,
+    0.9179
+   ],
+   "retest": 0.8715,
+   "normalized": 0.587
+  },
+  {
+   "condition": "interview",
+   "instrument": "ipip50",
+   "domain": "C",
+   "n": 10,
+   "n_items": 10,
+   "metric": "acc",
+   "value": 0.825,
+   "ci95": [
+    0.7,
+    0.95
+   ],
+   "retest": 0.925,
+   "normalized": 0.892
+  },
+  {
+   "condition": "interview",
+   "instrument": "ipip50",
+   "domain": "N",
+   "n": 10,
+   "n_items": 10,
+   "metric": "mae",
+   "value": 0.3,
+   "ci95": [
+    0.1,
+    0.6
+   ],
+   "retest": 0.3,
+   "normalized": 1.0
+  },
+  {
+   "condition": "interview",
+   "instrument": "ipip50",
+   "domain": "N",
+   "n": 10,
+   "n_items": 10,
+   "metric": "r",
+   "value": 0.7318,
+   "ci95": [
+    0.4035,
+    1.0
+   ],
+   "retest": 0.7335,
+   "normalized": 0.998
+  },
+  {
+   "condition": "interview",
+   "instrument": "ipip50",
+   "domain": "N",
+   "n": 10,
+   "n_items": 10,
+   "metric": "acc",
+   "value": 0.925,
+   "ci95": [
+    0.85,
+    0.975
+   ],
+   "retest": 0.925,
+   "normalized": 1.0
+  },
+  {
+   "condition": "interview",
+   "instrument": "ipip50",
+   "domain": "O",
+   "n": 10,
+   "n_items": 10,
+   "metric": "mae",
+   "value": 0.4,
+   "ci95": [
+    0.1,
+    0.7
+   ],
+   "retest": 0.3,
+   "normalized": 1.333
+  },
+  {
+   "condition": "interview",
+   "instrument": "ipip50",
+   "domain": "O",
+   "n": 10,
+   "n_items": 10,
+   "metric": "r",
+   "value": 0.8224,
+   "ci95": [
+    0.4082,
+    0.9618
+   ],
+   "retest": 0.857,
+   "normalized": 0.96
+  },
+  {
+   "condition": "interview",
+   "instrument": "ipip50",
+   "domain": "O",
+   "n": 10,
+   "n_items": 10,
+   "metric": "acc",
+   "value": 0.9,
+   "ci95": [
+    0.825,
+    0.975
+   ],
+   "retest": 0.925,
+   "normalized": 0.973
+  },
+  {
+   "condition": "interview",
+   "instrument": "ipip50",
+   "domain": "all",
+   "n": 50,
+   "n_items": 50,
+   "metric": "mae",
+   "value": 0.48,
+   "ci95": [
+    0.3195,
+    0.66
+   ],
+   "retest": 0.3,
+   "normalized": 1.6
+  },
+  {
+   "condition": "interview",
+   "instrument": "ipip50",
+   "domain": "all",
+   "n": 50,
+   "n_items": 50,
+   "metric": "r",
+   "value": 0.7753,
+   "ci95": [
+    0.6229,
+    0.883
+   ],
+   "retest": 0.8959,
+   "normalized": 0.865
+  },
+  {
+   "condition": "interview",
+   "instrument": "ipip50",
+   "domain": "all",
+   "n": 50,
+   "n_items": 50,
+   "metric": "acc",
+   "value": 0.88,
+   "ci95": [
+    0.835,
+    0.9201
+   ],
+   "retest": 0.925,
+   "normalized": 0.951
+  },
+  {
+   "condition": "interview",
+   "instrument": "gss",
+   "domain": "all",
+   "n": 37,
+   "n_items": 37,
+   "metric": "accuracy",
+   "value": 0.4865,
+   "ci95": [
+    0.3243,
+    0.6486
+   ],
+   "retest": 0.8378,
+   "normalized": 0.581
+  },
+  {
+   "condition": "interview",
+   "instrument": "game",
+   "domain": "dictator",
+   "n": 1,
+   "n_items": 1,
+   "metric": "mae",
+   "value": 2.0,
+   "ci95": [
+    2.0,
+    2.0
+   ],
+   "retest": 1.0,
+   "normalized": 2.0
+  },
+  {
+   "condition": "interview",
+   "instrument": "game",
+   "domain": "dictator",
+   "n": 1,
+   "n_items": 1,
+   "metric": "acc",
+   "value": 0.8,
+   "ci95": [
+    0.8,
+    0.8
+   ],
+   "retest": 0.9,
+   "normalized": 0.889
+  },
+  {
+   "condition": "interview",
+   "instrument": "game",
+   "domain": "trust_send",
+   "n": 1,
+   "n_items": 1,
+   "metric": "mae",
+   "value": 3.0,
+   "ci95": [
+    3.0,
+    3.0
+   ],
+   "retest": 1.0,
+   "normalized": 3.0
+  },
+  {
+   "condition": "interview",
+   "instrument": "game",
+   "domain": "trust_send",
+   "n": 1,
+   "n_items": 1,
+   "metric": "acc",
+   "value": 0.7,
+   "ci95": [
+    0.7,
+    0.7
+   ],
+   "retest": 0.9,
+   "normalized": 0.778
+  },
+  {
+   "condition": "interview",
+   "instrument": "game",
+   "domain": "trust_return",
+   "n": 1,
+   "n_items": 1,
+   "metric": "mae",
+   "value": 0.2,
+   "ci95": [
+    0.2,
+    0.2
+   ],
+   "retest": 0.0,
+   "normalized": null
+  },
+  {
+   "condition": "interview",
+   "instrument": "game",
+   "domain": "trust_return",
+   "n": 1,
+   "n_items": 1,
+   "metric": "acc",
+   "value": 0.8,
+   "ci95": [
+    0.8,
+    0.8
+   ],
+   "retest": 1.0,
+   "normalized": 0.8
+  },
+  {
+   "condition": "interview",
+   "instrument": "game",
+   "domain": "public_goods",
+   "n": 1,
+   "n_items": 1,
+   "metric": "mae",
+   "value": 1.0,
+   "ci95": [
+    1.0,
+    1.0
+   ],
+   "retest": 1.0,
+   "normalized": 1.0
+  },
+  {
+   "condition": "interview",
+   "instrument": "game",
+   "domain": "public_goods",
+   "n": 1,
+   "n_items": 1,
+   "metric": "acc",
+   "value": 0.9,
+   "ci95": [
+    0.9,
+    0.9
+   ],
+   "retest": 0.9,
+   "normalized": 1.0
+  },
+  {
+   "condition": "interview",
+   "instrument": "game",
+   "domain": "all",
+   "n": 4,
+   "n_items": 4,
+   "metric": "acc",
+   "value": 0.8,
+   "ci95": [
+    0.725,
+    0.875
+   ],
+   "retest": 0.925,
+   "normalized": 0.865
+  },
+  {
+   "condition": "interview",
+   "instrument": "game",
+   "domain": "prisoners_dilemma",
+   "n": 1,
+   "n_items": 1,
+   "metric": "accuracy",
+   "value": 0.0,
+   "ci95": [
+    0.0,
+    0.0
+   ],
+   "retest": 1.0,
+   "normalized": 0.0
+  },
+  {
+   "condition": "interview",
+   "instrument": "gold",
+   "domain": "all",
+   "n": 19,
+   "n_items": 19,
+   "metric": "judge_overall",
+   "value": 0.8105,
+   "ci95": [
+    0.7737,
+    0.8474
+   ],
+   "retest": null,
+   "normalized": "n/a"
+  }
+ ],
+ "excluded": [
+  [
+   "GOLD_Q-12",
+   "excluded: politics"
+  ]
+ ],
+ "decision": "Decision: interview beats demographic and persona on ipip50 acc, ipip50 r, gold judge_overall, gss accuracy, game acc: partial (yes on ipip50 acc, ipip50 r, gold judge_overall; no on gss accuracy, game acc)"
+}

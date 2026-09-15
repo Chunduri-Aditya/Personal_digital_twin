@@ -1,0 +1,402 @@
+/* static/tabs/frame.css: the frame every tab sits in (docs/PLAN_FINISH.md P3; tokens and shared classes are in
+   static/twin.css). Every selector starts with a frame id: #twin-masthead (a gr.Row holding the owner's monogram
+   #twin-avatar beside the persona header #twin-header), #gpu-note, #status-strip (the gr.Sidebar) and #twin-tabs
+   (the page column and its tab strip). Tab lanes never restyle these ids; they ask through frame_requests. */
+
+/* ---------------------------------------------------------------- page column */
+
+#twin-masthead,
+#gpu-note,
+#twin-tabs {
+  width: 100%;
+  max-width: var(--twin-max-width);
+  margin-inline: auto;
+}
+
+/* ---------------------------------------------------------------- masthead: monogram + persona header */
+
+#twin-masthead {
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  gap: var(--twin-space-4);
+  padding-top: var(--twin-space-2);
+}
+
+/* Gradio's HTML container pads itself by --block-padding; the monogram block sets it to zero so the mark sits on
+   the column edge. */
+#twin-avatar {
+  --block-padding: 0px;
+  flex: 0 0 var(--twin-avatar);
+  width: var(--twin-avatar);
+}
+
+/* The owner's mark: the initial in the accent on its tint, with no edge. Primary actions are accent outlines, so a
+   borderless tint keeps the monogram from reading as a control. */
+#twin-avatar .twin-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--twin-avatar);
+  height: var(--twin-avatar);
+  border-radius: var(--twin-radius-card);
+  background: var(--twin-accent-soft);
+  color: var(--twin-accent);
+  font-family: var(--twin-font-serif);
+  font-size: var(--twin-text-2xl);
+  font-weight: 600;
+  line-height: 1;
+  user-select: none;
+}
+
+#twin-header {
+  flex: 1 1 0%;
+  min-width: 0;
+  font-family: var(--twin-font-body);
+}
+
+#twin-header h2 {
+  margin: 0 0 var(--twin-space-1);
+  font-family: var(--twin-font-serif);
+  font-size: var(--twin-text-2xl);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--twin-text);
+  text-wrap: balance;
+}
+
+#twin-header p {
+  margin: 0;
+  max-width: var(--twin-measure-wide);
+  font-size: var(--twin-text-sm);
+  line-height: var(--twin-leading);
+  color: var(--twin-text-muted);
+}
+
+/* header_markdown bolds only warning labels (and the button names inside a warning) */
+#twin-header strong {
+  font-weight: 600;
+  color: var(--twin-warn);
+}
+
+/* file paths in the header are identifiers: the header's own face in ink, wrapping anywhere at 400 px */
+#twin-header code {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--twin-text);
+  font: inherit;
+  overflow-wrap: anywhere;
+}
+
+/* Readings: header_markdown writes a <dl class="twin-readings"> of three label-over-value tiles (profile size, index
+   and digest freshness). .twin-reading-ok or -warn colours the value (a class: the Markdown sanitizer drops data-*);
+   the note under it stays muted. */
+#twin-header .twin-readings {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--twin-space-3);
+  margin: var(--twin-space-3) 0 0;
+  padding: 0;
+}
+
+#twin-header .twin-readings > div {
+  flex: 0 1 236px;
+  min-width: 150px;
+  box-sizing: border-box;
+  padding: var(--twin-space-2) var(--twin-space-3);
+  border: 1px solid var(--twin-border);
+  border-radius: var(--twin-radius-card);
+  background: var(--twin-surface);
+  font-variant-numeric: tabular-nums;
+}
+
+#twin-header .twin-readings dt {
+  font-size: var(--twin-text-sm);
+  font-weight: 600;
+  color: var(--twin-text-muted);
+}
+
+#twin-header .twin-readings dd {
+  margin: 0;
+  font-size: var(--twin-text-lg);
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--twin-text);
+}
+
+#twin-header .twin-readings dd + dd {
+  font-size: var(--twin-text-sm);
+  font-weight: 400;
+  color: var(--twin-text-muted);
+  overflow-wrap: anywhere;
+}
+
+#twin-header .twin-readings > .twin-reading-ok dt + dd {
+  color: var(--twin-ok);
+}
+
+#twin-header .twin-readings > .twin-reading-warn {
+  border-color: var(--twin-warn);
+}
+
+#twin-header .twin-readings > .twin-reading-warn dt + dd {
+  color: var(--twin-warn);
+}
+
+/* Disclosures: the profile file (closed) and the warnings (open while there are any) */
+#twin-header details {
+  max-width: var(--twin-measure-wide);
+  margin-top: var(--twin-space-3);
+  font-size: var(--twin-text-sm);
+  color: var(--twin-text-muted);
+}
+
+#twin-header summary {
+  width: fit-content;
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--twin-text-muted);
+}
+
+#twin-header summary:hover {
+  color: var(--twin-text);
+}
+
+#twin-header summary:focus-visible {
+  outline: 2px solid var(--twin-focus);
+  outline-offset: 2px;
+  border-radius: var(--twin-radius-control);
+}
+
+#twin-header details p {
+  margin: var(--twin-space-1) 0 0;
+}
+
+#twin-header .twin-warnings summary {
+  color: var(--twin-warn);
+}
+
+#twin-header .twin-warnings p {
+  padding-left: var(--twin-space-3);
+  border-left: var(--twin-rule) solid var(--twin-warn);
+}
+
+/* ---------------------------------------------------------------- gpu note: the live GPU log line */
+
+/* An annotation, not a field: a rule at the left edge on the sheet colour, no box. Its min-height gives the
+   tab-select loading overlay room for its timer. */
+#gpu-note {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  min-height: var(--twin-target);
+  margin-top: var(--twin-space-4);
+  padding: var(--twin-space-2) var(--twin-space-4);
+  border-left: var(--twin-rule) solid var(--twin-border-strong);
+  border-radius: 0 var(--twin-radius-card) var(--twin-radius-card) 0;
+  background: var(--twin-surface);
+  color: var(--twin-text);
+  font-size: var(--twin-text-md);
+  line-height: var(--twin-leading);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Gradio's markdown wrapper sets its own size, so the paragraph carries the note's size explicitly */
+#gpu-note p {
+  margin: 0;
+  font-size: var(--twin-text-md);
+}
+
+/* ---------------------------------------------------------------- status strip (gr.Sidebar) */
+
+/* The instrument column: the sheet colour against the paper, each reading's label on its own line above its value,
+   tabular figures so nothing reflows when the 5 s timer ticks. strip_markdown writes "**Label:** value" lines
+   joined by <br> and ends with the time in italics. */
+#status-strip {
+  border-right: 1px solid var(--twin-border);
+  background-color: var(--twin-surface);
+  color: var(--twin-text);
+  font-family: var(--twin-font-body);
+  font-size: var(--twin-text-md);
+  line-height: 1.4;
+  font-variant-numeric: tabular-nums;
+}
+
+#status-strip p {
+  margin: 0;
+}
+
+#status-strip br {
+  display: none;
+}
+
+#status-strip strong {
+  display: block;
+  margin-top: var(--twin-space-4);
+  font-size: var(--twin-text-sm);
+  font-weight: 600;
+  color: var(--twin-text-muted);
+}
+
+#status-strip p > strong:first-child {
+  margin-top: 0;
+}
+
+#status-strip em {
+  display: block;
+  margin-top: var(--twin-space-5);
+  padding-top: var(--twin-space-3);
+  border-top: 1px solid var(--twin-border);
+  font-size: var(--twin-text-sm);
+  font-style: normal;
+  color: var(--twin-text-muted);
+}
+
+#status-strip code {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  overflow-wrap: anywhere;
+}
+
+#status-strip > button[aria-label="Toggle Sidebar"] {
+  border-color: var(--twin-border);
+  border-radius: 0 var(--twin-radius-control) var(--twin-radius-control) 0;
+  background: var(--twin-surface);
+  color: var(--twin-text-muted);
+}
+
+#status-strip > button[aria-label="Toggle Sidebar"]:hover {
+  background: var(--twin-accent-soft);
+  color: var(--twin-text);
+}
+
+#status-strip > button[aria-label="Toggle Sidebar"]:focus-visible {
+  outline: 2px solid var(--twin-focus);
+  outline-offset: 2px;
+}
+
+/* ---------------------------------------------------------------- tab strip */
+
+#twin-tabs {
+  margin-top: var(--twin-space-5);
+}
+
+/* Faded-ink labels; the open tab in full ink over a 3 px iron-gall rule. The colours read --twin-* directly:
+   Gradio 6.27 has no dark value for --color-accent, which left the open tab at 2.3:1 on charcoal. */
+#twin-tabs > div > [role="tablist"] > [role="tab"] {
+  padding: 0 var(--twin-space-4);
+  border-radius: var(--twin-radius-control) var(--twin-radius-control) 0 0;
+  color: var(--twin-text-muted);
+  font-family: var(--twin-font-body);
+  font-size: var(--twin-text-md);
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none;
+  transition: color var(--twin-duration) var(--twin-ease), background-color var(--twin-duration) var(--twin-ease);
+}
+
+#twin-tabs > div > [role="tablist"] > [role="tab"]:hover:not([aria-selected="true"]) {
+  background-color: var(--twin-accent-soft);
+  color: var(--twin-text);
+}
+
+#twin-tabs > div > [role="tablist"] > [role="tab"][aria-selected="true"] {
+  background-color: transparent;
+  color: var(--twin-text);
+}
+
+#twin-tabs > div > [role="tablist"] > [role="tab"][aria-selected="true"]::after {
+  height: var(--twin-rule);
+  background-color: var(--twin-accent);
+}
+
+/* the strip clips its overflow, so the focus ring sits inside the button */
+#twin-tabs > div > [role="tablist"] > [role="tab"]:focus-visible {
+  outline: 2px solid var(--twin-focus);
+  outline-offset: -2px;
+}
+
+/* narrow screens fold the tabs that do not fit into the "More tabs" menu */
+#twin-tabs > div > span > button[aria-label="More tabs"] {
+  border-color: var(--twin-border-strong);
+  border-radius: var(--twin-radius-control);
+  background: var(--twin-surface);
+  color: var(--twin-text);
+}
+
+#twin-tabs > div > span > button[aria-label="More tabs"]:focus-visible {
+  outline: 2px solid var(--twin-focus);
+  outline-offset: 2px;
+}
+
+#twin-tabs > div > span > button[aria-label="More tabs"] + div {
+  border-color: var(--twin-border);
+  border-radius: var(--twin-radius-card);
+  background: var(--twin-surface);
+  box-shadow: var(--twin-shadow-1);
+}
+
+#twin-tabs > div > span > button[aria-label="More tabs"] + div > button:hover {
+  background: var(--twin-accent-soft);
+  color: var(--twin-text);
+}
+
+/* ---------------------------------------------------------------- narrow screens and motion */
+
+/* At 600 px and below TAB_JS folds the status strip away; the monogram steps aside so the header text keeps the
+   width. */
+@media (max-width: 600px) {
+  #twin-masthead {
+    padding-top: 0;
+  }
+
+  #twin-avatar {
+    display: none;
+  }
+
+  #twin-header h2 {
+    font-size: var(--twin-text-xl);
+  }
+
+  #twin-header .twin-readings {
+    gap: var(--twin-space-2);
+  }
+
+  #twin-header .twin-readings > div {
+    flex: 1 1 120px;
+    min-width: 0;
+  }
+
+  #gpu-note {
+    margin-top: var(--twin-space-3);
+  }
+
+  #gpu-note p {
+    font-size: var(--twin-text-sm);
+  }
+
+  #twin-tabs {
+    margin-top: var(--twin-space-4);
+  }
+
+  #twin-tabs > div > [role="tablist"] > [role="tab"] {
+    padding: 0 var(--twin-space-3);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #status-strip,
+  #status-strip *,
+  #twin-masthead *,
+  #gpu-note *,
+  #twin-tabs * {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}

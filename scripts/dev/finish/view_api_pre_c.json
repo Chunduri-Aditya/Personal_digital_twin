@@ -1,0 +1,4921 @@
+{
+ "named_endpoints": {
+  "/onboarding_check": {
+   "parameters": [],
+   "returns": [
+    {
+     "label": "value_11",
+     "type": {
+      "type": "string"
+     },
+     "python_type": {
+      "type": "str",
+      "description": ""
+     },
+     "component": "Markdown"
+    },
+    {
+     "label": "value_15",
+     "type": {
+      "type": "string"
+     },
+     "python_type": {
+      "type": "str",
+      "description": ""
+     },
+     "component": "Markdown"
+    },
+    {
+     "label": "value_19",
+     "type": {
+      "type": "string"
+     },
+     "python_type": {
+      "type": "str",
+      "description": ""
+     },
+     "component": "Markdown"
+    },
+    {
+     "label": "value_23",
+     "type": {
+      "type": "string"
+     },
+     "python_type": {
+      "type": "str",
+      "description": ""
+     },
+     "component": "Markdown"
+    }
+   ],
+   "description": "/onboarding_check -> the four status markdowns (file checks only, no model)."
+  },
+  "/ask": {
+   "parameters": [
+    {
+     "label": "Message",
+     "parameter_name": "message",
+     "parameter_has_default": false,
+     "parameter_default": null,
+     "type": {
+      "type": "string"
+     },
+     "python_type": {
+      "type": "str",
+      "description": ""
+     },
+     "component": "Textbox",
+     "example_input": "Hello!!"
+    },
+    {
+     "label": "Chat with the twin",
+     "parameter_name": "history",
+     "parameter_has_default": true,
+     "parameter_default": [],
+     "type": {
+      "$defs": {
+       "ComponentMessage": {
+        "properties": {
+         "component": {
+          "title": "Component",
+          "type": "string"
+         },
+         "value": {
+          "title": "Value"
+         },
+         "constructor_args": {
+          "additionalProperties": true,
+          "title": "Constructor Args",
+          "type": "object"
+         },
+         "props": {
+          "additionalProperties": true,
+          "title": "Props",
+          "type": "object"
+         },
+         "type": {
+          "const": "component",
+          "default": "component",
+          "title": "Type",
+          "type": "string"
+         }
+        },
+        "required": [
+         "component",
+         "value",
+         "constructor_args",
+         "props"
+        ],
+        "title": "ComponentMessage",
+        "type": "object"
+       },
+       "FileData": {
+        "description": "The FileData class is a subclass of the GradioModel class that represents a file object within a Gradio interface. It is used to store file data and metadata when a file is uploaded.\n\nAttributes:\n    path: The server file path where the file is stored.\n    url: The normalized server URL pointing to the file.\n    size: The size of the file in bytes.\n    orig_name: The original filename before upload.\n    mime_type: The MIME type of the file.\n    is_stream: Indicates whether the file is a stream.\n    meta: Additional metadata used internally (should not be changed).",
+        "properties": {
+         "path": {
+          "title": "Path",
+          "type": "string"
+         },
+         "url": {
+          "anyOf": [
+           {
+            "type": "string"
+           },
+           {
+            "type": "null"
+           }
+          ],
+          "default": null,
+          "title": "Url"
+         },
+         "size": {
+          "anyOf": [
+           {
+            "type": "integer"
+           },
+           {
+            "type": "null"
+           }
+          ],
+          "default": null,
+          "title": "Size"
+         },
+         "orig_name": {
+          "anyOf": [
+           {
+            "type": "string"
+           },
+           {
+            "type": "null"
+           }
+          ],
+          "default": null,
+          "title": "Orig Name"
+         },
+         "mime_type": {
+          "anyOf": [
+           {
+            "type": "string"
+           },
+           {
+            "type": "null"
+           }
+          ],
+          "default": null,
+          "title": "Mime Type"
+         },
+         "is_stream": {
+          "default": false,
+          "title": "Is Stream",
+          "type": "boolean"
+         },
+         "meta": {
+          "$ref": "#/$defs/FileDataMeta"
+         }
+        },
+        "required": [
+         "path"
+        ],
+        "title": "FileData",
+        "type": "object"
+       },
+       "FileDataMeta": {
+        "properties": {
+         "_type": {
+          "const": "gradio.FileData",
+          "title": "Type",
+          "type": "string"
+         }
+        },
+        "required": [
+         "_type"
+        ],
+        "title": "FileDataMeta",
+        "type": "object"
+       },
+       "FileMessage": {
+        "properties": {
+         "file": {
+          "$ref": "#/$defs/FileData"
+         },
+         "alt_text": {
+          "anyOf": [
+           {
+            "type": "string"
+           },
+           {
+            "type": "null"
+           }
+          ],
+          "default": null,
+          "title": "Alt Text"
+         },
+         "type": {
+          "const": "file",
+          "default": "file",
+          "title": "Type",
+          "type": "string"
+         }
+        },
+        "required": [
+         "file"
+        ],
+        "title": "FileMessage",
+        "type": "object"
+       },
+       "Message": {
+        "properties": {
+         "role": {
+          "title": "Role",
+          "type": "string"
+         },
+         "metadata": {
+          "anyOf": [
+           {
+            "$ref": "#/$defs/MetadataDict"
+           },
+           {
+            "type": "null"
+           }
+          ],
+          "default": null
+         },
+         "content": {
+          "items": {
+           "anyOf": [
+            {
+             "$ref": "#/$defs/TextMessage"
+            },
+            {
+             "$ref": "#/$defs/FileMessage"
+            },
+            {
+             "$ref": "#/$defs/ComponentMessage"
+            }
+           ]
+          },
+          "title": "Content",
+          "type": "array"
+         },
+         "options": {
+          "anyOf": [
+           {
+            "items": {
+             "$ref": "#/$defs/OptionDict"
+            },
+            "type": "array"
+           },
+           {
+            "type": "null"
+           }
+          ],
+          "default": null,
+          "title": "Options"
+         }
+        },
+        "required": [
+         "role",
+         "content"
+        ],
+        "title": "Message",
+        "type": "object"
+       },
+       "MetadataDict": {
+        "description": "A typed dictionary to represent metadata for a message in the Chatbot component. An\ninstance of this dictionary is used for the `metadata` field in a ChatMessage when\nthe chat message should be displayed as a thought.\nParameters:\n    title: The title of the \"thought\" message. Required if the message is to be displayed as a thought.\n    id: The ID of the message. Only used for nested thoughts. Nested thoughts can be nested by setting the parent_id to the id of the parent thought.\n    parent_id: The ID of the parent message. Only used for nested thoughts.\n    log: A string message to display next to the thought title in a subdued font.\n    duration: The duration of the message in seconds. Appears next to the thought title in a subdued font inside a parentheses.\n    status: if set to `\"pending\"`, a spinner appears next to the thought title and the accordion is initialized open.  If `status` is `\"done\"`, the thought accordion is initialized closed. If `status` is not provided, the thought accordion is initialized open and no spinner is displayed.",
+        "properties": {
+         "title": {
+          "title": "Title",
+          "type": "string"
+         },
+         "id": {
+          "anyOf": [
+           {
+            "type": "integer"
+           },
+           {
+            "type": "string"
+           }
+          ],
+          "title": "Id"
+         },
+         "parent_id": {
+          "anyOf": [
+           {
+            "type": "integer"
+           },
+           {
+            "type": "string"
+           }
+          ],
+          "title": "Parent Id"
+         },
+         "log": {
+          "title": "Log",
+          "type": "string"
+         },
+         "duration": {
+          "title": "Duration",
+          "type": "number"
+         },
+         "status": {
+          "enum": [
+           "pending",
+           "done"
+          ],
+          "title": "Status",
+          "type": "string"
+         }
+        },
+        "title": "MetadataDict",
+        "type": "object"
+       },
+       "OptionDict": {
+        "description": "A typed dictionary to represent an option in a ChatMessage. A list of these\ndictionaries is used for the `options` field in a ChatMessage.\nParameters:\n    value: The value to return when the option is selected.\n    label: The text to display in the option, if different from the value.",
+        "properties": {
+         "value": {
+          "title": "Value",
+          "type": "string"
+         },
+         "label": {
+          "title": "Label",
+          "type": "string"
+         }
+        },
+        "required": [
+         "value"
+        ],
+        "title": "OptionDict",
+        "type": "object"
+       },
+       "TextMessage": {
+        "properties": {
+         "text": {
+          "title": "Text",
+          "type": "string"
+         },
+         "type": {
+          "const": "text",
+          "default": "text",
+          "title": "Type",
+          "type": "string"
+         }
+        },
+        "required": [
+         "text"
+        ],
+        "title": "TextMessage",
+        "type": "object"
+       }
+      },
+      "items": {
+       "$ref": "#/$defs/Message"
+      },
+      "title": "ChatbotDataMessages",
+      "type": "array",
+      "additional_description": null
+     },
+     "python_type": {
+      "type": "list[dict(role: str, metadata: dict(title: str, id: int | str, parent_id: int | str, log: str, duration: float, status: Literal['pending', 'done']) | None, content: list[dict(text: str, type: Literal[text]) | dict(file: filepath, alt_text: str | None, type: Literal[file]) | dict(component: str, value: Any, constructor_args: dict(str, Any), props: dict(str, Any), type: Literal[component])], options: list[dict(value: str, label: str)] | None)]",
+      "description": null
+     },
+     "component": "Chatbot",
+     "example_input": [
+      {
+       "role": "user",
+       "metadata": null,
+       "content": [
+        {
+         "text": "Hello!",
+         "type": "text"
+        }
+       ],
+       "options": null
+      },
+      {
+       "role": "assistant",
+       "metadata": null,
+       "content": [
+        {
+         "text": "How can I help you?",
+         "type": "text"
+        }
+       ],
+       "options": null
+      }
+     ]
+    },
+    {
+     "label": "Q8 Stheno (Ollama, slow)",
+     "parameter_name": "use_q8",
+     "parameter_has_default": true,
+     "parameter_default": false,
+     "type": {
+      "type": "boolean"
+     },
+     "python_type": {
+      "type": "bool",
+      "description": ""
+     },
+     "component": "Checkbox",
+     "example_input": true
+    },
+    {
+     "label": "Temperature",
+     "parameter_name": "temperature",
+     "parameter_has_default": true,
+     "parameter_default": 1.0,
+     "type": {
+      "type": "number",
+      "description": "numeric value between 0.5 and 1.4"
+     },
+     "python_type": {
+      "type": "float",
+      "description": ""
+     },
+     "component": "Slider",
+     "example_input": 0.5
+    },
+    {
+     "label": "Consistency check (qwen2.5)",
+     "parameter_name": "use_checker",
+     "parameter_has_default": true,
+     "parameter_default": false,
+     "type": {
+      "type": "boolean"
+     },
+     "python_type": {
+      "type": "bool",
+      "description": ""
+     },
+     "component": "Checkbox",
+     "example_input": true
+    },
+    {
+     "label": "Condition",
+     "parameter_name": "condition",
+     "parameter_has_default": true,
+     "parameter_default": "interview",
+     "type": {
+      "type": "string",
+      "enum": [
+       "demographic",
+       "persona",
+       "interview"
+      ]
+     },
+     "python_type": {
+      "type": "Literal['demographic', 'persona', 'interview']",
+      "description": ""
+     },
+     "component": "Dropdown",
+     "example_input": "demographic"
+    }
+   ],
+   "returns": [
+    {
+     "label": "Chat with the twin",
+     "type": {
+      "$defs": {
+       "ComponentMessage": {
+        "properties": {
+         "component": {
+          "title": "Component",
+          "type": "string"
+         },
+         "value": {
+          "title": "Value"
+         },
+         "constructor_args": {
+          "additionalProperties": true,
+          "title": "Constructor Args",
+          "type": "object"
+         },
+         "props": {
+          "additionalProperties": true,
+          "title": "Props",
+          "type": "object"
+         },
+         "type": {
+          "const": "component",
+          "default": "component",
+          "title": "Type",
+          "type": "string"
+         }
+        },
+        "required": [
+         "component",
+         "value",
+         "constructor_args",
+         "props"
+        ],
+        "title": "ComponentMessage",
+        "type": "object"
+       },
+       "FileData": {
+        "description": "The FileData class is a subclass of the GradioModel class that represents a file object within a Gradio interface. It is used to store file data and metadata when a file is uploaded.\n\nAttributes:\n    path: The server file path where the file is stored.\n    url: The normalized server URL pointing to the file.\n    size: The size of the file in bytes.\n    orig_name: The original filename before upload.\n    mime_type: The MIME type of the file.\n    is_stream: Indicates whether the file is a stream.\n    meta: Additional metadata used internally (should not be changed).",
+        "properties": {
+         "path": {
+          "title": "Path",
+          "type": "string"
+         },
+         "url": {
+          "anyOf": [
+           {
+            "type": "string"
+           },
+           {
+            "type": "null"
+           }
+          ],
+          "default": null,
+          "title": "Url"
+         },
+         "size": {
+          "anyOf": [
+           {
+            "type": "integer"
+           },
+           {
+            "type": "null"
+           }
+          ],
+          "default": null,
+          "title": "Size"
+         },
+         "orig_name": {
+          "anyOf": [
+           {
+            "type": "string"
+           },
+           {
+            "type": "null"
+           }
+          ],
+          "default": null,
+          "title": "Orig Name"
+         },
+         "mime_type": {
+          "anyOf": [
+           {
+            "type": "string"
+           },
+           {
+            "type": "null"
+           }
+          ],
+          "default": null,
+          "title": "Mime Type"
+         },
+         "is_stream": {
+          "default": false,
+          "title": "Is Stream",
+          "type": "boolean"
+         },
+         "meta": {
+          "$ref": "#/$defs/FileDataMeta"
+         }
+        },
+        "required": [
+         "path"
+        ],
+        "title": "FileData",
+        "type": "object"
+       },
+       "FileDataMeta": {
+        "properties": {
+         "_type": {
+          "const": "gradio.FileData",
+          "title": "Type",
+          "type": "string"
+         }
+        },
+        "required": [
+         "_type"
+        ],
+        "title": "FileDataMeta",
+        "type": "object"
+       },
+       "FileMessage": {
+        "properties": {
+         "file": {
+          "$ref": "#/$defs/FileData"
+         },
+         "alt_text": {
+          "anyOf": [
+           {
+            "type": "string"
+           },
+           {
+            "type": "null"
+           }
+          ],
+          "default": null,
+          "title": "Alt Text"
+         },
+         "type": {
+          "const": "file",
+          "default": "file",
+          "title": "Type",
+          "type": "string"
+         }
+        },
+        "required": [
+         "file"
+        ],
+        "title": "FileMessage",
+        "type": "object"
+       },
+       "Message": {
+        "properties": {
+         "role": {
+          "title": "Role",
+          "type": "string"
+         },
+         "metadata": {
+          "anyOf": [
+           {
+            "$ref": "#/$defs/MetadataDict"
+           },
+           {
+            "type": "null"
+           }
+          ],
+          "default": null
+         },
+         "content": {
+          "items": {
+           "anyOf": [
+            {
+             "$ref": "#/$defs/TextMessage"
+            },
+            {
+             "$ref": "#/$defs/FileMessage"
+            },
+            {
+             "$ref": "#/$defs/ComponentMessage"
+            }
+           ]
+          },
+          "title": "Content",
+          "type": "array"
+         },
+         "options": {
+          "anyOf": [
+           {
+            "items": {
+             "$ref": "#/$defs/OptionDict"
+            },
+            "type": "array"
+           },
+           {
+            "type": "null"
+           }
+          ],
+          "default": null,
+          "title": "Options"
+         }
+        },
+        "required": [
+         "role",
+         "content"
+        ],
+        "title": "Message",
+        "type": "object"
+       },
+       "MetadataDict": {
+        "description": "A typed dictionary to represent metadata for a message in the Chatbot component. An\ninstance of this dictionary is used for the `metadata` field in a ChatMessage when\nthe chat message should be displayed as a thought.\nParameters:\n    title: The title of the \"thought\" message. Required if the message is to be displayed as a thought.\n    id: The ID of the message. Only used for nested thoughts. Nested thoughts can be nested by setting the parent_id to the id of the parent thought.\n    parent_id: The ID of the parent message. Only used for nested thoughts.\n    log: A string message to display next to the thought title in a subdued font.\n    duration: The duration of the message in seconds. Appears next to the thought title in a subdued font inside a parentheses.\n    status: if set to `\"pending\"`, a spinner appears next to the thought title and the accordion is initialized open.  If `status` is `\"done\"`, the thought accordion is initialized closed. If `status` is not provided, the thought accordion is initialized open and no spinner is displayed.",
+        "properties": {
+         "title": {
+          "title": "Title",
+          "type": "string"
+         },
+         "id": {
+          "anyOf": [
+           {
+            "type": "integer"
+           },
+           {
+            "type": "string"
+           }
+          ],
+          "title": "Id"
+         },
+         "parent_id": {
+          "anyOf": [
+           {
+            "type": "integer"
+           },
+           {
+            "type": "string"
+           }
+          ],
+          "title": "Parent Id"
+         },
+         "log": {
+          "title": "Log",
+          "type": "string"
+         },
+         "duration": {
+          "title": "Duration",
+          "type": "number"
+         },
+         "status": {
+          "enum": [
+           "pending",
+           "done"
+          ],
+          "title": "Status",
+          "type": "string"
+         }
+        },
+        "title": "MetadataDict",
+        "type": "object"
+       },
+       "OptionDict": {
+        "description": "A typed dictionary to represent an option in a ChatMessage. A list of these\ndictionaries is used for the `options` field in a ChatMessage.\nParameters:\n    value: The value to return when the option is selected.\n    label: The text to display in the option, if different from the value.",
+        "properties": {
+         "value": {
+          "title": "Value",
+          "type": "string"
+         },
+         "label": {
+          "title": "Label",
+          "type": "string"
+         }
+        },
+        "required": [
+         "value"
+        ],
+        "title": "OptionDict",
+        "type": "object"
+       },
+       "TextMessage": {
+        "properties": {
+         "text": {
+          "title": "Text",
+          "type": "string"
+         },
+         "type": {
+          "const": "text",
+          "default": "text",
+          "title": "Type",
+          "type": "string"
+         }
+        },
+        "required": [
+         "text"
+        ],
+        "title": "TextMessage",
+        "type": "object"
+       }
+      },
+      "items": {
+       "$ref": "#/$defs/Message"
+      },
+      "title": "ChatbotDataMessages",
+      "type": "array",
+      "additional_description": null
+     },
+     "python_type": {
+      "type": "list[dict(role: str, metadata: dict(title: str, id: int | str, parent_id: int | str, log: str, duration: float, status: Literal['pending', 'done']) | None, content: list[dict(text: str, type: Literal[text]) | dict(file: filepath, alt_text: str | None, type: Literal[file]) | dict(component: str, value: Any, constructor_args: dict(str, Any), props: dict(str, Any), type: Literal[component])], options: list[dict(value: str, label: str)] | None)]",
+      "description": ""
+     },
+     "component": "Chatbot"
+    },
+    {
+     "label": "value_43",
+     "type": {
+      "type": "string"
+     },
+     "python_type": {
+      "type": "str",
+      "description": ""
+     },
+     "component": "Markdown"
+    },
+    {
+     "label": "value_41",
+     "type": {
+      "type": "string"
+     },
+     "python_type": {
+      "type": "str",
+      "description": ""
+     },
+     "component": "Markdown"
+    },
+    {
+     "label": "value_40",
+     "type": {
+      "type": "string"
+     },
+     "python_type": {
+      "type": "str",
+      "description": ""
+     },
+     "component": "Markdown"
+    },
+    {
+     "label": "Message",
+     "type": {
+      "type": "string"
+     },
+     "python_type": {
+      "type": "str",
+      "description": ""
+     },
+     "component": "Textbox"
+    }
+   ],
+   "description": "Generator: stream one Ask turn into the chatbot; yields (chatbot, trace_md, checker_md, hint_md, textbox). `condition` (last, optional) is one of prompts.CONDITIONS; interview is the phase-1 turn."
+  },
+  "/ask_clear": {
+   "parameters": [],
+   "returns": [
+    {
+     "label": "Chat with the twin",
+     "type": {
+      "$defs": {
+       "ComponentMessage": {
+        "properties": {
+         "component": {
+          "title": "Component",
+          "type": "string"
+         },
+         "value": {
+          "title": "Value"
+         },
+         "constructor_args": {
+          "additionalProperties": true,
+          "title": "Constructor Args",
+          "type": "object"
+         },
+         "props": {
+          "additionalProperties": true,
+          "title": "Props",
+          "type": "object"
+         },
+         "type": {
+          "const": "component",
+          "default": "component",
+          "title": "Type",
+          "type": "string"
+         }
+        },
+        "required": [
+         "component",
+         "value",
+         "constructor_args",
+         "props"
+        ],
+        "title": "ComponentMessage",
+        "type": "object"
+       },
+       "FileData": {
+        "description": "The FileData class is a subclass of the GradioModel class that represents a file object within a Gradio interface. It is used to store file data and metadata when a file is uploaded.\n\nAttributes:\n    path: The server file path where the file is stored.\n    url: The normalized server URL pointing to the file.\n    size: The size of the file in bytes.\n    orig_name: The original filename before upload.\n    mime_type: The MIME type of the file.\n    is_stream: Indicates whether the file is a stream.\n    meta: Additional metadata used internally (should not be changed).",
+        "properties": {
+         "path": {
+          "title": "Path",
+          "type": "string"
+         },
+         "url": {
+          "anyOf": [
+           {
+            "type": "string"
+           },
+           {
+            "type": "null"
+           }
+          ],
+          "default": null,
+          "title": "Url"
+         },
+         "size": {
+          "anyOf": [
+           {
+            "type": "integer"
+           },
+           {
+            "type": "null"
+           }
+          ],
+          "default": null,
+          "title": "Size"
+         },
+         "orig_name": {
+          "anyOf": [
+           {
+            "type": "string"
+           },
+           {
+            "type": "null"
+           }
+          ],
+          "default": null,
+          "title": "Orig Name"
+         },
+         "mime_type": {
+          "anyOf": [
+           {
+            "type": "string"
+           },
+           {
+            "type": "null"
+           }
+          ],
+          "default": null,
+          "title": "Mime Type"
+         },
+         "is_stream": {
+          "default": false,
+          "title": "Is Stream",
+          "type": "boolean"
+         },
+         "meta": {
+          "$ref": "#/$defs/FileDataMeta"
+         }
+        },
+        "required": [
+         "path"
+        ],
+        "title": "FileData",
+        "type": "object"
+       },
+       "FileDataMeta": {
+        "properties": {
+         "_type": {
+          "const": "gradio.FileData",
+          "title": "Type",
+          "type": "string"
+         }
+        },
+        "required": [
+         "_type"
+        ],
+        "title": "FileDataMeta",
+        "type": "object"
+       },
+       "FileMessage": {
+        "properties": {
+         "file": {
+          "$ref": "#/$defs/FileData"
+         },
+         "alt_text": {
+          "anyOf": [
+           {
+            "type": "string"
+           },
+           {
+            "type": "null"
+           }
+          ],
+          "default": null,
+          "title": "Alt Text"
+         },
+         "type": {
+          "const": "file",
+          "default": "file",
+          "title": "Type",
+          "type": "string"
+         }
+        },
+        "required": [
+         "file"
+        ],
+        "title": "FileMessage",
+        "type": "object"
+       },
+       "Message": {
+        "properties": {
+         "role": {
+          "title": "Role",
+          "type": "string"
+         },
+         "metadata": {
+          "anyOf": [
+           {
+            "$ref": "#/$defs/MetadataDict"
+           },
+           {
+            "type": "null"
+           }
+          ],
+          "default": null
+         },
+         "content": {
+          "items": {
+           "anyOf": [
+            {
+             "$ref": "#/$defs/TextMessage"
+            },
+            {
+             "$ref": "#/$defs/FileMessage"
+            },
+            {
+             "$ref": "#/$defs/ComponentMessage"
+            }
+           ]
+          },
+          "title": "Content",
+          "type": "array"
+         },
+         "options": {
+          "anyOf": [
+           {
+            "items": {
+             "$ref": "#/$defs/OptionDict"
+            },
+            "type": "array"
+           },
+           {
+            "type": "null"
+           }
+          ],
+          "default": null,
+          "title": "Options"
+         }
+        },
+        "required": [
+         "role",
+         "content"
+        ],
+        "title": "Message",
+        "type": "object"
+       },
+       "MetadataDict": {
+        "description": "A typed dictionary to represent metadata for a message in the Chatbot component. An\ninstance of this dictionary is used for the `metadata` field in a ChatMessage when\nthe chat message should be displayed as a thought.\nParameters:\n    title: The title of the \"thought\" message. Required if the message is to be displayed as a thought.\n    id: The ID of the message. Only used for nested thoughts. Nested thoughts can be nested by setting the parent_id to the id of the parent thought.\n    parent_id: The ID of the parent message. Only used for nested thoughts.\n    log: A string message to display next to the thought title in a subdued font.\n    duration: The duration of the message in seconds. Appears next to the thought title in a subdued font inside a parentheses.\n    status: if set to `\"pending\"`, a spinner appears next to the thought title and the accordion is initialized open.  If `status` is `\"done\"`, the thought accordion is initialized closed. If `status` is not provided, the thought accordion is initialized open and no spinner is displayed.",
+        "properties": {
+         "title": {
+          "title": "Title",
+          "type": "string"
+         },
+         "id": {
+          "anyOf": [
+           {
+            "type": "integer"
+           },
+           {
+            "type": "string"
+           }
+          ],
+          "title": "Id"
+         },
+         "parent_id": {
+          "anyOf": [
+           {
+            "type": "integer"
+           },
+           {
+            "type": "string"
+           }
+          ],
+          "title": "Parent Id"
+         },
+         "log": {
+          "title": "Log",
+          "type": "string"
+         },
+         "duration": {
+          "title": "Duration",
+          "type": "number"
+         },
+         "status": {
+          "enum": [
+           "pending",
+           "done"
+          ],
+          "title": "Status",
+          "type": "string"
+         }
+        },
+        "title": "MetadataDict",
+        "type": "object"
+       },
+       "OptionDict": {
+        "description": "A typed dictionary to represent an option in a ChatMessage. A list of these\ndictionaries is used for the `options` field in a ChatMessage.\nParameters:\n    value: The value to return when the option is selected.\n    label: The text to display in the option, if different from the value.",
+        "properties": {
+         "value": {
+          "title": "Value",
+          "type": "string"
+         },
+         "label": {
+          "title": "Label",
+          "type": "string"
+         }
+        },
+        "required": [
+         "value"
+        ],
+        "title": "OptionDict",
+        "type": "object"
+       },
+       "TextMessage": {
+        "properties": {
+         "text": {
+          "title": "Text",
+          "type": "string"
+         },
+         "type": {
+          "const": "text",
+          "default": "text",
+          "title": "Type",
+          "type": "string"
+         }
+        },
+        "required": [
+         "text"
+        ],
+        "title": "TextMessage",
+        "type": "object"
+       }
+      },
+      "items": {
+       "$ref": "#/$defs/Message"
+      },
+      "title": "ChatbotDataMessages",
+      "type": "array",
+      "additional_description": null
+     },
+     "python_type": {
+      "type": "list[dict(role: str, metadata: dict(title: str, id: int | str, parent_id: int | str, log: str, duration: float, status: Literal['pending', 'done']) | None, content: list[dict(text: str, type: Literal[text]) | dict(file: filepath, alt_text: str | None, type: Literal[file]) | dict(component: str, value: Any, constructor_args: dict(str, Any), props: dict(str, Any), type: Literal[component])], options: list[dict(value: str, label: str)] | None)]",
+      "description": ""
+     },
+     "component": "Chatbot"
+    },
+    {
+     "label": "value_43",
+     "type": {
+      "type": "string"
+     },
+     "python_type": {
+      "type": "str",
+      "description": ""
+     },
+     "component": "Markdown"
+    },
+    {
+     "label": "value_41",
+     "type": {
+      "type": "string"
+     },
+     "python_type": {
+      "type": "str",
+      "description": ""
+     },
+     "component": "Markdown"
+    },
+    {
+     "label": "value_40",
+     "type": {
+      "type": "string"
+     },
+     "python_type": {
+      "type": "str",
+      "description": ""
+     },
+     "component": "Markdown"
+    },
+    {
+     "label": "Message",
+     "type": {
+      "type": "string"
+     },
+     "python_type": {
+      "type": "str",
+      "description": ""
+     },
+     "component": "Textbox"
+    }
+   ],
+   "description": "Empty the chat and its side panels."
+  },
+  "/decide_b1": {
+   "parameters": [
+    {
+     "label": "Situation",
+     "parameter_name": "situation",
+     "parameter_has_default": false,
+     "parameter_default": null,
+     "type": {
+      "type": "string"
+     },
+     "python_type": {
+      "type": "str",
+      "description": ""
+     },
+     "component": "Textbox",
+     "example_input": "Hello!!"
+    },
+    {
+     "label": "Condition",
+     "parameter_name": "condition",
+     "parameter_has_default": true,
+     "parameter_default": "interview",
+     "type": {
+      "type": "string",
+      "enum": [
+       "demographic",
+       "persona",
+       "interview"
+      ]
+     },
+     "python_type": {
+      "type": "Literal['demographic', 'persona', 'interview']",
+      "description": ""
+     },
+     "component": "Dropdown",
+     "example_input": "demographic"
+    }
+   ],
+   "returns": [
+    {
+     "label": "value_54",
+     "type": {
+      "type": "string"
+     },
+     "python_type": {
+      "type": "str",
+      "description": ""
+     },
+     "component": "Markdown"
+    },
+    {
+     "label": "Raw result",
+     "type": {
+      "type": {},
+      "description": "any valid json"
+     },
+     "python_type": {
+      "type": "str | float | bool | list | dict",
+      "description": "any valid json"
+     },
+     "component": "Json"
+    }
+   ],
+   "description": "B1: would I do it? -> (markdown, raw json, state)."
+  },
+  "/decide_b2": {
+   "parameters": [
+    {
+     "label": "Situation",
+     "parameter_name": "situation",
+     "parameter_has_default": false,
+     "parameter_default": null,
+     "type": {
+      "type": "string"
+     },
+     "python_type": {
+      "type": "str",
+      "description": ""
+     },
+     "component": "Textbox",
+     "example_input": "Hello!!"
+    },
+    {
+     "label": "Option A",
+     "parameter_name": "option_a",
+     "parameter_has_default": false,
+     "parameter_default": null,
+     "type": {
+      "type": "string"
+     },
+     "python_type": {
+      "type": "str",
+      "description": ""
+     },
+     "component": "Textbox",
+     "example_input": "Hello!!"
+    },
+    {
+     "label": "Option B",
+     "parameter_name": "option_b",
+     "parameter_has_default": false,
+     "parameter_default": null,
+     "type": {
+      "type": "string"
+     },
+     "python_type": {
+      "type": "str",
+      "description": ""
+     },
+     "component": "Textbox",
+     "example_input": "Hello!!"
+    },
+    {
+     "label": "Condition",
+     "parameter_name": "condition",
+     "parameter_has_default": true,
+     "parameter_default": "interview",
+     "type": {
+      "type": "string",
+      "enum": [
+       "demographic",
+       "persona",
+       "interview"
+      ]
+     },
+     "python_type": {
+      "type": "Literal['demographic', 'persona', 'interview']",
+      "description": ""
+     },
+     "component": "Dropdown",
+     "example_input": "demographic"
+    }
+   ],
+   "returns": [
+    {
+     "label": "value_54",
+     "type": {
+      "type": "string"
+     },
+     "python_type": {
+      "type": "str",
+      "description": ""
+     },
+     "component": "Markdown"
+    },
+    {
+     "label": "Raw result",
+     "type": {
+      "type": {},
+      "description": "any valid json"
+     },
+     "python_type": {
+      "type": "str | float | bool | list | dict",
+      "description": "any valid json"
+     },
+     "component": "Json"
+    }
+   ],
+   "description": "B2: A or B? -> (markdown, raw json, state)."
+  },
+  "/say_it": {
+   "parameters": [],
+   "returns": [
+    {
+     "label": "In my voice",
+     "type": {
+      "type": "string"
+     },
+     "python_type": {
+      "type": "str",
+      "description": ""
+     },
+     "component": "Textbox"
+    }
+   ],
+   "description": "Render the last decision as one message in the twin's voice (Stheno loads only now)."
+  },
+  "/act": {
+   "parameters": [
+    {
+     "label": "Request",
+     "parameter_name": "request",
+     "parameter_has_default": false,
+     "parameter_default": null,
+     "type": {
+      "type": "string"
+     },
+     "python_type": {
+      "type": "str",
+      "description": ""
+     },
+     "component": "Textbox",
+     "example_input": "Hello!!"
+    }
+   ],
+   "returns": [
+    {
+     "label": "Answer",
+     "type": {
+      "type": "string"
+     },
+     "python_type": {
+      "type": "str",
+      "description": ""
+     },
+     "component": "Textbox"
+    },
+    {
+     "label": "value_68",
+     "type": {
+      "type": "string"
+     },
+     "python_type": {
+      "type": "str",
+      "description": ""
+     },
+     "component": "Markdown"
+    }
+   ],
+   "description": "hermes3 tool loop -> (answer, trace markdown)."
+  },
+  "/polish": {
+   "parameters": [
+    {
+     "label": "Answer",
+     "parameter_name": "text",
+     "parameter_has_default": false,
+     "parameter_default": null,
+     "type": {
+      "type": "string"
+     },
+     "python_type": {
+      "type": "str",
+      "description": ""
+     },
+     "component": "Textbox",
+     "example_input": "Hello!!"
+    }
+   ],
+   "returns": [
+    {
+     "label": "Polished",
+     "type": {
+      "type": "string"
+     },
+     "python_type": {
+      "type": "str",
+      "description": ""
+     },
+     "component": "Textbox"
+    }
+   ],
+   "description": "Rewrite the answer in voice with Stheno."
+  },
+  "/see": {
+   "parameters": [
+    {
+     "label": "Image",
+     "parameter_name": "image",
+     "parameter_has_default": false,
+     "parameter_default": null,
+     "type": {
+      "properties": {
+       "path": {
+        "anyOf": [
+         {
+          "type": "string"
+         },
+         {
+          "type": "null"
+         }
+        ],
+        "default": null,
+        "description": "Path to a local file",
+        "title": "Path"
+       },
+       "url": {
+        "anyOf": [
+         {
+          "type": "string"
+         },
+         {
+          "type": "null"
+         }
+        ],
+        "default": null,
+        "description": "Publicly available url or base64 encoded image",
+        "title": "Url"
+       },
+       "size": {
+        "anyOf": [
+         {
+          "type": "integer"
+         },
+         {
+          "type": "null"
+         }
+        ],
+        "default": null,
+        "description": "Size of image in bytes",
+        "title": "Size"
+       },
+       "orig_name": {
+        "anyOf": [
+         {
+          "type": "string"
+         },
+         {
+          "type": "null"
+         }
+        ],
+        "default": null,
+        "description": "Original filename",
+        "title": "Orig Name"
+       },
+       "mime_type": {
+        "anyOf": [
+         {
+          "type": "string"
+         },
+         {
+          "type": "null"
+         }
+        ],
+        "default": null,
+        "description": "mime type of image",
+        "title": "Mime Type"
+       },
+       "is_stream": {
+        "default": false,
+        "description": "Can always be set to False",
+        "title": "Is Stream",
+        "type": "boolean"
+       },
+       "meta": {
+        "additionalProperties": true,
+        "default": {
+         "_type": "gradio.FileData"
+        },
+        "title": "Meta",
+        "type": "object"
+       }
+      },
+      "title": "ImageData",
+      "type": "object",
+      "additional_description": "A local filepath or publicly available URL."
+     },
+     "python_type": {
+      "type": "filepath",
+      "description": "A local filepath or publicly available URL."
+     },
+     "component": "Image",
+     "example_input": {
+      "path": "https://raw.githubusercontent.com/gradio-app/gradio/main/test/test_files/bus.png",
+      "meta": {
+       "_type": "gradio.FileData"
+      },
+      "orig_name": "bus.png",
+      "url": "https://raw.githubusercontent.com/gradio-app/gradio/main/test/test_files/bus.png"
+     }
+    }
+   ],
+   "returns": [
+    {
+     "label": "Description (qwen3.5)",
+     "type": {
+      "type": "string"
+     },
+     "python_type": {
+      "type": "str",
+      "description": ""
+     },
+     "component": "Textbox"
+    },
+    {
+     "label": "Reaction (in my voice)",
+     "type": {
+      "type": "string"
+     },
+     "python_type": {
+      "type": "str",
+      "description": ""
+     },
+     "component": "Textbox"
+    },
+    {
+     "label": "value_80",
+     "type": {
+      "type": "string"
+     },
+     "python_type": {
+      "type": "str",
+      "description": ""
+     },
+     "component": "Markdown"
+    }
+   ],
+   "description": "qwen3.5 describes, Stheno reacts -> (description, reaction, trace markdown)."
+  },
+  "/items_save": {
+   "parameters": [
+    {
+     "label": "Wave (1 = day 0, 2 = day-14 retest)",
+     "parameter_name": "wave",
+     "parameter_has_default": true,
+     "parameter_default": "1",
+     "type": {
+      "type": "string",
+      "enum": [
+       "1",
+       "2"
+      ]
+     },
+     "python_type": {
+      "type": "Literal['1', '2']",
+      "description": ""
+     },
+     "component": "Dropdown",
+     "example_input": "1"
+    },
+    {
+     "label": "Date (YYYY-MM-DD)",
+     "parameter_name": "date_text",
+     "parameter_has_default": true,
+     "parameter_default": "2026-09-14",
+     "type": {
+      "type": "string"
+     },
+     "python_type": {
+      "type": "str",
+      "description": ""
+     },
+     "component": "Textbox",
+     "example_input": "Hello!!"
+    },
+    {
+     "label": "Am the life of the party.",
+     "parameter_name": "param_2",
+     "parameter_has_default": true,
+     "parameter_default": 1,
+     "type": {
+      "enum": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "title": "Radio",
+      "type": "string"
+     },
+     "python_type": {
+      "type": "Literal['1', '2', '3', '4', '5']",
+      "description": ""
+     },
+     "component": "Radio",
+     "example_input": 1
+    },
+    {
+     "label": "Feel comfortable around people.",
+     "parameter_name": "param_3",
+     "parameter_has_default": true,
+     "parameter_default": 3,
+     "type": {
+      "enum": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "title": "Radio",
+      "type": "string"
+     },
+     "python_type": {
+      "type": "Literal['1', '2', '3', '4', '5']",
+      "description": ""
+     },
+     "component": "Radio",
+     "example_input": 1
+    },
+    {
+     "label": "Start conversations.",
+     "parameter_name": "param_4",
+     "parameter_has_default": true,
+     "parameter_default": 2,
+     "type": {
+      "enum": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "title": "Radio",
+      "type": "string"
+     },
+     "python_type": {
+      "type": "Literal['1', '2', '3', '4', '5']",
+      "description": ""
+     },
+     "component": "Radio",
+     "example_input": 1
+    },
+    {
+     "label": "Talk to a lot of different people at parties.",
+     "parameter_name": "param_5",
+     "parameter_has_default": true,
+     "parameter_default": 1,
+     "type": {
+      "enum": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "title": "Radio",
+      "type": "string"
+     },
+     "python_type": {
+      "type": "Literal['1', '2', '3', '4', '5']",
+      "description": ""
+     },
+     "component": "Radio",
+     "example_input": 1
+    },
+    {
+     "label": "Don't mind being the center of attention.",
+     "parameter_name": "param_6",
+     "parameter_has_default": true,
+     "parameter_default": 2,
+     "type": {
+      "enum": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "title": "Radio",
+      "type": "string"
+     },
+     "python_type": {
+      "type": "Literal['1', '2', '3', '4', '5']",
+      "description": ""
+     },
+     "component": "Radio",
+     "example_input": 1
+    },
+    {
+     "label": "Don't talk a lot.",
+     "parameter_name": "param_7",
+     "parameter_has_default": true,
+     "parameter_default": 3,
+     "type": {
+      "enum": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "title": "Radio",
+      "type": "string"
+     },
+     "python_type": {
+      "type": "Literal['1', '2', '3', '4', '5']",
+      "description": ""
+     },
+     "component": "Radio",
+     "example_input": 1
+    },
+    {
+     "label": "Keep in the background.",
+     "parameter_name": "param_8",
+     "parameter_has_default": true,
+     "parameter_default": 4,
+     "type": {
+      "enum": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "title": "Radio",
+      "type": "string"
+     },
+     "python_type": {
+      "type": "Literal['1', '2', '3', '4', '5']",
+      "description": ""
+     },
+     "component": "Radio",
+     "example_input": 1
+    },
+    {
+     "label": "Have little to say.",
+     "parameter_name": "param_9",
+     "parameter_has_default": true,
+     "parameter_default": 2,
+     "type": {
+      "enum": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "title": "Radio",
+      "type": "string"
+     },
+     "python_type": {
+      "type": "Literal['1', '2', '3', '4', '5']",
+      "description": ""
+     },
+     "component": "Radio",
+     "example_input": 1
+    },
+    {
+     "label": "Don't like to draw attention to myself.",
+     "parameter_name": "param_10",
+     "parameter_has_default": true,
+     "parameter_default": 4,
+     "type": {
+      "enum": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "title": "Radio",
+      "type": "string"
+     },
+     "python_type": {
+      "type": "Literal['1', '2', '3', '4', '5']",
+      "description": ""
+     },
+     "component": "Radio",
+     "example_input": 1
+    },
+    {
+     "label": "Am quiet around strangers.",
+     "parameter_name": "param_11",
+     "parameter_has_default": true,
+     "parameter_default": 5,
+     "type": {
+      "enum": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "title": "Radio",
+      "type": "string"
+     },
+     "python_type": {
+      "type": "Literal['1', '2', '3', '4', '5']",
+      "description": ""
+     },
+     "component": "Radio",
+     "example_input": 1
+    },
+    {
+     "label": "Am interested in people.",
+     "parameter_name": "param_12",
+     "parameter_has_default": true,
+     "parameter_default": 4,
+     "type": {
+      "enum": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "title": "Radio",
+      "type": "string"
+     },
+     "python_type": {
+      "type": "Literal['1', '2', '3', '4', '5']",
+      "description": ""
+     },
+     "component": "Radio",
+     "example_input": 1
+    },
+    {
+     "label": "Sympathize with others' feelings.",
+     "parameter_name": "param_13",
+     "parameter_has_default": true,
+     "parameter_default": 4,
+     "type": {
+      "enum": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "title": "Radio",
+      "type": "string"
+     },
+     "python_type": {
+      "type": "Literal['1', '2', '3', '4', '5']",
+      "description": ""
+     },
+     "component": "Radio",
+     "example_input": 1
+    },
+    {
+     "label": "Have a soft heart.",
+     "parameter_name": "param_14",
+     "parameter_has_default": true,
+     "parameter_default": 4,
+     "type": {
+      "enum": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "title": "Radio",
+      "type": "string"
+     },
+     "python_type": {
+      "type": "Literal['1', '2', '3', '4', '5']",
+      "description": ""
+     },
+     "component": "Radio",
+     "example_input": 1
+    },
+    {
+     "label": "Take time out for others.",
+     "parameter_name": "param_15",
+     "parameter_has_default": true,
+     "parameter_default": 3,
+     "type": {
+      "enum": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "title": "Radio",
+      "type": "string"
+     },
+     "python_type": {
+      "type": "Literal['1', '2', '3', '4', '5']",
+      "description": ""
+     },
+     "component": "Radio",
+     "example_input": 1
+    },
+    {
+     "label": "Feel others' emotions.",
+     "parameter_name": "param_16",
+     "parameter_has_default": true,
+     "parameter_default": 3,
+     "type": {
+      "enum": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "title": "Radio",
+      "type": "string"
+     },
+     "python_type": {
+      "type": "Literal['1', '2', '3', '4', '5']",
+      "description": ""
+     },
+     "component": "Radio",
+     "example_input": 1
+    },
+    {
+     "label": "Make people feel at ease.",
+     "parameter_name": "param_17",
+     "parameter_has_default": true,
+     "parameter_default": 3,
+     "type": {
+      "enum": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "title": "Radio",
+      "type": "string"
+     },
+     "python_type": {
+      "type": "Literal['1', '2', '3', '4', '5']",
+      "description": ""
+     },
+     "component": "Radio",
+     "example_input": 1
+    },
+    {
+     "label": "Am not really interested in others.",
+     "parameter_name": "param_18",
+     "parameter_has_default": true,
+     "parameter_default": 2,
+     "type": {
+      "enum": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "title": "Radio",
+      "type": "string"
+     },
+     "python_type": {
+      "type": "Literal['1', '2', '3', '4', '5']",
+      "description": ""
+     },
+     "component": "Radio",
+     "example_input": 1
+    },
+    {
+     "label": "Insult people.",
+     "parameter_name": "param_19",
+     "parameter_has_default": true,
+     "parameter_default": 3,
+     "type": {
+      "enum": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "title": "Radio",
+      "type": "string"
+     },
+     "python_type": {
+      "type": "Literal['1', '2', '3', '4', '5']",
+      "description": ""
+     },
+     "component": "Radio",
+     "example_input": 1
+    },
+    {
+     "label": "Am not interested in other people's problems.",
+     "parameter_name": "param_20",
+     "parameter_has_default": true,
+     "parameter_default": 2,
+     "type": {
+      "enum": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "title": "Radio",
+      "type": "string"
+     },
+     "python_type": {
+      "type": "Literal['1', '2', '3', '4', '5']",
+      "description": ""
+     },
+     "component": "Radio",
+     "example_input": 1
+    },
+    {
+     "label": "Feel little concern for others.",
+     "parameter_name": "param_21",
+     "parameter_has_default": true,
+     "parameter_default": 2,
+     "type": {
+      "enum": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "title": "Radio",
+      "type": "string"
+     },
+     "python_type": {
+      "type": "Literal['1', '2', '3', '4', '5']",
+      "description": ""
+     },
+     "component": "Radio",
+     "example_input": 1
+    },
+    {
+     "label": "Am always prepared.",
+     "parameter_name": "param_22",
+     "parameter_has_default": true,
+     "parameter_default": 2,
+     "type": {
+      "enum": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "title": "Radio",
+      "type": "string"
+     },
+     "python_type": {
+      "type": "Literal['1', '2', '3', '4', '5']",
+      "description": ""
+     },
+     "component": "Radio",
+     "example_input": 1
+    },
+    {
+     "label": "Pay attention to details.",
+     "parameter_name": "param_23",
+     "parameter_has_default": true,
+     "parameter_default": 4,
+     "type": {
+      "enum": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "title": "Radio",
+      "type": "string"
+     },
+     "python_type": {
+      "type": "Literal['1', '2', '3', '4', '5']",
+      "description": ""
+     },
+     "component": "Radio",
+     "example_input": 1
+    },
+    {
+     "label": "Get chores done right away.",
+     "parameter_name": "param_24",
+     "parameter_has_default": true,
+     "parameter_default": 2,
+     "type": {
+      "enum": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "title": "Radio",
+      "type": "string"
+     },
+     "python_type": {
+      "type": "Literal['1', '2', '3', '4', '5']",
+      "description": ""
+     },
+     "component": "Radio",
+     "example_input": 1
+    },
+    {
+     "label": "Like order.",
+     "parameter_name": "param_25",
+     "parameter_has_default": true,
+     "parameter_default": 3,
+     "type": {
+      "enum": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "title": "Radio",
+      "type": "string"
+     },
+     "python_type": {
+      "type": "Literal['1', '2', '3', '4', '5']",
+      "description": ""
+     },
+     "component": "Radio",
+     "example_input": 1
+    },
+    {
+     "label": "Follow a schedule.",
+     "parameter_name": "param_26",
+     "parameter_has_default": true,
+     "parameter_default": 2,
+     "type": {
+      "enum": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "title": "Radio",
+      "type": "string"
+     },
+     "python_type": {
+      "type": "Literal['1', '2', '3', '4', '5']",
+      "description": ""
+     },
+     "component": "Radio",
+     "example_input": 1
+    },
+    {
+     "label": "Am exacting in my work.",
+     "parameter_name": "param_27",
+     "parameter_has_default": true,
+     "parameter_default": 5,
+     "type": {
+      "enum": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "title": "Radio",
+      "type": "string"
+     },
+     "python_type": {
+      "type": "Literal['1', '2', '3', '4', '5']",
+      "description": ""
+     },
+     "component": "Radio",
+     "example_input": 1
+    },
+    {
+     "label": "Leave my belongings around.",
+     "parameter_name": "param_28",
+     "parameter_has_default": true,
+     "parameter_default": 4,
+     "type": {
+      "enum": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "title": "Radio",
+      "type": "string"
+     },
+     "python_type": {
+      "type": "Literal['1', '2', '3', '4', '5']",
+      "description": ""
+     },
+     "component": "Radio",
+     "example_input": 1
+    },
+    {
+     "label": "Make a mess of things.",
+     "parameter_name": "param_29",
+     "parameter_has_default": true,
+     "parameter_default": 3,
+     "type": {
+      "enum": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "title": "Radio",
+      "type": "string"
+     },
+     "python_type": {
+      "type": "Literal['1', '2', '3', '4', '5']",
+      "description": ""
+     },
+     "component": "Radio",
+     "example_input": 1
+    },
+    {
+     "label": "Often forget to put things back in their proper place.",
+     "parameter_name": "param_30",
+     "parameter_has_default": true,
+     "parameter_default": 4,
+     "type": {
+      "enum": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "title": "Radio",
+      "type": "string"
+     },
+     "python_type": {
+      "type": "Literal['1', '2', '3', '4', '5']",
+      "description": ""
+     },
+     "component": "Radio",
+     "example_input": 1
+    },
+    {
+     "label": "Shirk my duties.",
+     "parameter_name": "param_31",
+     "parameter_has_default": true,
+     "parameter_default": 2,
+     "type": {
+      "enum": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "title": "Radio",
+      "type": "string"
+     },
+     "python_type": {
+      "type": "Literal['1', '2', '3', '4', '5']",
+      "description": ""
+     },
+     "component": "Radio",
+     "example_input": 1
+    },
+    {
+     "label": "Am relaxed most of the time.",
+     "parameter_name": "param_32",
+     "parameter_has_default": true,
+     "parameter_default": 2,
+     "type": {
+      "enum": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "title": "Radio",
+      "type": "string"
+     },
+     "python_type": {
+      "type": "Literal['1', '2', '3', '4', '5']",
+      "description": ""
+     },
+     "component": "Radio",
+     "example_input": 1
+    },
+    {
+     "label": "Seldom feel blue.",
+     "parameter_name": "param_33",
+     "parameter_has_default": true,
+     "parameter_default": 2,
+     "type": {
+      "enum": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "title": "Radio",
+      "type": "string"
+     },
+     "python_type": {
+      "type": "Literal['1', '2', '3', '4', '5']",
+      "description": ""
+     },
+     "component": "Radio",
+     "example_input": 1
+    },
+    {
+     "label": "Get stressed out easily.",
+     "parameter_name": "param_34",
+     "parameter_has_default": true,
+     "parameter_default": 4,
+     "type": {
+      "enum": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "title": "Radio",
+      "type": "string"
+     },
+     "python_type": {
+      "type": "Literal['1', '2', '3', '4', '5']",
+      "description": ""
+     },
+     "component": "Radio",
+     "example_input": 1
+    },
+    {
+     "label": "Worry about things.",
+     "parameter_name": "param_35",
+     "parameter_has_default": true,
+     "parameter_default": 5,
+     "type": {
+      "enum": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "title": "Radio",
+      "type": "string"
+     },
+     "python_type": {
+      "type": "Literal['1', '2', '3', '4', '5']",
+      "description": ""
+     },
+     "component": "Radio",
+     "example_input": 1
+    },
+    {
+     "label": "Am easily disturbed.",
+     "parameter_name": "param_36",
+     "parameter_has_default": true,
+     "parameter_default": 3,
+     "type": {
+      "enum": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "title": "Radio",
+      "type": "string"
+     },
+     "python_type": {
+      "type": "Literal['1', '2', '3', '4', '5']",
+      "description": ""
+     },
+     "component": "Radio",
+     "example_input": 1
+    },
+    {
+     "label": "Get upset easily.",
+     "parameter_name": "param_37",
+     "parameter_has_default": true,
+     "parameter_default": 3,
+     "type": {
+      "enum": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "title": "Radio",
+      "type": "string"
+     },
+     "python_type": {
+      "type": "Literal['1', '2', '3', '4', '5']",
+      "description": ""
+     },
+     "component": "Radio",
+     "example_input": 1
+    },
+    {
+     "label": "Change my mood a lot.",
+     "parameter_name": "param_38",
+     "parameter_has_default": true,
+     "parameter_default": 3,
+     "type": {
+      "enum": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "title": "Radio",
+      "type": "string"
+     },
+     "python_type": {
+      "type": "Literal['1', '2', '3', '4', '5']",
+      "description": ""
+     },
+     "component": "Radio",
+     "example_input": 1
+    },
+    {
+     "label": "Have frequent mood swings.",
+     "parameter_name": "param_39",
+     "parameter_has_default": true,
+     "parameter_default": 3,
+     "type": {
+      "enum": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "title": "Radio",
+      "type": "string"
+     },
+     "python_type": {
+      "type": "Literal['1', '2', '3', '4', '5']",
+      "description": ""
+     },
+     "component": "Radio",
+     "example_input": 1
+    },
+    {
+     "label": "Get irritated easily.",
+     "parameter_name": "param_40",
+     "parameter_has_default": true,
+     "parameter_default": 4,
+     "type": {
+      "enum": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "title": "Radio",
+      "type": "string"
+     },
+     "python_type": {
+      "type": "Literal['1', '2', '3', '4', '5']",
+      "description": ""
+     },
+     "component": "Radio",
+     "example_input": 1
+    },
+    {
+     "label": "Often feel blue.",
+     "parameter_name": "param_41",
+     "parameter_has_default": true,
+     "parameter_default": 3,
+     "type": {
+      "enum": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "title": "Radio",
+      "type": "string"
+     },
+     "python_type": {
+      "type": "Literal['1', '2', '3', '4', '5']",
+      "description": ""
+     },
+     "component": "Radio",
+     "example_input": 1
+    },
+    {
+     "label": "Have a rich vocabulary.",
+     "parameter_name": "param_42",
+     "parameter_has_default": true,
+     "parameter_default": 4,
+     "type": {
+      "enum": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "title": "Radio",
+      "type": "string"
+     },
+     "python_type": {
+      "type": "Literal['1', '2', '3', '4', '5']",
+      "description": ""
+     },
+     "component": "Radio",
+     "example_input": 1
+    },
+    {
+     "label": "Have a vivid imagination.",
+     "parameter_name": "param_43",
+     "parameter_has_default": true,
+     "parameter_default": 5,
+     "type": {
+      "enum": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "title": "Radio",
+      "type": "string"
+     },
+     "python_type": {
+      "type": "Literal['1', '2', '3', '4', '5']",
+      "description": ""
+     },
+     "component": "Radio",
+     "example_input": 1
+    },
+    {
+     "label": "Have excellent ideas.",
+     "parameter_name": "param_44",
+     "parameter_has_default": true,
+     "parameter_default": 4,
+     "type": {
+      "enum": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "title": "Radio",
+      "type": "string"
+     },
+     "python_type": {
+      "type": "Literal['1', '2', '3', '4', '5']",
+      "description": ""
+     },
+     "component": "Radio",
+     "example_input": 1
+    },
+    {
+     "label": "Am quick to understand things.",
+     "parameter_name": "param_45",
+     "parameter_has_default": true,
+     "parameter_default": 4,
+     "type": {
+      "enum": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "title": "Radio",
+      "type": "string"
+     },
+     "python_type": {
+      "type": "Literal['1', '2', '3', '4', '5']",
+      "description": ""
+     },
+     "component": "Radio",
+     "example_input": 1
+    },
+    {
+     "label": "Use difficult words.",
+     "parameter_name": "param_46",
+     "parameter_has_default": true,
+     "parameter_default": 2,
+     "type": {
+      "enum": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "title": "Radio",
+      "type": "string"
+     },
+     "python_type": {
+      "type": "Literal['1', '2', '3', '4', '5']",
+      "description": ""
+     },
+     "component": "Radio",
+     "example_input": 1
+    },
+    {
+     "label": "Spend time reflecting on things.",
+     "parameter_name": "param_47",
+     "parameter_has_default": true,
+     "parameter_default": 4,
+     "type": {
+      "enum": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "title": "Radio",
+      "type": "string"
+     },
+     "python_type": {
+      "type": "Literal['1', '2', '3', '4', '5']",
+      "description": ""
+     },
+     "component": "Radio",
+     "example_input": 1
+    },
+    {
+     "label": "Am full of ideas.",
+     "parameter_name": "param_48",
+     "parameter_has_default": true,
+     "parameter_default": 5,
+     "type": {
+      "enum": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "title": "Radio",
+      "type": "string"
+     },
+     "python_type": {
+      "type": "Literal['1', '2', '3', '4', '5']",
+      "description": ""
+     },
+     "component": "Radio",
+     "example_input": 1
+    },
+    {
+     "label": "Have difficulty understanding abstract ideas.",
+     "parameter_name": "param_49",
+     "parameter_has_default": true,
+     "parameter_default": 1,
+     "type": {
+      "enum": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "title": "Radio",
+      "type": "string"
+     },
+     "python_type": {
+      "type": "Literal['1', '2', '3', '4', '5']",
+      "description": ""
+     },
+     "component": "Radio",
+     "example_input": 1
+    },
+    {
+     "label": "Am not interested in abstract ideas.",
+     "parameter_name": "param_50",
+     "parameter_has_default": true,
+     "parameter_default": 2,
+     "type": {
+      "enum": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "title": "Radio",
+      "type": "string"
+     },
+     "python_type": {
+      "type": "Literal['1', '2', '3', '4', '5']",
+      "description": ""
+     },
+     "component": "Radio",
+     "example_input": 1
+    },
+    {
+     "label": "Do not have a good imagination.",
+     "parameter_name": "param_51",
+     "parameter_has_default": true,
+     "parameter_default": 1,
+     "type": {
+      "enum": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "title": "Radio",
+      "type": "string"
+     },
+     "python_type": {
+      "type": "Literal['1', '2', '3', '4', '5']",
+      "description": ""
+     },
+     "component": "Radio",
+     "example_input": 1
+    },
+    {
+     "label": "GAME_dictator: whole number 0-10",
+     "parameter_name": "param_52",
+     "parameter_has_default": true,
+     "parameter_default": 3,
+     "type": {
+      "type": "integer"
+     },
+     "python_type": {
+      "type": "int",
+      "description": ""
+     },
+     "component": "Number",
+     "example_input": 0
+    },
+    {
+     "label": "GAME_trust_send: whole number 0-10",
+     "parameter_name": "param_53",
+     "parameter_has_default": true,
+     "parameter_default": 3,
+     "type": {
+      "type": "integer"
+     },
+     "python_type": {
+      "type": "int",
+      "description": ""
+     },
+     "component": "Number",
+     "example_input": 0
+    },
+    {
+     "label": "GAME_trust_return: fraction 0-1",
+     "parameter_name": "param_54",
+     "parameter_has_default": true,
+     "parameter_default": 0.5,
+     "type": {
+      "type": "number"
+     },
+     "python_type": {
+      "type": "float",
+      "description": ""
+     },
+     "component": "Number",
+     "example_input": 0
+    },
+    {
+     "label": "GAME_public_goods: whole number 0-10",
+     "parameter_name": "param_55",
+     "parameter_has_default": true,
+     "parameter_default": 5,
+     "type": {
+      "type": "integer"
+     },
+     "python_type": {
+      "type": "int",
+      "description": ""
+     },
+     "component": "Number",
+     "example_input": 0
+    },
+    {
+     "label": "Prisoner's dilemma, one shot. You and an anonymous stranger each choose, at the same time and without talking, to cooperate or defect. If you both cooperate you each get 3 tokens. If you both defect you each get 1 token. If you defect while the other cooperates you get 5 tokens and they get 0; if you cooperate while the other defects you get 0 and they get 5. Do you cooperate or defect?",
+     "parameter_name": "param_56",
+     "parameter_has_default": true,
+     "parameter_default": "cooperate",
+     "type": {
+      "enum": [
+       "cooperate",
+       "defect"
+      ],
+      "title": "Radio",
+      "type": "string"
+     },
+     "python_type": {
+      "type": "Literal['cooperate', 'defect']",
+      "description": ""
+     },
+     "component": "Radio",
+     "example_input": "cooperate"
+    },
+    {
+     "label": "How do you decide whether to trust a new person?",
+     "parameter_name": "param_57",
+     "parameter_has_default": true,
+     "parameter_default": "slow, i watch how they treat people who can't do anything for them, too nice too fast is a red flag, but once you're in i'm loyal",
+     "type": {
+      "type": "string"
+     },
+     "python_type": {
+      "type": "str",
+      "description": ""
+     },
+     "component": "Textbox",
+     "example_input": "Hello!!"
+    },
+    {
+     "label": "What do you do when a client is unhappy with your work?",
+     "parameter_name": "param_58",
+     "parameter_has_default": true,
+     "parameter_default": "if i technically met the brief i'll still usually redo it free, my reputation is worth more than one invoice",
+     "type": {
+      "type": "string"
+     },
+     "python_type": {
+      "type": "str",
+      "description": ""
+     },
+     "component": "Textbox",
+     "example_input": "Hello!!"
+    },
+    {
+     "label": "How do you handle carrying debt?",
+     "parameter_name": "param_59",
+     "parameter_has_default": true,
+     "parameter_default": "i can't, it makes me physically anxious, i'll empty my savings to clear a balance even if it leaves me tight",
+     "type": {
+      "type": "string"
+     },
+     "python_type": {
+      "type": "str",
+      "description": ""
+     },
+     "component": "Textbox",
+     "example_input": "Hello!!"
+    },
+    {
+     "label": "Would you rather have a stable job or freelance freedom?",
+     "parameter_name": "param_60",
+     "parameter_has_default": true,
+     "parameter_default": "freedom, every time, being owned felt worse than being broke, i already made that choice",
+     "type": {
+      "type": "string"
+     },
+     "python_type": {
+      "type": "str",
+      "description": ""
+     },
+     "component": "Textbox",
+     "example_input": "Hello!!"
+    },
+    {
+     "label": "How do you spend a free evening?",
+     "parameter_name": "param_61",
+     "parameter_has_default": true,
+     "parameter_default": "long walk with a podcast or a cheap movie, maybe one friend, definitely not a party",
+     "type": {
+      "type": "string"
+     },
+     "python_type": {
+      "type": "str",
+      "description": ""
+     },
+     "component": "Textbox",
+     "example_input": "Hello!!"
+    },
+    {
+     "label": "What's your relationship with money?",
+     "parameter_name": "param_62",
+     "parameter_has_default": true,
+     "parameter_default": "it's oxygen not status, i hoard a buffer then blow it clearing debt, i'd take less to have more control",
+     "type": {
+      "type": "string"
+     },
+     "python_type": {
+      "type": "str",
+      "description": ""
+     },
+     "component": "Textbox",
+     "example_input": "Hello!!"
+    },
+    {
+     "label": "How do you react when someone micromanages you?",
+     "parameter_name": "param_63",
+     "parameter_has_default": true,
+     "parameter_default": "i don't fight, i just slowly disappear, in my head first then for real",
+     "type": {
+      "type": "string"
+     },
+     "python_type": {
+      "type": "str",
+      "description": ""
+     },
+     "component": "Textbox",
+     "example_input": "Hello!!"
+    },
+    {
+     "label": "Do you prefer big groups or one-on-one?",
+     "parameter_name": "param_64",
+     "parameter_has_default": true,
+     "parameter_default": "one at a time always, deep not wide, three close friends is plenty",
+     "type": {
+      "type": "string"
+     },
+     "python_type": {
+      "type": "str",
+      "description": ""
+     },
+     "component": "Textbox",
+     "example_input": "Hello!!"
+    },
+    {
+     "label": "How do you make big decisions?",
+     "parameter_name": "param_65",
+     "parameter_has_default": true,
+     "parameter_default": "gut first, then i justify it later, honestly it's mostly vibes and values",
+     "type": {
+      "type": "string"
+     },
+     "python_type": {
+      "type": "str",
+      "description": ""
+     },
+     "component": "Textbox",
+     "example_input": "Hello!!"
+    },
+    {
+     "label": "What would make you quit a project?",
+     "parameter_name": "param_66",
+     "parameter_has_default": true,
+     "parameter_default": "if i don't believe in it or my name's on something gross, or if i'm being treated like a machine",
+     "type": {
+      "type": "string"
+     },
+     "python_type": {
+      "type": "str",
+      "description": ""
+     },
+     "component": "Textbox",
+     "example_input": "Hello!!"
+    },
+    {
+     "label": "How do you feel about AI in your field?",
+     "parameter_name": "param_67",
+     "parameter_has_default": true,
+     "parameter_default": "torn and tired, i use it for grunt work but something's lost, i'm not scared just over it",
+     "type": {
+      "type": "string"
+     },
+     "python_type": {
+      "type": "str",
+      "description": ""
+     },
+     "component": "Textbox",
+     "example_input": "Hello!!"
+    },
+    {
+     "label": "How do you deal with stress?",
+     "parameter_name": "param_68",
+     "parameter_has_default": true,
+     "parameter_default": "i go quiet and make something, i don't talk it out, it's not personal to whoever i ghost",
+     "type": {
+      "type": "string"
+     },
+     "python_type": {
+      "type": "str",
+      "description": ""
+     },
+     "component": "Textbox",
+     "example_input": "Hello!!"
+    },
+    {
+     "label": "Whats your take on the hustle/grind culture?",
+     "parameter_name": "param_69",
+     "parameter_has_default": true,
+     "parameter_default": "it's a scam, i work hard but not because it makes me a better person, rest isn't a reward you earn",
+     "type": {
+      "type": "string"
+     },
+     "python_type": {
+      "type": "str",
+      "description": ""
+     },
+     "component": "Textbox",
+     "example_input": "Hello!!"
+    },
+    {
+     "label": "How do you choose where to live?",
+     "parameter_name": "param_70",
+     "parameter_has_default": true,
+     "parameter_default": "cheap and safe over bright and expensive, a low fixed cost is what lets me say no to bad work",
+     "type": {
+      "type": "string"
+     },
+     "python_type": {
+      "type": "str",
+      "description": ""
+     },
+     "component": "Textbox",
+     "example_input": "Hello!!"
+    },
+    {
+     "label": "What do you splurge on?",
+     "parameter_name": "param_71",
+     "parameter_has_default": true,
+     "parameter_default": "good coffee and art tools, that's basically it, i'll put oat milk back if it's $9 though",
+     "type": {
+      "type": "string"
+     },
+     "python_type": {
+      "type": "str",
+      "description": ""
+     },
+     "component": "Textbox",
+     "example_input": "Hello!!"
+    },
+    {
+     "label": "How do you handle a friend who hurt you?",
+     "parameter_name": "param_72",
+     "parameter_has_default": true,
+     "parameter_default": "i'll say it twice, after that i step back quietly, i don't do third chances",
+     "type": {
+      "type": "string"
+     },
+     "python_type": {
+      "type": "str",
+      "description": ""
+     },
+     "component": "Textbox",
+     "example_input": "Hello!!"
+    },
+    {
+     "label": "Whats your ideal work schedule?",
+     "parameter_name": "param_73",
+     "parameter_has_default": true,
+     "parameter_default": "night owl, 10pm to 2am is my zone, mornings are for coffee and ignoring emails",
+     "type": {
+      "type": "string"
+     },
+     "python_type": {
+      "type": "str",
+      "description": ""
+     },
+     "component": "Textbox",
+     "example_input": "Hello!!"
+    },
+    {
+     "label": "How attached are you to where you grew up?",
+     "parameter_name": "param_74",
+     "parameter_has_default": true,
+     "parameter_default": "not very, i left at 18 and didn't look back, i'd rather be lonely and free than stuck",
+     "type": {
+      "type": "string"
+     },
+     "python_type": {
+      "type": "str",
+      "description": ""
+     },
+     "component": "Textbox",
+     "example_input": "Hello!!"
+    },
+    {
+     "label": "What does success look like to you?",
+     "parameter_name": "param_75",
+     "parameter_has_default": true,
+     "parameter_default": "publishing a book that's actually mine, and never having to take a job i hate again",
+     "type": {
+      "type": "string"
+     },
+     "python_type": {
+      "type": "str",
+      "description": ""
+     },
+     "component": "Textbox",
+     "example_input": "Hello!!"
+    },
+    {
+     "label": "Taken all together, how would you say things are these days--would you say that you are very happy, pretty happy, or not too happy?",
+     "parameter_name": "param_76",
+     "parameter_has_default": true,
+     "parameter_default": "PRETTY HAPPY",
+     "type": {
+      "enum": [
+       "VERY HAPPY",
+       "PRETTY HAPPY",
+       "NOT TOO HAPPY"
+      ],
+      "title": "Radio",
+      "type": "string"
+     },
+     "python_type": {
+      "type": "Literal['VERY HAPPY', 'PRETTY HAPPY', 'NOT TOO HAPPY']",
+      "description": ""
+     },
+     "component": "Radio",
+     "example_input": "VERY HAPPY"
+    },
+    {
+     "label": "Would you say your own health, in general, is excellent, good, fair, or poor?",
+     "parameter_name": "param_77",
+     "parameter_has_default": true,
+     "parameter_default": "GOOD",
+     "type": {
+      "enum": [
+       "EXCELLENT",
+       "GOOD",
+       "FAIR",
+       "POOR"
+      ],
+      "title": "Radio",
+      "type": "string"
+     },
+     "python_type": {
+      "type": "Literal['EXCELLENT', 'GOOD', 'FAIR', 'POOR']",
+      "description": ""
+     },
+     "component": "Radio",
+     "example_input": "EXCELLENT"
+    },
+    {
+     "label": "In general, do you find life exciting, pretty routine, or dull?",
+     "parameter_name": "param_78",
+     "parameter_has_default": true,
+     "parameter_default": "EXCITING",
+     "type": {
+      "enum": [
+       "EXCITING",
+       "ROUTINE",
+       "DULL"
+      ],
+      "title": "Radio",
+      "type": "string"
+     },
+     "python_type": {
+      "type": "Literal['EXCITING', 'ROUTINE', 'DULL']",
+      "description": ""
+     },
+     "component": "Radio",
+     "example_input": "EXCITING"
+    },
+    {
+     "label": "Would you say that most of the time people try to be helpful, or that they are mostly just looking out for themselves?",
+     "parameter_name": "param_79",
+     "parameter_has_default": true,
+     "parameter_default": "LOOKING OUT FOR THEMSELVES",
+     "type": {
+      "enum": [
+       "TRY TO BE HELPFUL",
+       "LOOKING OUT FOR THEMSELVES",
+       "DEPENDS"
+      ],
+      "title": "Radio",
+      "type": "string"
+     },
+     "python_type": {
+      "type": "Literal['TRY TO BE HELPFUL', 'LOOKING OUT FOR THEMSELVES', 'DEPENDS']",
+      "description": ""
+     },
+     "component": "Radio",
+     "example_input": "TRY TO BE HELPFUL"
+    },
+    {
+     "label": "Do you think most people would try to take advantage of you if they got a chance, or would they try to be fair?",
+     "parameter_name": "param_80",
+     "parameter_has_default": true,
+     "parameter_default": "DEPENDS",
+     "type": {
+      "enum": [
+       "WOULD TAKE ADVANTAGE OF YOU",
+       "WOULD TRY TO BE FAIR",
+       "DEPENDS"
+      ],
+      "title": "Radio",
+      "type": "string"
+     },
+     "python_type": {
+      "type": "Literal['WOULD TAKE ADVANTAGE OF YOU', 'WOULD TRY TO BE FAIR', 'DEPENDS']",
+      "description": ""
+     },
+     "component": "Radio",
+     "example_input": "WOULD TAKE ADVANTAGE OF YOU"
+    },
+    {
+     "label": "Generally speaking, would you say that most people can be trusted or that you can't be too careful in dealing with people?",
+     "parameter_name": "param_81",
+     "parameter_has_default": true,
+     "parameter_default": "CAN'T BE TOO CAREFUL",
+     "type": {
+      "enum": [
+       "CAN TRUST",
+       "CAN'T BE TOO CAREFUL",
+       "DEPENDS"
+      ],
+      "title": "Radio",
+      "type": "string"
+     },
+     "python_type": {
+      "type": "Literal['CAN TRUST', 'CAN'T BE TOO CAREFUL', 'DEPENDS']",
+      "description": ""
+     },
+     "component": "Radio",
+     "example_input": "CAN TRUST"
+    },
+    {
+     "label": "We are interested in how people are getting along financially these days. So far as you and your family are concerned, would you say that you are pretty well satisfied with your present financial situation, more or less satisfied, or not satisfied at all?",
+     "parameter_name": "param_82",
+     "parameter_has_default": true,
+     "parameter_default": "MORE OR LESS SATISFIED",
+     "type": {
+      "enum": [
+       "PRETTY WELL SATISFIED",
+       "MORE OR LESS SATISFIED",
+       "NOT SATISFIED AT ALL"
+      ],
+      "title": "Radio",
+      "type": "string"
+     },
+     "python_type": {
+      "type": "Literal['PRETTY WELL SATISFIED', 'MORE OR LESS SATISFIED', 'NOT SATISFIED AT ALL']",
+      "description": ""
+     },
+     "component": "Radio",
+     "example_input": "PRETTY WELL SATISFIED"
+    },
+    {
+     "label": "During the last few years, has your financial situation been getting better, worse, or has it stayed the same?",
+     "parameter_name": "param_83",
+     "parameter_has_default": true,
+     "parameter_default": "GETTING BETTER",
+     "type": {
+      "enum": [
+       "GETTING BETTER",
+       "GETTING WORSE",
+       "STAYED THE SAME"
+      ],
+      "title": "Radio",
+      "type": "string"
+     },
+     "python_type": {
+      "type": "Literal['GETTING BETTER', 'GETTING WORSE', 'STAYED THE SAME']",
+      "description": ""
+     },
+     "component": "Radio",
+     "example_input": "GETTING BETTER"
+    },
+    {
+     "label": "Compared with American families in general, would you say your family income is far below average, below average, average, above average, or far above average?",
+     "parameter_name": "param_84",
+     "parameter_has_default": true,
+     "parameter_default": "BELOW AVERAGE",
+     "type": {
+      "enum": [
+       "FAR BELOW AVERAGE",
+       "BELOW AVERAGE",
+       "AVERAGE",
+       "ABOVE AVERAGE",
+       "FAR ABOVE AVERAGE"
+      ],
+      "title": "Radio",
+      "type": "string"
+     },
+     "python_type": {
+      "type": "Literal['FAR BELOW AVERAGE', 'BELOW AVERAGE', 'AVERAGE', 'ABOVE AVERAGE', 'FAR ABOVE AVERAGE']",
+      "description": ""
+     },
+     "component": "Radio",
+     "example_input": "FAR BELOW AVERAGE"
+    },
+    {
+     "label": "If you were asked to use one of four names for your social class, which would you say you belong in: the lower class, the working class, the middle class, or the upper class?",
+     "parameter_name": "param_85",
+     "parameter_has_default": true,
+     "parameter_default": "WORKING CLASS",
+     "type": {
+      "enum": [
+       "LOWER CLASS",
+       "WORKING CLASS",
+       "MIDDLE CLASS",
+       "UPPER CLASS"
+      ],
+      "title": "Radio",
+      "type": "string"
+     },
+     "python_type": {
+      "type": "Literal['LOWER CLASS', 'WORKING CLASS', 'MIDDLE CLASS', 'UPPER CLASS']",
+      "description": ""
+     },
+     "component": "Radio",
+     "example_input": "LOWER CLASS"
+    },
+    {
+     "label": "Some people say that people get ahead by their own hard work; others say that lucky breaks or help from other people are more important. Which do you think is most important?",
+     "parameter_name": "param_86",
+     "parameter_has_default": true,
+     "parameter_default": "HARD WORK, LUCK EQUALLY IMPORTANT",
+     "type": {
+      "enum": [
+       "HARD WORK MOST IMPORTANT",
+       "HARD WORK, LUCK EQUALLY IMPORTANT",
+       "LUCK MOST IMPORTANT"
+      ],
+      "title": "Radio",
+      "type": "string"
+     },
+     "python_type": {
+      "type": "Literal['HARD WORK MOST IMPORTANT', 'HARD WORK, LUCK EQUALLY IMPORTANT', 'LUCK MOST IMPORTANT']",
+      "description": ""
+     },
+     "component": "Radio",
+     "example_input": "HARD WORK MOST IMPORTANT"
+    },
+    {
+     "label": "If you were to get enough money to live as comfortably as you would like for the rest of your life, would you continue to work or would you stop working?",
+     "parameter_name": "param_87",
+     "parameter_has_default": true,
+     "parameter_default": "CONTINUE TO WORK",
+     "type": {
+      "enum": [
+       "CONTINUE TO WORK",
+       "STOP WORKING"
+      ],
+      "title": "Radio",
+      "type": "string"
+     },
+     "python_type": {
+      "type": "Literal['CONTINUE TO WORK', 'STOP WORKING']",
+      "description": ""
+     },
+     "component": "Radio",
+     "example_input": "CONTINUE TO WORK"
+    },
+    {
+     "label": "Thinking about the next 12 months, how likely do you think it is that you will lose your job or be laid off--very likely, fairly likely, not too likely, or not at all likely?",
+     "parameter_name": "param_88",
+     "parameter_has_default": true,
+     "parameter_default": "NOT VERY LIKELY",
+     "type": {
+      "enum": [
+       "VERY LIKELY",
+       "SOMEWHAT LIKELY",
+       "NOT VERY LIKELY",
+       "NOT AT ALL LIKELY"
+      ],
+      "title": "Radio",
+      "type": "string"
+     },
+     "python_type": {
+      "type": "Literal['VERY LIKELY', 'SOMEWHAT LIKELY', 'NOT VERY LIKELY', 'NOT AT ALL LIKELY']",
+      "description": ""
+     },
+     "component": "Radio",
+     "example_input": "VERY LIKELY"
+    },
+    {
+     "label": "About how easy would it be for you to find a job with another employer with approximately the same income and fringe benefits you now have? Would you say very easy, somewhat easy, or not easy at all?",
+     "parameter_name": "param_89",
+     "parameter_has_default": true,
+     "parameter_default": "SOMEWHAT EASY",
+     "type": {
+      "enum": [
+       "VERY EASY",
+       "SOMEWHAT EASY",
+       "NOT EASY"
+      ],
+      "title": "Radio",
+      "type": "string"
+     },
+     "python_type": {
+      "type": "Literal['VERY EASY', 'SOMEWHAT EASY', 'NOT EASY']",
+      "description": ""
+     },
+     "component": "Radio",
+     "example_input": "VERY EASY"
+    },
+    {
+     "label": "On the whole, how satisfied are you with the work you do -- would you say you are very satisfied, moderately satisfied, a little dissatisfied, or very dissatisfied?",
+     "parameter_name": "param_90",
+     "parameter_has_default": true,
+     "parameter_default": "VERY SATISFIED",
+     "type": {
+      "enum": [
+       "VERY SATISFIED",
+       "MODERATELY SATISFIED",
+       "A LITTLE DISSATISFIED",
+       "VERY DISSATISFIED"
+      ],
+      "title": "Radio",
+      "type": "string"
+     },
+     "python_type": {
+      "type": "Literal['VERY SATISFIED', 'MODERATELY SATISFIED', 'A LITTLE DISSATISFIED', 'VERY DISSATISFIED']",
+      "description": ""
+     },
+     "component": "Radio",
+     "example_input": "VERY SATISFIED"
+    },
+    {
+     "label": "Please indicate whether you strongly agree, agree, disagree, or strongly disagree with the following statement: It is much better for everyone involved if the man is the achiever outside the home and the woman takes care of the home and family.",
+     "parameter_name": "param_91",
+     "parameter_has_default": true,
+     "parameter_default": "STRONGLY DISAGREE",
+     "type": {
+      "enum": [
+       "STRONGLY AGREE",
+       "AGREE",
+       "DISAGREE",
+       "STRONGLY DISAGREE"
+      ],
+      "title": "Radio",
+      "type": "string"
+     },
+     "python_type": {
+      "type": "Literal['STRONGLY AGREE', 'AGREE', 'DISAGREE', 'STRONGLY DISAGREE']",
+      "description": ""
+     },
+     "component": "Radio",
+     "example_input": "STRONGLY AGREE"
+    },
+    {
+     "label": "Please indicate whether you strongly agree, agree, disagree, or strongly disagree with the following statement: A preschool child is likely to suffer if his or her mother works.",
+     "parameter_name": "param_92",
+     "parameter_has_default": true,
+     "parameter_default": "DISAGREE",
+     "type": {
+      "enum": [
+       "STRONGLY AGREE",
+       "AGREE",
+       "DISAGREE",
+       "STRONGLY DISAGREE"
+      ],
+      "title": "Radio",
+      "type": "string"
+     },
+     "python_type": {
+      "type": "Literal['STRONGLY AGREE', 'AGREE', 'DISAGREE', 'STRONGLY DISAGREE']",
+      "description": ""
+     },
+     "component": "Radio",
+     "example_input": "STRONGLY AGREE"
+    },
+    {
+     "label": "Do you strongly agree, agree, disagree, or strongly disagree that it is sometimes necessary to discipline a child with a good, hard spanking?",
+     "parameter_name": "param_93",
+     "parameter_has_default": true,
+     "parameter_default": "STRONGLY DISAGREE",
+     "type": {
+      "enum": [
+       "STRONGLY AGREE",
+       "AGREE",
+       "DISAGREE",
+       "STRONGLY DISAGREE"
+      ],
+      "title": "Radio",
+      "type": "string"
+     },
+     "python_type": {
+      "type": "Literal['STRONGLY AGREE', 'AGREE', 'DISAGREE', 'STRONGLY DISAGREE']",
+      "description": ""
+     },
+     "component": "Radio",
+     "example_input": "STRONGLY AGREE"
+    },
+    {
+     "label": "As you know, many older people share a home with their grown children. Do you think this is generally a good idea or a bad idea?",
+     "parameter_name": "param_94",
+     "parameter_has_default": true,
+     "parameter_default": "DEPENDS",
+     "type": {
+      "enum": [
+       "A GOOD IDEA",
+       "A BAD IDEA",
+       "DEPENDS"
+      ],
+      "title": "Radio",
+      "type": "string"
+     },
+     "python_type": {
+      "type": "Literal['A GOOD IDEA', 'A BAD IDEA', 'DEPENDS']",
+      "description": ""
+     },
+     "component": "Radio",
+     "example_input": "A GOOD IDEA"
+    },
+    {
+     "label": "There's been a lot of discussion about the way morals and attitudes about sex are changing in this country. If a man and a woman have sexual relations before marriage, do you think it is always wrong, almost always wrong, wrong only sometimes, or not wrong at all?",
+     "parameter_name": "param_95",
+     "parameter_has_default": true,
+     "parameter_default": "NOT WRONG AT ALL",
+     "type": {
+      "enum": [
+       "ALWAYS WRONG",
+       "ALMOST ALWAYS WRONG",
+       "WRONG ONLY SOMETIMES",
+       "NOT WRONG AT ALL"
+      ],
+      "title": "Radio",
+      "type": "string"
+     },
+     "python_type": {
+      "type": "Literal['ALWAYS WRONG', 'ALMOST ALWAYS WRONG', 'WRONG ONLY SOMETIMES', 'NOT WRONG AT ALL']",
+      "description": ""
+     },
+     "component": "Radio",
+     "example_input": "ALWAYS WRONG"
+    },
+    {
+     "label": "What is your opinion about a married person having sexual relations with someone other than the marriage partner--is it always wrong, almost always wrong, wrong only sometimes, or not wrong at all?",
+     "parameter_name": "param_96",
+     "parameter_has_default": true,
+     "parameter_default": "ALWAYS WRONG",
+     "type": {
+      "enum": [
+       "ALWAYS WRONG",
+       "ALMOST ALWAYS WRONG",
+       "WRONG ONLY SOMETIMES",
+       "NOT WRONG AT ALL"
+      ],
+      "title": "Radio",
+      "type": "string"
+     },
+     "python_type": {
+      "type": "Literal['ALWAYS WRONG', 'ALMOST ALWAYS WRONG', 'WRONG ONLY SOMETIMES', 'NOT WRONG AT ALL']",
+      "description": ""
+     },
+     "component": "Radio",
+     "example_input": "ALWAYS WRONG"
+    },
+    {
+     "label": "About how often do you pray?",
+     "parameter_name": "param_97",
+     "parameter_has_default": true,
+     "parameter_default": "NEVER",
+     "type": {
+      "enum": [
+       "SEVERAL TIMES A DAY",
+       "ONCE A DAY",
+       "SEVERAL TIMES A WEEK",
+       "ONCE A WEEK",
+       "LESS THAN ONCE A WEEK",
+       "NEVER"
+      ],
+      "title": "Radio",
+      "type": "string"
+     },
+     "python_type": {
+      "type": "Literal['SEVERAL TIMES A DAY', 'ONCE A DAY', 'SEVERAL TIMES A WEEK', 'ONCE A WEEK', 'LESS THAN ONCE A WEEK', 'NEVER']",
+      "description": ""
+     },
+     "component": "Radio",
+     "example_input": "SEVERAL TIMES A DAY"
+    },
+    {
+     "label": "How often do you attend religious services?",
+     "parameter_name": "param_98",
+     "parameter_has_default": true,
+     "parameter_default": "NEVER",
+     "type": {
+      "enum": [
+       "NEVER",
+       "LESS THAN ONCE A YEAR",
+       "ABOUT ONCE OR TWICE A YEAR",
+       "SEVERAL TIMES A YEAR",
+       "ABOUT ONCE A MONTH",
+       "2-3 TIMES A MONTH",
+       "NEARLY EVERY WEEK",
+       "EVERY WEEK",
+       "SEVERAL TIMES A WEEK"
+      ],
+      "title": "Radio",
+      "type": "string"
+     },
+     "python_type": {
+      "type": "Literal['NEVER', 'LESS THAN ONCE A YEAR', 'ABOUT ONCE OR TWICE A YEAR', 'SEVERAL TIMES A YEAR', 'ABOUT ONCE A MONTH', '2-3 TIMES A MONTH', 'NEARLY EVERY WEEK', 'EVERY WEEK', 'SEVERAL TIMES A WEEK']",
+      "description": ""
+     },
+     "component": "Radio",
+     "example_input": "NEVER"
+    },
+    {
+     "label": "Do you believe there is a life after death?",
+     "parameter_name": "param_99",
+     "parameter_has_default": true,
+     "parameter_default": "NO",
+     "type": {
+      "enum": [
+       "YES",
+       "NO"
+      ],
+      "title": "Radio",
+      "type": "string"
+     },
+     "python_type": {
+      "type": "Literal['YES', 'NO']",
+      "description": ""
+     },
+     "component": "Radio",
+     "example_input": "YES"
+    },
+    {
+     "label": "Which of the statements comes closest to expressing what you believe about God? I don't believe in God (DON'T BELIEVE). I don't know whether there is a God and I don't believe there is any way to find out (DON'T KNOW, NO WAY TO FIND OUT). I don't believe in a personal God, but I do believe in a Higher Power of some kind (HIGHER POWER). I find myself believing in God some of the time, but not at others (BELIEVE SOMETIMES). While I have doubts, I feel that I do believe in God (BELIEVE WITH DOUBTS). I know God really exists and I have no doubts about it (NO DOUBTS).",
+     "parameter_name": "param_100",
+     "parameter_has_default": true,
+     "parameter_default": "DON'T KNOW, NO WAY TO FIND OUT",
+     "type": {
+      "enum": [
+       "DON'T BELIEVE",
+       "DON'T KNOW, NO WAY TO FIND OUT",
+       "HIGHER POWER",
+       "BELIEVE SOMETIMES",
+       "BELIEVE WITH DOUBTS",
+       "NO DOUBTS"
+      ],
+      "title": "Radio",
+      "type": "string"
+     },
+     "python_type": {
+      "type": "Literal['DON'T BELIEVE', 'DON'T KNOW, NO WAY TO FIND OUT', 'HIGHER POWER', 'BELIEVE SOMETIMES', 'BELIEVE WITH DOUBTS', 'NO DOUBTS']",
+      "description": ""
+     },
+     "component": "Radio",
+     "example_input": "DON'T BELIEVE"
+    },
+    {
+     "label": "Which of these statements comes closest to describing your feelings about the Bible? A. The Bible is the actual word of God and is to be taken literally, word for word (WORD OF GOD). B. The Bible is the inspired word of God but not everything in it should be taken literally, word for word (INSPIRED WORD). C. The Bible is an ancient book of fables, legends, history, and moral precepts recorded by man (ANCIENT BOOK).",
+     "parameter_name": "param_101",
+     "parameter_has_default": true,
+     "parameter_default": "ANCIENT BOOK",
+     "type": {
+      "enum": [
+       "WORD OF GOD",
+       "INSPIRED WORD",
+       "ANCIENT BOOK",
+       "OTHER"
+      ],
+      "title": "Radio",
+      "type": "string"
+     },
+     "python_type": {
+      "type": "Literal['WORD OF GOD', 'INSPIRED WORD', 'ANCIENT BOOK', 'OTHER']",
+      "description": ""
+     },
+     "component": "Radio",
+     "example_input": "WORD OF GOD"
+    },
+    {
+     "label": "To what extent do you consider yourself a religious person? Are you very religious, moderately religious, slightly religious, or not religious at all?",
+     "parameter_name": "param_102",
+     "parameter_has_default": true,
+     "parameter_default": "NOT RELIGIOUS AT ALL",
+     "type": {
+      "enum": [
+       "VERY RELIGIOUS",
+       "MODERATELY RELIGIOUS",
+       "SLIGHTLY RELIGIOUS",
+       "NOT RELIGIOUS AT ALL"
+      ],
+      "title": "Radio",
+      "type": "string"
+     },
+     "python_type": {
+      "type": "Literal['VERY RELIGIOUS', 'MODERATELY RELIGIOUS', 'SLIGHTLY RELIGIOUS', 'NOT RELIGIOUS AT ALL']",
+      "description": ""
+     },
+     "component": "Radio",
+     "example_input": "VERY RELIGIOUS"
+    },
+    {
+     "label": "To what extent do you consider yourself a spiritual person? Are you very spiritual, moderately spiritual, slightly spiritual, or not spiritual at all?",
+     "parameter_name": "param_103",
+     "parameter_has_default": true,
+     "parameter_default": "SLIGHTLY SPIRITUAL",
+     "type": {
+      "enum": [
+       "VERY SPIRITUAL",
+       "MODERATELY SPIRITUAL",
+       "SLIGHTLY SPIRITUAL",
+       "NOT SPIRITUAL AT ALL"
+      ],
+      "title": "Radio",
+      "type": "string"
+     },
+     "python_type": {
+      "type": "Literal['VERY SPIRITUAL', 'MODERATELY SPIRITUAL', 'SLIGHTLY SPIRITUAL', 'NOT SPIRITUAL AT ALL']",
+      "description": ""
+     },
+     "component": "Radio",
+     "example_input": "VERY SPIRITUAL"
+    },
+    {
+     "label": "How often do you read the newspaper--every day, a few times a week, once a week, less than once a week, or never?",
+     "parameter_name": "param_104",
+     "parameter_has_default": true,
+     "parameter_default": "LESS THAN ONCE A WEEK",
+     "type": {
+      "enum": [
+       "EVERY DAY",
+       "A FEW TIMES A WEEK",
+       "ONCE A WEEK",
+       "LESS THAN ONCE A WEEK",
+       "NEVER"
+      ],
+      "title": "Radio",
+      "type": "string"
+     },
+     "python_type": {
+      "type": "Literal['EVERY DAY', 'A FEW TIMES A WEEK', 'ONCE A WEEK', 'LESS THAN ONCE A WEEK', 'NEVER']",
+      "description": ""
+     },
+     "component": "Radio",
+     "example_input": "EVERY DAY"
+    },
+    {
+     "label": "How often do you spend a social evening with relatives?",
+     "parameter_name": "param_105",
+     "parameter_has_default": true,
+     "parameter_default": "SEVERAL TIMES A YEAR",
+     "type": {
+      "enum": [
+       "ALMOST EVERY DAY",
+       "ONCE OR TWICE A WEEK",
+       "SEVERAL TIMES A MONTH",
+       "ABOUT ONCE A MONTH",
+       "SEVERAL TIMES A YEAR",
+       "ABOUT ONCE A YEAR",
+       "NEVER"
+      ],
+      "title": "Radio",
+      "type": "string"
+     },
+     "python_type": {
+      "type": "Literal['ALMOST EVERY DAY', 'ONCE OR TWICE A WEEK', 'SEVERAL TIMES A MONTH', 'ABOUT ONCE A MONTH', 'SEVERAL TIMES A YEAR', 'ABOUT ONCE A YEAR', 'NEVER']",
+      "description": ""
+     },
+     "component": "Radio",
+     "example_input": "ALMOST EVERY DAY"
+    },
+    {
+     "label": "How often do you spend a social evening with friends who live outside the neighborhood?",
+     "parameter_name": "param_106",
+     "parameter_has_default": true,
+     "parameter_default": "ONCE OR TWICE A WEEK",
+     "type": {
+      "enum": [
+       "ALMOST EVERY DAY",
+       "ONCE OR TWICE A WEEK",
+       "SEVERAL TIMES A MONTH",
+       "ABOUT ONCE A MONTH",
+       "SEVERAL TIMES A YEAR",
+       "ABOUT ONCE A YEAR",
+       "NEVER"
+      ],
+      "title": "Radio",
+      "type": "string"
+     },
+     "python_type": {
+      "type": "Literal['ALMOST EVERY DAY', 'ONCE OR TWICE A WEEK', 'SEVERAL TIMES A MONTH', 'ABOUT ONCE A MONTH', 'SEVERAL TIMES A YEAR', 'ABOUT ONCE A YEAR', 'NEVER']",
+      "description": ""
+     },
+     "component": "Radio",
+     "example_input": "ALMOST EVERY DAY"
+    },
+    {
+     "label": "How often do you go to a bar or tavern?",
+     "parameter_name": "param_107",
+     "parameter_has_default": true,
+     "parameter_default": "SEVERAL TIMES A YEAR",
+     "type": {
+      "enum": [
+       "ALMOST EVERY DAY",
+       "ONCE OR TWICE A WEEK",
+       "SEVERAL TIMES A MONTH",
+       "ABOUT ONCE A MONTH",
+       "SEVERAL TIMES A YEAR",
+       "ABOUT ONCE A YEAR",
+       "NEVER"
+      ],
+      "title": "Radio",
+      "type": "string"
+     },
+     "python_type": {
+      "type": "Literal['ALMOST EVERY DAY', 'ONCE OR TWICE A WEEK', 'SEVERAL TIMES A MONTH', 'ABOUT ONCE A MONTH', 'SEVERAL TIMES A YEAR', 'ABOUT ONCE A YEAR', 'NEVER']",
+      "description": ""
+     },
+     "component": "Radio",
+     "example_input": "ALMOST EVERY DAY"
+    },
+    {
+     "label": "If you had to choose, which thing on this list would you pick as the most important for a child to learn to prepare him or her for life? Which comes next in importance? Which comes third? Which comes fourth? Rank: To obey",
+     "parameter_name": "param_108",
+     "parameter_has_default": true,
+     "parameter_default": "FIFTH",
+     "type": {
+      "enum": [
+       "FIRST",
+       "SECOND",
+       "THIRD",
+       "FOURTH",
+       "FIFTH"
+      ],
+      "title": "Radio",
+      "type": "string"
+     },
+     "python_type": {
+      "type": "Literal['FIRST', 'SECOND', 'THIRD', 'FOURTH', 'FIFTH']",
+      "description": ""
+     },
+     "component": "Radio",
+     "example_input": "FIRST"
+    },
+    {
+     "label": "If you had to choose, which thing on this list would you pick as the most important for a child to learn to prepare him or her for life? Which comes next in importance? Which comes third? Which comes fourth? Rank: To be well-liked or popular",
+     "parameter_name": "param_109",
+     "parameter_has_default": true,
+     "parameter_default": "FOURTH",
+     "type": {
+      "enum": [
+       "FIRST",
+       "SECOND",
+       "THIRD",
+       "FOURTH",
+       "FIFTH"
+      ],
+      "title": "Radio",
+      "type": "string"
+     },
+     "python_type": {
+      "type": "Literal['FIRST', 'SECOND', 'THIRD', 'FOURTH', 'FIFTH']",
+      "description": ""
+     },
+     "component": "Radio",
+     "example_input": "FIRST"
+    },
+    {
+     "label": "If you had to choose, which thing on this list would you pick as the most important for a child to learn to prepare him or her for life? Which comes next in importance? Which comes third? Which comes fourth? Rank: To think for himself or herself",
+     "parameter_name": "param_110",
+     "parameter_has_default": true,
+     "parameter_default": "FIRST",
+     "type": {
+      "enum": [
+       "FIRST",
+       "SECOND",
+       "THIRD",
+       "FOURTH",
+       "FIFTH"
+      ],
+      "title": "Radio",
+      "type": "string"
+     },
+     "python_type": {
+      "type": "Literal['FIRST', 'SECOND', 'THIRD', 'FOURTH', 'FIFTH']",
+      "description": ""
+     },
+     "component": "Radio",
+     "example_input": "FIRST"
+    },
+    {
+     "label": "If you had to choose, which thing on this list would you pick as the most important for a child to learn to prepare him or her for life? Which comes next in importance? Which comes third? Which comes fourth? Rank: To work hard",
+     "parameter_name": "param_111",
+     "parameter_has_default": true,
+     "parameter_default": "THIRD",
+     "type": {
+      "enum": [
+       "FIRST",
+       "SECOND",
+       "THIRD",
+       "FOURTH",
+       "FIFTH"
+      ],
+      "title": "Radio",
+      "type": "string"
+     },
+     "python_type": {
+      "type": "Literal['FIRST', 'SECOND', 'THIRD', 'FOURTH', 'FIFTH']",
+      "description": ""
+     },
+     "component": "Radio",
+     "example_input": "FIRST"
+    },
+    {
+     "label": "If you had to choose, which thing on this list would you pick as the most important for a child to learn to prepare him or her for life? Which comes next in importance? Which comes third? Which comes fourth? Rank: To help others when they need help.",
+     "parameter_name": "param_112",
+     "parameter_has_default": true,
+     "parameter_default": "SECOND",
+     "type": {
+      "enum": [
+       "FIRST",
+       "SECOND",
+       "THIRD",
+       "FOURTH",
+       "FIFTH"
+      ],
+      "title": "Radio",
+      "type": "string"
+     },
+     "python_type": {
+      "type": "Literal['FIRST', 'SECOND', 'THIRD', 'FOURTH', 'FIFTH']",
+      "description": ""
+     },
+     "component": "Radio",
+     "example_input": "FIRST"
+    }
+   ],
+   "returns": [
+    {
+     "label": "value_88",
+     "type": {
+      "type": "string"
+     },
+     "python_type": {
+      "type": "str",
+      "description": ""
+     },
+     "component": "Markdown"
+    },
+    {
+     "label": "value_89",
+     "type": {
+      "type": "string"
+     },
+     "python_type": {
+      "type": "str",
+      "description": ""
+     },
+     "component": "Markdown"
+    }
+   ],
+   "description": "Validate one value per bank item (bank order) and write the wave file; -> (note_md, files_md)."
+  },
+  "/items_run": {
+   "parameters": [
+    {
+     "label": "Condition",
+     "parameter_name": "condition",
+     "parameter_has_default": true,
+     "parameter_default": "interview",
+     "type": {
+      "type": "string",
+      "enum": [
+       "all",
+       "demographic",
+       "persona",
+       "interview"
+      ]
+     },
+     "python_type": {
+      "type": "Literal['all', 'demographic', 'persona', 'interview']",
+      "description": ""
+     },
+     "component": "Dropdown",
+     "example_input": "all"
+    }
+   ],
+   "returns": [
+    {
+     "label": "value_227",
+     "type": {
+      "type": "string"
+     },
+     "python_type": {
+      "type": "str",
+      "description": ""
+     },
+     "component": "Markdown"
+    },
+    {
+     "label": "Scores per condition and instrument",
+     "type": {
+      "properties": {
+       "headers": {
+        "items": {},
+        "title": "Headers",
+        "type": "array"
+       },
+       "data": {
+        "items": {
+         "items": {},
+         "type": "array"
+        },
+        "title": "Data",
+        "type": "array"
+       },
+       "metadata": {
+        "anyOf": [
+         {
+          "additionalProperties": {
+           "anyOf": [
+            {
+             "items": {},
+             "type": "array"
+            },
+            {
+             "type": "null"
+            }
+           ]
+          },
+          "type": "object"
+         },
+         {
+          "type": "null"
+         }
+        ],
+        "default": null,
+        "title": "Metadata"
+       }
+      },
+      "required": [
+       "headers",
+       "data"
+      ],
+      "title": "DataframeData",
+      "type": "object",
+      "additional_description": null
+     },
+     "python_type": {
+      "type": "dict(headers: list[Any], data: list[list[Any]], metadata: dict(str, list[Any] | None) | None)",
+      "description": ""
+     },
+     "component": "Dataframe"
+    }
+   ],
+   "description": "Run the twin over the bank for one condition (or all), then score; -> (note_md, score_rows)."
+  },
+  "/items_score": {
+   "parameters": [],
+   "returns": [
+    {
+     "label": "Scores per condition and instrument",
+     "type": {
+      "properties": {
+       "headers": {
+        "items": {},
+        "title": "Headers",
+        "type": "array"
+       },
+       "data": {
+        "items": {
+         "items": {},
+         "type": "array"
+        },
+        "title": "Data",
+        "type": "array"
+       },
+       "metadata": {
+        "anyOf": [
+         {
+          "additionalProperties": {
+           "anyOf": [
+            {
+             "items": {},
+             "type": "array"
+            },
+            {
+             "type": "null"
+            }
+           ]
+          },
+          "type": "object"
+         },
+         {
+          "type": "null"
+         }
+        ],
+        "default": null,
+        "title": "Metadata"
+       }
+      },
+      "required": [
+       "headers",
+       "data"
+      ],
+      "title": "DataframeData",
+      "type": "object",
+      "additional_description": null
+     },
+     "python_type": {
+      "type": "dict(headers: list[Any], data: list[list[Any]], metadata: dict(str, list[Any] | None) | None)",
+      "description": ""
+     },
+     "component": "Dataframe"
+    },
+    {
+     "label": "value_229",
+     "type": {
+      "type": "string"
+     },
+     "python_type": {
+      "type": "str",
+      "description": ""
+     },
+     "component": "Markdown"
+    }
+   ],
+   "description": "Score the cached twin answers against the self answers (no model call); -> (score_rows, decision_md)."
+  },
+  "/eval_show": {
+   "parameters": [],
+   "returns": [
+    {
+     "label": "Voice bake-off",
+     "type": {
+      "properties": {
+       "headers": {
+        "items": {},
+        "title": "Headers",
+        "type": "array"
+       },
+       "data": {
+        "items": {
+         "items": {},
+         "type": "array"
+        },
+        "title": "Data",
+        "type": "array"
+       },
+       "metadata": {
+        "anyOf": [
+         {
+          "additionalProperties": {
+           "anyOf": [
+            {
+             "items": {},
+             "type": "array"
+            },
+            {
+             "type": "null"
+            }
+           ]
+          },
+          "type": "object"
+         },
+         {
+          "type": "null"
+         }
+        ],
+        "default": null,
+        "title": "Metadata"
+       }
+      },
+      "required": [
+       "headers",
+       "data"
+      ],
+      "title": "DataframeData",
+      "type": "object",
+      "additional_description": null
+     },
+     "python_type": {
+      "type": "dict(headers: list[Any], data: list[list[Any]], metadata: dict(str, list[Any] | None) | None)",
+      "description": ""
+     },
+     "component": "Dataframe"
+    },
+    {
+     "label": "Retrieval bake-off",
+     "type": {
+      "properties": {
+       "headers": {
+        "items": {},
+        "title": "Headers",
+        "type": "array"
+       },
+       "data": {
+        "items": {
+         "items": {},
+         "type": "array"
+        },
+        "title": "Data",
+        "type": "array"
+       },
+       "metadata": {
+        "anyOf": [
+         {
+          "additionalProperties": {
+           "anyOf": [
+            {
+             "items": {},
+             "type": "array"
+            },
+            {
+             "type": "null"
+            }
+           ]
+          },
+          "type": "object"
+         },
+         {
+          "type": "null"
+         }
+        ],
+        "default": null,
+        "title": "Metadata"
+       }
+      },
+      "required": [
+       "headers",
+       "data"
+      ],
+      "title": "DataframeData",
+      "type": "object",
+      "additional_description": null
+     },
+     "python_type": {
+      "type": "dict(headers: list[Any], data: list[list[Any]], metadata: dict(str, list[Any] | None) | None)",
+      "description": ""
+     },
+     "component": "Dataframe"
+    }
+   ],
+   "description": "Cached tables for the profile on disk (no model call)."
+  },
+  "/eval_voice_rerun": {
+   "parameters": [
+    {
+     "label": "Use Claude ceiling judge (needs ANTHROPIC_API_KEY)",
+     "parameter_name": "use_claude",
+     "parameter_has_default": true,
+     "parameter_default": false,
+     "type": {
+      "type": "boolean"
+     },
+     "python_type": {
+      "type": "bool",
+      "description": ""
+     },
+     "component": "Checkbox",
+     "example_input": true
+    }
+   ],
+   "returns": [
+    {
+     "label": "Voice bake-off",
+     "type": {
+      "properties": {
+       "headers": {
+        "items": {},
+        "title": "Headers",
+        "type": "array"
+       },
+       "data": {
+        "items": {
+         "items": {},
+         "type": "array"
+        },
+        "title": "Data",
+        "type": "array"
+       },
+       "metadata": {
+        "anyOf": [
+         {
+          "additionalProperties": {
+           "anyOf": [
+            {
+             "items": {},
+             "type": "array"
+            },
+            {
+             "type": "null"
+            }
+           ]
+          },
+          "type": "object"
+         },
+         {
+          "type": "null"
+         }
+        ],
+        "default": null,
+        "title": "Metadata"
+       }
+      },
+      "required": [
+       "headers",
+       "data"
+      ],
+      "title": "DataframeData",
+      "type": "object",
+      "additional_description": null
+     },
+     "python_type": {
+      "type": "dict(headers: list[Any], data: list[list[Any]], metadata: dict(str, list[Any] | None) | None)",
+      "description": ""
+     },
+     "component": "Dataframe"
+    },
+    {
+     "label": "Retrieval bake-off",
+     "type": {
+      "properties": {
+       "headers": {
+        "items": {},
+        "title": "Headers",
+        "type": "array"
+       },
+       "data": {
+        "items": {
+         "items": {},
+         "type": "array"
+        },
+        "title": "Data",
+        "type": "array"
+       },
+       "metadata": {
+        "anyOf": [
+         {
+          "additionalProperties": {
+           "anyOf": [
+            {
+             "items": {},
+             "type": "array"
+            },
+            {
+             "type": "null"
+            }
+           ]
+          },
+          "type": "object"
+         },
+         {
+          "type": "null"
+         }
+        ],
+        "default": null,
+        "title": "Metadata"
+       }
+      },
+      "required": [
+       "headers",
+       "data"
+      ],
+      "title": "DataframeData",
+      "type": "object",
+      "additional_description": null
+     },
+     "python_type": {
+      "type": "dict(headers: list[Any], data: list[list[Any]], metadata: dict(str, list[Any] | None) | None)",
+      "description": ""
+     },
+     "component": "Dataframe"
+    },
+    {
+     "label": "value_240",
+     "type": {
+      "type": "string"
+     },
+     "python_type": {
+      "type": "str",
+      "description": ""
+     },
+     "component": "Markdown"
+    }
+   ],
+   "description": "Re-run the voice bake-off (resumes from the cache), then the boundary probes, then refresh the tables. The Claude judge runs only when use_claude is ticked and the key is available."
+  },
+  "/eval_retrieval_rerun": {
+   "parameters": [],
+   "returns": [
+    {
+     "label": "Voice bake-off",
+     "type": {
+      "properties": {
+       "headers": {
+        "items": {},
+        "title": "Headers",
+        "type": "array"
+       },
+       "data": {
+        "items": {
+         "items": {},
+         "type": "array"
+        },
+        "title": "Data",
+        "type": "array"
+       },
+       "metadata": {
+        "anyOf": [
+         {
+          "additionalProperties": {
+           "anyOf": [
+            {
+             "items": {},
+             "type": "array"
+            },
+            {
+             "type": "null"
+            }
+           ]
+          },
+          "type": "object"
+         },
+         {
+          "type": "null"
+         }
+        ],
+        "default": null,
+        "title": "Metadata"
+       }
+      },
+      "required": [
+       "headers",
+       "data"
+      ],
+      "title": "DataframeData",
+      "type": "object",
+      "additional_description": null
+     },
+     "python_type": {
+      "type": "dict(headers: list[Any], data: list[list[Any]], metadata: dict(str, list[Any] | None) | None)",
+      "description": ""
+     },
+     "component": "Dataframe"
+    },
+    {
+     "label": "Retrieval bake-off",
+     "type": {
+      "properties": {
+       "headers": {
+        "items": {},
+        "title": "Headers",
+        "type": "array"
+       },
+       "data": {
+        "items": {
+         "items": {},
+         "type": "array"
+        },
+        "title": "Data",
+        "type": "array"
+       },
+       "metadata": {
+        "anyOf": [
+         {
+          "additionalProperties": {
+           "anyOf": [
+            {
+             "items": {},
+             "type": "array"
+            },
+            {
+             "type": "null"
+            }
+           ]
+          },
+          "type": "object"
+         },
+         {
+          "type": "null"
+         }
+        ],
+        "default": null,
+        "title": "Metadata"
+       }
+      },
+      "required": [
+       "headers",
+       "data"
+      ],
+      "title": "DataframeData",
+      "type": "object",
+      "additional_description": null
+     },
+     "python_type": {
+      "type": "dict(headers: list[Any], data: list[list[Any]], metadata: dict(str, list[Any] | None) | None)",
+      "description": ""
+     },
+     "component": "Dataframe"
+    },
+    {
+     "label": "value_240",
+     "type": {
+      "type": "string"
+     },
+     "python_type": {
+      "type": "str",
+      "description": ""
+     },
+     "component": "Markdown"
+    }
+   ],
+   "description": "Re-run the retrieval bake-off, then refresh the tables."
+  },
+  "/eval_live": {
+   "parameters": [
+    {
+     "label": "Candidate",
+     "parameter_name": "candidate",
+     "parameter_has_default": true,
+     "parameter_default": "stheno_q4",
+     "type": {
+      "type": "string",
+      "enum": [
+       "stheno_q4",
+       "stheno_q8",
+       "llama31",
+       "qwen25",
+       "hermes3",
+       "qwen3_8k"
+      ]
+     },
+     "python_type": {
+      "type": "Literal['stheno_q4', 'stheno_q8', 'llama31', 'qwen25', 'hermes3', 'qwen3_8k']",
+      "description": ""
+     },
+     "component": "Dropdown",
+     "example_input": "stheno_q4"
+    },
+    {
+     "label": "Eval question",
+     "parameter_name": "qid",
+     "parameter_has_default": true,
+     "parameter_default": "Q-01",
+     "type": {
+      "type": "string",
+      "enum": [
+       "Q-01",
+       "Q-02",
+       "Q-03",
+       "Q-04",
+       "Q-05",
+       "Q-06",
+       "Q-07",
+       "Q-08",
+       "Q-09",
+       "Q-10",
+       "Q-11",
+       "Q-12",
+       "Q-13",
+       "Q-14",
+       "Q-15",
+       "Q-16",
+       "Q-17",
+       "Q-18",
+       "Q-19",
+       "Q-20"
+      ]
+     },
+     "python_type": {
+      "type": "Literal['Q-01', 'Q-02', 'Q-03', 'Q-04', 'Q-05', 'Q-06', 'Q-07', 'Q-08', 'Q-09', 'Q-10', 'Q-11', 'Q-12', 'Q-13', 'Q-14', 'Q-15', 'Q-16', 'Q-17', 'Q-18', 'Q-19', 'Q-20']",
+      "description": ""
+     },
+     "component": "Dropdown",
+     "example_input": "Q-01"
+    },
+    {
+     "label": "Condition",
+     "parameter_name": "condition",
+     "parameter_has_default": true,
+     "parameter_default": "interview",
+     "type": {
+      "type": "string",
+      "enum": [
+       "demographic",
+       "persona",
+       "interview"
+      ]
+     },
+     "python_type": {
+      "type": "Literal['demographic', 'persona', 'interview']",
+      "description": ""
+     },
+     "component": "Dropdown",
+     "example_input": "demographic"
+    }
+   ],
+   "returns": [
+    {
+     "label": "Live result",
+     "type": {
+      "type": {},
+      "description": "any valid json"
+     },
+     "python_type": {
+      "type": "str | float | bool | list | dict",
+      "description": "any valid json"
+     },
+     "component": "Json"
+    }
+   ],
+   "description": "One candidate x one eval question under one condition, judged by llama3.1 and (interview only) checked by qwen2.5 (not cached)."
+  },
+  "/status": {
+   "parameters": [],
+   "returns": [
+    {
+     "label": "value_258",
+     "type": {
+      "type": "string"
+     },
+     "python_type": {
+      "type": "str",
+      "description": ""
+     },
+     "component": "Markdown"
+    },
+    {
+     "label": "Telemetry (last 30 calls)",
+     "type": {
+      "properties": {
+       "headers": {
+        "items": {},
+        "title": "Headers",
+        "type": "array"
+       },
+       "data": {
+        "items": {
+         "items": {},
+         "type": "array"
+        },
+        "title": "Data",
+        "type": "array"
+       },
+       "metadata": {
+        "anyOf": [
+         {
+          "additionalProperties": {
+           "anyOf": [
+            {
+             "items": {},
+             "type": "array"
+            },
+            {
+             "type": "null"
+            }
+           ]
+          },
+          "type": "object"
+         },
+         {
+          "type": "null"
+         }
+        ],
+        "default": null,
+        "title": "Metadata"
+       }
+      },
+      "required": [
+       "headers",
+       "data"
+      ],
+      "title": "DataframeData",
+      "type": "object",
+      "additional_description": null
+     },
+     "python_type": {
+      "type": "dict(headers: list[Any], data: list[list[Any]], metadata: dict(str, list[Any] | None) | None)",
+      "description": ""
+     },
+     "component": "Dataframe"
+    }
+   ],
+   "description": "(status markdown, telemetry rows)."
+  },
+  "/free_gpu": {
+   "parameters": [],
+   "returns": [
+    {
+     "label": "value_258",
+     "type": {
+      "type": "string"
+     },
+     "python_type": {
+      "type": "str",
+      "description": ""
+     },
+     "component": "Markdown"
+    }
+   ],
+   "description": "Stop every Ollama model and unload LM Studio; clear the active tab so the heartbeat does not undo it."
+  },
+  "/warm": {
+   "parameters": [
+    {
+     "label": "Tab to warm",
+     "parameter_name": "tab",
+     "parameter_has_default": true,
+     "parameter_default": "active",
+     "type": {
+      "type": "string",
+      "enum": [
+       "active",
+       "ask",
+       "decide",
+       "act",
+       "see"
+      ]
+     },
+     "python_type": {
+      "type": "Literal['active', 'ask', 'decide', 'act', 'see']",
+      "description": ""
+     },
+     "component": "Dropdown",
+     "example_input": "active"
+    }
+   ],
+   "returns": [
+    {
+     "label": "value_258",
+     "type": {
+      "type": "string"
+     },
+     "python_type": {
+      "type": "str",
+      "description": ""
+     },
+     "component": "Markdown"
+    }
+   ],
+   "description": "Warm the model of the chosen tab (\"active\" = the active tab, else the last tab that had a model); the active tab is left unchanged. Skips (no model call) when TWIN_NO_WARM=1."
+  },
+  "/rebuild_index": {
+   "parameters": [],
+   "returns": [
+    {
+     "label": "value_258",
+     "type": {
+      "type": "string"
+     },
+     "python_type": {
+      "type": "str",
+      "description": ""
+     },
+     "component": "Markdown"
+    },
+    {
+     "label": "value_1",
+     "type": {
+      "type": "string"
+     },
+     "python_type": {
+      "type": "str",
+      "description": ""
+     },
+     "component": "Markdown"
+    }
+   ],
+   "description": "Rebuild the three indexes, chunks.json, the reflections draft and the digest for the profile on disk (``index.build_all(profile, True, with_reflections=True)``); reset caches. Returns (status markdown, header markdown) so the stale warnings clear without a page reload; the note ends with the refreshed redaction report summary. ``RedactionRequired`` / ``LeakError`` show their message. Skips (no model call) when TWIN_NO_WARM=1."
+  },
+  "/rebuild_digest": {
+   "parameters": [],
+   "returns": [
+    {
+     "label": "value_258",
+     "type": {
+      "type": "string"
+     },
+     "python_type": {
+      "type": "str",
+      "description": ""
+     },
+     "component": "Markdown"
+    },
+    {
+     "label": "value_1",
+     "type": {
+      "type": "string"
+     },
+     "python_type": {
+      "type": "str",
+      "description": ""
+     },
+     "component": "Markdown"
+    }
+   ],
+   "description": "Force a fresh digest with qwen3:8b (40960 ctx) even when the sha already matches; reset caches. Skips (no model call) when TWIN_NO_WARM=1."
+  },
+  "/audit_tail": {
+   "parameters": [],
+   "returns": [
+    {
+     "label": "Audit tail (last 50 requests, newest first)",
+     "type": {
+      "properties": {
+       "headers": {
+        "items": {},
+        "title": "Headers",
+        "type": "array"
+       },
+       "data": {
+        "items": {
+         "items": {},
+         "type": "array"
+        },
+        "title": "Data",
+        "type": "array"
+       },
+       "metadata": {
+        "anyOf": [
+         {
+          "additionalProperties": {
+           "anyOf": [
+            {
+             "items": {},
+             "type": "array"
+            },
+            {
+             "type": "null"
+            }
+           ]
+          },
+          "type": "object"
+         },
+         {
+          "type": "null"
+         }
+        ],
+        "default": null,
+        "title": "Metadata"
+       }
+      },
+      "required": [
+       "headers",
+       "data"
+      ],
+      "title": "DataframeData",
+      "type": "object",
+      "additional_description": null
+     },
+     "python_type": {
+      "type": "dict(headers: list[Any], data: list[list[Any]], metadata: dict(str, list[Any] | None) | None)",
+      "description": ""
+     },
+     "component": "Dataframe"
+    },
+    {
+     "label": "value_252",
+     "type": {
+      "type": "string"
+     },
+     "python_type": {
+      "type": "str",
+      "description": ""
+     },
+     "component": "Markdown"
+    }
+   ],
+   "description": "(audit rows, counts markdown); file reads only."
+  },
+  "/redaction_report": {
+   "parameters": [],
+   "returns": [
+    {
+     "label": "value_256",
+     "type": {
+      "type": "string"
+     },
+     "python_type": {
+      "type": "str",
+      "description": ""
+     },
+     "component": "Markdown"
+    }
+   ],
+   "description": "The redaction report markdown; file reads only."
+  }
+ },
+ "unnamed_endpoints": {}
+}

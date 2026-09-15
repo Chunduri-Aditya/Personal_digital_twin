@@ -1,0 +1,622 @@
+/* static/twin.css: the twin console's design system (docs/PLAN_UNIFIED.md 3.8, docs/design/tokens.default.md).
+
+   Three layers:
+   1. Tokens. The --twin-* custom properties. Colours, fonts and radii equal the default token sheet
+      (tests/test_theme.py pins them); twin/ui/theme.py re-declares those from whichever sheet is in use on body
+      and on body.dark.dark, so a re-exported docs/design/tokens.md wins without editing this file. The static
+      scales under them (type, spacing, sizes, motion) live only here.
+   2. Base. What every tab panel inherits: headings, identifiers in prose, focus rings, touch targets.
+   3. Shared components: the frame contract the tab lanes build on (docs/design/tokens.default.md section 7).
+      Every rule starts with #twin-tabs, so a class set through elem_classes on a Gradio block outranks Gradio's
+      own block rules without !important.
+   The frame itself (masthead, gpu note, status strip, tab strip, page column) is static/tabs/frame.css; tab
+   partials (static/tabs/<tab>.css) start every selector with #tab-<id>. Selectors use only our elem_ids and
+   elem_classes, ARIA roles and states, and plain elements under those; the single Gradio-owned hook is the
+   dark class on body. */
+
+:root {
+  --twin-bg: #F7F6F3;
+  --twin-surface: #FFFFFF;
+  --twin-surface-raised: #FFFFFF;
+  --twin-text: #1F1B17;
+  --twin-text-muted: #5F574F;
+  --twin-accent: #784B26;
+  --twin-accent-ink: #FFFFFF;
+  --twin-accent-soft: #F1E7DD;
+  --twin-border: #E3DFD8;
+  --twin-ok: #23744A;
+  --twin-warn: #9A5B00;
+  --twin-err: #B3261E;
+  --twin-focus: #784B26;
+  --twin-border-strong: #958D84;
+  --twin-ok-soft: #E1F0E6;
+  --twin-warn-soft: #F8ECD6;
+  --twin-err-soft: #F9E4E1;
+  --twin-focus-ring: 0 0 0 3px rgba(120, 75, 38, 0.3);
+  --twin-shadow-1: 0 1px 2px rgba(31, 27, 23, 0.06), 0 2px 6px rgba(31, 27, 23, 0.06);
+  --twin-shadow-2: 0 2px 4px rgba(31, 27, 23, 0.08), 0 12px 28px rgba(31, 27, 23, 0.12);
+  --twin-font-body: 'Source Sans 3', ui-sans-serif, system-ui, 'Segoe UI', sans-serif;
+  --twin-font-serif: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+  --twin-font-mono: 'Consolas', 'Cascadia Mono', ui-monospace, Menlo, monospace;
+  --twin-radius-control: 6px;
+  --twin-radius-card: 10px;
+  /* type scale (static): 11 / 13 / 15 / 17 / 20 / 24 / 32 */
+  --twin-text-xs: 11px;
+  --twin-text-sm: 13px;
+  --twin-text-md: 15px;
+  --twin-text-lg: 17px;
+  --twin-text-xl: 20px;
+  --twin-text-2xl: 24px;
+  --twin-text-3xl: 32px;
+  --twin-leading: 1.5;
+  --twin-leading-serif: 1.6;
+  --twin-measure: 68ch;
+  --twin-measure-wide: 80ch;
+  /* spacing (static): a 4 px grid */
+  --twin-space-1: 4px;
+  --twin-space-2: 8px;
+  --twin-space-3: 12px;
+  --twin-space-4: 16px;
+  --twin-space-5: 20px;
+  --twin-space-6: 24px;
+  --twin-space-8: 32px;
+  /* sizes (static) */
+  --twin-max-width: 1440px;
+  --twin-target: 44px;
+  --twin-avatar: 48px;
+  --twin-rule: 3px;
+  --twin-card-min: 64px;
+  /* motion (static): colour and width changes that answer an action */
+  --twin-duration: 150ms;
+  --twin-ease: ease-out;
+  color-scheme: light;
+}
+
+body.dark {
+  --twin-bg: #1C1A17;
+  --twin-surface: #252220;
+  --twin-surface-raised: #2C2926;
+  --twin-text: #ECE7E0;
+  --twin-text-muted: #A69E94;
+  --twin-accent: #C99666;
+  --twin-accent-ink: #1C1A17;
+  --twin-accent-soft: #3A2E24;
+  --twin-border: #3A3632;
+  --twin-ok: #7BC88F;
+  --twin-warn: #E4B15C;
+  --twin-err: #F08A80;
+  --twin-focus: #C99666;
+  --twin-border-strong: #7A736B;
+  --twin-ok-soft: #22352A;
+  --twin-warn-soft: #3D3222;
+  --twin-err-soft: #40241F;
+  --twin-focus-ring: 0 0 0 3px rgba(201, 150, 102, 0.3);
+  --twin-shadow-1: 0 1px 2px rgba(0, 0, 0, 0.5), 0 2px 6px rgba(0, 0, 0, 0.4);
+  --twin-shadow-2: 0 2px 4px rgba(0, 0, 0, 0.5), 0 12px 28px rgba(0, 0, 0, 0.45);
+  --twin-font-body: 'Source Sans 3', ui-sans-serif, system-ui, 'Segoe UI', sans-serif;
+  --twin-font-serif: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+  --twin-font-mono: 'Consolas', 'Cascadia Mono', ui-monospace, Menlo, monospace;
+  --twin-radius-control: 6px;
+  --twin-radius-card: 10px;
+  color-scheme: dark;
+}
+
+/* ================================================================ 2. base: every tab panel */
+
+/* Gradio names each panel id="tab-<id>" (role tabpanel) and its strip button id="tab-<id>-button". */
+#twin-tabs > [id^="tab-"][role="tabpanel"] {
+  max-width: 100%;
+  padding-top: var(--twin-space-4);
+}
+
+#twin-tabs [role="tabpanel"] :is(h2, h3, h4) {
+  font-family: var(--twin-font-body);
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--twin-text);
+}
+
+#twin-tabs [role="tabpanel"] h2 {
+  font-size: var(--twin-text-lg);
+}
+
+#twin-tabs [role="tabpanel"] :is(h3, h4) {
+  font-size: var(--twin-text-md);
+}
+
+/* Identifiers in prose (file paths, model and condition names) are not code: the reading face in a quiet chip.
+   Monospace stays inside .trace panels and fenced code blocks. */
+#twin-tabs [role="tabpanel"] :not(pre) > code {
+  padding: 0 var(--twin-space-1);
+  border: 1px solid var(--twin-border);
+  border-radius: var(--twin-radius-control);
+  background: var(--twin-bg);
+  color: var(--twin-text);
+  font-family: inherit;
+  font-size: 0.95em;
+  overflow-wrap: anywhere;
+}
+
+#twin-tabs [role="tabpanel"] :is(button, a, summary):focus-visible {
+  outline: 2px solid var(--twin-focus);
+  outline-offset: 2px;
+}
+
+/* ================================================================ 3. shared components (the frame contract) */
+
+/* .twin-intro: a tab's opening paragraph (gr.Markdown) */
+#twin-tabs .twin-intro {
+  max-width: var(--twin-measure-wide);
+  color: var(--twin-text-muted);
+  font-size: var(--twin-text-md);
+  line-height: var(--twin-leading);
+}
+
+#twin-tabs .twin-intro p {
+  margin: 0 0 var(--twin-space-2);
+}
+
+#twin-tabs .twin-intro strong {
+  font-weight: 600;
+  color: var(--twin-text);
+}
+
+/* .twin-section: a heading that opens a group inside a tab (gr.Markdown holding one heading, optionally a line) */
+#twin-tabs .twin-section :is(h2, h3, h4) {
+  margin: var(--twin-space-6) 0 var(--twin-space-1);
+  font-size: var(--twin-text-lg);
+  line-height: 1.3;
+}
+
+#twin-tabs .twin-section p {
+  margin: 0;
+  color: var(--twin-text-muted);
+  font-size: var(--twin-text-sm);
+}
+
+/* .twin-panel: a flat group of inputs and controls (gr.Group, gr.Column or gr.Row). The blocks inside drop their
+   own border and fill so the panel reads as one sheet; their inputs keep their edges. */
+#twin-tabs .twin-panel {
+  --block-border-width: 0px;
+  --block-background-fill: var(--twin-surface);
+  gap: var(--twin-space-3);
+  padding: var(--twin-space-4) var(--twin-space-5);
+  border: 1px solid var(--twin-border);
+  border-radius: var(--twin-radius-card);
+  background: var(--twin-surface);
+}
+
+/* .twin-card: a flat area for a Markdown result (an answer, a summary, a status block). The min-height leaves
+   Gradio's loading overlay room for its timer. */
+#twin-tabs .twin-card {
+  min-height: var(--twin-card-min);
+  padding: var(--twin-space-4) var(--twin-space-5);
+  border: 1px solid var(--twin-border);
+  border-radius: var(--twin-radius-card);
+  background: var(--twin-surface);
+  color: var(--twin-text);
+  font-size: var(--twin-text-md);
+  line-height: var(--twin-leading);
+}
+
+#twin-tabs .twin-card :is(h2, h3, h4) {
+  margin: 0 0 var(--twin-space-2);
+  font-size: var(--twin-text-lg);
+}
+
+#twin-tabs .twin-card p {
+  margin: 0 0 var(--twin-space-2);
+}
+
+#twin-tabs .twin-card p:last-child {
+  margin-bottom: 0;
+}
+
+#twin-tabs .twin-card :is(ul, ol) {
+  margin: var(--twin-space-2) 0;
+  padding-left: var(--twin-space-5);
+}
+
+#twin-tabs .twin-card li {
+  margin: var(--twin-space-1) 0;
+}
+
+#twin-tabs .twin-card em {
+  color: var(--twin-text-muted);
+}
+
+#twin-tabs .twin-card hr {
+  margin: var(--twin-space-3) 0;
+  border: 0;
+  border-top: 1px solid var(--twin-border);
+}
+
+/* .twin-result: added next to .twin-card on the one result per screen that rises (raised sheet, level-2 shadow) */
+#twin-tabs .twin-result {
+  background: var(--twin-surface-raised);
+  box-shadow: var(--twin-shadow-2);
+}
+
+/* .twin-actions: the button row of one area (gr.Row). One variant="primary" per row; give its buttons scale=0 so
+   they keep their natural width on desktop. Below 400 px they stack at full width (end of file). */
+#twin-tabs .twin-actions {
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: var(--twin-space-3);
+}
+
+#twin-tabs .twin-actions > button {
+  min-width: 120px;
+}
+
+/* .twin-quiet: a low-emphasis action on gr.Button (clear, refresh) */
+#twin-tabs button.twin-quiet {
+  border-color: transparent;
+  background: transparent;
+  color: var(--twin-text-muted);
+  box-shadow: none;
+}
+
+#twin-tabs button.twin-quiet:hover {
+  background: var(--twin-accent-soft);
+  color: var(--twin-text);
+}
+
+/* .twin-caution: an action on gr.Button that loads models for minutes or rewrites data files */
+#twin-tabs button.twin-caution {
+  border-color: var(--twin-warn);
+  background: var(--twin-surface);
+  color: var(--twin-warn);
+}
+
+#twin-tabs button.twin-caution:hover {
+  background: var(--twin-warn-soft);
+  color: var(--twin-warn);
+}
+
+/* .twin-hint: a one-line note under a control or a result (gr.Markdown) */
+#twin-tabs .twin-hint {
+  color: var(--twin-text-muted);
+  font-size: var(--twin-text-sm);
+  line-height: var(--twin-leading);
+}
+
+#twin-tabs .twin-hint p {
+  margin: 0;
+}
+
+/* .twin-empty: a block whose only job is the empty state and the next action. Never on a block that later shows
+   a result: classes do not change with the value. */
+#twin-tabs .twin-empty {
+  padding: var(--twin-space-5) var(--twin-space-6);
+  border: 1px dashed var(--twin-border-strong);
+  border-radius: var(--twin-radius-card);
+  background: var(--twin-bg);
+  color: var(--twin-text-muted);
+}
+
+#twin-tabs .twin-empty p {
+  margin: 0;
+}
+
+/* .twin-split: a two-column gr.Row that stacks below 720 px */
+#twin-tabs .twin-split {
+  gap: var(--twin-space-4);
+}
+
+/* .placeholder-card: a tab that is not functional yet (one card, no endpoints) */
+#twin-tabs .placeholder-card {
+  max-width: var(--twin-measure);
+  padding: var(--twin-space-5) var(--twin-space-6);
+  border: 1px solid var(--twin-border);
+  border-radius: var(--twin-radius-card);
+  background: var(--twin-surface);
+  color: var(--twin-text-muted);
+  font-size: var(--twin-text-md);
+  line-height: var(--twin-leading);
+}
+
+#twin-tabs .placeholder-card h3 {
+  margin: 0 0 var(--twin-space-2);
+  font-size: var(--twin-text-lg);
+  font-weight: 600;
+  color: var(--twin-text);
+}
+
+#twin-tabs .placeholder-card p {
+  margin: 0;
+}
+
+/* .verdict-card: the raised decision result. .verdict / .reasons / .verdict-footer apply inside gr.HTML markup;
+   on a gr.Markdown output style the rendered elements from the tab partial. */
+#twin-tabs .verdict-card {
+  padding: var(--twin-space-5) var(--twin-space-6);
+  border: 1px solid var(--twin-border);
+  border-radius: var(--twin-radius-card);
+  background: var(--twin-surface-raised);
+  box-shadow: var(--twin-shadow-2);
+  color: var(--twin-text);
+  font-variant-numeric: tabular-nums;
+}
+
+#twin-tabs .verdict-card .verdict {
+  margin: 0 0 var(--twin-space-2);
+  font-size: var(--twin-text-3xl);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: var(--twin-accent);
+}
+
+#twin-tabs .verdict-card .reasons {
+  margin: var(--twin-space-3) 0 0;
+  padding-left: var(--twin-space-5);
+}
+
+#twin-tabs .verdict-card .reasons li {
+  margin: var(--twin-space-1) 0;
+}
+
+#twin-tabs .verdict-card .verdict-footer {
+  margin-top: var(--twin-space-4);
+  padding-top: var(--twin-space-3);
+  border-top: 1px solid var(--twin-border);
+  font-size: var(--twin-text-sm);
+  color: var(--twin-text-muted);
+}
+
+/* .confidence-meter: a 0-1 reading as a bar (gr.HTML markup: .track > .fill, .value) */
+#twin-tabs .confidence-meter {
+  display: flex;
+  align-items: center;
+  gap: var(--twin-space-3);
+  font-size: var(--twin-text-sm);
+  font-variant-numeric: tabular-nums;
+  color: var(--twin-text-muted);
+}
+
+#twin-tabs .confidence-meter .track {
+  flex: 1 1 auto;
+  height: 8px;
+  overflow: hidden;
+  border-radius: 4px;
+  background: var(--twin-accent-soft);
+}
+
+#twin-tabs .confidence-meter .fill {
+  display: block;
+  height: 100%;
+  border-radius: 4px;
+  background: var(--twin-accent);
+  transition: width 0.25s ease;
+}
+
+#twin-tabs .confidence-meter .value {
+  min-width: 4ch;
+  text-align: right;
+  font-weight: 600;
+  color: var(--twin-text);
+}
+
+/* .quote-card: the twin speaking in its own voice. A rule at the left edge marks a quotation, and the text takes the
+   accent mixed into the ink (Nocturne's accent-300 role, docs/design/tokens.md section 1), so the voice is marked even
+   when the voice face is the body face. */
+#twin-tabs .quote-card {
+  max-width: var(--twin-measure);
+  padding: 18px 22px 18px 26px;
+  border: 1px solid var(--twin-border);
+  border-left: var(--twin-rule) solid var(--twin-accent);
+  border-radius: var(--twin-radius-card);
+  background: var(--twin-surface-raised);
+  box-shadow: var(--twin-shadow-1);
+  font-family: var(--twin-font-serif);
+  font-size: var(--twin-text-lg);
+  line-height: var(--twin-leading-serif);
+  color: color-mix(in srgb, var(--twin-accent) 60%, var(--twin-text));
+}
+
+#twin-tabs .quote-card p {
+  margin: 0 0 var(--twin-space-2);
+}
+
+#twin-tabs .quote-card p:last-child {
+  margin-bottom: 0;
+}
+
+#twin-tabs .quote-card textarea {
+  font-family: var(--twin-font-serif);
+  font-size: var(--twin-text-lg);
+  line-height: var(--twin-leading-serif);
+  color: color-mix(in srgb, var(--twin-accent) 60%, var(--twin-text));
+}
+
+#twin-tabs .quote-card .quote-by {
+  margin-top: var(--twin-space-2);
+  font-family: var(--twin-font-body);
+  font-size: var(--twin-text-sm);
+  color: var(--twin-text-muted);
+}
+
+/* .chip: a cited id with its title (gr.HTML markup: .chip > .chip-id) */
+#twin-tabs .chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  max-width: 100%;
+  margin: 2px 6px 2px 0;
+  padding: 2px var(--twin-space-2);
+  overflow: hidden;
+  border: 1px solid var(--twin-border);
+  border-radius: var(--twin-radius-control);
+  background: var(--twin-surface);
+  color: var(--twin-text);
+  font-size: var(--twin-text-sm);
+  line-height: 1.5;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+#twin-tabs .chip .chip-id {
+  font-weight: 600;
+  color: var(--twin-accent);
+}
+
+/* .badge-ok / .badge-warn / .badge-err: a state word on its tint */
+#twin-tabs :is(.badge-ok, .badge-warn, .badge-err) {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 2px var(--twin-space-2);
+  border: 1px solid transparent;
+  border-radius: var(--twin-radius-control);
+  font-size: var(--twin-text-sm);
+  font-weight: 600;
+  line-height: 1.5;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+#twin-tabs .badge-ok {
+  background: var(--twin-ok-soft);
+  color: var(--twin-ok);
+}
+
+#twin-tabs .badge-warn {
+  background: var(--twin-warn-soft);
+  color: var(--twin-warn);
+}
+
+#twin-tabs .badge-err {
+  background: var(--twin-err-soft);
+  color: var(--twin-err);
+}
+
+/* .trace: the only monospace surface (chunk ids, tool arguments, JSON, timings); works on gr.Markdown lists */
+#twin-tabs .trace {
+  max-width: 100%;
+  padding: var(--twin-space-3) 14px;
+  overflow-x: auto;
+  border: 1px solid var(--twin-border);
+  border-radius: var(--twin-radius-card);
+  background: var(--twin-bg);
+  color: var(--twin-text);
+  font-size: var(--twin-text-sm);
+  line-height: 1.55;
+  overflow-wrap: anywhere;
+}
+
+#twin-tabs .trace,
+#twin-tabs .trace :is(p, li, span, strong, em, code, pre) {
+  font-family: var(--twin-font-mono);
+}
+
+#twin-tabs .trace :is(pre, code) {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  font-size: inherit;
+}
+
+#twin-tabs .trace pre {
+  white-space: pre-wrap;
+}
+
+#twin-tabs .trace p {
+  margin: 0 0 6px;
+}
+
+#twin-tabs .trace :is(ul, ol) {
+  margin: 0;
+  padding-left: var(--twin-space-4);
+}
+
+#twin-tabs .trace li {
+  margin: 2px 0;
+}
+
+/* .twin-table: a gr.Dataframe that reports numbers. The reading face, tabular figures, a quiet header. */
+#twin-tabs .twin-table :is(table, th, td) {
+  font-family: var(--twin-font-body);
+  font-variant-numeric: tabular-nums;
+}
+
+#twin-tabs .twin-table :is(th, td) * {
+  font-family: inherit;
+}
+
+#twin-tabs .twin-table th {
+  background: var(--twin-bg);
+  color: var(--twin-text-muted);
+  font-weight: 600;
+  text-align: left;
+}
+
+/* .model-table: an HTML table inside gr.HTML markup (th.num / td.num right-align numbers) */
+#twin-tabs .model-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--twin-text-sm);
+  font-variant-numeric: tabular-nums;
+}
+
+#twin-tabs .model-table th {
+  padding: 6px 10px;
+  border-bottom: 1px solid var(--twin-border);
+  background: var(--twin-bg);
+  text-align: left;
+  font-weight: 600;
+  color: var(--twin-text-muted);
+}
+
+#twin-tabs .model-table td {
+  padding: 6px 10px;
+  vertical-align: top;
+}
+
+#twin-tabs .model-table tbody tr:nth-child(even) td {
+  background: var(--twin-bg);
+}
+
+#twin-tabs .model-table :is(th.num, td.num) {
+  text-align: right;
+}
+
+/* ---------------------------------------------------------------- narrow screens */
+
+@media (max-width: 720px) {
+  #twin-tabs .twin-split {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 400px) {
+  #twin-tabs > [id^="tab-"][role="tabpanel"] {
+    padding-top: var(--twin-space-2);
+  }
+
+  /* touch targets: text buttons (icon buttons carry an aria-label and keep their size) */
+  #twin-tabs [role="tabpanel"] button:not([aria-label]):not([role]),
+  #twin-tabs .twin-actions > button {
+    min-height: var(--twin-target);
+  }
+
+  #twin-tabs .twin-actions > button {
+    flex-basis: 100%;
+  }
+
+  #twin-tabs :is(.chip, .badge-ok, .badge-warn, .badge-err) {
+    white-space: normal;
+  }
+
+  #twin-tabs :is(.twin-card, .twin-panel, .placeholder-card, .verdict-card, .quote-card) {
+    padding: var(--twin-space-3) var(--twin-space-4);
+  }
+
+  #twin-tabs .trace {
+    padding: var(--twin-space-2) 10px;
+    font-size: var(--twin-text-xs);
+  }
+}

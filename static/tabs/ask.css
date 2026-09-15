@@ -1,0 +1,344 @@
+/* static/tabs/ask.css: the Ask tab (docs/PLAN_FINISH.md P4, ask lane), on the frame contract in static/twin.css.
+
+   Design: the twin's replies sit beside the owner's monogram, straight on the transcript sheet (the person speaks; no
+   bubble); your messages sit on the accent tint at the right. One composer panel below holds the message row (Send is
+   the only accent-outlined button) and the settings (Condition and Temperature, then the two slow model toggles).
+   Beside the conversation, the evidence rail (Nocturne sheet, docs/design/tokens.md section 5) holds the hint, the
+   checker and the Trace, the monospace panels, shown only when they have text.
+
+   Every selector starts with #tab-ask. Hooks: our elem_ids and elem_classes (twin/ui/ask.py), the ARIA roles and
+   labels Gradio 6.27 renders inside the chatbot ([role="log"]; [role="complementary"] around the placeholder;
+   aria-label "user's message: ..." / "bot's message: ..." on each message; img[alt="bot avatar"];
+   [aria-label="Loading response"]) and plain elements under those. Parents are reached with :has(). */
+
+#tab-ask {
+  /* Gradio 6.27 keeps --color-accent on the light ink in dark mode. Nothing on this tab paints #fff on it, so the
+     streaming pulse (Gradio's 2px ring around output blocks) and the Trace chevron follow the token instead. */
+  --color-accent: var(--twin-accent);
+}
+
+/* ---------------------------------------------------------------- transcript sheet */
+
+#tab-ask #ask-chat {
+  border-color: var(--twin-border);
+  border-radius: var(--twin-radius-card);
+  background: var(--twin-surface);
+}
+
+/* The label chip and the chat's icon buttons float over the top edge; the log starts under them, below a hairline,
+   so a scrolled reply never runs under the chip. */
+#tab-ask #ask-chat [role="log"] {
+  box-sizing: border-box;
+  height: calc(100% - var(--twin-space-8) - var(--twin-space-1));
+  margin-top: calc(var(--twin-space-8) + var(--twin-space-1));
+  border-top: 1px solid var(--twin-border);
+  background: var(--twin-surface);
+}
+
+/* the twin's reply: the serif on the sheet, no bubble, a readable measure */
+#tab-ask #ask-chat div:has(> div > [aria-label^="bot's message"]) {
+  max-width: var(--twin-measure);
+  border-color: transparent;
+  background: transparent;
+  box-shadow: none;
+  font-family: var(--twin-font-serif);
+  font-size: var(--twin-text-lg);
+}
+
+#tab-ask #ask-chat [aria-label^="bot's message"],
+#tab-ask #ask-chat [aria-label^="bot's message"] :is(div, span, p, li, ul, ol) {
+  color: var(--twin-text);
+  font-family: var(--twin-font-serif);
+  font-size: var(--twin-text-lg);
+  line-height: var(--twin-leading-serif);
+}
+
+#tab-ask #ask-chat [aria-label^="bot's message"] p {
+  margin: 0 0 var(--twin-space-3);
+}
+
+#tab-ask #ask-chat [aria-label^="bot's message"] p:last-child {
+  margin-bottom: 0;
+}
+
+/* An inline error: ask_send appends "Error: <type>: <message>" (twin/ui/state.py _err_text) as the reply's last
+   paragraph. It is the console speaking, not the person: the sans in madder, behind a rule. */
+#tab-ask #ask-chat [aria-label^="bot's message"][aria-label*="Error: "] p:last-child {
+  padding-left: var(--twin-space-3);
+  border-left: var(--twin-rule) solid var(--twin-err);
+}
+
+#tab-ask #ask-chat [aria-label^="bot's message"][aria-label*="Error: "] :is(p:last-child, p:last-child *) {
+  color: var(--twin-err);
+  font-family: var(--twin-font-body);
+  font-size: var(--twin-text-md);
+  line-height: var(--twin-leading);
+}
+
+/* a reply that has no token yet (the voice model is loading): a quiet ellipsis instead of an empty box */
+#tab-ask #ask-chat [aria-label="bot's message: "]::after {
+  content: "\2026";
+  display: block;
+  color: var(--twin-text-muted);
+  font-family: var(--twin-font-serif);
+  font-size: var(--twin-text-2xl);
+  line-height: 1;
+}
+
+/* your message: the console's sans on the accent tint, at the right */
+#tab-ask #ask-chat div:has(> div > [aria-label^="user's message"]) {
+  max-width: min(60ch, 100%);
+  border-color: var(--twin-accent-soft);
+  border-radius: var(--twin-radius-card);
+  background: var(--twin-accent-soft);
+  box-shadow: none;
+}
+
+#tab-ask #ask-chat [aria-label^="user's message"],
+#tab-ask #ask-chat [aria-label^="user's message"] :is(div, span, p, li) {
+  color: var(--twin-text);
+  font-family: var(--twin-font-body);
+  font-size: var(--twin-text-md);
+  line-height: var(--twin-leading);
+}
+
+/* Gradio's own pending dots, when it shows them */
+#tab-ask #ask-chat [aria-label="Loading response"] div:empty {
+  background-color: var(--twin-text-muted);
+}
+
+/* ---------------------------------------------------------------- the twin's monogram (reply avatar, placeholder) */
+
+/* The avatar is an SVG glyph without colour (twin/ui/ask.py). The tile takes the accent tint; the glyph is moved out
+   of the tile and its drop-shadow copy, painted in the accent, lands where the glyph was. Tokens in both themes. */
+#tab-ask #ask-chat div:has(> img[alt="bot avatar"]),
+#tab-ask #ask-chat .ask-empty-mark {
+  display: flex;
+  flex: 0 0 auto;
+  box-sizing: border-box;
+  width: var(--twin-space-8);
+  height: var(--twin-space-8);
+  overflow: hidden;
+  padding: 0;
+  border: 0;
+  border-radius: var(--twin-radius-control);
+  background: var(--twin-accent-soft);
+}
+
+#tab-ask #ask-chat img[alt="bot avatar"],
+#tab-ask #ask-chat .ask-empty-mark img {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border-radius: 0;
+  object-fit: contain;
+  transform: translateX(-100%);
+  filter: drop-shadow(var(--twin-space-8) 0 0 var(--twin-accent));
+}
+
+/* ---------------------------------------------------------------- empty chat */
+
+#tab-ask #ask-chat [role="complementary"] {
+  justify-content: center;
+  align-items: flex-start;
+  padding-inline: var(--twin-space-6);
+}
+
+#tab-ask #ask-chat .ask-empty {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--twin-space-3);
+  max-width: var(--twin-measure);
+  text-align: left;
+}
+
+#tab-ask #ask-chat .ask-empty p {
+  margin: 0;
+  color: var(--twin-text-muted);
+  font-size: var(--twin-text-md);
+  line-height: var(--twin-leading);
+}
+
+#tab-ask #ask-chat .ask-empty .ask-empty-title {
+  color: var(--twin-text);
+  font-size: var(--twin-text-lg);
+  font-weight: 600;
+}
+
+/* ---------------------------------------------------------------- composer */
+
+/* Gradio wraps consecutive form fields in a generated div; inside the panel it keeps no box of its own */
+#tab-ask #ask-compose > div,
+#tab-ask #ask-settings > div {
+  border-color: transparent;
+  background: transparent;
+  box-shadow: none;
+}
+
+/* Send and Clear line up with the input, not with the label above it (the field's block pads its bottom) */
+#tab-ask #ask-compose {
+  align-items: flex-end;
+}
+
+#tab-ask #ask-compose > button {
+  margin-bottom: var(--twin-space-2);
+}
+
+/* the message field takes the row; Send and Clear keep their natural width beside it */
+#tab-ask #ask-compose > div {
+  flex: 1 1 240px;
+  min-width: 0;
+}
+
+#tab-ask #ask-compose > button {
+  flex: 0 0 auto;
+  min-width: 88px;
+}
+
+#tab-ask #ask-settings {
+  padding-top: var(--twin-space-3);
+  border-top: 1px solid var(--twin-border);
+}
+
+/* Condition and Temperature fill the first line and share its label line; the two slow model toggles keep their
+   natural width together on the next line (each on its own line when the panel is narrow) */
+#tab-ask #ask-settings > div {
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: var(--twin-space-1) var(--twin-space-5);
+}
+
+#tab-ask #ask-condition {
+  flex: 1 1 35%;
+  min-width: min(180px, 100%);
+}
+
+#tab-ask #ask-temperature {
+  flex: 1 1 55%;
+  min-width: min(220px, 100%);
+}
+
+/* Gradio centres these blocks with auto margins; the toggles start at the panel's left edge instead */
+#tab-ask #ask-q8,
+#tab-ask #ask-checker-toggle {
+  flex: 0 1 auto;
+  width: auto;
+  min-width: 0;
+  margin: 0;
+}
+
+/* ---------------------------------------------------------------- conversation beside the evidence rail */
+
+#tab-ask #ask-main {
+  align-items: flex-start;
+  gap: var(--twin-space-4);
+}
+
+#tab-ask #ask-conversation {
+  gap: var(--twin-space-3);
+  min-width: 0;
+}
+
+/* the rail stays in view while a long transcript scrolls the page */
+#tab-ask #ask-rail {
+  position: sticky;
+  top: var(--twin-space-4);
+  gap: var(--twin-space-3);
+  min-width: 0;
+}
+
+/* the empty state leaves once the Trace lists a step, and returns after Clear */
+#tab-ask #ask-rail:has(#ask-trace li) #ask-rail-empty {
+  display: none;
+}
+
+/* Gradio repeats a Markdown's elem_classes on its inner prose div: only the block keeps the dashed box */
+#tab-ask #ask-rail-empty .twin-empty {
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+
+#tab-ask #ask-rail-empty p {
+  font-size: var(--twin-text-sm);
+  line-height: var(--twin-leading);
+}
+
+@media (max-width: 720px) {
+  #tab-ask #ask-rail {
+    position: static;
+  }
+}
+
+/* ---------------------------------------------------------------- hint, checker, trace */
+
+/* the hint line and the checker panel take no room until a reply fills them */
+#tab-ask #ask-hint:not(:has(p, li)),
+#tab-ask #ask-checker:not(:has(p, li)) {
+  display: none;
+}
+
+#tab-ask #ask-hint p {
+  margin: 0;
+  font-size: var(--twin-text-sm);
+}
+
+#tab-ask #ask-hint em {
+  font-style: normal;
+}
+
+/* Gradio 6.27 gives a Markdown's elem_classes to its block and again to the inner prose div, so .trace would draw a
+   panel inside the panel, and the prose span sets its own size. The inner copy keeps the type only; the text takes
+   the trace size. */
+#tab-ask .trace .trace {
+  min-height: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+
+#tab-ask .trace :is(p, li, span) {
+  font-size: var(--twin-text-sm);
+  line-height: 1.55;
+}
+
+#tab-ask #ask-trace-panel {
+  border-color: var(--twin-border);
+  border-radius: var(--twin-radius-card);
+  background: var(--twin-surface);
+}
+
+#tab-ask #ask-trace-panel > button > span:last-child {
+  color: var(--twin-text-muted);
+}
+
+#tab-ask #ask-trace em {
+  color: var(--twin-text-muted);
+}
+
+/* ---------------------------------------------------------------- narrow screens */
+
+@media (max-width: 400px) {
+  #tab-ask #ask-compose > button {
+    margin-bottom: 0;
+  }
+
+  #tab-ask #ask-chat [role="complementary"] {
+    padding-inline: var(--twin-space-4);
+  }
+
+  #tab-ask #ask-chat [role="log"] div:has(> div > div > div > [aria-label^="bot's message"]) {
+    max-width: 100%;
+  }
+
+  #tab-ask #ask-chat div:has(> div > [aria-label^="bot's message"]),
+  #tab-ask #ask-chat [aria-label^="bot's message"],
+  #tab-ask #ask-chat [aria-label^="bot's message"] :is(div, span, p, li, ul, ol) {
+    font-size: var(--twin-text-md);
+  }
+
+  #tab-ask .trace :is(p, li, span) {
+    font-size: var(--twin-text-xs);
+  }
+}

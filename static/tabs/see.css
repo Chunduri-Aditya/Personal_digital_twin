@@ -1,0 +1,160 @@
+/* static/tabs/see.css: the See tab, where qwen3.5 describes an image and Stheno reacts (docs/PLAN_FINISH.md P4,
+   lane act_see).
+
+   Layout is in twin/ui/see.py:
+   - #see-row (.twin-split). On the left, the Image drop zone with Look under it. On the right, the description card
+     (#see-description-card, the vision model's reading, a flat .twin-card) and the reaction card
+     (#see-reaction-card, the twin's voice, a .quote-card).
+   - The trace panel (#see-trace, .trace), full width below.
+   Every selector starts with #tab-see; colours, radii, shadows and fonts are --twin-* tokens.
+
+   Specificity: Gradio re-emits custom CSS behind its three-class page-container prefix (gradio-container,
+   gradio-container-6-27-0, contain) and splits selectors on every comma, including commas inside :is(). twin.css's
+   .trace :is() rules therefore outrank class selectors here, so the trace rules anchor on the #see-trace elem_id,
+   and this file keeps every selector list at the top level. */
+
+/* ---------------------------------------------------------------- the drop zone */
+
+/* The image block sits on the page ground with a control-strength edge, so it reads as a place to put something.
+   Gradio draws that edge dashed while the block is empty and solid once an image is in. The colour answers the
+   pointer and keyboard focus. */
+#tab-see .see-image {
+  --block-background-fill: var(--twin-bg);
+  border-color: var(--twin-border-strong);
+  border-radius: var(--twin-radius-card);
+  background: var(--twin-bg);
+  transition: border-color var(--twin-duration) var(--twin-ease);
+}
+
+#tab-see .see-image:hover,
+#tab-see .see-image:focus-within {
+  border-color: var(--twin-accent);
+}
+
+/* the "Image" label on the sheet colour, in the instrument face */
+#tab-see .see-image label {
+  border-color: var(--twin-border);
+  background: var(--twin-surface);
+  color: var(--twin-text-muted);
+  font-family: var(--twin-font-body);
+}
+
+/* ---------------------------------------------------------------- action row */
+
+/* Look keeps its natural width. A flex basis of auto lets the inline fit-content width that Gradio sets on scale=0
+   buttons hold. At 400 px and below, twin.css stacks the button at full width. */
+@media (min-width: 401px) {
+  #tab-see .twin-actions > button {
+    flex: 0 0 auto;
+  }
+}
+
+/* ---------------------------------------------------------------- the reading and the reaction */
+
+/* Gradio wraps every Textbox in a form container whose CSS forces border-width 0, radius 0 and no shadow
+   (!important) on the block inside it; consecutive Textboxes also share one container. So each card class sits on
+   its own gr.Column around one Textbox. These variables flatten the form container and the block, so the column
+   alone draws the card's edge, fill and shadow. A zero radius keeps the container from clipping the textarea. */
+#tab-see .see-description,
+#tab-see .see-reaction {
+  --block-border-width: 0px;
+  --block-padding: 0px;
+  --block-radius: 0px;
+}
+
+#tab-see .see-description {
+  --block-background-fill: var(--twin-surface);
+}
+
+#tab-see .see-reaction {
+  --block-background-fill: var(--twin-surface-raised);
+}
+
+/* Description and Reaction are read-only outputs. Their textareas drop the input box so the text sits on its card:
+   the description flat, the reaction as a quote card in the twin's serif. Labels stay in the instrument face. */
+#tab-see .see-description textarea,
+#tab-see .see-reaction textarea {
+  padding-inline: 0;
+  border-color: transparent;
+  background: transparent;
+  box-shadow: none;
+  color: var(--twin-text);
+}
+
+#tab-see .see-description textarea:focus,
+#tab-see .see-reaction textarea:focus {
+  box-shadow: var(--twin-focus-ring);
+}
+
+#tab-see .see-description textarea {
+  font-size: var(--twin-text-md);
+  line-height: var(--twin-leading);
+}
+
+#tab-see .see-reaction label > span:first-child {
+  font-family: var(--twin-font-body);
+}
+
+/* ---------------------------------------------------------------- trace */
+
+/* The trace panel is twin.css .trace. It has one line per stage of the turn (vision, stop, retrieval, voice), then
+   the total, which closes the list under a rule. Gradio puts the Markdown's classes on its block (#see-trace) and
+   again on the inner prose div; only the block is the panel. */
+#tab-see #see-trace {
+  min-height: var(--twin-card-min);
+}
+
+#tab-see #see-trace .see-trace {
+  min-height: 0;
+  padding: 0;
+  overflow: visible;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+
+#tab-see #see-trace ul {
+  margin: 0;
+  padding-left: 0;
+  list-style: none;
+}
+
+#tab-see #see-trace li {
+  margin: 0;
+  padding-block: 2px;
+}
+
+#tab-see #see-trace li:last-child:not(:only-child) {
+  margin-top: var(--twin-space-1);
+  padding-top: var(--twin-space-2);
+  border-top: 1px solid var(--twin-border);
+  font-weight: 600;
+}
+
+/* Empty states: "(no trace)" and "(upload an image first)" are hints in the reading face, not log output. The See
+   trace has no other emphasis. */
+#tab-see #see-trace p > em {
+  font-family: var(--twin-font-body);
+  font-size: var(--twin-text-sm);
+  color: var(--twin-text-muted);
+}
+
+/* Inline error: "**Error:** `Type: message`" (state._err_md) is shown in madder on its tint. */
+#tab-see #see-trace p:has(> strong:first-child + code) {
+  margin: 0;
+  padding: var(--twin-space-2) var(--twin-space-3);
+  border-left: var(--twin-rule) solid var(--twin-err);
+  border-radius: var(--twin-radius-control);
+  background: var(--twin-err-soft);
+  color: var(--twin-err);
+}
+
+#tab-see #see-trace p:has(> strong:first-child + code) > strong {
+  font-family: var(--twin-font-body);
+  font-weight: 600;
+  color: var(--twin-err);
+}
+
+#tab-see #see-trace p:has(> strong:first-child + code) > code {
+  color: var(--twin-err);
+}

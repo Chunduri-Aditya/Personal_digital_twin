@@ -1,0 +1,10 @@
+# Model weights, caches, venvs and git metadata never go into the image.
+models/
+.venv/
+__pycache__/
+.pytest_cache/
+*.pyc
+.git/
+.gitignore
+Dockerfile
+.dockerignore

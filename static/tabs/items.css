@@ -1,0 +1,198 @@
+/* static/tabs/items.css: the Items tab (docs/PLAN_FINISH.md P4, lane onboarding_items).
+
+   Two jobs on one page: a 111-item questionnaire the owner fills on day 0 and on day 14, and the scoring report a
+   viewer reads (DEMO B6.1: the table and the decision line under it). The form stays in its instrument accordions with
+   Gradio's grouped dividers: instrument names read as section headings, statements at reading size, answer options
+   compact so a Likert row fits one line at 1440 px, and the answer on file tinted. The three buttons that rewrite data
+   files or load models (Save answers, Run twin, Score) are .twin-caution outlines at natural width, never a solid call
+   to action. The decision line is the tab's one raised card.
+
+   A gr.Markdown stamps its elem_classes on its inner markdown div as well as on the block, so box styles here target
+   elem_ids (the block only) or reset that inner copy; text rules (p, strong, em under a class) are safe either way.
+   Every selector starts with #tab-items. */
+
+/* ---------------------------------------------------------------- intro, wave row, files */
+
+#tab-items #items-intro p {
+  margin: 0;
+}
+
+/* Wave + Date + Save answers and Condition + Run twin + Score: buttons sit on the inputs' bottom edge */
+#tab-items #items-wave-row,
+#tab-items #items-run-row {
+  align-items: flex-end;
+}
+
+#tab-items #items-run-row {
+  margin-top: var(--twin-space-4);
+}
+
+/* Gradio gives row children a zero flex basis, so a scale=0 button shrank to the 120 px minimum and "Save answers"
+   wrapped onto two lines: size these buttons by their labels */
+#tab-items :is(#items-wave-row, #items-run-row) > button {
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+
+/* the item files on disk: reference, not content (the presenter checks the scores' updated stamp here) */
+#tab-items #items-files :is(p, ul, li) {
+  color: var(--twin-text-muted);
+  font-size: var(--twin-text-sm);
+  line-height: var(--twin-leading);
+}
+
+#tab-items #items-files ul {
+  margin: 0;
+  padding-left: var(--twin-space-5);
+}
+
+#tab-items #items-files li {
+  margin: var(--twin-space-1) 0;
+}
+
+/* "(the normalized column reads *ceiling pending* until it exists)": the pending state in the warn ink, upright */
+#tab-items #items-files em {
+  color: var(--twin-warn);
+  font-style: normal;
+  font-weight: 600;
+}
+
+/* ---------------------------------------------------------------- the questionnaire */
+
+#tab-items #items-form {
+  gap: var(--twin-space-3);
+}
+
+/* The instrument name is its group's section heading; the chevron stays quiet. The accordion header is the only
+   button with two spans (label, chevron) inside the form, so the selector does not depend on Gradio's nesting. The
+   label span carries its own size, so the heading size is set on that span, not only inherited from the button. */
+#tab-items #items-form button:has(> span + span) {
+  color: var(--twin-text);
+  transition: color var(--twin-duration) var(--twin-ease);
+}
+
+#tab-items #items-form button:has(> span + span) > span:first-child {
+  font-size: var(--twin-text-lg);
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+#tab-items #items-form button:has(> span + span) > span:last-child {
+  color: var(--twin-text-muted);
+  font-size: var(--twin-text-sm);
+}
+
+#tab-items #items-form button:has(> span + span):hover > span:first-child {
+  color: var(--twin-accent);
+}
+
+/* how to answer the group (IPIP anchors and domains, the game parameters, the gold questions) */
+#tab-items .items-note p {
+  max-width: var(--twin-measure-wide);
+  margin: 0;
+  color: var(--twin-text-muted);
+  font-size: var(--twin-text-md);
+  line-height: var(--twin-leading);
+}
+
+/* IPIP domain headings ("E: Extraversion") open each run of ten statements */
+#tab-items .items-domain p {
+  margin: var(--twin-space-4) 0 0;
+  font-size: var(--twin-text-md);
+}
+
+#tab-items .items-domain strong {
+  color: var(--twin-text);
+  font-weight: 600;
+}
+
+/* a radio item: the statement at reading size (its item id stays the quiet hint under it) */
+#tab-items :is(.item-likert, .item-categorical, .item-binary) > span {
+  color: var(--twin-text);
+  font-size: var(--twin-text-md);
+  font-weight: 400;
+  line-height: var(--twin-leading);
+}
+
+/* answer options: compact enough that the five IPIP anchors fit one line at 1440 px */
+#tab-items :is(.item-likert, .item-categorical, .item-binary) label {
+  padding: var(--twin-space-2) var(--twin-space-3);
+  font-size: var(--twin-text-sm);
+}
+
+/* the answer on file (the pre-filled wave), tinted so a domain can be scanned at a glance */
+#tab-items :is(.item-likert, .item-categorical, .item-binary) label:has(> input:checked) {
+  border-color: var(--twin-accent);
+  background-color: var(--twin-accent-soft);
+}
+
+/* ---------------------------------------------------------------- notes, scores, the decision */
+
+/* An inline error ("**Error:** `...`") opens its note: the label in the error ink. A saved-wave or finished-run note
+   starts with text and a path chip, so its later bold words ("Invalid (not saved):", "Score") keep the body ink. */
+#tab-items :is(#items-save-note, #items-run-note) p:first-child > strong:first-child {
+  color: var(--twin-err);
+}
+
+#tab-items #items-run-note p {
+  max-width: var(--twin-measure-wide);
+}
+
+/* The score table. .twin-table styles the header, but Gradio 6.27 draws the body as div rows that read Gradio's
+   monospace variable rather than as td cells, so this block points that variable at the reading face: every cell in
+   the body face with tabular figures, as the frame contract asks for numeric tables. */
+#tab-items #items-scores {
+  --font-mono: var(--twin-font-body);
+  font-variant-numeric: tabular-nums;
+}
+
+/* The decision line is the one raised result (.twin-card .twin-result on the block). The inner markdown div repeats
+   those classes and would draw a second card inside the first: reset that copy. */
+#tab-items #items-decision .twin-card {
+  min-height: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+#tab-items #items-decision {
+  margin-top: var(--twin-space-2);
+}
+
+/* "Decision: interview beats demographic and persona on …: partial (…)": the verdict at the heading size */
+#tab-items #items-decision p:first-child > strong:first-child {
+  color: var(--twin-text);
+  font-size: var(--twin-text-lg);
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+/* the footer ("Ground truth: …; retest ceiling: …; bootstrap …; updated …") under a rule, upright and muted */
+#tab-items #items-decision p + p {
+  margin-top: var(--twin-space-3);
+  padding-top: var(--twin-space-2);
+  border-top: 1px solid var(--twin-border);
+  color: var(--twin-text-muted);
+  font-size: var(--twin-text-sm);
+}
+
+#tab-items #items-decision p + p em {
+  font-style: normal;
+}
+
+/* ---------------------------------------------------------------- narrow screens */
+
+/* below 400 px twin.css stacks .twin-actions buttons at full width; the rows stretch and the labels may wrap */
+@media (max-width: 400px) {
+  #tab-items #items-wave-row,
+  #tab-items #items-run-row {
+    align-items: stretch;
+  }
+
+  #tab-items :is(#items-wave-row, #items-run-row) > button {
+    flex-basis: 100%;
+    white-space: normal;
+  }
+}

@@ -1,0 +1,48 @@
+# Local convenience script (Windows demo readiness checklist); not for version control.
+start_demo.ps1
+
+# Python virtual environment created by start.sh
+.venv/
+
+# Python bytecode/cache
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+
+# Model weights (tens of GB; pulled through Ollama and LM Studio, see README.md)
+models/**
+!models/**/
+!models/**/.gitkeep
+
+# Real personal data: real interview transcripts, seed profiles, self-report answers
+data/act_answer.txt
+data/interview_transcript.md
+data/interview_transcript.redacted.md
+data/twin_profile.seed.md
+data/items/self_answers.json
+data/items/self_answers_retest.json
+
+# Runtime logs written by the app
+data/audit.jsonl
+data/telemetry.jsonl
+*.log
+
+# Local backups and dev evidence (screenshots, run logs)
+data_backup_predemo/
+scripts/dev/shots/
+scripts/dev/demo/
+scripts/dev/evidence/
+scripts/dev/old/
+scripts/dev/finish/backup_pre_c/
+scripts/dev/finish/items_backup/
+*.png
+*.jpg
+
+# Machine-specific Claude Code launch config
+.claude/launch.json
+
+# Secrets
+.env
+.credentials.json
+.claude.json

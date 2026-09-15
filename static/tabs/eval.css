@@ -1,0 +1,175 @@
+/* static/tabs/eval.css: the Eval tab (docs/PLAN_FINISH.md P4, evals_status lane). Every selector starts with
+   #tab-eval; colours, radii and fonts come from --twin-* (static/twin.css).
+
+   The tab is an evidence ledger read from a projector: two score tables (gr.Dataframe, .twin-table), the boundary
+   probes table (#eval-probes, a Markdown table), one no-model Refresh, and three model actions that are never clicked
+   live (.twin-caution). Numbers line up; the actions that load models stay outlined and sit apart.
+
+   Selector lists are written out at the top level, never as :is(a, b): Gradio 6.27 re-emits every custom rule a second
+   time under its own app-container prefix (three classes) and splits a comma list inside :is() into prefixed pieces,
+   which adds (0,3,0) of specificity per list and lets such a rule outrank a more specific plain one. */
+
+/* ---------------------------------------------------------------- the ceiling-judge option */
+
+/* The checkbox answers the intro's last sentence (whether the Claude judge can run): an option line on the page
+   ground. The variables sit on the row because Gradio wraps the checkbox in a form box of its own. */
+#tab-eval #eval-options {
+  --block-border-width: 0px;
+  --block-padding: 0px;
+  --block-background-fill: var(--twin-bg);
+}
+
+/* ---------------------------------------------------------------- score tables (gr.Dataframe) */
+
+/* Gradio 6.27 draws a Dataframe body as a virtual grid (div[role=row] > div[role=gridcell]) in its monospace face,
+   which the th/td rule of .twin-table does not reach: the grid rows take the reading face and tabular figures here. */
+#tab-eval .twin-table [role="grid"] [role="row"],
+#tab-eval .twin-table [role="grid"] [role="columnheader"] {
+  font-family: var(--twin-font-body);
+  font-variant-numeric: tabular-nums;
+}
+
+#tab-eval .twin-table [role="grid"] [role="gridcell"] *,
+#tab-eval .twin-table [role="grid"] [role="columnheader"] * {
+  font-family: inherit;
+}
+
+/* the first column names the row (candidate, index) */
+#tab-eval .twin-table [role="gridcell"]:first-child {
+  font-weight: 600;
+}
+
+/* Scores right-aligned so their decimals line up: replies to consistent in the voice table, recall@1 to embed_ms in
+   the retrieval table. Names, "overall by judge" and notes stay left. */
+#tab-eval #eval-summary [role="gridcell"]:nth-child(n+2):nth-child(-n+7) > div,
+#tab-eval #eval-summary [role="columnheader"]:nth-child(n+2):nth-child(-n+7) > div,
+#tab-eval #eval-retrieval [role="gridcell"]:nth-child(n+2):nth-child(-n+6) > div,
+#tab-eval #eval-retrieval [role="columnheader"]:nth-child(n+2):nth-child(-n+6) > div {
+  justify-content: flex-end;
+  text-align: right;
+}
+
+/* ---------------------------------------------------------------- boundary probes (Markdown table) */
+
+/* .eval-md-table is on #eval-probes and on #eval-note, which carries the same table after a voice re-run. The summary
+   line the presenter points at ("Boundary probes (condition interview, judge qwen25): 3/3 deflected") captions the
+   table; the table is a sheet like the Dataframes above it. */
+#tab-eval .eval-md-table p {
+  max-width: var(--twin-measure-wide);
+  margin: 0 0 var(--twin-space-2);
+}
+
+#tab-eval .eval-md-table table {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: 1px solid var(--twin-border);
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: var(--twin-radius-card);
+  background: var(--twin-surface);
+  color: var(--twin-text);
+  font-size: var(--twin-text-sm);
+  line-height: var(--twin-leading);
+  font-variant-numeric: tabular-nums;
+}
+
+#tab-eval .eval-md-table thead,
+#tab-eval .eval-md-table tbody,
+#tab-eval .eval-md-table tr {
+  border: 0;
+}
+
+#tab-eval .eval-md-table th,
+#tab-eval .eval-md-table td {
+  padding: var(--twin-space-2) var(--twin-space-3);
+  border: 0;
+  border-bottom: 1px solid var(--twin-border);
+  color: var(--twin-text);
+  text-align: left;
+  vertical-align: top;
+}
+
+#tab-eval .eval-md-table th {
+  background: var(--twin-bg);
+  color: var(--twin-text-muted);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+#tab-eval .eval-md-table th:first-child {
+  border-top-left-radius: var(--twin-radius-card);
+}
+
+#tab-eval .eval-md-table th:last-child {
+  border-top-right-radius: var(--twin-radius-card);
+}
+
+#tab-eval .eval-md-table tbody tr:last-child > td {
+  border-bottom: 0;
+}
+
+/* the probe id and the deflected verdict are short readings: one line, in the weight of a row name */
+#tab-eval .eval-md-table td:first-child,
+#tab-eval .eval-md-table td:nth-child(5) {
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* ---------------------------------------------------------------- actions */
+
+/* Refresh (a replay, no model) stays at the left of its row. The two re-runs load models for minutes and are never
+   clicked live, so they sit at the far end of the same row, outlined in ochre (.twin-caution) and never filled. */
+#tab-eval #eval-actions {
+  margin-top: var(--twin-space-2);
+}
+
+#tab-eval #eval-actions > #eval-voice-rerun {
+  margin-left: auto;
+}
+
+/* Gradio 6.27 sizes row children from a zero flex basis, so a scale=0 button shrinks to the 120 px minimum of
+   .twin-actions and wraps its label onto three lines. Above 400 px each button keeps its label on one line; at 400 px
+   and below twin.css stacks them at full width. */
+@media (min-width: 401px) {
+  #tab-eval #eval-actions > button,
+  #tab-eval #eval-live-controls > button {
+    flex: 0 0 auto;
+    white-space: nowrap;
+  }
+}
+
+/* ---------------------------------------------------------------- live one-candidate check */
+
+/* Its own sheet under the ledger (.twin-panel): the three dropdowns and the run button on one line, the button level
+   with the fields, the JSON result under them. */
+#tab-eval #eval-live {
+  margin-top: var(--twin-space-6);
+}
+
+#tab-eval #eval-live-controls {
+  --block-padding: 0px;
+  align-items: flex-end;
+  gap: var(--twin-space-3);
+}
+
+/* Gradio wraps form fields in a div painted in its border colour, with 1 px gaps for dividers. Here the fields sit on
+   the sheet with a real gap between them, and the checkbox row above the tables shows no grey edge. */
+#tab-eval #eval-live-controls > div,
+#tab-eval #eval-options > div {
+  gap: var(--twin-space-3);
+  background: transparent;
+}
+
+/* ---------------------------------------------------------------- narrow screens */
+
+@media (max-width: 720px) {
+  #tab-eval .eval-md-table table {
+    display: block;
+    overflow-x: auto;
+  }
+
+  #tab-eval #eval-actions > #eval-voice-rerun {
+    margin-left: 0;
+  }
+}

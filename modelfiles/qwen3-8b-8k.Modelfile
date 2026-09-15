@@ -1,0 +1,5 @@
+# qwen3:8b with context fixed at 8192 so it fits fully on the RTX 2070 (8 GB).
+# The Ollama app defaults to a 65536 context, which runs qwen3:8b mostly on the CPU.
+# Rebuild: ollama create qwen3-8b-8k -f modelfiles\qwen3-8b-8k.Modelfile
+FROM qwen3:8b
+PARAMETER num_ctx 8192

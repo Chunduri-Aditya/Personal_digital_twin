@@ -1,0 +1,37 @@
+# Digital twin app in Docker. The models are NOT in here: Ollama and LM Studio run natively on the host
+# (docs/MODEL_SETUP.md), and the container reaches them through host.docker.internal. This replaces only the
+# Python/Gradio setup step.
+#
+#   docker compose up --build -d        # build and start; open http://127.0.0.1:7861
+#   docker compose logs -f              # follow the app log
+#   docker compose down                 # stop and remove the container (add -v to also delete the data volume)
+#
+# Options (set in the shell or in a .env file next to this one):
+#   TWIN_PORT=7899      host port, when 7861 is taken (PowerShell: $env:TWIN_PORT=7899)
+#   TWIN_NO_WARM=1      UI only: never pre-warm or load a model
+#   ANTHROPIC_API_KEY   passed through for the optional Claude ceiling judge; never write it into this file
+#   TWIN_OLLAMA_URL / TWIN_LMS_URL   model servers somewhere other than the host's default ports
+name: digital-twin
+
+services:
+  app:
+    build: .
+    image: twin-app
+    ports:
+      # 127.0.0.1 only, like the model servers: nothing is reachable from the network.
+      - "127.0.0.1:${TWIN_PORT:-7861}:7861"
+    environment:
+      TWIN_OLLAMA_URL: ${TWIN_OLLAMA_URL:-http://host.docker.internal:11434}
+      TWIN_LMS_URL: ${TWIN_LMS_URL:-http://host.docker.internal:1234}
+      TWIN_NO_WARM: ${TWIN_NO_WARM:-}
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}
+    extra_hosts:
+      # Docker Desktop provides host.docker.internal already; native Linux Docker needs this line.
+      - "host.docker.internal:host-gateway"
+    volumes:
+      # Named volume, seeded from the image's data/ on first start: persona switches, audit and telemetry
+      # survive `docker compose down`, and the container never writes into the project's own data/ folder.
+      - twin-data:/app/data
+
+volumes:
+  twin-data:

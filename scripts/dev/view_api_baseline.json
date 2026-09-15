@@ -1,0 +1,2152 @@
+{
+ "captured": "2026-09-14",
+ "api_names": [
+  "/act",
+  "/ask",
+  "/ask_clear",
+  "/decide_b1",
+  "/decide_b2",
+  "/eval_live",
+  "/eval_retrieval_rerun",
+  "/eval_show",
+  "/eval_voice_rerun",
+  "/free_gpu",
+  "/polish",
+  "/rebuild_digest",
+  "/rebuild_index",
+  "/say_it",
+  "/see",
+  "/status",
+  "/warm"
+ ],
+ "endpoints": {
+  "/ask": {
+   "parameters": [
+    {
+     "label": "Message",
+     "parameter_name": "message",
+     "parameter_has_default": false,
+     "parameter_default": null,
+     "type": {
+      "type": "string"
+     },
+     "python_type": {
+      "type": "str",
+      "description": ""
+     },
+     "component": "Textbox",
+     "example_input": "Hello!!"
+    },
+    {
+     "label": "Chat with the twin",
+     "parameter_name": "history",
+     "parameter_has_default": true,
+     "parameter_default": [],
+     "type": {
+      "$defs": {
+       "ComponentMessage": {
+        "properties": {
+         "component": {
+          "title": "Component",
+          "type": "string"
+         },
+         "value": {
+          "title": "Value"
+         },
+         "constructor_args": {
+          "additionalProperties": true,
+          "title": "Constructor Args",
+          "type": "object"
+         },
+         "props": {
+          "additionalProperties": true,
+          "title": "Props",
+          "type": "object"
+         },
+         "type": {
+          "const": "component",
+          "default": "component",
+          "title": "Type",
+          "type": "string"
+         }
+        },
+        "required": [
+         "component",
+         "value",
+         "constructor_args",
+         "props"
+        ],
+        "title": "ComponentMessage",
+        "type": "object"
+       },
+       "FileData": {
+        "description": "The FileData class is a subclass of the GradioModel class that represents a file object within a Gradio interface. It is used to store file data and metadata when a file is uploaded.\n\nAttributes:\n    path: The server file path where the file is stored.\n    url: The normalized server URL pointing to the file.\n    size: The size of the file in bytes.\n    orig_name: The original filename before upload.\n    mime_type: The MIME type of the file.\n    is_stream: Indicates whether the file is a stream.\n    meta: Additional metadata used internally (should not be changed).",
+        "properties": {
+         "path": {
+          "title": "Path",
+          "type": "string"
+         },
+         "url": {
+          "anyOf": [
+           {
+            "type": "string"
+           },
+           {
+            "type": "null"
+           }
+          ],
+          "default": null,
+          "title": "Url"
+         },
+         "size": {
+          "anyOf": [
+           {
+            "type": "integer"
+           },
+           {
+            "type": "null"
+           }
+          ],
+          "default": null,
+          "title": "Size"
+         },
+         "orig_name": {
+          "anyOf": [
+           {
+            "type": "string"
+           },
+           {
+            "type": "null"
+           }
+          ],
+          "default": null,
+          "title": "Orig Name"
+         },
+         "mime_type": {
+          "anyOf": [
+           {
+            "type": "string"
+           },
+           {
+            "type": "null"
+           }
+          ],
+          "default": null,
+          "title": "Mime Type"
+         },
+         "is_stream": {
+          "default": false,
+          "title": "Is Stream",
+          "type": "boolean"
+         },
+         "meta": {
+          "$ref": "#/$defs/FileDataMeta"
+         }
+        },
+        "required": [
+         "path"
+        ],
+        "title": "FileData",
+        "type": "object"
+       },
+       "FileDataMeta": {
+        "properties": {
+         "_type": {
+          "const": "gradio.FileData",
+          "title": "Type",
+          "type": "string"
+         }
+        },
+        "required": [
+         "_type"
+        ],
+        "title": "FileDataMeta",
+        "type": "object"
+       },
+       "FileMessage": {
+        "properties": {
+         "file": {
+          "$ref": "#/$defs/FileData"
+         },
+         "alt_text": {
+          "anyOf": [
+           {
+            "type": "string"
+           },
+           {
+            "type": "null"
+           }
+          ],
+          "default": null,
+          "title": "Alt Text"
+         },
+         "type": {
+          "const": "file",
+          "default": "file",
+          "title": "Type",
+          "type": "string"
+         }
+        },
+        "required": [
+         "file"
+        ],
+        "title": "FileMessage",
+        "type": "object"
+       },
+       "Message": {
+        "properties": {
+         "role": {
+          "title": "Role",
+          "type": "string"
+         },
+         "metadata": {
+          "anyOf": [
+           {
+            "$ref": "#/$defs/MetadataDict"
+           },
+           {
+            "type": "null"
+           }
+          ],
+          "default": null
+         },
+         "content": {
+          "items": {
+           "anyOf": [
+            {
+             "$ref": "#/$defs/TextMessage"
+            },
+            {
+             "$ref": "#/$defs/FileMessage"
+            },
+            {
+             "$ref": "#/$defs/ComponentMessage"
+            }
+           ]
+          },
+          "title": "Content",
+          "type": "array"
+         },
+         "options": {
+          "anyOf": [
+           {
+            "items": {
+             "$ref": "#/$defs/OptionDict"
+            },
+            "type": "array"
+           },
+           {
+            "type": "null"
+           }
+          ],
+          "default": null,
+          "title": "Options"
+         }
+        },
+        "required": [
+         "role",
+         "content"
+        ],
+        "title": "Message",
+        "type": "object"
+       },
+       "MetadataDict": {
+        "description": "A typed dictionary to represent metadata for a message in the Chatbot component. An\ninstance of this dictionary is used for the `metadata` field in a ChatMessage when\nthe chat message should be displayed as a thought.\nParameters:\n    title: The title of the \"thought\" message. Required if the message is to be displayed as a thought.\n    id: The ID of the message. Only used for nested thoughts. Nested thoughts can be nested by setting the parent_id to the id of the parent thought.\n    parent_id: The ID of the parent message. Only used for nested thoughts.\n    log: A string message to display next to the thought title in a subdued font.\n    duration: The duration of the message in seconds. Appears next to the thought title in a subdued font inside a parentheses.\n    status: if set to `\"pending\"`, a spinner appears next to the thought title and the accordion is initialized open.  If `status` is `\"done\"`, the thought accordion is initialized closed. If `status` is not provided, the thought accordion is initialized open and no spinner is displayed.",
+        "properties": {
+         "title": {
+          "title": "Title",
+          "type": "string"
+         },
+         "id": {
+          "anyOf": [
+           {
+            "type": "integer"
+           },
+           {
+            "type": "string"
+           }
+          ],
+          "title": "Id"
+         },
+         "parent_id": {
+          "anyOf": [
+           {
+            "type": "integer"
+           },
+           {
+            "type": "string"
+           }
+          ],
+          "title": "Parent Id"
+         },
+         "log": {
+          "title": "Log",
+          "type": "string"
+         },
+         "duration": {
+          "title": "Duration",
+          "type": "number"
+         },
+         "status": {
+          "enum": [
+           "pending",
+           "done"
+          ],
+          "title": "Status",
+          "type": "string"
+         }
+        },
+        "title": "MetadataDict",
+        "type": "object"
+       },
+       "OptionDict": {
+        "description": "A typed dictionary to represent an option in a ChatMessage. A list of these\ndictionaries is used for the `options` field in a ChatMessage.\nParameters:\n    value: The value to return when the option is selected.\n    label: The text to display in the option, if different from the value.",
+        "properties": {
+         "value": {
+          "title": "Value",
+          "type": "string"
+         },
+         "label": {
+          "title": "Label",
+          "type": "string"
+         }
+        },
+        "required": [
+         "value"
+        ],
+        "title": "OptionDict",
+        "type": "object"
+       },
+       "TextMessage": {
+        "properties": {
+         "text": {
+          "title": "Text",
+          "type": "string"
+         },
+         "type": {
+          "const": "text",
+          "default": "text",
+          "title": "Type",
+          "type": "string"
+         }
+        },
+        "required": [
+         "text"
+        ],
+        "title": "TextMessage",
+        "type": "object"
+       }
+      },
+      "items": {
+       "$ref": "#/$defs/Message"
+      },
+      "title": "ChatbotDataMessages",
+      "type": "array",
+      "additional_description": null
+     },
+     "python_type": {
+      "type": "list[dict(role: str, metadata: dict(title: str, id: int | str, parent_id: int | str, log: str, duration: float, status: Literal['pending', 'done']) | None, content: list[dict(text: str, type: Literal[text]) | dict(file: filepath, alt_text: str | None, type: Literal[file]) | dict(component: str, value: Any, constructor_args: dict(str, Any), props: dict(str, Any), type: Literal[component])], options: list[dict(value: str, label: str)] | None)]",
+      "description": null
+     },
+     "component": "Chatbot",
+     "example_input": [
+      {
+       "role": "user",
+       "metadata": null,
+       "content": [
+        {
+         "text": "Hello!",
+         "type": "text"
+        }
+       ],
+       "options": null
+      },
+      {
+       "role": "assistant",
+       "metadata": null,
+       "content": [
+        {
+         "text": "How can I help you?",
+         "type": "text"
+        }
+       ],
+       "options": null
+      }
+     ]
+    },
+    {
+     "label": "Q8 Stheno (Ollama, slow)",
+     "parameter_name": "use_q8",
+     "parameter_has_default": true,
+     "parameter_default": false,
+     "type": {
+      "type": "boolean"
+     },
+     "python_type": {
+      "type": "bool",
+      "description": ""
+     },
+     "component": "Checkbox",
+     "example_input": true
+    },
+    {
+     "label": "Temperature",
+     "parameter_name": "temperature",
+     "parameter_has_default": true,
+     "parameter_default": 1.0,
+     "type": {
+      "type": "number",
+      "description": "numeric value between 0.5 and 1.4"
+     },
+     "python_type": {
+      "type": "float",
+      "description": ""
+     },
+     "component": "Slider",
+     "example_input": 0.5
+    },
+    {
+     "label": "Consistency check (qwen2.5)",
+     "parameter_name": "use_checker",
+     "parameter_has_default": true,
+     "parameter_default": false,
+     "type": {
+      "type": "boolean"
+     },
+     "python_type": {
+      "type": "bool",
+      "description": ""
+     },
+     "component": "Checkbox",
+     "example_input": true
+    }
+   ],
+   "returns": [
+    {
+     "label": "Chat with the twin",
+     "type": {
+      "$defs": {
+       "ComponentMessage": {
+        "properties": {
+         "component": {
+          "title": "Component",
+          "type": "string"
+         },
+         "value": {
+          "title": "Value"
+         },
+         "constructor_args": {
+          "additionalProperties": true,
+          "title": "Constructor Args",
+          "type": "object"
+         },
+         "props": {
+          "additionalProperties": true,
+          "title": "Props",
+          "type": "object"
+         },
+         "type": {
+          "const": "component",
+          "default": "component",
+          "title": "Type",
+          "type": "string"
+         }
+        },
+        "required": [
+         "component",
+         "value",
+         "constructor_args",
+         "props"
+        ],
+        "title": "ComponentMessage",
+        "type": "object"
+       },
+       "FileData": {
+        "description": "The FileData class is a subclass of the GradioModel class that represents a file object within a Gradio interface. It is used to store file data and metadata when a file is uploaded.\n\nAttributes:\n    path: The server file path where the file is stored.\n    url: The normalized server URL pointing to the file.\n    size: The size of the file in bytes.\n    orig_name: The original filename before upload.\n    mime_type: The MIME type of the file.\n    is_stream: Indicates whether the file is a stream.\n    meta: Additional metadata used internally (should not be changed).",
+        "properties": {
+         "path": {
+          "title": "Path",
+          "type": "string"
+         },
+         "url": {
+          "anyOf": [
+           {
+            "type": "string"
+           },
+           {
+            "type": "null"
+           }
+          ],
+          "default": null,
+          "title": "Url"
+         },
+         "size": {
+          "anyOf": [
+           {
+            "type": "integer"
+           },
+           {
+            "type": "null"
+           }
+          ],
+          "default": null,
+          "title": "Size"
+         },
+         "orig_name": {
+          "anyOf": [
+           {
+            "type": "string"
+           },
+           {
+            "type": "null"
+           }
+          ],
+          "default": null,
+          "title": "Orig Name"
+         },
+         "mime_type": {
+          "anyOf": [
+           {
+            "type": "string"
+           },
+           {
+            "type": "null"
+           }
+          ],
+          "default": null,
+          "title": "Mime Type"
+         },
+         "is_stream": {
+          "default": false,
+          "title": "Is Stream",
+          "type": "boolean"
+         },
+         "meta": {
+          "$ref": "#/$defs/FileDataMeta"
+         }
+        },
+        "required": [
+         "path"
+        ],
+        "title": "FileData",
+        "type": "object"
+       },
+       "FileDataMeta": {
+        "properties": {
+         "_type": {
+          "const": "gradio.FileData",
+          "title": "Type",
+          "type": "string"
+         }
+        },
+        "required": [
+         "_type"
+        ],
+        "title": "FileDataMeta",
+        "type": "object"
+       },
+       "FileMessage": {
+        "properties": {
+         "file": {
+          "$ref": "#/$defs/FileData"
+         },
+         "alt_text": {
+          "anyOf": [
+           {
+            "type": "string"
+           },
+           {
+            "type": "null"
+           }
+          ],
+          "default": null,
+          "title": "Alt Text"
+         },
+         "type": {
+          "const": "file",
+          "default": "file",
+          "title": "Type",
+          "type": "string"
+         }
+        },
+        "required": [
+         "file"
+        ],
+        "title": "FileMessage",
+        "type": "object"
+       },
+       "Message": {
+        "properties": {
+         "role": {
+          "title": "Role",
+          "type": "string"
+         },
+         "metadata": {
+          "anyOf": [
+           {
+            "$ref": "#/$defs/MetadataDict"
+           },
+           {
+            "type": "null"
+           }
+          ],
+          "default": null
+         },
+         "content": {
+          "items": {
+           "anyOf": [
+            {
+             "$ref": "#/$defs/TextMessage"
+            },
+            {
+             "$ref": "#/$defs/FileMessage"
+            },
+            {
+             "$ref": "#/$defs/ComponentMessage"
+            }
+           ]
+          },
+          "title": "Content",
+          "type": "array"
+         },
+         "options": {
+          "anyOf": [
+           {
+            "items": {
+             "$ref": "#/$defs/OptionDict"
+            },
+            "type": "array"
+           },
+           {
+            "type": "null"
+           }
+          ],
+          "default": null,
+          "title": "Options"
+         }
+        },
+        "required": [
+         "role",
+         "content"
+        ],
+        "title": "Message",
+        "type": "object"
+       },
+       "MetadataDict": {
+        "description": "A typed dictionary to represent metadata for a message in the Chatbot component. An\ninstance of this dictionary is used for the `metadata` field in a ChatMessage when\nthe chat message should be displayed as a thought.\nParameters:\n    title: The title of the \"thought\" message. Required if the message is to be displayed as a thought.\n    id: The ID of the message. Only used for nested thoughts. Nested thoughts can be nested by setting the parent_id to the id of the parent thought.\n    parent_id: The ID of the parent message. Only used for nested thoughts.\n    log: A string message to display next to the thought title in a subdued font.\n    duration: The duration of the message in seconds. Appears next to the thought title in a subdued font inside a parentheses.\n    status: if set to `\"pending\"`, a spinner appears next to the thought title and the accordion is initialized open.  If `status` is `\"done\"`, the thought accordion is initialized closed. If `status` is not provided, the thought accordion is initialized open and no spinner is displayed.",
+        "properties": {
+         "title": {
+          "title": "Title",
+          "type": "string"
+         },
+         "id": {
+          "anyOf": [
+           {
+            "type": "integer"
+           },
+           {
+            "type": "string"
+           }
+          ],
+          "title": "Id"
+         },
+         "parent_id": {
+          "anyOf": [
+           {
+            "type": "integer"
+           },
+           {
+            "type": "string"
+           }
+          ],
+          "title": "Parent Id"
+         },
+         "log": {
+          "title": "Log",
+          "type": "string"
+         },
+         "duration": {
+          "title": "Duration",
+          "type": "number"
+         },
+         "status": {
+          "enum": [
+           "pending",
+           "done"
+          ],
+          "title": "Status",
+          "type": "string"
+         }
+        },
+        "title": "MetadataDict",
+        "type": "object"
+       },
+       "OptionDict": {
+        "description": "A typed dictionary to represent an option in a ChatMessage. A list of these\ndictionaries is used for the `options` field in a ChatMessage.\nParameters:\n    value: The value to return when the option is selected.\n    label: The text to display in the option, if different from the value.",
+        "properties": {
+         "value": {
+          "title": "Value",
+          "type": "string"
+         },
+         "label": {
+          "title": "Label",
+          "type": "string"
+         }
+        },
+        "required": [
+         "value"
+        ],
+        "title": "OptionDict",
+        "type": "object"
+       },
+       "TextMessage": {
+        "properties": {
+         "text": {
+          "title": "Text",
+          "type": "string"
+         },
+         "type": {
+          "const": "text",
+          "default": "text",
+          "title": "Type",
+          "type": "string"
+         }
+        },
+        "required": [
+         "text"
+        ],
+        "title": "TextMessage",
+        "type": "object"
+       }
+      },
+      "items": {
+       "$ref": "#/$defs/Message"
+      },
+      "title": "ChatbotDataMessages",
+      "type": "array",
+      "additional_description": null
+     },
+     "python_type": {
+      "type": "list[dict(role: str, metadata: dict(title: str, id: int | str, parent_id: int | str, log: str, duration: float, status: Literal['pending', 'done']) | None, content: list[dict(text: str, type: Literal[text]) | dict(file: filepath, alt_text: str | None, type: Literal[file]) | dict(component: str, value: Any, constructor_args: dict(str, Any), props: dict(str, Any), type: Literal[component])], options: list[dict(value: str, label: str)] | None)]",
+      "description": ""
+     },
+     "component": "Chatbot"
+    },
+    {
+     "label": "value_19",
+     "type": {
+      "type": "string"
+     },
+     "python_type": {
+      "type": "str",
+      "description": ""
+     },
+     "component": "Markdown"
+    },
+    {
+     "label": "value_17",
+     "type": {
+      "type": "string"
+     },
+     "python_type": {
+      "type": "str",
+      "description": ""
+     },
+     "component": "Markdown"
+    },
+    {
+     "label": "value_16",
+     "type": {
+      "type": "string"
+     },
+     "python_type": {
+      "type": "str",
+      "description": ""
+     },
+     "component": "Markdown"
+    },
+    {
+     "label": "Message",
+     "type": {
+      "type": "string"
+     },
+     "python_type": {
+      "type": "str",
+      "description": ""
+     },
+     "component": "Textbox"
+    }
+   ],
+   "description": "Generator: stream one Ask turn into the chatbot; yields (chatbot, trace_md, checker_md, hint_md, textbox)."
+  },
+  "/ask_clear": {
+   "parameters": [],
+   "returns": [
+    {
+     "label": "Chat with the twin",
+     "type": {
+      "$defs": {
+       "ComponentMessage": {
+        "properties": {
+         "component": {
+          "title": "Component",
+          "type": "string"
+         },
+         "value": {
+          "title": "Value"
+         },
+         "constructor_args": {
+          "additionalProperties": true,
+          "title": "Constructor Args",
+          "type": "object"
+         },
+         "props": {
+          "additionalProperties": true,
+          "title": "Props",
+          "type": "object"
+         },
+         "type": {
+          "const": "component",
+          "default": "component",
+          "title": "Type",
+          "type": "string"
+         }
+        },
+        "required": [
+         "component",
+         "value",
+         "constructor_args",
+         "props"
+        ],
+        "title": "ComponentMessage",
+        "type": "object"
+       },
+       "FileData": {
+        "description": "The FileData class is a subclass of the GradioModel class that represents a file object within a Gradio interface. It is used to store file data and metadata when a file is uploaded.\n\nAttributes:\n    path: The server file path where the file is stored.\n    url: The normalized server URL pointing to the file.\n    size: The size of the file in bytes.\n    orig_name: The original filename before upload.\n    mime_type: The MIME type of the file.\n    is_stream: Indicates whether the file is a stream.\n    meta: Additional metadata used internally (should not be changed).",
+        "properties": {
+         "path": {
+          "title": "Path",
+          "type": "string"
+         },
+         "url": {
+          "anyOf": [
+           {
+            "type": "string"
+           },
+           {
+            "type": "null"
+           }
+          ],
+          "default": null,
+          "title": "Url"
+         },
+         "size": {
+          "anyOf": [
+           {
+            "type": "integer"
+           },
+           {
+            "type": "null"
+           }
+          ],
+          "default": null,
+          "title": "Size"
+         },
+         "orig_name": {
+          "anyOf": [
+           {
+            "type": "string"
+           },
+           {
+            "type": "null"
+           }
+          ],
+          "default": null,
+          "title": "Orig Name"
+         },
+         "mime_type": {
+          "anyOf": [
+           {
+            "type": "string"
+           },
+           {
+            "type": "null"
+           }
+          ],
+          "default": null,
+          "title": "Mime Type"
+         },
+         "is_stream": {
+          "default": false,
+          "title": "Is Stream",
+          "type": "boolean"
+         },
+         "meta": {
+          "$ref": "#/$defs/FileDataMeta"
+         }
+        },
+        "required": [
+         "path"
+        ],
+        "title": "FileData",
+        "type": "object"
+       },
+       "FileDataMeta": {
+        "properties": {
+         "_type": {
+          "const": "gradio.FileData",
+          "title": "Type",
+          "type": "string"
+         }
+        },
+        "required": [
+         "_type"
+        ],
+        "title": "FileDataMeta",
+        "type": "object"
+       },
+       "FileMessage": {
+        "properties": {
+         "file": {
+          "$ref": "#/$defs/FileData"
+         },
+         "alt_text": {
+          "anyOf": [
+           {
+            "type": "string"
+           },
+           {
+            "type": "null"
+           }
+          ],
+          "default": null,
+          "title": "Alt Text"
+         },
+         "type": {
+          "const": "file",
+          "default": "file",
+          "title": "Type",
+          "type": "string"
+         }
+        },
+        "required": [
+         "file"
+        ],
+        "title": "FileMessage",
+        "type": "object"
+       },
+       "Message": {
+        "properties": {
+         "role": {
+          "title": "Role",
+          "type": "string"
+         },
+         "metadata": {
+          "anyOf": [
+           {
+            "$ref": "#/$defs/MetadataDict"
+           },
+           {
+            "type": "null"
+           }
+          ],
+          "default": null
+         },
+         "content": {
+          "items": {
+           "anyOf": [
+            {
+             "$ref": "#/$defs/TextMessage"
+            },
+            {
+             "$ref": "#/$defs/FileMessage"
+            },
+            {
+             "$ref": "#/$defs/ComponentMessage"
+            }
+           ]
+          },
+          "title": "Content",
+          "type": "array"
+         },
+         "options": {
+          "anyOf": [
+           {
+            "items": {
+             "$ref": "#/$defs/OptionDict"
+            },
+            "type": "array"
+           },
+           {
+            "type": "null"
+           }
+          ],
+          "default": null,
+          "title": "Options"
+         }
+        },
+        "required": [
+         "role",
+         "content"
+        ],
+        "title": "Message",
+        "type": "object"
+       },
+       "MetadataDict": {
+        "description": "A typed dictionary to represent metadata for a message in the Chatbot component. An\ninstance of this dictionary is used for the `metadata` field in a ChatMessage when\nthe chat message should be displayed as a thought.\nParameters:\n    title: The title of the \"thought\" message. Required if the message is to be displayed as a thought.\n    id: The ID of the message. Only used for nested thoughts. Nested thoughts can be nested by setting the parent_id to the id of the parent thought.\n    parent_id: The ID of the parent message. Only used for nested thoughts.\n    log: A string message to display next to the thought title in a subdued font.\n    duration: The duration of the message in seconds. Appears next to the thought title in a subdued font inside a parentheses.\n    status: if set to `\"pending\"`, a spinner appears next to the thought title and the accordion is initialized open.  If `status` is `\"done\"`, the thought accordion is initialized closed. If `status` is not provided, the thought accordion is initialized open and no spinner is displayed.",
+        "properties": {
+         "title": {
+          "title": "Title",
+          "type": "string"
+         },
+         "id": {
+          "anyOf": [
+           {
+            "type": "integer"
+           },
+           {
+            "type": "string"
+           }
+          ],
+          "title": "Id"
+         },
+         "parent_id": {
+          "anyOf": [
+           {
+            "type": "integer"
+           },
+           {
+            "type": "string"
+           }
+          ],
+          "title": "Parent Id"
+         },
+         "log": {
+          "title": "Log",
+          "type": "string"
+         },
+         "duration": {
+          "title": "Duration",
+          "type": "number"
+         },
+         "status": {
+          "enum": [
+           "pending",
+           "done"
+          ],
+          "title": "Status",
+          "type": "string"
+         }
+        },
+        "title": "MetadataDict",
+        "type": "object"
+       },
+       "OptionDict": {
+        "description": "A typed dictionary to represent an option in a ChatMessage. A list of these\ndictionaries is used for the `options` field in a ChatMessage.\nParameters:\n    value: The value to return when the option is selected.\n    label: The text to display in the option, if different from the value.",
+        "properties": {
+         "value": {
+          "title": "Value",
+          "type": "string"
+         },
+         "label": {
+          "title": "Label",
+          "type": "string"
+         }
+        },
+        "required": [
+         "value"
+        ],
+        "title": "OptionDict",
+        "type": "object"
+       },
+       "TextMessage": {
+        "properties": {
+         "text": {
+          "title": "Text",
+          "type": "string"
+         },
+         "type": {
+          "const": "text",
+          "default": "text",
+          "title": "Type",
+          "type": "string"
+         }
+        },
+        "required": [
+         "text"
+        ],
+        "title": "TextMessage",
+        "type": "object"
+       }
+      },
+      "items": {
+       "$ref": "#/$defs/Message"
+      },
+      "title": "ChatbotDataMessages",
+      "type": "array",
+      "additional_description": null
+     },
+     "python_type": {
+      "type": "list[dict(role: str, metadata: dict(title: str, id: int | str, parent_id: int | str, log: str, duration: float, status: Literal['pending', 'done']) | None, content: list[dict(text: str, type: Literal[text]) | dict(file: filepath, alt_text: str | None, type: Literal[file]) | dict(component: str, value: Any, constructor_args: dict(str, Any), props: dict(str, Any), type: Literal[component])], options: list[dict(value: str, label: str)] | None)]",
+      "description": ""
+     },
+     "component": "Chatbot"
+    },
+    {
+     "label": "value_19",
+     "type": {
+      "type": "string"
+     },
+     "python_type": {
+      "type": "str",
+      "description": ""
+     },
+     "component": "Markdown"
+    },
+    {
+     "label": "value_17",
+     "type": {
+      "type": "string"
+     },
+     "python_type": {
+      "type": "str",
+      "description": ""
+     },
+     "component": "Markdown"
+    },
+    {
+     "label": "value_16",
+     "type": {
+      "type": "string"
+     },
+     "python_type": {
+      "type": "str",
+      "description": ""
+     },
+     "component": "Markdown"
+    },
+    {
+     "label": "Message",
+     "type": {
+      "type": "string"
+     },
+     "python_type": {
+      "type": "str",
+      "description": ""
+     },
+     "component": "Textbox"
+    }
+   ],
+   "description": "Empty the chat and its side panels."
+  },
+  "/decide_b1": {
+   "parameters": [
+    {
+     "label": "Situation",
+     "parameter_name": "situation",
+     "parameter_has_default": false,
+     "parameter_default": null,
+     "type": {
+      "type": "string"
+     },
+     "python_type": {
+      "type": "str",
+      "description": ""
+     },
+     "component": "Textbox",
+     "example_input": "Hello!!"
+    }
+   ],
+   "returns": [
+    {
+     "label": "value_29",
+     "type": {
+      "type": "string"
+     },
+     "python_type": {
+      "type": "str",
+      "description": ""
+     },
+     "component": "Markdown"
+    },
+    {
+     "label": "Raw result",
+     "type": {
+      "type": {},
+      "description": "any valid json"
+     },
+     "python_type": {
+      "type": "str | float | bool | list | dict",
+      "description": "any valid json"
+     },
+     "component": "Json"
+    }
+   ],
+   "description": "B1: would I do it? -> (markdown, raw json, state)."
+  },
+  "/decide_b2": {
+   "parameters": [
+    {
+     "label": "Situation",
+     "parameter_name": "situation",
+     "parameter_has_default": false,
+     "parameter_default": null,
+     "type": {
+      "type": "string"
+     },
+     "python_type": {
+      "type": "str",
+      "description": ""
+     },
+     "component": "Textbox",
+     "example_input": "Hello!!"
+    },
+    {
+     "label": "Option A",
+     "parameter_name": "option_a",
+     "parameter_has_default": false,
+     "parameter_default": null,
+     "type": {
+      "type": "string"
+     },
+     "python_type": {
+      "type": "str",
+      "description": ""
+     },
+     "component": "Textbox",
+     "example_input": "Hello!!"
+    },
+    {
+     "label": "Option B",
+     "parameter_name": "option_b",
+     "parameter_has_default": false,
+     "parameter_default": null,
+     "type": {
+      "type": "string"
+     },
+     "python_type": {
+      "type": "str",
+      "description": ""
+     },
+     "component": "Textbox",
+     "example_input": "Hello!!"
+    }
+   ],
+   "returns": [
+    {
+     "label": "value_29",
+     "type": {
+      "type": "string"
+     },
+     "python_type": {
+      "type": "str",
+      "description": ""
+     },
+     "component": "Markdown"
+    },
+    {
+     "label": "Raw result",
+     "type": {
+      "type": {},
+      "description": "any valid json"
+     },
+     "python_type": {
+      "type": "str | float | bool | list | dict",
+      "description": "any valid json"
+     },
+     "component": "Json"
+    }
+   ],
+   "description": "B2: A or B? -> (markdown, raw json, state)."
+  },
+  "/say_it": {
+   "parameters": [],
+   "returns": [
+    {
+     "label": "In my voice",
+     "type": {
+      "type": "string"
+     },
+     "python_type": {
+      "type": "str",
+      "description": ""
+     },
+     "component": "Textbox"
+    }
+   ],
+   "description": "Render the last decision as one message in the twin's voice (Stheno loads only now)."
+  },
+  "/act": {
+   "parameters": [
+    {
+     "label": "Request",
+     "parameter_name": "request",
+     "parameter_has_default": false,
+     "parameter_default": null,
+     "type": {
+      "type": "string"
+     },
+     "python_type": {
+      "type": "str",
+      "description": ""
+     },
+     "component": "Textbox",
+     "example_input": "Hello!!"
+    }
+   ],
+   "returns": [
+    {
+     "label": "Answer",
+     "type": {
+      "type": "string"
+     },
+     "python_type": {
+      "type": "str",
+      "description": ""
+     },
+     "component": "Textbox"
+    },
+    {
+     "label": "value_43",
+     "type": {
+      "type": "string"
+     },
+     "python_type": {
+      "type": "str",
+      "description": ""
+     },
+     "component": "Markdown"
+    }
+   ],
+   "description": "hermes3 tool loop -> (answer, trace markdown)."
+  },
+  "/polish": {
+   "parameters": [
+    {
+     "label": "Answer",
+     "parameter_name": "text",
+     "parameter_has_default": false,
+     "parameter_default": null,
+     "type": {
+      "type": "string"
+     },
+     "python_type": {
+      "type": "str",
+      "description": ""
+     },
+     "component": "Textbox",
+     "example_input": "Hello!!"
+    }
+   ],
+   "returns": [
+    {
+     "label": "Polished",
+     "type": {
+      "type": "string"
+     },
+     "python_type": {
+      "type": "str",
+      "description": ""
+     },
+     "component": "Textbox"
+    }
+   ],
+   "description": "Rewrite the answer in voice with Stheno."
+  },
+  "/see": {
+   "parameters": [
+    {
+     "label": "Image",
+     "parameter_name": "image",
+     "parameter_has_default": false,
+     "parameter_default": null,
+     "type": {
+      "properties": {
+       "path": {
+        "anyOf": [
+         {
+          "type": "string"
+         },
+         {
+          "type": "null"
+         }
+        ],
+        "default": null,
+        "description": "Path to a local file",
+        "title": "Path"
+       },
+       "url": {
+        "anyOf": [
+         {
+          "type": "string"
+         },
+         {
+          "type": "null"
+         }
+        ],
+        "default": null,
+        "description": "Publicly available url or base64 encoded image",
+        "title": "Url"
+       },
+       "size": {
+        "anyOf": [
+         {
+          "type": "integer"
+         },
+         {
+          "type": "null"
+         }
+        ],
+        "default": null,
+        "description": "Size of image in bytes",
+        "title": "Size"
+       },
+       "orig_name": {
+        "anyOf": [
+         {
+          "type": "string"
+         },
+         {
+          "type": "null"
+         }
+        ],
+        "default": null,
+        "description": "Original filename",
+        "title": "Orig Name"
+       },
+       "mime_type": {
+        "anyOf": [
+         {
+          "type": "string"
+         },
+         {
+          "type": "null"
+         }
+        ],
+        "default": null,
+        "description": "mime type of image",
+        "title": "Mime Type"
+       },
+       "is_stream": {
+        "default": false,
+        "description": "Can always be set to False",
+        "title": "Is Stream",
+        "type": "boolean"
+       },
+       "meta": {
+        "additionalProperties": true,
+        "default": {
+         "_type": "gradio.FileData"
+        },
+        "title": "Meta",
+        "type": "object"
+       }
+      },
+      "title": "ImageData",
+      "type": "object",
+      "additional_description": "A local filepath or publicly available URL."
+     },
+     "python_type": {
+      "type": "filepath",
+      "description": "A local filepath or publicly available URL."
+     },
+     "component": "Image",
+     "example_input": {
+      "path": "https://raw.githubusercontent.com/gradio-app/gradio/main/test/test_files/bus.png",
+      "meta": {
+       "_type": "gradio.FileData"
+      },
+      "orig_name": "bus.png",
+      "url": "https://raw.githubusercontent.com/gradio-app/gradio/main/test/test_files/bus.png"
+     }
+    }
+   ],
+   "returns": [
+    {
+     "label": "Description (qwen3.5)",
+     "type": {
+      "type": "string"
+     },
+     "python_type": {
+      "type": "str",
+      "description": ""
+     },
+     "component": "Textbox"
+    },
+    {
+     "label": "Reaction (in my voice)",
+     "type": {
+      "type": "string"
+     },
+     "python_type": {
+      "type": "str",
+      "description": ""
+     },
+     "component": "Textbox"
+    },
+    {
+     "label": "value_55",
+     "type": {
+      "type": "string"
+     },
+     "python_type": {
+      "type": "str",
+      "description": ""
+     },
+     "component": "Markdown"
+    }
+   ],
+   "description": "qwen3.5 describes, Stheno reacts -> (description, reaction, trace markdown)."
+  },
+  "/eval_show": {
+   "parameters": [],
+   "returns": [
+    {
+     "label": "Voice bake-off",
+     "type": {
+      "properties": {
+       "headers": {
+        "items": {},
+        "title": "Headers",
+        "type": "array"
+       },
+       "data": {
+        "items": {
+         "items": {},
+         "type": "array"
+        },
+        "title": "Data",
+        "type": "array"
+       },
+       "metadata": {
+        "anyOf": [
+         {
+          "additionalProperties": {
+           "anyOf": [
+            {
+             "items": {},
+             "type": "array"
+            },
+            {
+             "type": "null"
+            }
+           ]
+          },
+          "type": "object"
+         },
+         {
+          "type": "null"
+         }
+        ],
+        "default": null,
+        "title": "Metadata"
+       }
+      },
+      "required": [
+       "headers",
+       "data"
+      ],
+      "title": "DataframeData",
+      "type": "object",
+      "additional_description": null
+     },
+     "python_type": {
+      "type": "dict(headers: list[Any], data: list[list[Any]], metadata: dict(str, list[Any] | None) | None)",
+      "description": ""
+     },
+     "component": "Dataframe"
+    },
+    {
+     "label": "Retrieval bake-off",
+     "type": {
+      "properties": {
+       "headers": {
+        "items": {},
+        "title": "Headers",
+        "type": "array"
+       },
+       "data": {
+        "items": {
+         "items": {},
+         "type": "array"
+        },
+        "title": "Data",
+        "type": "array"
+       },
+       "metadata": {
+        "anyOf": [
+         {
+          "additionalProperties": {
+           "anyOf": [
+            {
+             "items": {},
+             "type": "array"
+            },
+            {
+             "type": "null"
+            }
+           ]
+          },
+          "type": "object"
+         },
+         {
+          "type": "null"
+         }
+        ],
+        "default": null,
+        "title": "Metadata"
+       }
+      },
+      "required": [
+       "headers",
+       "data"
+      ],
+      "title": "DataframeData",
+      "type": "object",
+      "additional_description": null
+     },
+     "python_type": {
+      "type": "dict(headers: list[Any], data: list[list[Any]], metadata: dict(str, list[Any] | None) | None)",
+      "description": ""
+     },
+     "component": "Dataframe"
+    }
+   ],
+   "description": "Cached tables for the profile on disk (no model call)."
+  },
+  "/eval_voice_rerun": {
+   "parameters": [
+    {
+     "label": "Use Claude ceiling judge (needs ANTHROPIC_API_KEY)",
+     "parameter_name": "use_claude",
+     "parameter_has_default": true,
+     "parameter_default": false,
+     "type": {
+      "type": "boolean"
+     },
+     "python_type": {
+      "type": "bool",
+      "description": ""
+     },
+     "component": "Checkbox",
+     "example_input": true
+    }
+   ],
+   "returns": [
+    {
+     "label": "Voice bake-off",
+     "type": {
+      "properties": {
+       "headers": {
+        "items": {},
+        "title": "Headers",
+        "type": "array"
+       },
+       "data": {
+        "items": {
+         "items": {},
+         "type": "array"
+        },
+        "title": "Data",
+        "type": "array"
+       },
+       "metadata": {
+        "anyOf": [
+         {
+          "additionalProperties": {
+           "anyOf": [
+            {
+             "items": {},
+             "type": "array"
+            },
+            {
+             "type": "null"
+            }
+           ]
+          },
+          "type": "object"
+         },
+         {
+          "type": "null"
+         }
+        ],
+        "default": null,
+        "title": "Metadata"
+       }
+      },
+      "required": [
+       "headers",
+       "data"
+      ],
+      "title": "DataframeData",
+      "type": "object",
+      "additional_description": null
+     },
+     "python_type": {
+      "type": "dict(headers: list[Any], data: list[list[Any]], metadata: dict(str, list[Any] | None) | None)",
+      "description": ""
+     },
+     "component": "Dataframe"
+    },
+    {
+     "label": "Retrieval bake-off",
+     "type": {
+      "properties": {
+       "headers": {
+        "items": {},
+        "title": "Headers",
+        "type": "array"
+       },
+       "data": {
+        "items": {
+         "items": {},
+         "type": "array"
+        },
+        "title": "Data",
+        "type": "array"
+       },
+       "metadata": {
+        "anyOf": [
+         {
+          "additionalProperties": {
+           "anyOf": [
+            {
+             "items": {},
+             "type": "array"
+            },
+            {
+             "type": "null"
+            }
+           ]
+          },
+          "type": "object"
+         },
+         {
+          "type": "null"
+         }
+        ],
+        "default": null,
+        "title": "Metadata"
+       }
+      },
+      "required": [
+       "headers",
+       "data"
+      ],
+      "title": "DataframeData",
+      "type": "object",
+      "additional_description": null
+     },
+     "python_type": {
+      "type": "dict(headers: list[Any], data: list[list[Any]], metadata: dict(str, list[Any] | None) | None)",
+      "description": ""
+     },
+     "component": "Dataframe"
+    },
+    {
+     "label": "value_65",
+     "type": {
+      "type": "string"
+     },
+     "python_type": {
+      "type": "str",
+      "description": ""
+     },
+     "component": "Markdown"
+    }
+   ],
+   "description": "Re-run the voice bake-off (resumes from the cache), then refresh the tables. The Claude judge runs only when use_claude is ticked and the key is available."
+  },
+  "/eval_retrieval_rerun": {
+   "parameters": [],
+   "returns": [
+    {
+     "label": "Voice bake-off",
+     "type": {
+      "properties": {
+       "headers": {
+        "items": {},
+        "title": "Headers",
+        "type": "array"
+       },
+       "data": {
+        "items": {
+         "items": {},
+         "type": "array"
+        },
+        "title": "Data",
+        "type": "array"
+       },
+       "metadata": {
+        "anyOf": [
+         {
+          "additionalProperties": {
+           "anyOf": [
+            {
+             "items": {},
+             "type": "array"
+            },
+            {
+             "type": "null"
+            }
+           ]
+          },
+          "type": "object"
+         },
+         {
+          "type": "null"
+         }
+        ],
+        "default": null,
+        "title": "Metadata"
+       }
+      },
+      "required": [
+       "headers",
+       "data"
+      ],
+      "title": "DataframeData",
+      "type": "object",
+      "additional_description": null
+     },
+     "python_type": {
+      "type": "dict(headers: list[Any], data: list[list[Any]], metadata: dict(str, list[Any] | None) | None)",
+      "description": ""
+     },
+     "component": "Dataframe"
+    },
+    {
+     "label": "Retrieval bake-off",
+     "type": {
+      "properties": {
+       "headers": {
+        "items": {},
+        "title": "Headers",
+        "type": "array"
+       },
+       "data": {
+        "items": {
+         "items": {},
+         "type": "array"
+        },
+        "title": "Data",
+        "type": "array"
+       },
+       "metadata": {
+        "anyOf": [
+         {
+          "additionalProperties": {
+           "anyOf": [
+            {
+             "items": {},
+             "type": "array"
+            },
+            {
+             "type": "null"
+            }
+           ]
+          },
+          "type": "object"
+         },
+         {
+          "type": "null"
+         }
+        ],
+        "default": null,
+        "title": "Metadata"
+       }
+      },
+      "required": [
+       "headers",
+       "data"
+      ],
+      "title": "DataframeData",
+      "type": "object",
+      "additional_description": null
+     },
+     "python_type": {
+      "type": "dict(headers: list[Any], data: list[list[Any]], metadata: dict(str, list[Any] | None) | None)",
+      "description": ""
+     },
+     "component": "Dataframe"
+    },
+    {
+     "label": "value_65",
+     "type": {
+      "type": "string"
+     },
+     "python_type": {
+      "type": "str",
+      "description": ""
+     },
+     "component": "Markdown"
+    }
+   ],
+   "description": "Re-run the retrieval bake-off, then refresh the tables."
+  },
+  "/eval_live": {
+   "parameters": [
+    {
+     "label": "Candidate",
+     "parameter_name": "candidate",
+     "parameter_has_default": true,
+     "parameter_default": "stheno_q4",
+     "type": {
+      "type": "string",
+      "enum": [
+       "stheno_q4",
+       "stheno_q8",
+       "llama31",
+       "qwen25",
+       "hermes3",
+       "qwen3_8k"
+      ]
+     },
+     "python_type": {
+      "type": "Literal['stheno_q4', 'stheno_q8', 'llama31', 'qwen25', 'hermes3', 'qwen3_8k']",
+      "description": ""
+     },
+     "component": "Dropdown",
+     "example_input": "stheno_q4"
+    },
+    {
+     "label": "Eval question",
+     "parameter_name": "qid",
+     "parameter_has_default": true,
+     "parameter_default": "Q-01",
+     "type": {
+      "type": "string",
+      "enum": [
+       "Q-01",
+       "Q-02",
+       "Q-03",
+       "Q-04",
+       "Q-05",
+       "Q-06",
+       "Q-07",
+       "Q-08",
+       "Q-09",
+       "Q-10",
+       "Q-11",
+       "Q-12",
+       "Q-13",
+       "Q-14",
+       "Q-15",
+       "Q-16",
+       "Q-17",
+       "Q-18",
+       "Q-19",
+       "Q-20"
+      ]
+     },
+     "python_type": {
+      "type": "Literal['Q-01', 'Q-02', 'Q-03', 'Q-04', 'Q-05', 'Q-06', 'Q-07', 'Q-08', 'Q-09', 'Q-10', 'Q-11', 'Q-12', 'Q-13', 'Q-14', 'Q-15', 'Q-16', 'Q-17', 'Q-18', 'Q-19', 'Q-20']",
+      "description": ""
+     },
+     "component": "Dropdown",
+     "example_input": "Q-01"
+    }
+   ],
+   "returns": [
+    {
+     "label": "Live result",
+     "type": {
+      "type": {},
+      "description": "any valid json"
+     },
+     "python_type": {
+      "type": "str | float | bool | list | dict",
+      "description": "any valid json"
+     },
+     "component": "Json"
+    }
+   ],
+   "description": "One candidate x one eval question, judged by llama3.1 and checked by qwen2.5 (not cached)."
+  },
+  "/status": {
+   "parameters": [],
+   "returns": [
+    {
+     "label": "value_74",
+     "type": {
+      "type": "string"
+     },
+     "python_type": {
+      "type": "str",
+      "description": ""
+     },
+     "component": "Markdown"
+    },
+    {
+     "label": "Telemetry (last 30 calls)",
+     "type": {
+      "properties": {
+       "headers": {
+        "items": {},
+        "title": "Headers",
+        "type": "array"
+       },
+       "data": {
+        "items": {
+         "items": {},
+         "type": "array"
+        },
+        "title": "Data",
+        "type": "array"
+       },
+       "metadata": {
+        "anyOf": [
+         {
+          "additionalProperties": {
+           "anyOf": [
+            {
+             "items": {},
+             "type": "array"
+            },
+            {
+             "type": "null"
+            }
+           ]
+          },
+          "type": "object"
+         },
+         {
+          "type": "null"
+         }
+        ],
+        "default": null,
+        "title": "Metadata"
+       }
+      },
+      "required": [
+       "headers",
+       "data"
+      ],
+      "title": "DataframeData",
+      "type": "object",
+      "additional_description": null
+     },
+     "python_type": {
+      "type": "dict(headers: list[Any], data: list[list[Any]], metadata: dict(str, list[Any] | None) | None)",
+      "description": ""
+     },
+     "component": "Dataframe"
+    }
+   ],
+   "description": "(status markdown, telemetry rows)."
+  },
+  "/free_gpu": {
+   "parameters": [],
+   "returns": [
+    {
+     "label": "value_74",
+     "type": {
+      "type": "string"
+     },
+     "python_type": {
+      "type": "str",
+      "description": ""
+     },
+     "component": "Markdown"
+    }
+   ],
+   "description": "Stop every Ollama model and unload LM Studio; clear the active tab so the heartbeat does not undo it."
+  },
+  "/warm": {
+   "parameters": [
+    {
+     "label": "Tab to warm",
+     "parameter_name": "tab",
+     "parameter_has_default": true,
+     "parameter_default": "active",
+     "type": {
+      "type": "string",
+      "enum": [
+       "active",
+       "ask",
+       "decide",
+       "act",
+       "see"
+      ]
+     },
+     "python_type": {
+      "type": "Literal['active', 'ask', 'decide', 'act', 'see']",
+      "description": ""
+     },
+     "component": "Dropdown",
+     "example_input": "active"
+    }
+   ],
+   "returns": [
+    {
+     "label": "value_74",
+     "type": {
+      "type": "string"
+     },
+     "python_type": {
+      "type": "str",
+      "description": ""
+     },
+     "component": "Markdown"
+    }
+   ],
+   "description": "Warm the model of the chosen tab (\"active\" = the active tab, else the last tab that had a model); the active tab is left unchanged."
+  },
+  "/rebuild_index": {
+   "parameters": [],
+   "returns": [
+    {
+     "label": "value_74",
+     "type": {
+      "type": "string"
+     },
+     "python_type": {
+      "type": "str",
+      "description": ""
+     },
+     "component": "Markdown"
+    },
+    {
+     "label": "value_1",
+     "type": {
+      "type": "string"
+     },
+     "python_type": {
+      "type": "str",
+      "description": ""
+     },
+     "component": "Markdown"
+    }
+   ],
+   "description": "Rebuild the three indexes, chunks.json and the digest for the profile on disk; reset caches. Returns (status markdown, header markdown) so the stale warnings clear without a page reload."
+  },
+  "/rebuild_digest": {
+   "parameters": [],
+   "returns": [
+    {
+     "label": "value_74",
+     "type": {
+      "type": "string"
+     },
+     "python_type": {
+      "type": "str",
+      "description": ""
+     },
+     "component": "Markdown"
+    },
+    {
+     "label": "value_1",
+     "type": {
+      "type": "string"
+     },
+     "python_type": {
+      "type": "str",
+      "description": ""
+     },
+     "component": "Markdown"
+    }
+   ],
+   "description": "Force a fresh digest with qwen3:8b (40960 ctx) even when the sha already matches; reset caches."
+  }
+ }
+}

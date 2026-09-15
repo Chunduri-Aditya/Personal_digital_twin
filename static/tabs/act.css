@@ -1,0 +1,247 @@
+/* static/tabs/act.css: the Act tab, hermes3's tool loop (docs/PLAN_FINISH.md P4, lane act_see).
+
+   Layout is in twin/ui/act.py:
+   - #act-compose (.twin-panel): the request and Run on one sheet.
+   - #act-results (.twin-split): the Answer card (#act-answer-card, .twin-card.twin-result, the one raised result),
+     with Polish with Stheno under it as the secondary action; the Polished text beside it in a quote card
+     (#act-polished-card), because it is the twin's voice.
+   - The Trace accordion, whose Markdown (#act-trace) this partial draws as a tray of step cards.
+   Every selector starts with #tab-act; colours, radii, shadows and fonts are --twin-* tokens.
+
+   Specificity: Gradio re-emits custom CSS a second time behind its three-class page-container prefix
+   (gradio-container, gradio-container-6-27-0, contain), and it splits selectors on every comma, including commas
+   inside :is(). twin.css rules such as "#twin-tabs .trace :is(p, li, span, strong, em, code, pre)" therefore gain
+   the prefix again inside :is() and outrank class selectors in a partial. So the trace rules here anchor on the
+   #act-trace elem_id, and this file keeps every selector list at the top level. */
+
+/* ---------------------------------------------------------------- answer and polished text */
+
+/* Gradio wraps every Textbox in a form container whose CSS forces border-width 0, radius 0 and no shadow
+   (!important) on the block inside it. So the card classes sit on a gr.Column around each Textbox. These variables
+   flatten the form container and the block, so the column alone draws the card's edge, fill and shadow. A zero
+   radius keeps the container from clipping the textarea's corners. */
+#tab-act .act-answer,
+#tab-act .act-polished {
+  --block-border-width: 0px;
+  --block-padding: 0px;
+  --block-radius: 0px;
+  --block-background-fill: var(--twin-surface-raised);
+}
+
+/* the request sheet: its form container keeps no rounded corner of its own */
+#tab-act .twin-panel {
+  --block-radius: 0px;
+}
+
+/* The Answer stays an input (Polish with Stheno reads it), so its textarea keeps the input edge. */
+#tab-act .act-answer textarea {
+  font-size: var(--twin-text-md);
+  line-height: var(--twin-leading);
+  color: var(--twin-text);
+}
+
+/* Polished is read-only: the label stays in the instrument face, and the textarea drops its input box so the
+   serif text sits on the quote card. */
+#tab-act .act-polished label > span:first-child {
+  font-family: var(--twin-font-body);
+}
+
+#tab-act .act-polished textarea {
+  padding-inline: 0;
+  border-color: transparent;
+  background: transparent;
+  box-shadow: none;
+}
+
+#tab-act .act-polished textarea:focus {
+  box-shadow: var(--twin-focus-ring);
+}
+
+/* ---------------------------------------------------------------- action rows */
+
+/* Gradio gives a scale=0 button an inline fit-content width. A flex basis of auto lets that width hold. Without it
+   the button shrank to the row's 120 px minimum and "Polish with Stheno" wrapped onto two lines. At 400 px and
+   below, twin.css stacks the buttons at full width. */
+@media (min-width: 401px) {
+  #tab-act .twin-actions > button {
+    flex: 0 0 auto;
+  }
+}
+
+/* ---------------------------------------------------------------- trace: the agent's steps */
+
+/* The disclosure header reads as a section heading. The chevron is in faded ink, because Gradio's accent keeps the
+   light ink in dark mode. */
+#tab-act .act-trace-accordion > button > span:first-child {
+  font-family: var(--twin-font-body);
+  font-size: var(--twin-text-lg);
+  font-weight: 600;
+  color: var(--twin-text);
+  transition: color var(--twin-duration) var(--twin-ease);
+}
+
+#tab-act .act-trace-accordion > button:hover > span:first-child {
+  color: var(--twin-accent);
+}
+
+#tab-act .act-trace-accordion > button > span:last-child {
+  color: var(--twin-text-muted);
+}
+
+/* The tray is twin.css .trace, on the page ground. Gradio puts the Markdown's classes on its block (#act-trace) and
+   again on the inner prose div; only the block is the tray. */
+#tab-act #act-trace {
+  min-height: var(--twin-card-min);
+  padding: var(--twin-space-3);
+}
+
+#tab-act #act-trace .act-trace {
+  min-height: 0;
+  padding: 0;
+  overflow: visible;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+
+/* format_trace_markdown writes each trace entry as a "**Step N - kind**" heading plus its body and separates entries
+   with "---". Gradio renders them as siblings inside the prose div's span: p (heading, labels, text), div (a fenced
+   JSON block: copy button + pre) and hr.
+   The rules below paint each run of siblings between two hr as one card:
+   - the sheet fill and side edges on every sibling;
+   - the top edge on the first sibling and the bottom edge on the last;
+   - the hr becomes the gap.
+   A lone paragraph (the "(no trace)" placeholder, or an "Error:" line) is not a card. */
+#tab-act #act-trace .act-trace > span > :not(hr):not(:only-child) {
+  margin: 0;
+  padding: var(--twin-space-2) var(--twin-space-4) 0;
+  border-inline: 1px solid var(--twin-border);
+  background: var(--twin-surface);
+}
+
+#tab-act #act-trace .act-trace > span > :first-child:not(:only-child),
+#tab-act #act-trace .act-trace > span > hr + :not(:only-child) {
+  padding-top: var(--twin-space-3);
+  border-top: 1px solid var(--twin-border);
+  border-top-left-radius: var(--twin-radius-card);
+  border-top-right-radius: var(--twin-radius-card);
+}
+
+#tab-act #act-trace .act-trace > span > :last-child:not(:only-child),
+#tab-act #act-trace .act-trace > span > :has(+ hr):not(:only-child) {
+  padding-bottom: var(--twin-space-3);
+  border-bottom: 1px solid var(--twin-border);
+  border-bottom-left-radius: var(--twin-radius-card);
+  border-bottom-right-radius: var(--twin-radius-card);
+}
+
+#tab-act #act-trace .act-trace > span > hr {
+  height: var(--twin-space-3);
+  margin: 0;
+  border: 0;
+  background: transparent;
+}
+
+/* Entry headings. "Step N - tool `name`" is in ink with the tool name as an accent chip. "Step N - assistant" and
+   "Step N - note" are one step quieter, so the tool calls lead the eye. */
+#tab-act #act-trace .act-trace > span > p > strong:first-child {
+  font-family: var(--twin-font-body);
+  font-size: var(--twin-text-md);
+  font-weight: 600;
+  color: var(--twin-text-muted);
+}
+
+#tab-act #act-trace .act-trace > span > p > strong:first-child:has(> code) {
+  color: var(--twin-text);
+}
+
+#tab-act #act-trace .act-trace > span > p > strong:first-child > code {
+  margin: 0;
+  padding: 1px var(--twin-space-2);
+  border: 0;
+  border-radius: var(--twin-radius-control);
+  background: var(--twin-accent-soft);
+  color: var(--twin-accent);
+  font-family: var(--twin-font-mono);
+  font-size: var(--twin-text-sm);
+  font-weight: 600;
+}
+
+/* the "Arguments:" and "Result:" labels over each JSON block */
+#tab-act #act-trace .act-trace > span > p:has(+ div > pre) {
+  padding-bottom: var(--twin-space-1);
+  color: var(--twin-text-muted);
+  font-family: var(--twin-font-body);
+  font-size: var(--twin-text-sm);
+}
+
+/* The JSON itself: an inset on the page ground inside the card, in one ink, so syntax colours never drop below AA
+   in dark mode. */
+#tab-act #act-trace .act-trace > span > div > pre {
+  margin: 0;
+  padding: var(--twin-space-2) var(--twin-space-3);
+  border: 1px solid var(--twin-border);
+  border-radius: var(--twin-radius-control);
+  background: var(--twin-bg);
+  color: var(--twin-text);
+  font-size: var(--twin-text-sm);
+  padding-right: var(--twin-space-8);
+}
+
+/* Gradio's own `.md pre, .md code { white-space: pre }` would keep long JSON lines (a draft's "next_step", a
+   search_profile "text") on one line under the copy button, so the code wraps inside the inset. */
+#tab-act #act-trace .act-trace > span > div > pre > code {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+#tab-act #act-trace pre span {
+  color: inherit;
+}
+
+#tab-act #act-trace .act-trace > span > div > button {
+  border-color: var(--twin-border);
+  border-radius: var(--twin-radius-control);
+  background: var(--twin-surface);
+  color: var(--twin-text-muted);
+}
+
+#tab-act #act-trace .act-trace > span > div > button:hover {
+  background: var(--twin-accent-soft);
+  color: var(--twin-text);
+}
+
+/* Emphasis in the trace is prose, not log output: a step note ("_Reached the step limit ..._") and the
+   "(no trace)" placeholder. Both are quiet hints in the reading face. */
+#tab-act #act-trace p > em {
+  color: var(--twin-text-muted);
+  font-family: var(--twin-font-body);
+  font-size: var(--twin-text-sm);
+}
+
+/* Inline error: "**Error:** `Type: message`" (state._err_md) is shown in madder on its tint. It is never a card. */
+#tab-act #act-trace .act-trace > span > p:has(> strong:first-child + code) {
+  margin: 0;
+  padding: var(--twin-space-2) var(--twin-space-3);
+  border-left: var(--twin-rule) solid var(--twin-err);
+  border-radius: var(--twin-radius-control);
+  background: var(--twin-err-soft);
+  color: var(--twin-err);
+}
+
+#tab-act #act-trace .act-trace > span > p:has(> strong:first-child + code) > strong,
+#tab-act #act-trace .act-trace > span > p:has(> strong:first-child + code) > code {
+  color: var(--twin-err);
+}
+
+/* ---------------------------------------------------------------- narrow screens */
+
+@media (max-width: 400px) {
+  #tab-act #act-trace {
+    padding: var(--twin-space-2);
+  }
+
+  #tab-act #act-trace .act-trace > span > :not(hr):not(:only-child) {
+    padding-inline: var(--twin-space-3);
+  }
+}

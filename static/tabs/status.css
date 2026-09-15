@@ -1,0 +1,311 @@
+/* static/tabs/status.css: the Status tab (docs/PLAN_FINISH.md P4, evals_status lane). Every selector starts with
+   #tab-status; colours, radii and fonts come from --twin-* (static/twin.css).
+
+   The tab is the machine room: what was logged (the audit tail and the redaction report), what the servers and the
+   GPU hold (the readout #status-md and its models register), and the one action a presenter takes here, Free GPU.
+   The rebuilds, which load models and rewrite data files, sit on their own row.
+
+   Selector lists are written out at the top level, never as :is(a, b): Gradio 6.27 re-emits every custom rule a second
+   time under its own app-container prefix (three classes) and splits a comma list inside :is() into prefixed pieces,
+   which adds (0,3,0) of specificity per list and lets such a rule outrank a more specific plain one. */
+
+/* ---------------------------------------------------------------- tiles: GPU memory, heartbeat, LM Studio, Ollama */
+
+/* status_tiles_html writes <dl><div data-state><dt>label</dt><dd>value</dd><dd>note</dd></div>...</dl>; the readings a
+   presenter glances at before anything else on this tab. data-state="ok" or "warn" colours the value. */
+#tab-status #status-tiles {
+  --block-padding: 0px;
+}
+
+#tab-status #status-tiles dl {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--twin-space-3);
+  margin: 0 0 var(--twin-space-4);
+  padding: 0;
+}
+
+#tab-status #status-tiles dl > div {
+  min-width: 0;
+  padding: var(--twin-space-3) var(--twin-space-4);
+  border: 1px solid var(--twin-border);
+  border-radius: var(--twin-radius-card);
+  background: var(--twin-surface);
+  font-variant-numeric: tabular-nums;
+}
+
+#tab-status #status-tiles dt {
+  font-size: var(--twin-text-sm);
+  font-weight: 600;
+  color: var(--twin-text-muted);
+}
+
+#tab-status #status-tiles dd {
+  margin: var(--twin-space-1) 0 0;
+}
+
+#tab-status #status-tiles dd:first-of-type {
+  font-size: var(--twin-text-xl);
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--twin-text);
+}
+
+#tab-status #status-tiles dd + dd {
+  font-size: var(--twin-text-sm);
+  color: var(--twin-text-muted);
+  overflow-wrap: anywhere;
+}
+
+#tab-status #status-tiles div[data-state="ok"] dd:first-of-type {
+  color: var(--twin-ok);
+}
+
+#tab-status #status-tiles div[data-state="warn"] dd:first-of-type {
+  color: var(--twin-warn);
+}
+
+#tab-status #status-tiles [data-meter] {
+  display: block;
+  height: 4px;
+  margin-top: var(--twin-space-2);
+  overflow: hidden;
+  border-radius: var(--twin-radius-control);
+  background: var(--twin-accent-soft);
+}
+
+#tab-status #status-tiles [data-meter] > span {
+  display: block;
+  height: 100%;
+  background: var(--twin-accent);
+  transition: width var(--twin-duration) var(--twin-ease);
+}
+
+/* ---------------------------------------------------------------- safeguards: audit tail and redaction report */
+
+#tab-status #status-audit-counts p,
+#tab-status #status-redaction-report p {
+  margin: 0 0 var(--twin-space-2);
+}
+
+#tab-status #status-audit-counts strong,
+#tab-status #status-redaction-report strong {
+  font-weight: 600;
+  color: var(--twin-text);
+}
+
+#tab-status #status-redaction-report ul {
+  margin: var(--twin-space-2) 0 0;
+  padding-left: var(--twin-space-5);
+}
+
+#tab-status #status-redaction-report li {
+  margin: var(--twin-space-1) 0;
+}
+
+/* ---------------------------------------------------------------- logs (gr.Dataframe): audit tail and telemetry */
+
+/* Gradio 6.27 draws a Dataframe body as a virtual grid (div[role=row] > div[role=gridcell]) in its monospace face,
+   which the th/td rule of .twin-table does not reach: the rows take the reading face, tabular figures and the 13 px
+   log size here. */
+#tab-status .twin-table [role="grid"] [role="row"],
+#tab-status .twin-table [role="grid"] [role="columnheader"] {
+  font-family: var(--twin-font-body);
+  font-size: var(--twin-text-sm);
+  font-variant-numeric: tabular-nums;
+}
+
+#tab-status .twin-table [role="grid"] [role="gridcell"] *,
+#tab-status .twin-table [role="grid"] [role="columnheader"] * {
+  font-family: inherit;
+}
+
+/* telemetry: load_ms, prompt_tokens, eval_tokens, tok_s and wall_ms right-aligned so the figures line up */
+#tab-status #status-telemetry [role="gridcell"]:nth-child(n+4):nth-child(-n+8) > div,
+#tab-status #status-telemetry [role="columnheader"]:nth-child(n+4):nth-child(-n+8) > div {
+  justify-content: flex-end;
+  text-align: right;
+}
+
+/* ---------------------------------------------------------------- the readout (#status-md, .twin-card) */
+
+#tab-status #status-md {
+  margin-top: var(--twin-space-4);
+  line-height: 1.6;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Gradio 6.27 puts a Markdown block's elem_classes on the block and again on its inner markdown div: the inner copy of
+   the sheet is flattened so the readout sits on one sheet, not two nested ones. */
+#tab-status #status-md .twin-card {
+  min-height: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+
+#tab-status #status-md strong {
+  font-weight: 600;
+}
+
+/* status_markdown writes "**Label:** value" lines joined by single newlines, so Markdown folds every line after the
+   first list entry, and the models table, into a list item. Flatten the list: no markers, each entry indented under
+   its label, and the folded-in labels and table pulled back to the edge of the sheet. */
+#tab-status #status-md ul {
+  margin: 0;
+  padding-left: 0;
+  list-style: none;
+}
+
+#tab-status #status-md li {
+  margin: 0;
+  padding-left: var(--twin-space-4);
+}
+
+#tab-status #status-md li > strong {
+  margin-left: calc(-1 * var(--twin-space-4));
+}
+
+/* The models register: every registry model with its server name, runtime, VRAM class, state and job. It sits inside
+   the sheet, so it has no box of its own: a tinted header row, hairline row rules and the state as a chip. */
+#tab-status #status-md table {
+  width: 100%;
+  margin: var(--twin-space-2) 0 0;
+  border: 0;
+  border-collapse: collapse;
+  font-size: var(--twin-text-sm);
+  line-height: var(--twin-leading);
+  font-variant-numeric: tabular-nums;
+}
+
+#tab-status #status-md li > table {
+  width: calc(100% + var(--twin-space-4));
+  margin-left: calc(-1 * var(--twin-space-4));
+}
+
+#tab-status #status-md thead,
+#tab-status #status-md tbody,
+#tab-status #status-md tr {
+  border: 0;
+  background: transparent;
+}
+
+/* row rules on the rows, so the collapsing border model draws them across the chip's anonymous cell too */
+#tab-status #status-md tbody tr:not(:last-child) {
+  border-bottom: 1px solid var(--twin-border);
+}
+
+#tab-status #status-md th,
+#tab-status #status-md td {
+  padding: var(--twin-space-2) var(--twin-space-3);
+  border: 0;
+  color: var(--twin-text);
+  text-align: left;
+  vertical-align: baseline;
+}
+
+#tab-status #status-md th {
+  border-bottom: 1px solid var(--twin-border);
+  background: var(--twin-bg);
+  color: var(--twin-text-muted);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* key, server name, runtime, vram and state stay on one line; only the job wraps */
+#tab-status #status-md td:not(:last-child) {
+  white-space: nowrap;
+}
+
+/* identifiers are the register's row names, not prose: no chip box, no mid-word break; the key carries the row's
+   weight */
+#tab-status #status-md td code {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  font-size: inherit;
+  white-space: nowrap;
+}
+
+#tab-status #status-md td:first-child code {
+  font-weight: 600;
+}
+
+#tab-status #status-md td:nth-child(3),
+#tab-status #status-md td:nth-child(4) {
+  color: var(--twin-text-muted);
+}
+
+/* The state of each model (loaded, on disk, not pulled, not listed, key set, no key) as a chip. /status returns it as
+   plain Markdown text, so the chip is neutral: a colour per state needs a class in the endpoint output, which the DEMO
+   CONTRACT freezes. As an inline block the cell sits inside an anonymous table cell, so the column still lines up. */
+#tab-status #status-md tbody td:nth-child(5) {
+  display: inline-block;
+  margin: var(--twin-space-1) var(--twin-space-3);
+  padding: 0 var(--twin-space-2);
+  border: 1px solid var(--twin-border);
+  border-radius: var(--twin-radius-control);
+  background: var(--twin-bg);
+  font-weight: 600;
+}
+
+/* ---------------------------------------------------------------- controls */
+
+/* Free GPU is the first control of its row and the only filled button on the tab; the dropdown and Warm current tab
+   belong together; Refresh is quiet because the readout refreshes itself every 5 s. The variables sit on the row
+   because Gradio wraps the dropdown in a form box of its own; buttons line up with the dropdown's field. */
+#tab-status #status-controls {
+  --block-border-width: 0px;
+  --block-padding: 0px;
+  --block-background-fill: var(--twin-bg);
+  align-items: flex-end;
+  margin-top: var(--twin-space-4);
+}
+
+/* Gradio wraps the dropdown in a form div painted in its border colour: the page ground shows through instead */
+#tab-status #status-controls > div {
+  background: transparent;
+}
+
+/* The rebuilds load embedders or qwen3:8b and rewrite the indexes and the digest, and are never clicked live: a row of
+   their own at the far right, outlined in ochre (.twin-caution). */
+#tab-status #status-maintenance {
+  justify-content: flex-end;
+}
+
+/* Gradio 6.27 sizes row children from a zero flex basis, so a scale=0 button shrinks to the 120 px minimum of
+   .twin-actions and wraps its label onto several lines. Above 400 px each button keeps its label on one line; at
+   400 px and below twin.css stacks them at full width. */
+@media (min-width: 401px) {
+  #tab-status .twin-actions > button {
+    flex: 0 0 auto;
+    white-space: nowrap;
+  }
+}
+
+/* The persona switcher and importer sit under the rebuilds: Switch persona also rewrites data/twin_profile.md and
+   the indexes, so it keeps the same outlined-ochre treatment (.twin-caution); Import persona only writes a new file
+   under data/personas/ and never builds, so it stays a plain button. Same right-aligned, flex-end row as the
+   rebuilds. */
+#tab-status #status-persona {
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+#tab-status #status-persona > div {
+  background: transparent;
+}
+
+/* ---------------------------------------------------------------- narrow screens */
+
+@media (max-width: 720px) {
+  #tab-status #status-md table {
+    display: block;
+    overflow-x: auto;
+  }
+
+  #tab-status #status-maintenance,
+  #tab-status #status-persona {
+    justify-content: flex-start;
+  }
+}

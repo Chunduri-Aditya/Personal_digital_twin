@@ -1,0 +1,169 @@
+/* static/tabs/onboarding.css: the Onboarding tab (docs/PLAN_FINISH.md P4, lane onboarding_items).
+
+   The four steps are a real sequence, so the walkthrough keeps its numbers and sits on one sheet: the stepper on top,
+   the selected step's status, help and command under a rule, and the tab's one action (Check again, which only
+   re-reads files) at its natural width below. Step state lives in the numbers (done: tint, current: solid accent,
+   to do: outlined) and in the label weight, never in colour alone.
+
+   Gradio 6.27 walkthrough markup: [role=tablist] > div (a step) > button[role=tab] > span (the number) + span (the
+   label), with a bare div (the connector) between two steps. The label and the connector exist only outside the
+   narrow compact mode, so every number, label and connector rule is guarded by :has(> span + span) or by the label
+   span itself, and the compact progress bar keeps Gradio's own look. Gradio's accent variable is never set here
+   (it paints the compact bar's numbers white on it; frame contract). Every selector starts with #tab-onboarding. */
+
+/* ---------------------------------------------------------------- intro */
+
+#tab-onboarding #onboarding-intro p {
+  margin: 0;
+}
+
+/* ---------------------------------------------------------------- the walkthrough sheet */
+
+#tab-onboarding #onboarding-walkthrough {
+  margin-top: var(--twin-space-2);
+  padding: var(--twin-space-2) var(--twin-space-6) var(--twin-space-6);
+  border: 1px solid var(--twin-border);
+  border-radius: var(--twin-radius-card);
+  background: var(--twin-surface);
+}
+
+/* circles flush with the sheet's content edge: step 1's label, the status and the command share one left edge */
+#tab-onboarding #onboarding-walkthrough [role="tablist"] {
+  padding-inline: 0;
+}
+
+/* Step labels hang under their circles. Gradio centres each in a 120 px box, so the first label ran off the left of
+   the column (". Run the interview") and the last past the right. Now the first starts at its circle, the last ends
+   at its circle, and the middle two are centred on theirs. DEMO B1.1 clicks all four. */
+#tab-onboarding #onboarding-walkthrough [role="tab"] > span + span {
+  max-width: none;
+  color: var(--twin-text-muted);
+  font-size: var(--twin-text-md);
+  transition: color var(--twin-duration) var(--twin-ease);
+}
+
+#tab-onboarding #onboarding-walkthrough [role="tablist"] > div:first-child [role="tab"] > span + span {
+  left: 0;
+  text-align: left;
+}
+
+#tab-onboarding #onboarding-walkthrough [role="tablist"] > div:last-child [role="tab"] > span + span {
+  right: 0;
+  left: auto;
+  text-align: right;
+}
+
+#tab-onboarding #onboarding-walkthrough [role="tab"][aria-selected="true"] > span + span {
+  color: var(--twin-text);
+  font-weight: 600;
+}
+
+#tab-onboarding #onboarding-walkthrough [role="tab"]:not(:disabled):hover > span + span {
+  color: var(--twin-text);
+}
+
+/* the button box is only the circle: no square hover fill behind the round number */
+#tab-onboarding #onboarding-walkthrough [role="tab"]:not(:disabled):has(> span + span):hover {
+  background-color: transparent;
+}
+
+/* numbers: to do is outlined */
+#tab-onboarding #onboarding-walkthrough [role="tab"]:has(> span + span) > span:first-child {
+  border: 1px solid var(--twin-border-strong);
+  background-color: var(--twin-surface);
+  color: var(--twin-text-muted);
+  box-shadow: none;
+  transition: background-color var(--twin-duration) var(--twin-ease), border-color var(--twin-duration) var(--twin-ease);
+}
+
+/* steps before the current one are done: the accent tint */
+#tab-onboarding #onboarding-walkthrough [role="tablist"] > div:has(~ div [aria-selected="true"]) > [role="tab"]:has(> span + span) > span:first-child {
+  border-color: var(--twin-accent-soft);
+  background-color: var(--twin-accent-soft);
+  color: var(--twin-accent);
+}
+
+/* the current step: the solid accent with its own ink (7.41:1 light, 6.65:1 dark) */
+#tab-onboarding #onboarding-walkthrough [role="tab"][aria-selected="true"]:has(> span + span) > span:first-child {
+  border-color: var(--twin-accent);
+  background-color: var(--twin-accent);
+  color: var(--twin-accent-ink);
+}
+
+#tab-onboarding #onboarding-walkthrough [role="tab"]:not([aria-selected="true"]):not(:disabled):has(> span + span):hover > span:first-child {
+  border-color: var(--twin-accent);
+}
+
+/* connectors: a hairline, the accent once the step it leads from is done */
+#tab-onboarding #onboarding-walkthrough [role="tablist"] > div:not(:has([role="tab"])) {
+  background-color: var(--twin-border);
+}
+
+#tab-onboarding #onboarding-walkthrough [role="tablist"] > div:not(:has([role="tab"])):has(~ div [aria-selected="true"]) {
+  background-color: var(--twin-accent);
+}
+
+/* ---------------------------------------------------------------- the selected step */
+
+#tab-onboarding #onboarding-walkthrough > [role="tabpanel"] {
+  padding: var(--twin-space-5) 0 0;
+  border-top: 1px solid var(--twin-border);
+}
+
+/* the reading: what the files on disk say (DEMO B1.1 points at step 3's "Done. Indexes … fresh; digest fresh") */
+#tab-onboarding .onboarding-status p {
+  max-width: var(--twin-measure-wide);
+  margin: 0;
+  color: var(--twin-text);
+  font-size: var(--twin-text-lg);
+  line-height: var(--twin-leading);
+}
+
+#tab-onboarding .onboarding-status strong {
+  font-weight: 600;
+}
+
+/* step 4 marks a missing retest as *ceiling pending*: the warn ink, upright */
+#tab-onboarding .onboarding-status em {
+  color: var(--twin-warn);
+  font-style: normal;
+  font-weight: 600;
+}
+
+#tab-onboarding .onboarding-help p {
+  max-width: var(--twin-measure-wide);
+  margin: 0;
+  color: var(--twin-text-muted);
+  font-size: var(--twin-text-md);
+  line-height: var(--twin-leading);
+}
+
+#tab-onboarding .onboarding-help strong {
+  font-weight: 600;
+  color: var(--twin-text);
+}
+
+/* ---------------------------------------------------------------- the one action */
+
+/* Check again re-reads the files: natural width, left-aligned under the sheet, not a full-width bar */
+#tab-onboarding #onboarding-check {
+  align-self: flex-start;
+  width: auto;
+  min-width: 120px;
+  margin-top: var(--twin-space-1);
+}
+
+/* ---------------------------------------------------------------- narrower screens */
+
+/* Below 1400 px the column narrows; 13 px labels keep all four apart, so Gradio never hides the unselected ones. */
+@media (max-width: 1400px) {
+  #tab-onboarding #onboarding-walkthrough [role="tab"] > span + span {
+    font-size: var(--twin-text-sm);
+  }
+}
+
+@media (max-width: 400px) {
+  #tab-onboarding #onboarding-walkthrough {
+    padding: var(--twin-space-2) var(--twin-space-4) var(--twin-space-4);
+  }
+}

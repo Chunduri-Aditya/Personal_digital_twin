@@ -1,0 +1,21 @@
+{
+ "source": "data\\interview_transcript.example.md",
+ "source_sha": "192272d138840af3598ceff013e2cf5c8e4fb85804f6ffff94e100c069e0e304",
+ "output": "data\\interview_transcript.example.redacted.md",
+ "turns": 60,
+ "llm": true,
+ "counts": {
+  "email": 1,
+  "profile-url": 0,
+  "phone": 0,
+  "id-number": 0,
+  "address": 0,
+  "names_heuristic": 0,
+  "names_llm": 1
+ },
+ "replacements": [
+  "[email]",
+  "[my older brother]"
+ ],
+ "redacted_at": "2026-09-14T02:08:25-07:00"
+}

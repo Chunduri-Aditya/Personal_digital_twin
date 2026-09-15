@@ -1,0 +1,285 @@
+/* static/tabs/decide.css: the Decide tab (docs/PLAN_FINISH.md P4, decide lane; shared classes in static/twin.css).
+   Every selector starts with #tab-decide; colours, radii, shadows and fonts come from --twin-* only.
+
+   twin/ui/decide.py lays the tab out as:
+   - #decide-question (.twin-panel): Situation beside Condition, then B1, the tab's one primary action;
+   - #decide-options (.twin-panel): Option A beside Option B, then B2 (secondary);
+   - #decide-result-row: #decide-verdict (.verdict-card, a column holding the meter #decide-confidence and the result
+     markdown #decide-result) across the whole row;
+   - Say it in my voice, then #decide-say-card (.quote-card, a column) holding #decide-say (the In my voice textbox);
+   - #decide-raw-panel, a closed accordion holding the raw result #decide-raw.
+
+   The result markdown is the endpoint's own text (twin/pipelines/decide.py render_result_markdown), so its parts are
+   recognised by structure, never by added markup:
+     head       first p: <strong>Verdict: NO</strong><br>Confidence: 0.95 (B2: <strong>Choice: A</strong> and the option)
+     labels     <p><strong>Reasons</strong></p> and <p><strong>Cited decisions</strong></p>, each right before its ul
+     cited      the second ul
+     uncited    a p holding only <em>Uncited references ...</em>, before the footer
+     annotation <p><strong>What would change my mind:</strong> ...</p> (B2: Tradeoff)
+     footer     the last p, holding only an em (model, ms, chunks, calls, condition)
+     error      a first p with a strong and no br: <strong>Error:</strong> ...
+     empty      <p><em>(no decision yet)</em></p>, the only state with no strong in the card */
+
+/* ---------------------------------------------------------------- the question and options sheets */
+
+/* Gradio's form wrapper holds the fields with no gap, so each field keeps a 12 px block padding (24 px between
+   inputs); the sheet's own padding shrinks to 8 px and the action row takes the same 12 px inset, so labels, inputs
+   and the button share one left edge 20 px inside the sheet. A square block radius stops the wrapper's rounded,
+   border-coloured corners from showing through. */
+#tab-decide #decide-question,
+#tab-decide #decide-options {
+  --block-padding: var(--twin-space-3);
+  --block-radius: 0px;
+  padding: var(--twin-space-2);
+}
+
+#tab-decide #decide-question > .twin-actions,
+#tab-decide #decide-options > .twin-actions {
+  padding: 0 var(--twin-space-3) var(--twin-space-3);
+}
+
+/* the fields top-align; Situation's three lines and Condition's hint end close together */
+#tab-decide #decide-question-fields,
+#tab-decide #decide-option-fields {
+  align-items: flex-start;
+}
+
+/* action buttons keep their natural width on desktop (at 400 px and below twin.css stacks them full width) */
+@media (min-width: 401px) {
+  #tab-decide .twin-actions > button {
+    flex: 0 0 auto;
+  }
+}
+
+/* ---------------------------------------------------------------- the verdict card */
+
+/* One grid cell holds both blocks: the meter at the top right, level with the verdict figure, and the markdown across
+   the whole card. The markdown comes later in the DOM, so it and its loading overlay paint above the meter. */
+#tab-decide #decide-verdict {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-content: start;
+  gap: 0;
+}
+
+#tab-decide #decide-verdict > * {
+  grid-area: 1 / 1;
+  min-width: 0;
+}
+
+#tab-decide #decide-confidence {
+  --block-padding: 0px;
+  display: flex;
+  align-items: center;
+  justify-self: end;
+  align-self: start;
+  width: 240px;
+  height: calc(var(--twin-text-3xl) * 1.1);
+}
+
+#tab-decide #decide-confidence > * {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+/* no decision yet, an error, or no verdict: the hook returns '' and the meter takes no room */
+#tab-decide #decide-confidence:not(:has(.confidence-meter)) {
+  display: none;
+}
+
+/* the result text: the card's reading size; the min-height leaves the loading overlay room for its timer */
+#tab-decide #decide-result {
+  min-height: var(--twin-card-min);
+  color: var(--twin-text);
+  font-size: var(--twin-text-md);
+  line-height: var(--twin-leading);
+}
+
+/* a plain selector list, never :is(p, ul): Gradio prefixes custom CSS and splits commas inside :is(), which would
+   give this reset more weight than every rule below it */
+#tab-decide #decide-result p,
+#tab-decide #decide-result ul {
+  margin: 0;
+}
+
+#tab-decide #decide-result p:not(:first-of-type) {
+  margin-top: var(--twin-space-3);
+}
+
+/* head: the verdict or choice is the card's one figure; the confidence line under it stays in ink */
+#tab-decide #decide-result p:first-of-type:has(> strong + br) > strong {
+  font-size: var(--twin-text-3xl);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: var(--twin-accent);
+}
+
+/* while the meter shows, the head keeps clear of it */
+#tab-decide #decide-verdict:has(.confidence-meter) #decide-result p:first-of-type {
+  padding-inline-end: calc(240px + var(--twin-space-4));
+}
+
+/* labels: a quiet label over its list, the console's label-over-value pattern */
+#tab-decide #decide-result p:not(:first-of-type):has(+ ul) {
+  margin: var(--twin-space-5) 0 var(--twin-space-2);
+  color: var(--twin-text-muted);
+  font-size: var(--twin-text-sm);
+  line-height: 1.3;
+}
+
+#tab-decide #decide-result p:not(:first-of-type):has(+ ul) > strong {
+  font-weight: 600;
+  color: inherit;
+}
+
+#tab-decide #decide-result ul {
+  padding-left: var(--twin-space-5);
+}
+
+#tab-decide #decide-result li {
+  margin: var(--twin-space-1) 0;
+}
+
+#tab-decide #decide-result li::marker {
+  color: var(--twin-text-muted);
+}
+
+/* cited decisions (the second list): each id and title as a citation chip that wraps and never truncates */
+#tab-decide #decide-result ul:nth-of-type(2) {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--twin-space-2);
+  padding-left: 0;
+  list-style: none;
+}
+
+#tab-decide #decide-result ul:nth-of-type(2) > li {
+  margin: 0;
+  padding: var(--twin-space-1) var(--twin-space-2);
+  border: 1px solid var(--twin-border);
+  border-radius: var(--twin-radius-control);
+  background: var(--twin-bg);
+  font-size: var(--twin-text-sm);
+  line-height: 1.4;
+}
+
+/* annotation: what would change my mind (B2: the tradeoff) hangs off the verdict on a ruled left edge */
+#tab-decide #decide-result p:not(:first-of-type):not(:has(+ ul)):not(:has(> br)):has(> strong) {
+  margin-top: var(--twin-space-5);
+  padding: var(--twin-space-1) 0 var(--twin-space-1) var(--twin-space-4);
+  border-left: var(--twin-rule) solid var(--twin-border-strong);
+}
+
+#tab-decide #decide-result p:not(:first-of-type):not(:has(+ ul)):not(:has(> br)):has(> strong) > strong {
+  font-weight: 600;
+}
+
+/* uncited references: the pipeline's warning line, in ochre */
+#tab-decide #decide-result em {
+  color: var(--twin-text-muted);
+}
+
+#tab-decide #decide-result p:not(:first-of-type):not(:last-of-type):has(> em:only-child) {
+  color: var(--twin-warn);
+  font-size: var(--twin-text-sm);
+}
+
+#tab-decide #decide-result p:not(:first-of-type):not(:last-of-type):has(> em:only-child) > em {
+  color: inherit;
+}
+
+/* footer: model, milliseconds, chunks, calls and condition under a rule, upright tabular figures */
+#tab-decide #decide-result p:last-of-type:not(:first-of-type):has(> em:only-child) {
+  margin-top: var(--twin-space-5);
+  padding-top: var(--twin-space-3);
+  border-top: 1px solid var(--twin-border);
+  color: var(--twin-text-muted);
+  font-size: var(--twin-text-sm);
+  font-variant-numeric: tabular-nums;
+}
+
+#tab-decide #decide-result p:last-of-type:not(:first-of-type):has(> em:only-child) > em {
+  font-style: normal;
+  color: inherit;
+}
+
+/* inline error: "Error:" leads the card on the madder tint (handler exceptions and pipeline errors alike) */
+#tab-decide #decide-result p:first-of-type:not(:has(> br)):has(> strong) {
+  padding: var(--twin-space-2) var(--twin-space-3);
+  border-radius: var(--twin-radius-control);
+  background: var(--twin-err-soft);
+}
+
+#tab-decide #decide-result p:first-of-type:not(:has(> br)):has(> strong) > strong:first-child {
+  font-weight: 600;
+  color: var(--twin-err);
+}
+
+/* empty: no decision yet, so the card waits flat on the page ground behind a dashed edge; a result raises it */
+#tab-decide #decide-verdict:not(:has(strong)) {
+  border-style: dashed;
+  border-color: var(--twin-border-strong);
+  background: var(--twin-bg);
+  box-shadow: none;
+}
+
+/* the card takes the whole row, so prose keeps a readable measure; the meter stays at the card's right edge */
+#tab-decide #decide-result p,
+#tab-decide #decide-result ul {
+  max-width: var(--twin-measure-wide);
+}
+
+/* ---------------------------------------------------------------- the raw result */
+
+/* behind a closed disclosure at the end of the tab, recessed onto the page ground: it is there to check */
+#tab-decide #decide-raw-panel {
+  margin-top: var(--twin-space-2);
+  border-color: var(--twin-border);
+  border-radius: var(--twin-radius-card);
+  background: var(--twin-surface);
+}
+
+#tab-decide #decide-raw {
+  --block-background-fill: var(--twin-bg);
+}
+
+/* ---------------------------------------------------------------- in my voice */
+
+/* The quote card (twin.css) is the column; the textbox inside sits flush on the raised sheet, its read-only textarea
+   drops the field chrome so the serif message rests directly on the card, and its label stays in the body face. */
+#tab-decide #decide-say-card {
+  --block-border-width: 0px;
+  --block-background-fill: var(--twin-surface-raised);
+  --block-padding: 0px;
+  --block-radius: 0px;
+}
+
+#tab-decide #decide-say-card textarea {
+  padding: 0;
+  border-color: transparent;
+  background: transparent;
+  box-shadow: none;
+  resize: none;
+}
+
+#tab-decide #decide-say-card label > span:first-child {
+  font-family: var(--twin-font-body);
+}
+
+/* ---------------------------------------------------------------- narrow screens */
+
+@media (max-width: 600px) {
+  #tab-decide #decide-confidence {
+    width: 120px;
+    height: calc(var(--twin-text-2xl) * 1.1);
+  }
+
+  #tab-decide #decide-verdict:has(.confidence-meter) #decide-result p:first-of-type {
+    padding-inline-end: calc(120px + var(--twin-space-3));
+  }
+
+  #tab-decide #decide-result p:first-of-type:has(> strong + br) > strong {
+    font-size: var(--twin-text-2xl);
+  }
+}

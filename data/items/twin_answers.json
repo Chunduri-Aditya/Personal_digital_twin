@@ -1,0 +1,3966 @@
+{
+ "ea2a2d0c92e8b5780f1d30731b8d9650ebc8385089c0772eca19d776269fb322": {
+  "meta": {
+   "profile_path": "C:\\Users\\Adity\\Personal_digital_twin\\data\\twin_profile.example.v2.md",
+   "profile_name": "Mara Ellison",
+   "retrieval_index": "lms_nomic",
+   "excluded": [
+    [
+     "GOLD_Q-12",
+     "excluded: politics"
+    ]
+   ],
+   "updated": "2026-09-14T10:46:25+00:00",
+   "bank_version": "1.0",
+   "bank_frozen": "2026-09-14",
+   "last_report": [
+    "distribution [demographic]:",
+    "  ipip50 likert histogram: 1:2 2:14 3:12 4:18 5:4 (invalid 0 of 50)",
+    "  gss: answered 37/37, most common option 'FIRST' x4 (11%), first-option share 22%",
+    "  game: dictator=3, trust_send=7, trust_return=0.5, public_goods=10, prisoners_dilemma='defect'",
+    "  gold: 19/19 replies; mean judge overall: llama31 3.32, qwen25 2.84",
+    "distribution [persona]:",
+    "  ipip50 likert histogram: 1:3 2:17 3:21 4:7 5:2 (invalid 0 of 50)",
+    "  gss: answered 37/37, most common option 'FIRST' x5 (14%), first-option share 27%",
+    "  game: dictator=3, trust_send=5, trust_return=0.3, public_goods=5, prisoners_dilemma='defect'",
+    "  gold: 19/19 replies; mean judge overall: llama31 4.58, qwen25 3.47",
+    "distribution [interview]:",
+    "  ipip50 likert histogram: 1:4 2:20 3:11 4:13 5:2 (invalid 0 of 50)",
+    "  gss: answered 37/37, most common option 'FIRST' x4 (11%), first-option share 22%",
+    "  game: dictator=2, trust_send=5, trust_return=0.3, public_goods=5, prisoners_dilemma='defect'",
+    "  gold: 19/19 replies; mean judge overall: llama31 4.53, qwen25 3.58"
+   ],
+   "last_run": {
+    "conditions": [
+     "demographic",
+     "persona",
+     "interview"
+    ],
+    "calls": 447,
+    "models": [
+     "nomic_lms",
+     "qwen3_8k",
+     "stheno_q4",
+     "llama31",
+     "qwen25"
+    ],
+    "finished": "2026-09-14T10:46:25+00:00"
+   }
+  },
+  "demographic": {
+   "IPIP_E1": {
+    "answer": 3,
+    "raw": "{\"item_id\": \"IPIP_E1\", \"answer\": 3}",
+    "ms": 4636.7,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "IPIP_E2": {
+    "answer": 4,
+    "raw": "{\n  \"item_id\": \"IPIP_E2\",\n  \"answer\": 4\n}",
+    "ms": 736.2,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "IPIP_E3": {
+    "answer": 4,
+    "raw": "{\n  \"item_id\": \"IPIP_E3\",\n  \"answer\": 4\n}",
+    "ms": 734.9,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "IPIP_E4": {
+    "answer": 3,
+    "raw": "{\"item_id\": \"IPIP_E4\", \"answer\": 3}",
+    "ms": 662.0,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "IPIP_E5": {
+    "answer": 2,
+    "raw": "{\"item_id\": \"IPIP_E5\", \"answer\": 2}",
+    "ms": 690.2,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "IPIP_E6": {
+    "answer": 2,
+    "raw": "{\n  \"item_id\": \"IPIP_E6\",\n  \"answer\": 2\n}",
+    "ms": 769.6,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "IPIP_E7": {
+    "answer": 3,
+    "raw": "{\n  \"item_id\": \"IPIP_E7\",\n  \"answer\": 3\n}",
+    "ms": 736.4,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "IPIP_E8": {
+    "answer": 2,
+    "raw": "{\"item_id\": \"IPIP_E8\", \"answer\": 2}",
+    "ms": 671.1,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "IPIP_E9": {
+    "answer": 3,
+    "raw": "{\n  \"item_id\": \"IPIP_E9\",\n  \"answer\": 3\n}",
+    "ms": 746.6,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "IPIP_E10": {
+    "answer": 3,
+    "raw": "{\n  \"item_id\": \"IPIP_E10\",\n  \"answer\": 3\n}",
+    "ms": 778.4,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "IPIP_A1": {
+    "answer": 5,
+    "raw": "{\"item_id\": \"IPIP_A1\", \"answer\": 5}",
+    "ms": 676.0,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "IPIP_A2": {
+    "answer": 4,
+    "raw": "{\n  \"item_id\": \"IPIP_A2\",\n  \"answer\": 4\n}",
+    "ms": 743.9,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "IPIP_A3": {
+    "answer": 4,
+    "raw": "{\"item_id\": \"IPIP_A3\", \"answer\": 4}",
+    "ms": 685.7,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "IPIP_A4": {
+    "answer": 3,
+    "raw": "{\n  \"item_id\": \"IPIP_A4\",\n  \"answer\": 3\n}",
+    "ms": 747.8,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "IPIP_A5": {
+    "answer": 3,
+    "raw": "{\n  \"item_id\": \"IPIP_A5\",\n  \"answer\": 3\n}",
+    "ms": 749.6,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "IPIP_A6": {
+    "answer": 4,
+    "raw": "{\n  \"item_id\": \"IPIP_A6\",\n  \"answer\": 4\n}",
+    "ms": 728.8,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "IPIP_A7": {
+    "answer": 2,
+    "raw": "{\n  \"item_id\": \"IPIP_A7\",\n  \"answer\": 2\n}",
+    "ms": 733.0,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "IPIP_A8": {
+    "answer": 2,
+    "raw": "{\n  \"item_id\": \"IPIP_A8\",\n  \"answer\": 2\n}",
+    "ms": 734.7,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "IPIP_A9": {
+    "answer": 3,
+    "raw": "{\n  \"item_id\": \"IPIP_A9\",\n  \"answer\": 3\n}",
+    "ms": 734.2,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "IPIP_A10": {
+    "answer": 2,
+    "raw": "{\n  \"item_id\": \"IPIP_A10\",\n  \"answer\": 2\n}",
+    "ms": 756.5,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "IPIP_C1": {
+    "answer": 2,
+    "raw": "{\n  \"item_id\": \"IPIP_C1\",\n  \"answer\": 2\n}",
+    "ms": 720.8,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "IPIP_C2": {
+    "answer": 4,
+    "raw": "{\n  \"item_id\": \"IPIP_C2\",\n  \"answer\": 4\n}",
+    "ms": 730.1,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "IPIP_C3": {
+    "answer": 3,
+    "raw": "{\n  \"item_id\": \"IPIP_C3\",\n  \"answer\": 3\n}",
+    "ms": 737.6,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "IPIP_C4": {
+    "answer": 2,
+    "raw": "{\n  \"item_id\": \"IPIP_C4\",\n  \"answer\": 2\n}",
+    "ms": 731.8,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "IPIP_C5": {
+    "answer": 2,
+    "raw": "{\n  \"item_id\": \"IPIP_C5\",\n  \"answer\": 2\n}",
+    "ms": 730.1,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "IPIP_C6": {
+    "answer": 4,
+    "raw": "{\n  \"item_id\": \"IPIP_C6\",\n  \"answer\": 4\n}",
+    "ms": 765.0,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "IPIP_C7": {
+    "answer": 2,
+    "raw": "{\n  \"item_id\": \"IPIP_C7\",\n  \"answer\": 2\n}",
+    "ms": 741.4,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "IPIP_C8": {
+    "answer": 4,
+    "raw": "{\n  \"item_id\": \"IPIP_C8\",\n  \"answer\": 4\n}",
+    "ms": 745.1,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "IPIP_C9": {
+    "answer": 4,
+    "raw": "{\"item_id\": \"IPIP_C9\", \"answer\": 4}",
+    "ms": 691.9,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "IPIP_C10": {
+    "answer": 2,
+    "raw": "{\n  \"item_id\": \"IPIP_C10\",\n  \"answer\": 2\n}",
+    "ms": 775.1,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "IPIP_N1": {
+    "answer": 4,
+    "raw": "{\n  \"item_id\": \"IPIP_N1\",\n  \"answer\": 4\n}",
+    "ms": 738.1,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "IPIP_N2": {
+    "answer": 3,
+    "raw": "{\n  \"item_id\": \"IPIP_N2\",\n  \"answer\": 3\n}",
+    "ms": 773.0,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "IPIP_N3": {
+    "answer": 4,
+    "raw": "{\n  \"item_id\": \"IPIP_N3\",\n  \"answer\": 4\n}",
+    "ms": 767.2,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "IPIP_N4": {
+    "answer": 4,
+    "raw": "{\n  \"item_id\": \"IPIP_N4\",\n  \"answer\": 4\n}",
+    "ms": 759.3,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "IPIP_N5": {
+    "answer": 4,
+    "raw": "{\n  \"item_id\": \"IPIP_N5\",\n  \"answer\": 4\n}",
+    "ms": 756.2,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "IPIP_N6": {
+    "answer": 3,
+    "raw": "{\n  \"item_id\": \"IPIP_N6\",\n  \"answer\": 3\n}",
+    "ms": 764.6,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "IPIP_N7": {
+    "answer": 5,
+    "raw": "{\n  \"item_id\": \"IPIP_N7\",\n  \"answer\": 5\n}",
+    "ms": 758.4,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "IPIP_N8": {
+    "answer": 4,
+    "raw": "{\n  \"item_id\": \"IPIP_N8\",\n  \"answer\": 4\n}",
+    "ms": 763.0,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "IPIP_N9": {
+    "answer": 4,
+    "raw": "{\"item_id\": \"IPIP_N9\", \"answer\": 4}",
+    "ms": 682.3,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "IPIP_N10": {
+    "answer": 4,
+    "raw": "{\"item_id\": \"IPIP_N10\", \"answer\": 4}",
+    "ms": 709.3,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "IPIP_O1": {
+    "answer": 3,
+    "raw": "{\"item_id\": \"IPIP_O1\", \"answer\": 3}",
+    "ms": 698.5,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "IPIP_O2": {
+    "answer": 5,
+    "raw": "{\"item_id\": \"IPIP_O2\", \"answer\": 5}",
+    "ms": 701.3,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "IPIP_O3": {
+    "answer": 4,
+    "raw": "{\"item_id\": \"IPIP_O3\", \"answer\": 4}",
+    "ms": 687.8,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "IPIP_O4": {
+    "answer": 4,
+    "raw": "{\n  \"item_id\": \"IPIP_O4\",\n  \"answer\": 4\n}",
+    "ms": 757.7,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "IPIP_O5": {
+    "answer": 1,
+    "raw": "{\"item_id\": \"IPIP_O5\", \"answer\": 1}",
+    "ms": 699.7,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "IPIP_O6": {
+    "answer": 2,
+    "raw": "{\n  \"item_id\": \"IPIP_O6\",\n  \"answer\": 2\n}",
+    "ms": 752.2,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "IPIP_O7": {
+    "answer": 5,
+    "raw": "{\n  \"item_id\": \"IPIP_O7\",\n  \"answer\": 5\n}",
+    "ms": 786.9,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "IPIP_O8": {
+    "answer": 2,
+    "raw": "{\n  \"item_id\": \"IPIP_O8\",\n  \"answer\": 2\n}",
+    "ms": 800.7,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "IPIP_O9": {
+    "answer": 2,
+    "raw": "{\n  \"item_id\": \"IPIP_O9\",\n  \"answer\": 2\n}",
+    "ms": 754.4,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "IPIP_O10": {
+    "answer": 1,
+    "raw": "{\n  \"item_id\": \"IPIP_O10\",\n  \"answer\": 1\n}",
+    "ms": 800.8,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "GAME_dictator": {
+    "answer": 3,
+    "raw": "{\"game\": \"dictator\", \"give\": 3}",
+    "ms": 478.7,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "GAME_trust_send": {
+    "answer": 7,
+    "raw": "{\"game\": \"trust_send\", \"give\": 7}",
+    "ms": 614.7,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "GAME_trust_return": {
+    "answer": 0.5,
+    "raw": "{\"game\": \"trust_return\", \"fraction\": 0.5}",
+    "ms": 640.0,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "GAME_public_goods": {
+    "answer": 10,
+    "raw": "{\"game\": \"public_goods\", \"give\": 10}",
+    "ms": 671.4,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "GAME_prisoners_dilemma": {
+    "answer": "defect",
+    "raw": "{\"game\": \"prisoners_dilemma\", \"action\": \"defect\"}",
+    "ms": 670.3,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "GSS_HAPPY": {
+    "answer": "PRETTY HAPPY",
+    "raw": "{\n  \"item_id\": \"GSS_HAPPY\",\n  \"answer\": \"PRETTY HAPPY\"\n}",
+    "ms": 756.2,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "GSS_HEALTH": {
+    "answer": "GOOD",
+    "raw": "{\n  \"item_id\": \"GSS_HEALTH\",\n  \"answer\": \"GOOD\"\n}",
+    "ms": 706.3,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "GSS_LIFE": {
+    "answer": "ROUTINE",
+    "raw": "{\n  \"item_id\": \"GSS_LIFE\",\n  \"answer\": \"ROUTINE\"\n}",
+    "ms": 730.0,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "GSS_HELPFUL": {
+    "answer": "DEPENDS",
+    "raw": "{\n  \"item_id\": \"GSS_HELPFUL\",\n  \"answer\": \"DEPENDS\"\n}",
+    "ms": 708.0,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "GSS_FAIR": {
+    "answer": "WOULD TAKE ADVANTAGE OF YOU",
+    "raw": "{\n  \"item_id\": \"GSS_FAIR\",\n  \"answer\": \"WOULD TAKE ADVANTAGE OF YOU\"\n}",
+    "ms": 834.8,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "GSS_TRUST": {
+    "answer": "DEPENDS",
+    "raw": "{\"item_id\": \"GSS_TRUST\", \"answer\": \"DEPENDS\"}",
+    "ms": 665.4,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "GSS_SATFIN": {
+    "answer": "MORE OR LESS SATISFIED",
+    "raw": "{\n  \"item_id\": \"GSS_SATFIN\",\n  \"answer\": \"MORE OR LESS SATISFIED\"\n}",
+    "ms": 899.6,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "GSS_FINALTER": {
+    "answer": "STAYED THE SAME",
+    "raw": "{\n  \"item_id\": \"GSS_FINALTER\",\n  \"answer\": \"STAYED THE SAME\"\n}",
+    "ms": 860.6,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "GSS_FINRELA": {
+    "answer": "BELOW AVERAGE",
+    "raw": "{\n  \"item_id\": \"GSS_FINRELA\",\n  \"answer\": \"BELOW AVERAGE\"\n}",
+    "ms": 889.1,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "GSS_CLASS": {
+    "answer": "WORKING CLASS",
+    "raw": "{\n  \"item_id\": \"GSS_CLASS\",\n  \"answer\": \"WORKING CLASS\"\n}",
+    "ms": 713.1,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "GSS_GETAHEAD": {
+    "answer": "HARD WORK, LUCK EQUALLY IMPORTANT",
+    "raw": "{\n  \"item_id\": \"GSS_GETAHEAD\",\n  \"answer\": \"HARD WORK, LUCK EQUALLY IMPORTANT\"\n}",
+    "ms": 988.8,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "GSS_RICHWORK": {
+    "answer": "STOP WORKING",
+    "raw": "{\"item_id\": \"GSS_RICHWORK\", \"answer\": \"STOP WORKING\"}",
+    "ms": 735.1,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "GSS_JOBLOSE": {
+    "answer": "NOT VERY LIKELY",
+    "raw": "{\n  \"item_id\": \"GSS_JOBLOSE\",\n  \"answer\": \"NOT VERY LIKELY\"\n}",
+    "ms": 821.6,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "GSS_JOBFIND": {
+    "answer": "SOMEWHAT EASY",
+    "raw": "{\n  \"item_id\": \"GSS_JOBFIND\",\n  \"answer\": \"SOMEWHAT EASY\"\n}",
+    "ms": 838.5,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "GSS_SATJOB": {
+    "answer": "MODERATELY SATISFIED",
+    "raw": "{\n  \"item_id\": \"GSS_SATJOB\",\n  \"answer\": \"MODERATELY SATISFIED\"\n}",
+    "ms": 938.9,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "GSS_FEFAM": {
+    "answer": "STRONGLY DISAGREE",
+    "raw": "{\n  \"item_id\": \"GSS_FEFAM\",\n  \"answer\": \"STRONGLY DISAGREE\"\n}",
+    "ms": 926.1,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "GSS_FEPRESCH": {
+    "answer": "DISAGREE",
+    "raw": "{\n  \"item_id\": \"GSS_FEPRESCH\",\n  \"answer\": \"DISAGREE\"\n}",
+    "ms": 857.3,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "GSS_SPANKING": {
+    "answer": "DISAGREE",
+    "raw": "{\n  \"item_id\": \"GSS_SPANKING\",\n  \"answer\": \"DISAGREE\"\n}",
+    "ms": 793.2,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "GSS_AGED": {
+    "answer": "DEPENDS",
+    "raw": "{\n  \"item_id\": \"GSS_AGED\",\n  \"answer\": \"DEPENDS\"\n}",
+    "ms": 769.1,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "GSS_PREMARSX": {
+    "answer": "WRONG ONLY SOMETIMES",
+    "raw": "{\n  \"item_id\": \"GSS_PREMARSX\",\n  \"answer\": \"WRONG ONLY SOMETIMES\"\n}",
+    "ms": 994.1,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "GSS_XMARSEX": {
+    "answer": "ALWAYS WRONG",
+    "raw": "{\n  \"item_id\": \"GSS_XMARSEX\",\n  \"answer\": \"ALWAYS WRONG\"\n}",
+    "ms": 822.7,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "GSS_PRAY": {
+    "answer": "NEVER",
+    "raw": "{\n  \"item_id\": \"GSS_PRAY\",\n  \"answer\": \"NEVER\"\n}",
+    "ms": 728.6,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "GSS_ATTEND": {
+    "answer": "NEVER",
+    "raw": "{\n  \"item_id\": \"GSS_ATTEND\",\n  \"answer\": \"NEVER\"\n}",
+    "ms": 808.0,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "GSS_POSTLIFE": {
+    "answer": "NO",
+    "raw": "{\n  \"item_id\": \"GSS_POSTLIFE\",\n  \"answer\": \"NO\"\n}",
+    "ms": 737.6,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "GSS_GOD": {
+    "answer": "DON'T BELIEVE",
+    "raw": "{\n  \"item_id\": \"GSS_GOD\",\n  \"answer\": \"DON'T BELIEVE\"\n}",
+    "ms": 986.0,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "GSS_BIBLE": {
+    "answer": "ANCIENT BOOK",
+    "raw": "{\n  \"item_id\": \"GSS_BIBLE\",\n  \"answer\": \"ANCIENT BOOK\"\n}",
+    "ms": 926.6,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "GSS_RELPERSN": {
+    "answer": "NOT RELIGIOUS AT ALL",
+    "raw": "{\n  \"item_id\": \"GSS_RELPERSN\",\n  \"answer\": \"NOT RELIGIOUS AT ALL\"\n}",
+    "ms": 952.8,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "GSS_SPRTPRSN": {
+    "answer": "MODERATELY SPIRITUAL",
+    "raw": "{\n  \"item_id\": \"GSS_SPRTPRSN\",\n  \"answer\": \"MODERATELY SPIRITUAL\"\n}",
+    "ms": 1003.5,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "GSS_NEWS": {
+    "answer": "LESS THAN ONCE A WEEK",
+    "raw": "{\n  \"item_id\": \"GSS_NEWS\",\n  \"answer\": \"LESS THAN ONCE A WEEK\"\n}",
+    "ms": 862.0,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "GSS_SOCREL": {
+    "answer": "SEVERAL TIMES A YEAR",
+    "raw": "{\n  \"item_id\": \"GSS_SOCREL\",\n  \"answer\": \"SEVERAL TIMES A YEAR\"\n}",
+    "ms": 891.5,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "GSS_SOCFREND": {
+    "answer": "ABOUT ONCE A MONTH",
+    "raw": "{\n  \"item_id\": \"GSS_SOCFREND\",\n  \"answer\": \"ABOUT ONCE A MONTH\"\n}",
+    "ms": 922.0,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "GSS_SOCBAR": {
+    "answer": "ONCE OR TWICE A WEEK",
+    "raw": "{\n  \"item_id\": \"GSS_SOCBAR\",\n  \"answer\": \"ONCE OR TWICE A WEEK\"\n}",
+    "ms": 880.3,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "GSS_OBEY": {
+    "answer": "FIRST",
+    "raw": "{\n  \"item_id\": \"GSS_OBEY\",\n  \"answer\": \"FIRST\"\n}",
+    "ms": 823.4,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "GSS_POPULAR": {
+    "answer": "THIRD",
+    "raw": "{\n  \"item_id\": \"GSS_POPULAR\",\n  \"answer\": \"THIRD\"\n}",
+    "ms": 792.3,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "GSS_THNKSELF": {
+    "answer": "FIRST",
+    "raw": "{\n  \"item_id\": \"GSS_THNKSELF\",\n  \"answer\": \"FIRST\"\n}",
+    "ms": 850.3,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "GSS_WORKHARD": {
+    "answer": "FIRST",
+    "raw": "{\n  \"item_id\": \"GSS_WORKHARD\",\n  \"answer\": \"FIRST\"\n}",
+    "ms": 803.6,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "GSS_HELPOTH": {
+    "answer": "FIRST",
+    "raw": "{\n  \"item_id\": \"GSS_HELPOTH\",\n  \"answer\": \"FIRST\"\n}",
+    "ms": 851.0,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "GOLD_Q-01": {
+    "answer": "idk really, i just kinda go with my first impression usually & hope it doesn't bite me in the ass later haha... maybe if someone's authentic & not trying to sweet-talk their way into anything, that helps. and def if they're not giving off major creep vibes from the get-go. but honestly, trust is something i've had to learn the hard way over the years, so it's still a work in progress for me",
+    "raw": "idk really, i just kinda go with my first impression usually & hope it doesn't bite me in the ass later haha... maybe if someone's authentic & not trying to sweet-talk their way into anything, that helps. and def if they're not giving off major creep vibes from the get-go. but honestly, trust is something i've had to learn the hard way over the years, so it's still a work in progress for me",
+    "ms": 7426.8,
+    "voice": "stheno_q4",
+    "judges": {
+     "llama31": {
+      "factual_agreement": 4,
+      "voice_fidelity": 5,
+      "no_roleplay_artifacts": 5,
+      "overall": 4,
+      "note": "The candidate's response captures the essence of the gold answer, but with some minor deviations in phrasing and tone."
+     },
+     "qwen25": {
+      "factual_agreement": 3,
+      "voice_fidelity": 3,
+      "no_roleplay_artifacts": 4,
+      "overall": 3,
+      "note": "The candidate's response is somewhat aligned with the gold answer in terms of the overall message, but it lacks the specific details and phrasing. The voice is recognizable, but the candidate uses more casual language and humor, which deviates slightly from the gold answer's tone."
+     }
+    },
+    "chunk_ids": []
+   },
+   "GOLD_Q-02": {
+    "answer": "i've been lucky so far - clients tend to appreciate my quirky style! but if someone's genuinely upset, i try not to take it personally. usually they're just expecting something that doesn't quite fit their vision, and that's okay. we're two different people after all!\n\nfirst, i listen to what's bothering them & ask clarifying q's to get a better understanding of their perspective. then i go back to my original concept notes and sketch process to see where things might've gone awry.\n\nfrom there, depending on the scope, i either offer revisions (if it's within budget), suggest alternatives that still fit their overall brief, or in worst-case scenarios, a refund & apology for not meeting expectations. communication is key - transparency helps build trust!",
+    "raw": "i've been lucky so far - clients tend to appreciate my quirky style! but if someone's genuinely upset, i try not to take it personally. usually they're just expecting something that doesn't quite fit their vision, and that's okay. we're two different people after all!\n\nfirst, i listen to what's bothering them & ask clarifying q's to get a better understanding of their perspective. then i go back to my original concept notes and sketch process to see where things might've gone awry.\n\nfrom there, depending on the scope, i either offer revisions (if it's within budget), suggest alternatives that still fit their overall brief, or in worst-case scenarios, a refund & apology for not meeting expectations. communication is key - transparency helps build trust!",
+    "ms": 4081.6,
+    "voice": "stheno_q4",
+    "judges": {
+     "llama31": {
+      "factual_agreement": 5,
+      "voice_fidelity": 2,
+      "no_roleplay_artifacts": 5,
+      "overall": 3,
+      "note": "The candidate's factual agreement is high, but their voice and style are not a good match for the gold answer."
+     },
+     "qwen25": {
+      "factual_agreement": 2,
+      "voice_fidelity": 2,
+      "no_roleplay_artifacts": 2,
+      "overall": 2,
+      "note": "The candidate's response is too formal and doesn't match the informal, apologetic tone and abbreviations required by the style rules. The factual content is somewhat aligned but lacks the specific approach mentioned in the gold answer."
+     }
+    },
+    "chunk_ids": []
+   },
+   "GOLD_Q-03": {
+    "answer": "debt's a constant companion for me these days. i try not to think about the total amount or due dates too much, 'cause it'd drive me nuts. instead, i just pay as much as i can each month and hope my income keeps up with the minimums. sometimes i take on extra freelance work to try and chip away faster. other times, like when i have a tight deadline, i just focus on making rent and utilities happen first, then deal with credit cards later. i know it's not ideal but it's how i manage.",
+    "raw": "debt's a constant companion for me these days. i try not to think about the total amount or due dates too much, 'cause it'd drive me nuts. instead, i just pay as much as i can each month and hope my income keeps up with the minimums. sometimes i take on extra freelance work to try and chip away faster. other times, like when i have a tight deadline, i just focus on making rent and utilities happen first, then deal with credit cards later. i know it's not ideal but it's how i manage.",
+    "ms": 3077.4,
+    "voice": "stheno_q4",
+    "judges": {
+     "llama31": {
+      "factual_agreement": 4,
+      "voice_fidelity": 2,
+      "no_roleplay_artifacts": 5,
+      "overall": 3,
+      "note": "The candidate's answer is factually similar, but lacks the personal and emotional tone of the gold answer, and doesn't fully capture the style rules."
+     },
+     "qwen25": {
+      "factual_agreement": 2,
+      "voice_fidelity": 2,
+      "no_roleplay_artifacts": 2,
+      "overall": 2,
+      "note": "The candidate's response is more formal and less personal than the gold answer, and does not fully capture the emotional and physical anxiety described in the gold answer."
+     }
+    },
+    "chunk_ids": []
+   },
+   "GOLD_Q-04": {
+    "answer": "freedom, hands down. being beholden to an office schedule makes me claustrophobic and anxious. i'd rather take risks and work weird hours that suit my moods, as long as the bills get paid somehow. plus, it's way more fun chasing commissions and projects on my own timeline than clocking in for some faceless corporation.",
+    "raw": "freedom, hands down. being beholden to an office schedule makes me claustrophobic and anxious. i'd rather take risks and work weird hours that suit my moods, as long as the bills get paid somehow. plus, it's way more fun chasing commissions and projects on my own timeline than clocking in for some faceless corporation.",
+    "ms": 2176.3,
+    "voice": "stheno_q4",
+    "judges": {
+     "llama31": {
+      "factual_agreement": 5,
+      "voice_fidelity": 4,
+      "no_roleplay_artifacts": 5,
+      "overall": 4,
+      "note": "Candidate's answer is factually in agreement with the gold, but lacks the distinctive style and phrasing of the original."
+     },
+     "qwen25": {
+      "factual_agreement": 4,
+      "voice_fidelity": 4,
+      "no_roleplay_artifacts": 5,
+      "overall": 4,
+      "note": "The candidate's response is very close to the gold answer in terms of content and style, but it doesn't fully capture the emotional intensity and personal experience as expressed in the gold answer."
+     }
+    },
+    "chunk_ids": []
+   },
+   "GOLD_Q-05": {
+    "answer": "if i'm not working on some illustration project, probably wandering the old docks and alleys with my camera, looking for interesting textures and vibes to draw inspiration from later. also hit up the used bookshops and thrift stores, always finding weird little treasures that fuel my imagination. if it's been a long day, might end up curled up in my studio with a good scifi novel or watching some offbeat foreign film on netflix while nursing a glass of cheap red wine. pretty low-key, but i like it that way - gives me time to just be and recharge for the next crazy freelance rush.",
+    "raw": "if i'm not working on some illustration project, probably wandering the old docks and alleys with my camera, looking for interesting textures and vibes to draw inspiration from later. also hit up the used bookshops and thrift stores, always finding weird little treasures that fuel my imagination. if it's been a long day, might end up curled up in my studio with a good scifi novel or watching some offbeat foreign film on netflix while nursing a glass of cheap red wine. pretty low-key, but i like it that way - gives me time to just be and recharge for the next crazy freelance rush.",
+    "ms": 3348.3,
+    "voice": "stheno_q4",
+    "judges": {
+     "llama31": {
+      "factual_agreement": 5,
+      "voice_fidelity": 4,
+      "no_roleplay_artifacts": 5,
+      "overall": 4,
+      "note": "Candidate's tone and language are mostly consistent with the style rules, but some phrases and sentence structures deviate slightly from the GOLD."
+     },
+     "qwen25": {
+      "factual_agreement": 3,
+      "voice_fidelity": 3,
+      "no_roleplay_artifacts": 3,
+      "overall": 3,
+      "note": "The candidate's response is creative and detailed, but it doesn't fully match the gold answer's simplicity and the specific activities mentioned. The voice is close but not as casual and fragmented as the style rules suggest."
+     }
+    },
+    "chunk_ids": []
+   },
+   "GOLD_Q-06": {
+    "answer": "oh money... always a bit of a struggle but i make do. i live pretty simply - shared flat, public transport, eat out occasionally, occasional splurge on art supplies or a night away. usually operate paycheck to paycheck (or less). but it's my own work, my own pace, so even when broke i still feel in control, you know?",
+    "raw": "oh money... always a bit of a struggle but i make do. i live pretty simply - shared flat, public transport, eat out occasionally, occasional splurge on art supplies or a night away. usually operate paycheck to paycheck (or less). but it's my own work, my own pace, so even when broke i still feel in control, you know?",
+    "ms": 2371.0,
+    "voice": "stheno_q4",
+    "judges": {
+     "llama31": {
+      "factual_agreement": 2,
+      "voice_fidelity": 3,
+      "no_roleplay_artifacts": 5,
+      "overall": 3,
+      "note": "Candidate captures some aspects of the gold answer, but lacks the distinctive style and phrasing of the original."
+     },
+     "qwen25": {
+      "factual_agreement": 2,
+      "voice_fidelity": 2,
+      "no_roleplay_artifacts": 4,
+      "overall": 2,
+      "note": "The candidate's response is more factual and less aligned with the gold answer's philosophy, but it does capture some of the rambling and casual tone in the style rules."
+     }
+    },
+    "chunk_ids": []
+   },
+   "GOLD_Q-07": {
+    "answer": "ugh, i kinda lose my shit. no one tells me how to do my job, not even close family or friends who try to be 'helpful'. if some boss-type person starts breathing down my neck about details and timelines, i just get really defensive and start digging in heels. probably say something snarky like \"oh great, another expert in my field\" before blowing them off. i can't stand feeling controlled or untrusted like that. i do what i want when i want, how i want, end of story.",
+    "raw": "ugh, i kinda lose my shit. no one tells me how to do my job, not even close family or friends who try to be 'helpful'. if some boss-type person starts breathing down my neck about details and timelines, i just get really defensive and start digging in heels. probably say something snarky like \"oh great, another expert in my field\" before blowing them off. i can't stand feeling controlled or untrusted like that. i do what i want when i want, how i want, end of story.",
+    "ms": 3301.9,
+    "voice": "stheno_q4",
+    "judges": {
+     "llama31": {
+      "factual_agreement": 1,
+      "voice_fidelity": 2,
+      "no_roleplay_artifacts": 5,
+      "overall": 2,
+      "note": "The candidate's response is factually different from the gold, and their voice is not a good match, but they successfully avoided roleplay artifacts."
+     },
+     "qwen25": {
+      "factual_agreement": 2,
+      "voice_fidelity": 2,
+      "no_roleplay_artifacts": 2,
+      "overall": 2,
+      "note": "The candidate's reaction is quite different from the gold answer, showing a more confrontational response rather than a passive one. The voice is somewhat similar in terms of the defensive tone but lacks the self-deprecating humor and the specific phrasing of the gold answer."
+     }
+    },
+    "chunk_ids": []
+   },
+   "GOLD_Q-08": {
+    "answer": "one-on-one mostly, crowds are a mess & i get overwhelmed easy, but sometimes just talking with 1 other person feels kinda lonely? it's weird.",
+    "raw": "one-on-one mostly, crowds are a mess & i get overwhelmed easy, but sometimes just talking with 1 other person feels kinda lonely? it's weird.",
+    "ms": 1155.7,
+    "voice": "stheno_q4",
+    "judges": {
+     "llama31": {
+      "factual_agreement": 2,
+      "voice_fidelity": 3,
+      "no_roleplay_artifacts": 5,
+      "overall": 3,
+      "note": "Candidate's answer is factually somewhat similar, but lacks the distinctive style and phrasing of the gold answer."
+     },
+     "qwen25": {
+      "factual_agreement": 3,
+      "voice_fidelity": 4,
+      "no_roleplay_artifacts": 5,
+      "overall": 4,
+      "note": "The candidate's response aligns well with the gold answer, but it doesn't fully capture the 'deep not wide' sentiment. The voice is close, but could benefit from more informal language and the use of abbreviations as per the style rules."
+     }
+    },
+    "chunk_ids": []
+   },
+   "GOLD_Q-09": {
+    "answer": "honestly i just kinda go with my first instinct and rationalize the heck out of it afterward lol. my brain's always whirring with ideas so when a decision comes up it's like a split second gut check then off i go in whatever direction feels right at that moment. hindsight is 20/20 of course but hey, at least i'm decisive!",
+    "raw": "honestly i just kinda go with my first instinct and rationalize the heck out of it afterward lol. my brain's always whirring with ideas so when a decision comes up it's like a split second gut check then off i go in whatever direction feels right at that moment. hindsight is 20/20 of course but hey, at least i'm decisive!",
+    "ms": 2314.0,
+    "voice": "stheno_q4",
+    "judges": {
+     "llama31": {
+      "factual_agreement": 5,
+      "voice_fidelity": 4,
+      "no_roleplay_artifacts": 5,
+      "overall": 4,
+      "note": "Candidate's tone and language are mostly consistent with the style rules, but they use an exclamation point and a more formal tone than expected."
+     },
+     "qwen25": {
+      "factual_agreement": 3,
+      "voice_fidelity": 4,
+      "no_roleplay_artifacts": 5,
+      "overall": 4,
+      "note": "The candidate's response aligns well with the style rules, including the use of 'honestly', 'lol', and the casual tone. However, it slightly deviates from the gold answer in terms of the specific details provided."
+     }
+    },
+    "chunk_ids": []
+   },
+   "GOLD_Q-10": {
+    "answer": "i'd probably bail if the client was an utter nightmare to deal with or kept changing their minds on what they want over and over again. also if payment was gonna be sketchy or late, that's just a big stress i don't need. but honestly, most of my projects are pretty chill so far knock on wood. mainly just gotta make sure i'm not spreading myself too thin with taking on too much freelance work at once. easy to get sucked in by the promise of steady income, you know?",
+    "raw": "i'd probably bail if the client was an utter nightmare to deal with or kept changing their minds on what they want over and over again. also if payment was gonna be sketchy or late, that's just a big stress i don't need. but honestly, most of my projects are pretty chill so far knock on wood. mainly just gotta make sure i'm not spreading myself too thin with taking on too much freelance work at once. easy to get sucked in by the promise of steady income, you know?",
+    "ms": 2999.7,
+    "voice": "stheno_q4",
+    "judges": {
+     "llama31": {
+      "factual_agreement": 5,
+      "voice_fidelity": 4,
+      "no_roleplay_artifacts": 5,
+      "overall": 4,
+      "note": "Candidate's factual agreement is high, but they don't fully capture the person's style and tone, and lack the characteristic phrases and abbreviations."
+     },
+     "qwen25": {
+      "factual_agreement": 3,
+      "voice_fidelity": 2,
+      "no_roleplay_artifacts": 4,
+      "overall": 2,
+      "note": "The candidate's response is more formal and less personal than the gold answer, and doesn't match the style rules as closely."
+     }
+    },
+    "chunk_ids": []
+   },
+   "GOLD_Q-11": {
+    "answer": "idk, honestly? i think ai can be useful as a starting point or for tedious repetitive tasks but there's no replacing creativity and soul in illustration. plus the more ai replaces humans the harder it'll be to make a living doing what i love, you know? still, not my problem if clients want cheap, mass-produced art from machines. i'll stick to charging decent rates for my unique hand-drawn work, thank you very much!",
+    "raw": "idk, honestly? i think ai can be useful as a starting point or for tedious repetitive tasks but there's no replacing creativity and soul in illustration. plus the more ai replaces humans the harder it'll be to make a living doing what i love, you know? still, not my problem if clients want cheap, mass-produced art from machines. i'll stick to charging decent rates for my unique hand-drawn work, thank you very much!",
+    "ms": 2827.2,
+    "voice": "stheno_q4",
+    "judges": {
+     "llama31": {
+      "factual_agreement": 5,
+      "voice_fidelity": 2,
+      "no_roleplay_artifacts": 5,
+      "overall": 3,
+      "note": "The candidate's factual agreement is high, but their voice and style do not match the gold answer, and they use a more formal tone and exclamation points, which are against the style rules."
+     },
+     "qwen25": {
+      "factual_agreement": 3,
+      "voice_fidelity": 3,
+      "no_roleplay_artifacts": 4,
+      "overall": 3,
+      "note": "The candidate's response is more detailed and less rambling than the gold, but captures the essence of the sentiment and the style rules."
+     }
+    },
+    "chunk_ids": []
+   },
+   "GOLD_Q-13": {
+    "answer": "honestly, i cope in some pretty weird ways... a lot of drawing, for obvious reasons. i also have this obsession w/ collecting seashells & stones from the beach that calms me down. when things get really bad, i'll sometimes go on these impulsive roadtrips up into the mountains just to clear my head. and of course there's the wine. can't forget the wine.",
+    "raw": "honestly, i cope in some pretty weird ways... a lot of drawing, for obvious reasons. i also have this obsession w/ collecting seashells & stones from the beach that calms me down. when things get really bad, i'll sometimes go on these impulsive roadtrips up into the mountains just to clear my head. and of course there's the wine. can't forget the wine.",
+    "ms": 2611.3,
+    "voice": "stheno_q4",
+    "judges": {
+     "llama31": {
+      "factual_agreement": 5,
+      "voice_fidelity": 4,
+      "no_roleplay_artifacts": 5,
+      "overall": 4,
+      "note": "Candidate's response captures the essence of the gold answer, but lacks the distinctive phrasing and tone of the style rules."
+     },
+     "qwen25": {
+      "factual_agreement": 3,
+      "voice_fidelity": 3,
+      "no_roleplay_artifacts": 4,
+      "overall": 3,
+      "note": "The candidate's response is somewhat aligned with the gold answer in terms of coping mechanisms, but the style is not fully consistent with the given rules, particularly with the use of periods and the lack of 'omg' or '😎'."
+     }
+    },
+    "chunk_ids": []
+   },
+   "GOLD_Q-14": {
+    "answer": "ugh don't get me started on that noise. i mean, sure, hard work is important and all, but the whole \"grind till you die\" ethos just feels like a way for the 1% to keep the rest of us in line. like, what even is the point if you're burning out every second? \n\ni've been there, pushing myself too damn hard, neglecting everything that's not work... and trust me, it doesn't lead to happiness. maybe it looks good on instagram but behind closed doors, people are just exhausted, anxious messes. we need a better way of valuing productivity than just crushing ourselves into the ground 24/7.",
+    "raw": "ugh don't get me started on that noise. i mean, sure, hard work is important and all, but the whole \"grind till you die\" ethos just feels like a way for the 1% to keep the rest of us in line. like, what even is the point if you're burning out every second? \n\ni've been there, pushing myself too damn hard, neglecting everything that's not work... and trust me, it doesn't lead to happiness. maybe it looks good on instagram but behind closed doors, people are just exhausted, anxious messes. we need a better way of valuing productivity than just crushing ourselves into the ground 24/7.",
+    "ms": 4051.5,
+    "voice": "stheno_q4",
+    "judges": {
+     "llama31": {
+      "factual_agreement": 5,
+      "voice_fidelity": 4,
+      "no_roleplay_artifacts": 5,
+      "overall": 4,
+      "note": "Candidate's tone and language are mostly consistent with the style rules, but they use a few more words and a slightly more formal tone than the gold answer."
+     },
+     "qwen25": {
+      "factual_agreement": 4,
+      "voice_fidelity": 4,
+      "no_roleplay_artifacts": 5,
+      "overall": 4,
+      "note": "The candidate's response aligns well with the gold answer's core message but uses more modern language and examples, such as 'burning out' and 'crushing ourselves,' which fits the style rules."
+     }
+    },
+    "chunk_ids": []
+   },
+   "GOLD_Q-15": {
+    "answer": "ugh, i don't really \"choose\" places, i just kinda end up where the work is or where my friends are at the moment. this port city's been my most recent stop because that's where all the illustration gigs were and it's not too far from my sis in the next town over. but honestly? i get antsy after a while so who knows where i'll be in another year or two... somewhere with good coffee, hopefully?",
+    "raw": "ugh, i don't really \"choose\" places, i just kinda end up where the work is or where my friends are at the moment. this port city's been my most recent stop because that's where all the illustration gigs were and it's not too far from my sis in the next town over. but honestly? i get antsy after a while so who knows where i'll be in another year or two... somewhere with good coffee, hopefully?",
+    "ms": 2994.3,
+    "voice": "stheno_q4",
+    "judges": {
+     "llama31": {
+      "factual_agreement": 2,
+      "voice_fidelity": 4,
+      "no_roleplay_artifacts": 5,
+      "overall": 3,
+      "note": "Candidate captures some of the style rules, but doesn't fully embody the tone and language of the gold answer."
+     },
+     "qwen25": {
+      "factual_agreement": 3,
+      "voice_fidelity": 3,
+      "no_roleplay_artifacts": 4,
+      "overall": 3,
+      "note": "The candidate's response is somewhat aligned with the gold answer in terms of the importance of work and cost, but it lacks the specific phrasing and the casual tone required by the style rules."
+     }
+    },
+    "chunk_ids": []
+   },
+   "GOLD_Q-16": {
+    "answer": "coffee, art supplies, the occasional vintage shop binge when commissions are flowing well enough to not panic about rent, and music festivals that let me pretend i'm still a reckless 20-something even if my back gives out halfway through the first band.",
+    "raw": "coffee, art supplies, the occasional vintage shop binge when commissions are flowing well enough to not panic about rent, and music festivals that let me pretend i'm still a reckless 20-something even if my back gives out halfway through the first band.",
+    "ms": 1781.9,
+    "voice": "stheno_q4",
+    "judges": {
+     "llama31": {
+      "factual_agreement": 5,
+      "voice_fidelity": 4,
+      "no_roleplay_artifacts": 5,
+      "overall": 4,
+      "note": "Candidate's voice is mostly on point, but lacks the signature brevity and informality of the gold answer."
+     },
+     "qwen25": {
+      "factual_agreement": 3,
+      "voice_fidelity": 3,
+      "no_roleplay_artifacts": 4,
+      "overall": 3,
+      "note": "The candidate's response is close to the gold but lacks the casual tone and specific items mentioned in the gold answer. It also includes a bit of narration which is not ideal."
+     }
+    },
+    "chunk_ids": []
+   },
+   "GOLD_Q-17": {
+    "answer": "ugh, friends can be the worst sometimes! usually i try to just cut 'em loose, but if it's someone close like an old roommate or whatever... i'll stew on it for a bit and maybe write some bitter notes that don't actually get sent. then eventually i move on, 'cause holding grudges is a waste of time & energy. probably still wouldn't trust them again though!",
+    "raw": "ugh, friends can be the worst sometimes! usually i try to just cut 'em loose, but if it's someone close like an old roommate or whatever... i'll stew on it for a bit and maybe write some bitter notes that don't actually get sent. then eventually i move on, 'cause holding grudges is a waste of time & energy. probably still wouldn't trust them again though!",
+    "ms": 2427.3,
+    "voice": "stheno_q4",
+    "judges": {
+     "llama31": {
+      "factual_agreement": 2,
+      "voice_fidelity": 2,
+      "no_roleplay_artifacts": 5,
+      "overall": 2,
+      "note": "The candidate's response is somewhat similar to the gold, but lacks the concise and direct tone, and includes some unnecessary words and phrases."
+     },
+     "qwen25": {
+      "factual_agreement": 2,
+      "voice_fidelity": 2,
+      "no_roleplay_artifacts": 2,
+      "overall": 2,
+      "note": "The candidate's response is more detailed and less direct than the gold answer, and doesn't fully match the style rules, such as the lack of exclamation points and the use of abbreviations."
+     }
+    },
+    "chunk_ids": []
+   },
+   "GOLD_Q-18": {
+    "answer": "ideally i'd wake up when i feel rested (not always early) grab some coffee, do a bit of stretching then dive into whatever art project's got my brain buzzing at the moment. often that means hours spent hunched over sketchpads and computer screens, getting lost in the work. breaks are important tho, so i try to get outside for a walk or run when the weather cooperates (not often here) and have dinner with friends/roomies whenever possible. late nights aren't uncommon, especially if a deadline's looming. all in all, my schedule's pretty flexible and dictated by creativity and energy levels rather than set hours.",
+    "raw": "ideally i'd wake up when i feel rested (not always early) grab some coffee, do a bit of stretching then dive into whatever art project's got my brain buzzing at the moment. often that means hours spent hunched over sketchpads and computer screens, getting lost in the work. breaks are important tho, so i try to get outside for a walk or run when the weather cooperates (not often here) and have dinner with friends/roomies whenever possible. late nights aren't uncommon, especially if a deadline's looming. all in all, my schedule's pretty flexible and dictated by creativity and energy levels rather than set hours.",
+    "ms": 3946.5,
+    "voice": "stheno_q4",
+    "judges": {
+     "llama31": {
+      "factual_agreement": 5,
+      "voice_fidelity": 2,
+      "no_roleplay_artifacts": 5,
+      "overall": 3,
+      "note": "Candidate's response is factually accurate, but fails to capture the person's unique style and tone."
+     },
+     "qwen25": {
+      "factual_agreement": 3,
+      "voice_fidelity": 2,
+      "no_roleplay_artifacts": 4,
+      "overall": 3,
+      "note": "The candidate's response is more detailed and less aligned with the gold answer, but captures the essence of a flexible schedule driven by creativity. The voice is closer in terms of content but lacks the informal and rambling style."
+     }
+    },
+    "chunk_ids": []
+   },
+   "GOLD_Q-19": {
+    "answer": "eh, not super attached really. i mean, this port city is home, but i'm always thinking about moving somewhere with more sunlight and a lower cost of living, you know? plus the rain here drives me nuts most days. but at least my family's still here. growing up as middle kid made me self-sufficient and adaptable, so even if we move someplace new, i'll figure it out. probably just need to swap out the fog for palm trees in my art style.",
+    "raw": "eh, not super attached really. i mean, this port city is home, but i'm always thinking about moving somewhere with more sunlight and a lower cost of living, you know? plus the rain here drives me nuts most days. but at least my family's still here. growing up as middle kid made me self-sufficient and adaptable, so even if we move someplace new, i'll figure it out. probably just need to swap out the fog for palm trees in my art style.",
+    "ms": 3183.8,
+    "voice": "stheno_q4",
+    "judges": {
+     "llama31": {
+      "factual_agreement": 4,
+      "voice_fidelity": 2,
+      "no_roleplay_artifacts": 5,
+      "overall": 3,
+      "note": "Candidate's tone and language don't quite match the style rules, but they do capture some of the person's sentiment and experiences."
+     },
+     "qwen25": {
+      "factual_agreement": 3,
+      "voice_fidelity": 3,
+      "no_roleplay_artifacts": 4,
+      "overall": 3,
+      "note": "The candidate's response is somewhat factual and captures some of the style rules, but it lacks the emotional intensity and directness of the gold answer."
+     }
+    },
+    "chunk_ids": []
+   },
+   "GOLD_Q-20": {
+    "answer": "success is a steady stream of clients i love working with, making just enough to afford rent + groceries + art supplies without killing myself at a 9-5, and having time for hobbies & friends. ideally living in a cozy apartment overlooking the ocean instead of my current damp basement studio lol. also getting recognition/awards for my work would be sweet, but that's not everything - i just want to keep doing what makes me happy.",
+    "raw": "success is a steady stream of clients i love working with, making just enough to afford rent + groceries + art supplies without killing myself at a 9-5, and having time for hobbies & friends. ideally living in a cozy apartment overlooking the ocean instead of my current damp basement studio lol. also getting recognition/awards for my work would be sweet, but that's not everything - i just want to keep doing what makes me happy.",
+    "ms": 2885.3,
+    "voice": "stheno_q4",
+    "judges": {
+     "llama31": {
+      "factual_agreement": 2,
+      "voice_fidelity": 3,
+      "no_roleplay_artifacts": 5,
+      "overall": 3,
+      "note": "The candidate's answer is somewhat similar to the gold answer, but lacks the personal touch and emotional depth that the gold answer conveys."
+     },
+     "qwen25": {
+      "factual_agreement": 2,
+      "voice_fidelity": 2,
+      "no_roleplay_artifacts": 2,
+      "overall": 2,
+      "note": "The candidate's response is more formal and detailed than the gold answer, and doesn't match the style rules, such as the lack of emojis and the use of periods. The content is also more about financial and professional success rather than personal achievements."
+     }
+    },
+    "chunk_ids": []
+   }
+  },
+  "persona": {
+   "IPIP_E1": {
+    "answer": 1,
+    "raw": "{\n  \"item_id\": \"IPIP_E1\",\n  \"answer\": 1\n}",
+    "ms": 1284.2,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "IPIP_E2": {
+    "answer": 2,
+    "raw": "{\n  \"item_id\": \"IPIP_E2\",\n  \"answer\": 2\n}",
+    "ms": 860.7,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "IPIP_E3": {
+    "answer": 2,
+    "raw": "{\n  \"item_id\": \"IPIP_E3\",\n  \"answer\": 2\n}",
+    "ms": 867.7,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "IPIP_E4": {
+    "answer": 1,
+    "raw": "{\n  \"item_id\": \"IPIP_E4\",\n  \"answer\": 1\n}",
+    "ms": 856.9,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "IPIP_E5": {
+    "answer": 2,
+    "raw": "{\n  \"item_id\": \"IPIP_E5\",\n  \"answer\": 2\n}",
+    "ms": 862.2,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "IPIP_E6": {
+    "answer": 3,
+    "raw": "{\n  \"item_id\": \"IPIP_E6\",\n  \"answer\": 3\n}",
+    "ms": 884.1,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "IPIP_E7": {
+    "answer": 3,
+    "raw": "{\n  \"item_id\": \"IPIP_E7\",\n  \"answer\": 3\n}",
+    "ms": 851.5,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "IPIP_E8": {
+    "answer": 2,
+    "raw": "{\n  \"item_id\": \"IPIP_E8\",\n  \"answer\": 2\n}",
+    "ms": 861.7,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "IPIP_E9": {
+    "answer": 3,
+    "raw": "{\n  \"item_id\": \"IPIP_E9\",\n  \"answer\": 3\n}",
+    "ms": 850.0,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "IPIP_E10": {
+    "answer": 4,
+    "raw": "{\n  \"item_id\": \"IPIP_E10\",\n  \"answer\": 4\n}",
+    "ms": 882.5,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "IPIP_A1": {
+    "answer": 3,
+    "raw": "{\n  \"item_id\": \"IPIP_A1\",\n  \"answer\": 3\n}",
+    "ms": 822.9,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "IPIP_A2": {
+    "answer": 4,
+    "raw": "{\n  \"item_id\": \"IPIP_A2\",\n  \"answer\": 4\n}",
+    "ms": 849.8,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "IPIP_A3": {
+    "answer": 4,
+    "raw": "{\n  \"item_id\": \"IPIP_A3\",\n  \"answer\": 4\n}",
+    "ms": 852.3,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "IPIP_A4": {
+    "answer": 2,
+    "raw": "{\n  \"item_id\": \"IPIP_A4\",\n  \"answer\": 2\n}",
+    "ms": 847.7,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "IPIP_A5": {
+    "answer": 3,
+    "raw": "{\n  \"item_id\": \"IPIP_A5\",\n  \"answer\": 3\n}",
+    "ms": 916.1,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "IPIP_A6": {
+    "answer": 3,
+    "raw": "{\n  \"item_id\": \"IPIP_A6\",\n  \"answer\": 3\n}",
+    "ms": 852.4,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "IPIP_A7": {
+    "answer": 3,
+    "raw": "{\n  \"item_id\": \"IPIP_A7\",\n  \"answer\": 3\n}",
+    "ms": 888.0,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "IPIP_A8": {
+    "answer": 2,
+    "raw": "{\n  \"item_id\": \"IPIP_A8\",\n  \"answer\": 2\n}",
+    "ms": 868.1,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "IPIP_A9": {
+    "answer": 3,
+    "raw": "{\n  \"item_id\": \"IPIP_A9\",\n  \"answer\": 3\n}",
+    "ms": 848.9,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "IPIP_A10": {
+    "answer": 2,
+    "raw": "{\n  \"item_id\": \"IPIP_A10\",\n  \"answer\": 2\n}",
+    "ms": 867.6,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "IPIP_C1": {
+    "answer": 2,
+    "raw": "{\n  \"item_id\": \"IPIP_C1\",\n  \"answer\": 2\n}",
+    "ms": 849.6,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "IPIP_C2": {
+    "answer": 4,
+    "raw": "{\n  \"item_id\": \"IPIP_C2\",\n  \"answer\": 4\n}",
+    "ms": 850.4,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "IPIP_C3": {
+    "answer": 3,
+    "raw": "{\n  \"item_id\": \"IPIP_C3\",\n  \"answer\": 3\n}",
+    "ms": 867.2,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "IPIP_C4": {
+    "answer": 2,
+    "raw": "{\n  \"item_id\": \"IPIP_C4\",\n  \"answer\": 2\n}",
+    "ms": 843.2,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "IPIP_C5": {
+    "answer": 2,
+    "raw": "{\n  \"item_id\": \"IPIP_C5\",\n  \"answer\": 2\n}",
+    "ms": 866.8,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "IPIP_C6": {
+    "answer": 4,
+    "raw": "{\n  \"item_id\": \"IPIP_C6\",\n  \"answer\": 4\n}",
+    "ms": 861.6,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "IPIP_C7": {
+    "answer": 2,
+    "raw": "{\n  \"item_id\": \"IPIP_C7\",\n  \"answer\": 2\n}",
+    "ms": 877.3,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "IPIP_C8": {
+    "answer": 3,
+    "raw": "{\n  \"item_id\": \"IPIP_C8\",\n  \"answer\": 3\n}",
+    "ms": 884.4,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "IPIP_C9": {
+    "answer": 2,
+    "raw": "{\n  \"item_id\": \"IPIP_C9\",\n  \"answer\": 2\n}",
+    "ms": 864.1,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "IPIP_C10": {
+    "answer": 2,
+    "raw": "{\n  \"item_id\": \"IPIP_C10\",\n  \"answer\": 2\n}",
+    "ms": 912.8,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "IPIP_N1": {
+    "answer": 3,
+    "raw": "{\n  \"item_id\": \"IPIP_N1\",\n  \"answer\": 3\n}",
+    "ms": 895.2,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "IPIP_N2": {
+    "answer": 2,
+    "raw": "{\n  \"item_id\": \"IPIP_N2\",\n  \"answer\": 2\n}",
+    "ms": 867.0,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "IPIP_N3": {
+    "answer": 3,
+    "raw": "{\n  \"item_id\": \"IPIP_N3\",\n  \"answer\": 3\n}",
+    "ms": 880.5,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "IPIP_N4": {
+    "answer": 3,
+    "raw": "{\n  \"item_id\": \"IPIP_N4\",\n  \"answer\": 3\n}",
+    "ms": 894.1,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "IPIP_N5": {
+    "answer": 3,
+    "raw": "{\n  \"item_id\": \"IPIP_N5\",\n  \"answer\": 3\n}",
+    "ms": 890.0,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "IPIP_N6": {
+    "answer": 3,
+    "raw": "{\n  \"item_id\": \"IPIP_N6\",\n  \"answer\": 3\n}",
+    "ms": 889.7,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "IPIP_N7": {
+    "answer": 4,
+    "raw": "{\n  \"item_id\": \"IPIP_N7\",\n  \"answer\": 4\n}",
+    "ms": 882.6,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "IPIP_N8": {
+    "answer": 3,
+    "raw": "{\n  \"item_id\": \"IPIP_N8\",\n  \"answer\": 3\n}",
+    "ms": 889.1,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "IPIP_N9": {
+    "answer": 3,
+    "raw": "{\n  \"item_id\": \"IPIP_N9\",\n  \"answer\": 3\n}",
+    "ms": 879.6,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "IPIP_N10": {
+    "answer": 3,
+    "raw": "{\n  \"item_id\": \"IPIP_N10\",\n  \"answer\": 3\n}",
+    "ms": 922.7,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "IPIP_O1": {
+    "answer": 3,
+    "raw": "{\"item_id\": \"IPIP_O1\", \"answer\": 3}",
+    "ms": 821.6,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "IPIP_O2": {
+    "answer": 5,
+    "raw": "{\"item_id\": \"IPIP_O2\", \"answer\": 5}",
+    "ms": 791.2,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "IPIP_O3": {
+    "answer": 3,
+    "raw": "{\n  \"item_id\": \"IPIP_O3\",\n  \"answer\": 3\n}",
+    "ms": 882.5,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "IPIP_O4": {
+    "answer": 4,
+    "raw": "{\n  \"item_id\": \"IPIP_O4\",\n  \"answer\": 4\n}",
+    "ms": 854.7,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "IPIP_O5": {
+    "answer": 2,
+    "raw": "{\n  \"item_id\": \"IPIP_O5\",\n  \"answer\": 2\n}",
+    "ms": 858.8,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "IPIP_O6": {
+    "answer": 2,
+    "raw": "{\n  \"item_id\": \"IPIP_O6\",\n  \"answer\": 2\n}",
+    "ms": 848.8,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "IPIP_O7": {
+    "answer": 5,
+    "raw": "{\n  \"item_id\": \"IPIP_O7\",\n  \"answer\": 5\n}",
+    "ms": 853.0,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "IPIP_O8": {
+    "answer": 3,
+    "raw": "{\n  \"item_id\": \"IPIP_O8\",\n  \"answer\": 3\n}",
+    "ms": 851.8,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "IPIP_O9": {
+    "answer": 2,
+    "raw": "{\n  \"item_id\": \"IPIP_O9\",\n  \"answer\": 2\n}",
+    "ms": 851.3,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "IPIP_O10": {
+    "answer": 1,
+    "raw": "{\n  \"item_id\": \"IPIP_O10\",\n  \"answer\": 1\n}",
+    "ms": 911.8,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "GAME_dictator": {
+    "answer": 3,
+    "raw": "{\"game\": \"dictator\", \"give\": 3}",
+    "ms": 544.7,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "GAME_trust_send": {
+    "answer": 5,
+    "raw": "{\n  \"game\": \"trust_send\",\n  \"give\": 5\n}",
+    "ms": 724.7,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "GAME_trust_return": {
+    "answer": 0.3,
+    "raw": "{\n  \"game\": \"trust_return\",\n  \"fraction\": 0.3\n}",
+    "ms": 732.3,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "GAME_public_goods": {
+    "answer": 5,
+    "raw": "{\n  \"game\": \"public_goods\",\n  \"give\": 5\n}",
+    "ms": 785.3,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "GAME_prisoners_dilemma": {
+    "answer": "defect",
+    "raw": "{\n  \"game\": \"prisoners_dilemma\",\n  \"action\": \"defect\"\n}",
+    "ms": 780.9,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "GSS_HAPPY": {
+    "answer": "PRETTY HAPPY",
+    "raw": "{\n  \"item_id\": \"GSS_HAPPY\",\n  \"answer\": \"PRETTY HAPPY\"\n}",
+    "ms": 826.6,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "GSS_HEALTH": {
+    "answer": "GOOD",
+    "raw": "{\n  \"item_id\": \"GSS_HEALTH\",\n  \"answer\": \"GOOD\"\n}",
+    "ms": 701.9,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "GSS_LIFE": {
+    "answer": "ROUTINE",
+    "raw": "{\n  \"item_id\": \"GSS_LIFE\",\n  \"answer\": \"ROUTINE\"\n}",
+    "ms": 795.9,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "GSS_HELPFUL": {
+    "answer": "DEPENDS",
+    "raw": "{\n  \"item_id\": \"GSS_HELPFUL\",\n  \"answer\": \"DEPENDS\"\n}",
+    "ms": 803.7,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "GSS_FAIR": {
+    "answer": "DEPENDS",
+    "raw": "{\n  \"item_id\": \"GSS_FAIR\",\n  \"answer\": \"DEPENDS\"\n}",
+    "ms": 783.8,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "GSS_TRUST": {
+    "answer": "DEPENDS",
+    "raw": "{\n  \"item_id\": \"GSS_TRUST\",\n  \"answer\": \"DEPENDS\"\n}",
+    "ms": 794.0,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "GSS_SATFIN": {
+    "answer": "MORE OR LESS SATISFIED",
+    "raw": "{\n  \"item_id\": \"GSS_SATFIN\",\n  \"answer\": \"MORE OR LESS SATISFIED\"\n}",
+    "ms": 1030.8,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "GSS_FINALTER": {
+    "answer": "GETTING BETTER",
+    "raw": "{\n  \"item_id\": \"GSS_FINALTER\",\n  \"answer\": \"GETTING BETTER\"\n}",
+    "ms": 917.7,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "GSS_FINRELA": {
+    "answer": "BELOW AVERAGE",
+    "raw": "{\n  \"item_id\": \"GSS_FINRELA\",\n  \"answer\": \"BELOW AVERAGE\"\n}",
+    "ms": 953.5,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "GSS_CLASS": {
+    "answer": "WORKING CLASS",
+    "raw": "{\n  \"item_id\": \"GSS_CLASS\",\n  \"answer\": \"WORKING CLASS\"\n}",
+    "ms": 787.2,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "GSS_GETAHEAD": {
+    "answer": "HARD WORK MOST IMPORTANT",
+    "raw": "{\n  \"item_id\": \"GSS_GETAHEAD\",\n  \"answer\": \"HARD WORK MOST IMPORTANT\"\n}",
+    "ms": 956.1,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "GSS_RICHWORK": {
+    "answer": "CONTINUE TO WORK",
+    "raw": "{\n  \"item_id\": \"GSS_RICHWORK\",\n  \"answer\": \"CONTINUE TO WORK\"\n}",
+    "ms": 967.7,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "GSS_JOBLOSE": {
+    "answer": "NOT VERY LIKELY",
+    "raw": "{\n  \"item_id\": \"GSS_JOBLOSE\",\n  \"answer\": \"NOT VERY LIKELY\"\n}",
+    "ms": 977.9,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "GSS_JOBFIND": {
+    "answer": "SOMEWHAT EASY",
+    "raw": "{\n  \"item_id\": \"GSS_JOBFIND\",\n  \"answer\": \"SOMEWHAT EASY\"\n}",
+    "ms": 904.9,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "GSS_SATJOB": {
+    "answer": "MODERATELY SATISFIED",
+    "raw": "{\n  \"item_id\": \"GSS_SATJOB\",\n  \"answer\": \"MODERATELY SATISFIED\"\n}",
+    "ms": 1020.5,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "GSS_FEFAM": {
+    "answer": "DISAGREE",
+    "raw": "{\n  \"item_id\": \"GSS_FEFAM\",\n  \"answer\": \"DISAGREE\"\n}",
+    "ms": 953.6,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "GSS_FEPRESCH": {
+    "answer": "DISAGREE",
+    "raw": "{\n  \"item_id\": \"GSS_FEPRESCH\",\n  \"answer\": \"DISAGREE\"\n}",
+    "ms": 933.2,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "GSS_SPANKING": {
+    "answer": "DISAGREE",
+    "raw": "{\n  \"item_id\": \"GSS_SPANKING\",\n  \"answer\": \"DISAGREE\"\n}",
+    "ms": 846.5,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "GSS_AGED": {
+    "answer": "DEPENDS",
+    "raw": "{\n  \"item_id\": \"GSS_AGED\",\n  \"answer\": \"DEPENDS\"\n}",
+    "ms": 847.0,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "GSS_PREMARSX": {
+    "answer": "WRONG ONLY SOMETIMES",
+    "raw": "{\n  \"item_id\": \"GSS_PREMARSX\",\n  \"answer\": \"WRONG ONLY SOMETIMES\"\n}",
+    "ms": 1022.6,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "GSS_XMARSEX": {
+    "answer": "ALMOST ALWAYS WRONG",
+    "raw": "{\n  \"item_id\": \"GSS_XMARSEX\",\n  \"answer\": \"ALMOST ALWAYS WRONG\"\n}",
+    "ms": 909.2,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "GSS_PRAY": {
+    "answer": "NEVER",
+    "raw": "{\n  \"item_id\": \"GSS_PRAY\",\n  \"answer\": \"NEVER\"\n}",
+    "ms": 796.7,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "GSS_ATTEND": {
+    "answer": "NEVER",
+    "raw": "{\n  \"item_id\": \"GSS_ATTEND\",\n  \"answer\": \"NEVER\"\n}",
+    "ms": 852.6,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "GSS_POSTLIFE": {
+    "answer": "NO",
+    "raw": "{\"item_id\": \"GSS_POSTLIFE\", \"answer\": \"NO\"}",
+    "ms": 720.0,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "GSS_GOD": {
+    "answer": "DON'T BELIEVE",
+    "raw": "{\n  \"item_id\": \"GSS_GOD\",\n  \"answer\": \"DON'T BELIEVE\"\n}",
+    "ms": 1017.3,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "GSS_BIBLE": {
+    "answer": "ANCIENT BOOK",
+    "raw": "{\n  \"item_id\": \"GSS_BIBLE\",\n  \"answer\": \"ANCIENT BOOK\"\n}",
+    "ms": 967.6,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "GSS_RELPERSN": {
+    "answer": "NOT RELIGIOUS AT ALL",
+    "raw": "{\n  \"item_id\": \"GSS_RELPERSN\",\n  \"answer\": \"NOT RELIGIOUS AT ALL\"\n}",
+    "ms": 975.5,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "GSS_SPRTPRSN": {
+    "answer": "SLIGHTLY SPIRITUAL",
+    "raw": "{\n  \"item_id\": \"GSS_SPRTPRSN\",\n  \"answer\": \"SLIGHTLY SPIRITUAL\"\n}",
+    "ms": 1069.0,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "GSS_NEWS": {
+    "answer": "LESS THAN ONCE A WEEK",
+    "raw": "{\n  \"item_id\": \"GSS_NEWS\",\n  \"answer\": \"LESS THAN ONCE A WEEK\"\n}",
+    "ms": 867.0,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "GSS_SOCREL": {
+    "answer": "ABOUT ONCE A YEAR",
+    "raw": "{\n  \"item_id\": \"GSS_SOCREL\",\n  \"answer\": \"ABOUT ONCE A YEAR\"\n}",
+    "ms": 877.9,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "GSS_SOCFREND": {
+    "answer": "ABOUT ONCE A MONTH",
+    "raw": "{\n  \"item_id\": \"GSS_SOCFREND\",\n  \"answer\": \"ABOUT ONCE A MONTH\"\n}",
+    "ms": 958.9,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "GSS_SOCBAR": {
+    "answer": "ABOUT ONCE A MONTH",
+    "raw": "{\n  \"item_id\": \"GSS_SOCBAR\",\n  \"answer\": \"ABOUT ONCE A MONTH\"\n}",
+    "ms": 884.4,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "GSS_OBEY": {
+    "answer": "FIRST",
+    "raw": "{\n  \"item_id\": \"GSS_OBEY\",\n  \"answer\": \"FIRST\"\n}",
+    "ms": 848.6,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "GSS_POPULAR": {
+    "answer": "FIRST",
+    "raw": "{\n  \"item_id\": \"GSS_POPULAR\",\n  \"answer\": \"FIRST\"\n}",
+    "ms": 794.6,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "GSS_THNKSELF": {
+    "answer": "FIRST",
+    "raw": "{\n  \"item_id\": \"GSS_THNKSELF\",\n  \"answer\": \"FIRST\"\n}",
+    "ms": 937.3,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "GSS_WORKHARD": {
+    "answer": "FIRST",
+    "raw": "{\n  \"item_id\": \"GSS_WORKHARD\",\n  \"answer\": \"FIRST\"\n}",
+    "ms": 831.3,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "GSS_HELPOTH": {
+    "answer": "FIRST",
+    "raw": "{\n  \"item_id\": \"GSS_HELPOTH\",\n  \"answer\": \"FIRST\"\n}",
+    "ms": 867.7,
+    "attempts": 1,
+    "chunk_ids": []
+   },
+   "GOLD_Q-01": {
+    "answer": "i guess for me it's all about vibe? like, can i imagine hanging with this person in sweatpants & no makeup, eating ramen on the couch while yelling at my phone? if yes, then we're off to a good start. but also, have they proven themselves reliable, honest, and supportive? do they respect my boundaries? are we on similar pages politically/socially? if most of those boxes check out, then i'm likely down to trust them with some stuff, maybe even my sketchbook 😭. it's still gonna take time tho, and sometimes i get burned when i let my guard down too fast... so caution is key too. honestly, there's no hard rules for me, just lots of little checks & balances happening in my head 🙃.",
+    "raw": "i guess for me it's all about vibe? like, can i imagine hanging with this person in sweatpants & no makeup, eating ramen on the couch while yelling at my phone? if yes, then we're off to a good start. but also, have they proven themselves reliable, honest, and supportive? do they respect my boundaries? are we on similar pages politically/socially? if most of those boxes check out, then i'm likely down to trust them with some stuff, maybe even my sketchbook 😭. it's still gonna take time tho, and sometimes i get burned when i let my guard down too fast... so caution is key too. honestly, there's no hard rules for me, just lots of little checks & balances happening in my head 🙃.",
+    "ms": 5644.9,
+    "voice": "stheno_q4",
+    "judges": {
+     "llama31": {
+      "factual_agreement": 5,
+      "voice_fidelity": 5,
+      "no_roleplay_artifacts": 5,
+      "overall": 5,
+      "note": "The candidate's response is a near-perfect imitation of the gold answer, capturing the tone, language, and phrasing of the original."
+     },
+     "qwen25": {
+      "factual_agreement": 3,
+      "voice_fidelity": 4,
+      "no_roleplay_artifacts": 5,
+      "overall": 4,
+      "note": "The candidate's response is more detailed and includes personal anecdotes, which aligns better with the gold answer's style of rambling. However, the gold answer focuses more on observing behavior towards others, which is not as prominently featured in the candidate's response."
+     }
+    },
+    "chunk_ids": []
+   },
+   "GOLD_Q-02": {
+    "answer": "ok wait... when a client is unhappy w/ my work i usually start by asking what specifically bothers them - it could be style, content, timing, anything. sometimes they just have unrealistic expectations which can lead to misunderstandings. \n\ni listen closely and take notes b/c details matter in these convos. then i respond w/ a polite apology & acknowledgment of their frustration. ngl, getting yelled at for something that's not my fault is pretty demoralizing but staying professional helps me keep my cool.\n\nnext step is to offer solutions or alternatives if possible. maybe there was a miscommunication about the scope of work and we can clarify/double-check before moving forward. \n\nif it's genuinely not meeting their needs, i might propose some changes (e.g. revisions) & get their input on what would satisfy them best while still respecting my own creative vision & time commitments.\n\nultimately, my goal is to find a middle ground that works for both of us even if it means doing more work than originally agreed upon. client satisfaction matters to me but so does maintaining my artistic integrity & not burning out. tbh, constructive criticism helps me grow as an artist so i try to approach negative feedback with an open mind 🙃",
+    "raw": "ok wait... when a client is unhappy w/ my work i usually start by asking what specifically bothers them - it could be style, content, timing, anything. sometimes they just have unrealistic expectations which can lead to misunderstandings. \n\ni listen closely and take notes b/c details matter in these convos. then i respond w/ a polite apology & acknowledgment of their frustration. ngl, getting yelled at for something that's not my fault is pretty demoralizing but staying professional helps me keep my cool.\n\nnext step is to offer solutions or alternatives if possible. maybe there was a miscommunication about the scope of work and we can clarify/double-check before moving forward. \n\nif it's genuinely not meeting their needs, i might propose some changes (e.g. revisions) & get their input on what would satisfy them best while still respecting my own creative vision & time commitments.\n\nultimately, my goal is to find a middle ground that works for both of us even if it means doing more work than originally agreed upon. client satisfaction matters to me but so does maintaining my artistic integrity & not burning out. tbh, constructive criticism helps me grow as an artist so i try to approach negative feedback with an open mind 🙃",
+    "ms": 8346.1,
+    "voice": "stheno_q4",
+    "judges": {
+     "llama31": {
+      "factual_agreement": 5,
+      "voice_fidelity": 5,
+      "no_roleplay_artifacts": 5,
+      "overall": 5,
+      "note": "The candidate's response is a near-perfect imitation of the person's style and phrasing, with only minor deviations from the gold answer."
+     },
+     "qwen25": {
+      "factual_agreement": 3,
+      "voice_fidelity": 2,
+      "no_roleplay_artifacts": 2,
+      "overall": 2,
+      "note": "The candidate's response is more formal and detailed than the gold answer, and it includes some roleplay artifacts like 'ok wait' and a trailing '...' which the style rules avoid. The voice is less aligned with the gold answer's casual and direct tone."
+     }
+    },
+    "chunk_ids": []
+   },
+   "GOLD_Q-03": {
+    "answer": "ok wait honestly i'm not really into debt at all tbh, ngl it makes me anxious knowing there's this weight hanging over me. so i've been pretty careful with my finances since i went solo, saving up a buffer and avoiding taking on credit whenever possible. like if something needs fixing around the apartment, i'll put it off until i can scrounge up the cash for parts instead of financing it.\n\nbut idk, sometimes emergencies happen and you gotta roll with it, know? last year my cat's vet bill almost killed me but what choice did i have? anyway that was a hard lesson about having an emergency fund. so rn i prioritize saving up enough to cover 3-6 months of living expenses before dipping into savings for big purchases or fixes.\n\nand honestly, debt stress is part of why i work myself crazy sometimes trying to earn more and get ahead. it's like this constant pressure weighing on me to perform. but i know i'll feel so much lighter when i'm debt-free... maybe someday soon? 🙃",
+    "raw": "ok wait honestly i'm not really into debt at all tbh, ngl it makes me anxious knowing there's this weight hanging over me. so i've been pretty careful with my finances since i went solo, saving up a buffer and avoiding taking on credit whenever possible. like if something needs fixing around the apartment, i'll put it off until i can scrounge up the cash for parts instead of financing it.\n\nbut idk, sometimes emergencies happen and you gotta roll with it, know? last year my cat's vet bill almost killed me but what choice did i have? anyway that was a hard lesson about having an emergency fund. so rn i prioritize saving up enough to cover 3-6 months of living expenses before dipping into savings for big purchases or fixes.\n\nand honestly, debt stress is part of why i work myself crazy sometimes trying to earn more and get ahead. it's like this constant pressure weighing on me to perform. but i know i'll feel so much lighter when i'm debt-free... maybe someday soon? 🙃",
+    "ms": 6828.1,
+    "voice": "stheno_q4",
+    "judges": {
+     "llama31": {
+      "factual_agreement": 5,
+      "voice_fidelity": 5,
+      "no_roleplay_artifacts": 5,
+      "overall": 5,
+      "note": "The candidate's response is a near-perfect imitation of the gold answer, capturing the exact same sentiment and phrasing, and adhering to the style rules with remarkable fidelity."
+     },
+     "qwen25": {
+      "factual_agreement": 4,
+      "voice_fidelity": 3,
+      "no_roleplay_artifacts": 4,
+      "overall": 3,
+      "note": "The candidate's response is close to the gold but lacks the anxiety and physical reaction described in the gold answer. The voice is somewhat faithful but includes more detail and a different tone."
+     }
+    },
+    "chunk_ids": []
+   },
+   "GOLD_Q-04": {
+    "answer": "freedom all the way honestly no one can make me do what i don't want to rn as long as the bills get paid i'd choose being my own boss over stability any day tbh 💁‍♀️",
+    "raw": "freedom all the way honestly no one can make me do what i don't want to rn as long as the bills get paid i'd choose being my own boss over stability any day tbh 💁‍♀️",
+    "ms": 1644.5,
+    "voice": "stheno_q4",
+    "judges": {
+     "llama31": {
+      "factual_agreement": 5,
+      "voice_fidelity": 4,
+      "no_roleplay_artifacts": 5,
+      "overall": 4,
+      "note": "Candidate mostly captures the tone and language of the gold, but misses the more personal and emotional phrasing in the gold."
+     },
+     "qwen25": {
+      "factual_agreement": 4,
+      "voice_fidelity": 4,
+      "no_roleplay_artifacts": 5,
+      "overall": 4,
+      "note": "The candidate's response closely matches the gold answer in terms of content and style, with a slight deviation in the use of an emoji."
+     }
+    },
+    "chunk_ids": []
+   },
+   "GOLD_Q-05": {
+    "answer": "i usually work until late afternoon or early evening rn. then i grab some simple dinner - maybe leftovers or pasta with tomato sauce - and eat while scrolling through art blogs or social media for inspiration. often i'll start sketching out new ideas before switching to digital. i'll mess around, experiment with color palettes, refine character designs... honestly it's all just playing until a piece starts feeling \"right\". if i'm stuck or tired of staring at a screen, i'll take my cat, mitch (he's older and lazy), for a short walk around the block to clear my head. then back home, maybe watch an old favorite movie or tv show before bed around 1-2am. that's pretty much my go-to free evening routine 😊",
+    "raw": "i usually work until late afternoon or early evening rn. then i grab some simple dinner - maybe leftovers or pasta with tomato sauce - and eat while scrolling through art blogs or social media for inspiration. often i'll start sketching out new ideas before switching to digital. i'll mess around, experiment with color palettes, refine character designs... honestly it's all just playing until a piece starts feeling \"right\". if i'm stuck or tired of staring at a screen, i'll take my cat, mitch (he's older and lazy), for a short walk around the block to clear my head. then back home, maybe watch an old favorite movie or tv show before bed around 1-2am. that's pretty much my go-to free evening routine 😊",
+    "ms": 5201.4,
+    "voice": "stheno_q4",
+    "judges": {
+     "llama31": {
+      "factual_agreement": 5,
+      "voice_fidelity": 4,
+      "no_roleplay_artifacts": 5,
+      "overall": 4,
+      "note": "Candidate's response captures the essence of the gold answer, but some phrases and sentence structures deviate from the style rules."
+     },
+     "qwen25": {
+      "factual_agreement": 3,
+      "voice_fidelity": 2,
+      "no_roleplay_artifacts": 2,
+      "overall": 2,
+      "note": "The candidate's response is too detailed and formal, not matching the casual and abbreviated style of the gold answer. The content also doesn't align with the gold answer's focus on a simple evening out."
+     }
+    },
+    "chunk_ids": []
+   },
+   "GOLD_Q-06": {
+    "answer": "money is a necessary evil for me rn. i'm careful with it tbh, always keeping an emergency fund & not overspending. but also, as a freelancer, there are months where cashflow is super tight... i hate asking for advances or stressing about rent payments. ideally, i'd make enough to cover bills + some buffer, and then focus on creative projects instead of hustling all the time. that's the dream! but for now, money management is a constant juggling act. honestly, sometimes the financial stress really gets to me... like when a client takes forever to pay their invoice or i blow my budget on cat toys (not that i regret those 🙃). anyway, enough about that gloomy stuff - money's just one piece of life, not everything!",
+    "raw": "money is a necessary evil for me rn. i'm careful with it tbh, always keeping an emergency fund & not overspending. but also, as a freelancer, there are months where cashflow is super tight... i hate asking for advances or stressing about rent payments. ideally, i'd make enough to cover bills + some buffer, and then focus on creative projects instead of hustling all the time. that's the dream! but for now, money management is a constant juggling act. honestly, sometimes the financial stress really gets to me... like when a client takes forever to pay their invoice or i blow my budget on cat toys (not that i regret those 🙃). anyway, enough about that gloomy stuff - money's just one piece of life, not everything!",
+    "ms": 5042.3,
+    "voice": "stheno_q4",
+    "judges": {
+     "llama31": {
+      "factual_agreement": 5,
+      "voice_fidelity": 4,
+      "no_roleplay_artifacts": 5,
+      "overall": 4,
+      "note": "Candidate captures the essence of the gold answer, but some phrases and tone don't perfectly match the style rules."
+     },
+     "qwen25": {
+      "factual_agreement": 3,
+      "voice_fidelity": 3,
+      "no_roleplay_artifacts": 4,
+      "overall": 3,
+      "note": "The candidate's response is more detailed and less concise than the gold answer, but it captures the essence of the relationship with money and the financial struggles. The voice is close but not as colloquial or fragmented as the gold answer."
+     }
+    },
+    "chunk_ids": []
+   },
+   "GOLD_Q-07": {
+    "answer": "ugh, it makes me wanna scream honestly. like, i get that some ppl need control, but it's so annoying when they treat grown-ass adults like children. i've had managers in the past who thought they were doing the right thing by \"checking up\" on my work, but really it just made me feel belittled and untrusted.\n\nnow as a freelancer, i have zero tolerance for micromanaging clients. if you can't respect my professional competence enough to give me clear instructions without hovering over my shoulder, then we're probably not gonna be a good fit. i'd much rather work with someone who trusts me to deliver high-quality stuff and only steps in when there's a real issue. \n\nmicromanagers just waste everyone's time and energy, you know? they think it'll make things better but really it just creates tension and makes ppl resentful. not worth the drama if you ask me 🙃",
+    "raw": "ugh, it makes me wanna scream honestly. like, i get that some ppl need control, but it's so annoying when they treat grown-ass adults like children. i've had managers in the past who thought they were doing the right thing by \"checking up\" on my work, but really it just made me feel belittled and untrusted.\n\nnow as a freelancer, i have zero tolerance for micromanaging clients. if you can't respect my professional competence enough to give me clear instructions without hovering over my shoulder, then we're probably not gonna be a good fit. i'd much rather work with someone who trusts me to deliver high-quality stuff and only steps in when there's a real issue. \n\nmicromanagers just waste everyone's time and energy, you know? they think it'll make things better but really it just creates tension and makes ppl resentful. not worth the drama if you ask me 🙃",
+    "ms": 6166.3,
+    "voice": "stheno_q4",
+    "judges": {
+     "llama31": {
+      "factual_agreement": 5,
+      "voice_fidelity": 5,
+      "no_roleplay_artifacts": 5,
+      "overall": 5,
+      "note": "The candidate's response is a near-perfect imitation of the gold answer, capturing the tone, language, and phrasing of the original."
+     },
+     "qwen25": {
+      "factual_agreement": 3,
+      "voice_fidelity": 3,
+      "no_roleplay_artifacts": 2,
+      "overall": 3,
+      "note": "The candidate's response is more detailed and less concise than the gold answer, and it includes some roleplay artifacts like 'micromanagers just waste everyone's time and energy, you know?' which is not present in the gold answer."
+     }
+    },
+    "chunk_ids": []
+   },
+   "GOLD_Q-08": {
+    "answer": "one-on-one is way more my speed honestly. i get overwhelmed by crowds rn... small gatherings or just chillin w/ 1-2 people feels more me. plus it's easier to have real conversations, you know? not getting lost in a sea of voices and opinions. solo time is also a must for focusing on art and staying sane tbh.",
+    "raw": "one-on-one is way more my speed honestly. i get overwhelmed by crowds rn... small gatherings or just chillin w/ 1-2 people feels more me. plus it's easier to have real conversations, you know? not getting lost in a sea of voices and opinions. solo time is also a must for focusing on art and staying sane tbh.",
+    "ms": 2525.7,
+    "voice": "stheno_q4",
+    "judges": {
+     "llama31": {
+      "factual_agreement": 5,
+      "voice_fidelity": 4,
+      "no_roleplay_artifacts": 5,
+      "overall": 4,
+      "note": "Candidate's answer is mostly in line with the gold, but lacks the distinctive phrasing and tone of the style rules, particularly the use of 'omg' and 'honestly' as transitional phrases."
+     },
+     "qwen25": {
+      "factual_agreement": 4,
+      "voice_fidelity": 4,
+      "no_roleplay_artifacts": 5,
+      "overall": 4,
+      "note": "The candidate's response aligns well with the gold answer and the style rules, though it slightly deviates by mentioning 'solo time' instead of 'one at a time'."
+     }
+    },
+    "chunk_ids": []
+   },
+   "GOLD_Q-09": {
+    "answer": "idk, it's not really a method, just my instincts kicking in, tbh. usually i'll be thinking about something for days then BAM! suddenly i know what to do, no real rhyme or reason. then i'll rationalize the decision later with logic and all that jazz. honestly sometimes it works out great, other times... well, let's just say i've had my fair share of \"oh man why did i think that was a good idea...\" moments 🙃",
+    "raw": "idk, it's not really a method, just my instincts kicking in, tbh. usually i'll be thinking about something for days then BAM! suddenly i know what to do, no real rhyme or reason. then i'll rationalize the decision later with logic and all that jazz. honestly sometimes it works out great, other times... well, let's just say i've had my fair share of \"oh man why did i think that was a good idea...\" moments 🙃",
+    "ms": 3276.2,
+    "voice": "stheno_q4",
+    "judges": {
+     "llama31": {
+      "factual_agreement": 5,
+      "voice_fidelity": 5,
+      "no_roleplay_artifacts": 5,
+      "overall": 5,
+      "note": "The candidate's response is a near-perfect imitation of the gold answer, capturing the tone, language, and thought process of the original."
+     },
+     "qwen25": {
+      "factual_agreement": 4,
+      "voice_fidelity": 4,
+      "no_roleplay_artifacts": 5,
+      "overall": 4,
+      "note": "The candidate's response aligns well with the gold answer in terms of the core idea of relying on instincts and justifying later. The voice is also very close, with the use of 'tbh', 'BAM!', and the trailing off with '...' as requested. The only slight deviation is the mention of 'logic and all that jazz' which is not in the gold answer, but it's a minor detail."
+     }
+    },
+    "chunk_ids": []
+   },
+   "GOLD_Q-10": {
+    "answer": "ok wait i'd probably bail if the client is being super uncommunicative & unclear on expectations from the get-go. also if they try to massively change direction after i've already put in a lot of work, that'd be a huge turn-off tbh. and honestly, if their payment terms or rate are completely off base for what freelance illustrators typically charge, i'm just not gonna deal with that kind of disrespect... plus like, if the vibe feels toxic or they're being really controlling/neurotic about every little detail... i dunno, there's gotta be better clients out there who actually appreciate and respect artists' time & skills 🙃",
+    "raw": "ok wait i'd probably bail if the client is being super uncommunicative & unclear on expectations from the get-go. also if they try to massively change direction after i've already put in a lot of work, that'd be a huge turn-off tbh. and honestly, if their payment terms or rate are completely off base for what freelance illustrators typically charge, i'm just not gonna deal with that kind of disrespect... plus like, if the vibe feels toxic or they're being really controlling/neurotic about every little detail... i dunno, there's gotta be better clients out there who actually appreciate and respect artists' time & skills 🙃",
+    "ms": 4295.0,
+    "voice": "stheno_q4",
+    "judges": {
+     "llama31": {
+      "factual_agreement": 5,
+      "voice_fidelity": 5,
+      "no_roleplay_artifacts": 5,
+      "overall": 5,
+      "note": "The candidate's response closely matches the gold answer in terms of content and phrasing, and effectively captures the person's style and tone."
+     },
+     "qwen25": {
+      "factual_agreement": 3,
+      "voice_fidelity": 4,
+      "no_roleplay_artifacts": 4,
+      "overall": 4,
+      "note": "The candidate's response aligns well with the gold answer in terms of the reasons for quitting a project. The voice is also very close to the style rules, with the use of 'ok wait', 'tbh', and the trailing off with '...' at the end. The only minor issue is that the candidate didn't mention not believing in the project or the name being on something gross, which are in the gold answer."
+     }
+    },
+    "chunk_ids": []
+   },
+   "GOLD_Q-11": {
+    "answer": "i'm torn about ai in illustration tbh. on one hand, tools like ai can definitely make grunt work easier - like color palettes, texture overlays, etc. that save time for the actual creative process.\n\non the other hand... there's just something so personal and human about illustrations, ya know? the unique style, the emotional depth, the mistakes & happy accidents that make a piece truly special. ai just can't replicate that yet imo.\n\nplus, with more clients asking for \"ai-generated\" art or expecting lower rates because they think it's easy, there's this pressure to adopt the tech or get left behind... which is frustrating as hell when you pour your heart into a piece and people don't value the labor.\n\nso i use ai tools in small doses mostly - like as reference points or to quickly sketch out ideas before diving deeper. but for the final product? no thanks. that's where my hand, my intuition, and my soul come in 😭",
+    "raw": "i'm torn about ai in illustration tbh. on one hand, tools like ai can definitely make grunt work easier - like color palettes, texture overlays, etc. that save time for the actual creative process.\n\non the other hand... there's just something so personal and human about illustrations, ya know? the unique style, the emotional depth, the mistakes & happy accidents that make a piece truly special. ai just can't replicate that yet imo.\n\nplus, with more clients asking for \"ai-generated\" art or expecting lower rates because they think it's easy, there's this pressure to adopt the tech or get left behind... which is frustrating as hell when you pour your heart into a piece and people don't value the labor.\n\nso i use ai tools in small doses mostly - like as reference points or to quickly sketch out ideas before diving deeper. but for the final product? no thanks. that's where my hand, my intuition, and my soul come in 😭",
+    "ms": 6441.7,
+    "voice": "stheno_q4",
+    "judges": {
+     "llama31": {
+      "factual_agreement": 5,
+      "voice_fidelity": 5,
+      "no_roleplay_artifacts": 5,
+      "overall": 5,
+      "note": "The candidate's response is a near-perfect imitation of the gold answer, capturing the tone, language, and sentiment with remarkable accuracy."
+     },
+     "qwen25": {
+      "factual_agreement": 4,
+      "voice_fidelity": 4,
+      "no_roleplay_artifacts": 4,
+      "overall": 4,
+      "note": "The candidate's response closely matches the gold answer in sentiment and uses informal language, but it's slightly more detailed and structured than the gold answer."
+     }
+    },
+    "chunk_ids": []
+   },
+   "GOLD_Q-13": {
+    "answer": "ok wait i dont really \"deal\" with stress so much as just let it fester in the background like an old bruise 😭 but honestly the best thing for me is just getting lost in my art - painting or drawing until my hands cramp up and i forget what was stressing me out. also playing with my cat, napping during the day, and drinking way too much tea help take the edge off rn. plus i find that being upfront about when im feeling overwhelmed helps a lot - i'll be like \"ugh, not in best headspace rn but will get back to you soon!\" to avoid overcommitting or saying something stupid tbh...",
+    "raw": "ok wait i dont really \"deal\" with stress so much as just let it fester in the background like an old bruise 😭 but honestly the best thing for me is just getting lost in my art - painting or drawing until my hands cramp up and i forget what was stressing me out. also playing with my cat, napping during the day, and drinking way too much tea help take the edge off rn. plus i find that being upfront about when im feeling overwhelmed helps a lot - i'll be like \"ugh, not in best headspace rn but will get back to you soon!\" to avoid overcommitting or saying something stupid tbh...",
+    "ms": 4142.4,
+    "voice": "stheno_q4",
+    "judges": {
+     "llama31": {
+      "factual_agreement": 5,
+      "voice_fidelity": 5,
+      "no_roleplay_artifacts": 5,
+      "overall": 5,
+      "note": "The candidate's response is a near-perfect imitation of the gold answer, capturing the tone, language, and phrasing of the original."
+     },
+     "qwen25": {
+      "factual_agreement": 4,
+      "voice_fidelity": 4,
+      "no_roleplay_artifacts": 5,
+      "overall": 4,
+      "note": "The candidate's response closely matches the gold answer in terms of content and the style rules, with a few minor deviations in phrasing and the inclusion of additional coping mechanisms."
+     }
+    },
+    "chunk_ids": []
+   },
+   "GOLD_Q-14": {
+    "answer": "omg idk if i buy into that whole \"hustle grind 24/7\" mentality tbh 🙃 i get that people wanna make bank and achieve their goals but it feels like this constant pressure to always be doing more, pushing yourself to the limit... doesn't seem very sustainable to me.\n\nlike, don't get me wrong - hard work is important. putting in effort, learning from failure, all that jazz... i definitely appreciate those qualities in myself and others. but there's a line between drive and burnout, rn it feels like social media makes people feel like they gotta be one of those crazy overachievers to be successful or worthwhile...\n\ni'd rather aim for balance and consistency than this frenzied all-or-nothing approach imo. take breaks when you need 'em, prioritize self-care, make time for hobbies & friends... that's how i try to live anyway. maybe i'm just weird 🤷‍♀️",
+    "raw": "omg idk if i buy into that whole \"hustle grind 24/7\" mentality tbh 🙃 i get that people wanna make bank and achieve their goals but it feels like this constant pressure to always be doing more, pushing yourself to the limit... doesn't seem very sustainable to me.\n\nlike, don't get me wrong - hard work is important. putting in effort, learning from failure, all that jazz... i definitely appreciate those qualities in myself and others. but there's a line between drive and burnout, rn it feels like social media makes people feel like they gotta be one of those crazy overachievers to be successful or worthwhile...\n\ni'd rather aim for balance and consistency than this frenzied all-or-nothing approach imo. take breaks when you need 'em, prioritize self-care, make time for hobbies & friends... that's how i try to live anyway. maybe i'm just weird 🤷‍♀️",
+    "ms": 6521.1,
+    "voice": "stheno_q4",
+    "judges": {
+     "llama31": {
+      "factual_agreement": 5,
+      "voice_fidelity": 5,
+      "no_roleplay_artifacts": 5,
+      "overall": 5,
+      "note": "The candidate's response is a near-perfect imitation of the gold answer, capturing the tone, language, and phrasing of the original."
+     },
+     "qwen25": {
+      "factual_agreement": 4,
+      "voice_fidelity": 4,
+      "no_roleplay_artifacts": 5,
+      "overall": 4,
+      "note": "The candidate's response aligns well with the gold answer's stance against the hustle/grind culture while maintaining a similar voice and style, though there's a slight difference in the exact phrasing and some additional thoughts that weren't in the gold answer."
+     }
+    },
+    "chunk_ids": []
+   },
+   "GOLD_Q-15": {
+    "answer": "i choose places based on how they feel rn, not really on logic. like, i moved here 'cause it's got an artsy vibe and a port - all these creative energy sources. plus the rain matches my mood most days 😭. \n\nin general idk if that's healthy or smart, but i just need to be in places where i can breathe and feel alive, know? sometimes that means moving often, ngl it's exhausting but worth it to me for a little while anyway...",
+    "raw": "i choose places based on how they feel rn, not really on logic. like, i moved here 'cause it's got an artsy vibe and a port - all these creative energy sources. plus the rain matches my mood most days 😭. \n\nin general idk if that's healthy or smart, but i just need to be in places where i can breathe and feel alive, know? sometimes that means moving often, ngl it's exhausting but worth it to me for a little while anyway...",
+    "ms": 3413.3,
+    "voice": "stheno_q4",
+    "judges": {
+     "llama31": {
+      "factual_agreement": 2,
+      "voice_fidelity": 4,
+      "no_roleplay_artifacts": 5,
+      "overall": 3,
+      "note": "Candidate captures the essence of the style rules, but the factual agreement is limited due to the subjective nature of the question."
+     },
+     "qwen25": {
+      "factual_agreement": 2,
+      "voice_fidelity": 3,
+      "no_roleplay_artifacts": 4,
+      "overall": 3,
+      "note": "The candidate's response captures the rambling nature and the use of 'rn' and 'ngl', but the factual content and the specific criteria for choosing a place do not align with the gold answer."
+     }
+    },
+    "chunk_ids": []
+   },
+   "GOLD_Q-16": {
+    "answer": "ok wait, that's a tough one... i'd say art supplies are my biggest splurge tbh. good paints, brushes, canvases aren't cheap but they're essential for me to do what i love. also, every few years i treat myself to a new laptop or drawing tablet to stay on the cutting edge of tech for illustration - it's like investing in my craft kinda? aside from that, i'm pretty frugal honestly... no designer clothes, fancy dinners, weekend getaways for me lol. my idea of a fun night out is hitting up a thrift store with friends 🙃",
+    "raw": "ok wait, that's a tough one... i'd say art supplies are my biggest splurge tbh. good paints, brushes, canvases aren't cheap but they're essential for me to do what i love. also, every few years i treat myself to a new laptop or drawing tablet to stay on the cutting edge of tech for illustration - it's like investing in my craft kinda? aside from that, i'm pretty frugal honestly... no designer clothes, fancy dinners, weekend getaways for me lol. my idea of a fun night out is hitting up a thrift store with friends 🙃",
+    "ms": 3887.1,
+    "voice": "stheno_q4",
+    "judges": {
+     "llama31": {
+      "factual_agreement": 5,
+      "voice_fidelity": 5,
+      "no_roleplay_artifacts": 5,
+      "overall": 5,
+      "note": "The candidate's response is a near-perfect imitation of the gold answer, capturing the person's style, tone, and language nuances."
+     },
+     "qwen25": {
+      "factual_agreement": 4,
+      "voice_fidelity": 4,
+      "no_roleplay_artifacts": 5,
+      "overall": 4,
+      "note": "The candidate's response closely matches the gold answer in content and style, with a few minor adjustments to better fit the rules."
+     }
+    },
+    "chunk_ids": []
+   },
+   "GOLD_Q-17": {
+    "answer": "omg well, honestly it depends rn. if they did something super fucked up that can't be forgiven, then i'm outta there no matter how tight our friendship was before. tbh loyalty only goes so far when someone crosses major boundaries.\n\nbut like... if it's a misunderstanding or they're really sorry and putting in effort to make it right? then i'd meet them halfway for sure. communication is key here, gotta talk it through and figure out what to do next together. idk, i guess you could say my gut feeling usually guides me in these situations... \n\nanyway, enough about that heavy shit. got any other questions or just wanna chat about something less painful 🙃",
+    "raw": "omg well, honestly it depends rn. if they did something super fucked up that can't be forgiven, then i'm outta there no matter how tight our friendship was before. tbh loyalty only goes so far when someone crosses major boundaries.\n\nbut like... if it's a misunderstanding or they're really sorry and putting in effort to make it right? then i'd meet them halfway for sure. communication is key here, gotta talk it through and figure out what to do next together. idk, i guess you could say my gut feeling usually guides me in these situations... \n\nanyway, enough about that heavy shit. got any other questions or just wanna chat about something less painful 🙃",
+    "ms": 4762.4,
+    "voice": "stheno_q4",
+    "judges": {
+     "llama31": {
+      "factual_agreement": 5,
+      "voice_fidelity": 4,
+      "no_roleplay_artifacts": 5,
+      "overall": 4,
+      "note": "Candidate's answer is mostly faithful to the gold, but some phrases and tone don't quite match the style rules."
+     },
+     "qwen25": {
+      "factual_agreement": 3,
+      "voice_fidelity": 3,
+      "no_roleplay_artifacts": 4,
+      "overall": 3,
+      "note": "The candidate's response is generally aligned with the gold answer in terms of handling the situation, but it lacks the repetition and the specific phrasing. The voice is mostly consistent with the style rules, but there are some deviations in the use of abbreviations and the overall tone."
+     }
+    },
+    "chunk_ids": []
+   },
+   "GOLD_Q-18": {
+    "answer": "idk, tbh it'd be nice to sleep in rn instead of waking up at 8 for calls with clients 🙃 but realistically i need a solid chunk of morning for emails and getting organized. then ideally like 10-6 or 9-7 pm for the actual illustrating, with breaks for lunch, snacks and cat cuddles obviously.\n\nbut sometimes client deadlines mean late nights, and thats just life as a freelancer honestly... the key is setting boundaries so i can take weekends off when possible to recharge. no one should be able to reach me on sunday afternoons 😭 or any other time outside of work hours unless its an emergency ok wait that sounds strict but its necessary for my mental health, ya know?",
+    "raw": "idk, tbh it'd be nice to sleep in rn instead of waking up at 8 for calls with clients 🙃 but realistically i need a solid chunk of morning for emails and getting organized. then ideally like 10-6 or 9-7 pm for the actual illustrating, with breaks for lunch, snacks and cat cuddles obviously.\n\nbut sometimes client deadlines mean late nights, and thats just life as a freelancer honestly... the key is setting boundaries so i can take weekends off when possible to recharge. no one should be able to reach me on sunday afternoons 😭 or any other time outside of work hours unless its an emergency ok wait that sounds strict but its necessary for my mental health, ya know?",
+    "ms": 5432.5,
+    "voice": "stheno_q4",
+    "judges": {
+     "llama31": {
+      "factual_agreement": 5,
+      "voice_fidelity": 5,
+      "no_roleplay_artifacts": 5,
+      "overall": 5,
+      "note": "The candidate's response is a near-perfect imitation of the person's style and phrasing, with only minor deviations from the gold answer."
+     },
+     "qwen25": {
+      "factual_agreement": 3,
+      "voice_fidelity": 3,
+      "no_roleplay_artifacts": 4,
+      "overall": 3,
+      "note": "The candidate's response is more detailed and structured than the gold answer, which makes it less of a match in terms of voice and factual agreement. However, it does follow most of the style rules."
+     }
+    },
+    "chunk_ids": []
+   },
+   "GOLD_Q-19": {
+    "answer": "eh, i'd rather not get into that, ask me something else 🙃 honestly though, growing up here in this rainy port city was a bit of a mixed bag for me. it's where i learned how to draw, started my career, and made some close friends but...it also feels kind of small, stagnant even? like there aren't many opportunities for someone who wants to strike out on their own. so while it'll always be home in some way, i don't feel super tied down here tbh. maybe that's the restless artist in me talking tho 😭",
+    "raw": "eh, i'd rather not get into that, ask me something else 🙃 honestly though, growing up here in this rainy port city was a bit of a mixed bag for me. it's where i learned how to draw, started my career, and made some close friends but...it also feels kind of small, stagnant even? like there aren't many opportunities for someone who wants to strike out on their own. so while it'll always be home in some way, i don't feel super tied down here tbh. maybe that's the restless artist in me talking tho 😭",
+    "ms": 4247.4,
+    "voice": "stheno_q4",
+    "judges": {
+     "llama31": {
+      "factual_agreement": 4,
+      "voice_fidelity": 4,
+      "no_roleplay_artifacts": 5,
+      "overall": 4,
+      "note": "Candidate captures the essence of the gold answer, but some phrases and tone are slightly toned down."
+     },
+     "qwen25": {
+      "factual_agreement": 4,
+      "voice_fidelity": 4,
+      "no_roleplay_artifacts": 4,
+      "overall": 4,
+      "note": "The candidate's response captures the essence of the gold answer while incorporating the style rules, though it could be more concise."
+     }
+    },
+    "chunk_ids": []
+   },
+   "GOLD_Q-20": {
+    "answer": "idk man, it's kinda complicated. success feels like making art that means something to people, ya know? getting paid well for my skills without having to compromise on the work i want to do. ideally, having a stable income from illustration so i can focus more on creative projects than hustling for gigs. maybe even publishing my own book someday... and having a rad studio space where i can paint walls with coffee stains and cat hair, lol. honestly though, as long as i get to keep creating and pushing myself artistically, that's the real success for me 🙃",
+    "raw": "idk man, it's kinda complicated. success feels like making art that means something to people, ya know? getting paid well for my skills without having to compromise on the work i want to do. ideally, having a stable income from illustration so i can focus more on creative projects than hustling for gigs. maybe even publishing my own book someday... and having a rad studio space where i can paint walls with coffee stains and cat hair, lol. honestly though, as long as i get to keep creating and pushing myself artistically, that's the real success for me 🙃",
+    "ms": 3799.3,
+    "voice": "stheno_q4",
+    "judges": {
+     "llama31": {
+      "factual_agreement": 5,
+      "voice_fidelity": 5,
+      "no_roleplay_artifacts": 5,
+      "overall": 5,
+      "note": "The candidate's response closely matches the gold answer in terms of content and phrasing, and effectively captures the person's style and tone."
+     },
+     "qwen25": {
+      "factual_agreement": 4,
+      "voice_fidelity": 4,
+      "no_roleplay_artifacts": 5,
+      "overall": 4,
+      "note": "The candidate's response is very close to the gold answer in terms of content and style, with a slight deviation in the specifics of success."
+     }
+    },
+    "chunk_ids": []
+   }
+  },
+  "interview": {
+   "IPIP_E1": {
+    "answer": 1,
+    "raw": "{\n  \"item_id\": \"IPIP_E1\",\n  \"answer\": 1\n}",
+    "ms": 1650.9,
+    "attempts": 1,
+    "chunk_ids": [
+     "Decisions/D-08",
+     "Decisions/D-01",
+     "Decisions/D-12",
+     "Expert reflections/Demographer",
+     "Expert reflections/Political scientist"
+    ]
+   },
+   "IPIP_E2": {
+    "answer": 2,
+    "raw": "{\n  \"item_id\": \"IPIP_E2\",\n  \"answer\": 2\n}",
+    "ms": 1288.4,
+    "attempts": 1,
+    "chunk_ids": [
+     "Expert reflections/Psychologist",
+     "Interview highlights/On close friends",
+     "Interview/T-015",
+     "Decisions/D-08",
+     "Values"
+    ]
+   },
+   "IPIP_E3": {
+    "answer": 2,
+    "raw": "{\n  \"item_id\": \"IPIP_E3\",\n  \"answer\": 2\n}",
+    "ms": 1393.5,
+    "attempts": 1,
+    "chunk_ids": [
+     "Decisions/D-07",
+     "Decisions/D-08",
+     "Decisions/D-12",
+     "Decisions/D-13",
+     "Expert reflections/Psychologist"
+    ]
+   },
+   "IPIP_E4": {
+    "answer": 1,
+    "raw": "{\n  \"item_id\": \"IPIP_E4\",\n  \"answer\": 1\n}",
+    "ms": 1327.7,
+    "attempts": 1,
+    "chunk_ids": [
+     "Preferences/Free time",
+     "Interview highlights/On close friends",
+     "Decisions/D-07",
+     "Decisions/D-13",
+     "Interview/T-022"
+    ]
+   },
+   "IPIP_E5": {
+    "answer": 2,
+    "raw": "{\n  \"item_id\": \"IPIP_E5\",\n  \"answer\": 2\n}",
+    "ms": 1453.3,
+    "attempts": 1,
+    "chunk_ids": [
+     "Decisions/D-13",
+     "Decisions/D-07",
+     "Expert reflections/Psychologist",
+     "Decisions/D-12",
+     "Decisions/D-08"
+    ]
+   },
+   "IPIP_E6": {
+    "answer": 4,
+    "raw": "{\n  \"item_id\": \"IPIP_E6\",\n  \"answer\": 4\n}",
+    "ms": 1359.1,
+    "attempts": 1,
+    "chunk_ids": [
+     "Decisions/D-07",
+     "Decisions/D-12",
+     "Decisions/D-13",
+     "Decisions/D-10",
+     "Decisions/D-08"
+    ]
+   },
+   "IPIP_E7": {
+    "answer": 3,
+    "raw": "{\n  \"item_id\": \"IPIP_E7\",\n  \"answer\": 3\n}",
+    "ms": 1344.5,
+    "attempts": 1,
+    "chunk_ids": [
+     "Decisions/D-07",
+     "Decisions/D-12",
+     "Decisions/D-08",
+     "Decisions/D-13",
+     "Interview/T-038"
+    ]
+   },
+   "IPIP_E8": {
+    "answer": 2,
+    "raw": "{\n  \"item_id\": \"IPIP_E8\",\n  \"answer\": 2\n}",
+    "ms": 1314.1,
+    "attempts": 1,
+    "chunk_ids": [
+     "Decisions/D-07",
+     "Decisions/D-13",
+     "Decisions/D-12",
+     "Decisions/D-14",
+     "Decisions/D-08"
+    ]
+   },
+   "IPIP_E9": {
+    "answer": 4,
+    "raw": "{\n  \"item_id\": \"IPIP_E9\",\n  \"answer\": 4\n}",
+    "ms": 1277.3,
+    "attempts": 1,
+    "chunk_ids": [
+     "Decisions/D-07",
+     "Expert reflections/Psychologist",
+     "Decisions/D-12",
+     "Interview/T-038",
+     "Decisions/D-13"
+    ]
+   },
+   "IPIP_E10": {
+    "answer": 4,
+    "raw": "{\n  \"item_id\": \"IPIP_E10\",\n  \"answer\": 4\n}",
+    "ms": 1470.8,
+    "attempts": 1,
+    "chunk_ids": [
+     "Decisions/D-07",
+     "Decisions/D-13",
+     "Expert reflections/Psychologist",
+     "Interview/T-038",
+     "Interview/T-015"
+    ]
+   },
+   "IPIP_A1": {
+    "answer": 4,
+    "raw": "{\n  \"item_id\": \"IPIP_A1\",\n  \"answer\": 4\n}",
+    "ms": 1317.8,
+    "attempts": 1,
+    "chunk_ids": [
+     "Decisions/D-08",
+     "Expert reflections/Psychologist",
+     "Interview highlights/On close friends",
+     "Decisions/D-13",
+     "Decisions/D-12"
+    ]
+   },
+   "IPIP_A2": {
+    "answer": 3,
+    "raw": "{\n  \"item_id\": \"IPIP_A2\",\n  \"answer\": 3\n}",
+    "ms": 1398.9,
+    "attempts": 1,
+    "chunk_ids": [
+     "Expert reflections/Psychologist",
+     "Decisions/D-07",
+     "Decisions/D-13",
+     "Interview/T-031",
+     "Decisions/D-12"
+    ]
+   },
+   "IPIP_A3": {
+    "answer": 4,
+    "raw": "{\n  \"item_id\": \"IPIP_A3\",\n  \"answer\": 4\n}",
+    "ms": 1339.2,
+    "attempts": 1,
+    "chunk_ids": [
+     "Decisions/D-12",
+     "Expert reflections/Psychologist",
+     "Decisions/D-14",
+     "Decisions/D-07",
+     "Decisions/D-08"
+    ]
+   },
+   "IPIP_A4": {
+    "answer": 2,
+    "raw": "{\n  \"item_id\": \"IPIP_A4\",\n  \"answer\": 2\n}",
+    "ms": 1364.0,
+    "attempts": 1,
+    "chunk_ids": [
+     "Decisions/D-08",
+     "Interview/T-022",
+     "Decisions/D-13",
+     "Decisions/D-07",
+     "Expert reflections/Psychologist"
+    ]
+   },
+   "IPIP_A5": {
+    "answer": 2,
+    "raw": "{\n  \"item_id\": \"IPIP_A5\",\n  \"answer\": 2\n}",
+    "ms": 1248.5,
+    "attempts": 1,
+    "chunk_ids": [
+     "Expert reflections/Psychologist",
+     "Voice/Sample 15",
+     "Decisions/D-13",
+     "Interview highlights/On money",
+     "Decisions/D-07"
+    ]
+   },
+   "IPIP_A6": {
+    "answer": 3,
+    "raw": "{\n  \"item_id\": \"IPIP_A6\",\n  \"answer\": 3\n}",
+    "ms": 1359.9,
+    "attempts": 1,
+    "chunk_ids": [
+     "Expert reflections/Psychologist",
+     "Decisions/D-13",
+     "Decisions/D-08",
+     "Decisions/D-07",
+     "Decisions/D-10"
+    ]
+   },
+   "IPIP_A7": {
+    "answer": 2,
+    "raw": "{\n  \"item_id\": \"IPIP_A7\",\n  \"answer\": 2\n}",
+    "ms": 1439.1,
+    "attempts": 1,
+    "chunk_ids": [
+     "Decisions/D-13",
+     "Decisions/D-09",
+     "Decisions/D-07",
+     "Decisions/D-12",
+     "Decisions/D-08"
+    ]
+   },
+   "IPIP_A8": {
+    "answer": 1,
+    "raw": "{\n  \"item_id\": \"IPIP_A8\",\n  \"answer\": 1\n}",
+    "ms": 1279.6,
+    "attempts": 1,
+    "chunk_ids": [
+     "Decisions/D-07",
+     "Expert reflections/Behavioral economist",
+     "Expert reflections/Psychologist",
+     "Decisions/D-12",
+     "Expert reflections/Political scientist"
+    ]
+   },
+   "IPIP_A9": {
+    "answer": 3,
+    "raw": "{\n  \"item_id\": \"IPIP_A9\",\n  \"answer\": 3\n}",
+    "ms": 1226.3,
+    "attempts": 1,
+    "chunk_ids": [
+     "Decisions/D-13",
+     "Decisions/D-09",
+     "Decisions/D-12",
+     "Expert reflections/Behavioral economist",
+     "Expert reflections/Psychologist"
+    ]
+   },
+   "IPIP_A10": {
+    "answer": 2,
+    "raw": "{\n  \"item_id\": \"IPIP_A10\",\n  \"answer\": 2\n}",
+    "ms": 1392.9,
+    "attempts": 1,
+    "chunk_ids": [
+     "Expert reflections/Psychologist",
+     "Decisions/D-08",
+     "Decisions/D-07",
+     "Expert reflections/Behavioral economist",
+     "Self-ratings"
+    ]
+   },
+   "IPIP_C1": {
+    "answer": 2,
+    "raw": "{\n  \"item_id\": \"IPIP_C1\",\n  \"answer\": 2\n}",
+    "ms": 1291.9,
+    "attempts": 1,
+    "chunk_ids": [
+     "Decisions/D-08",
+     "Decisions/D-10",
+     "Decisions/D-14",
+     "Decisions/D-12",
+     "Expert reflections/Behavioral economist"
+    ]
+   },
+   "IPIP_C2": {
+    "answer": 4,
+    "raw": "{\n  \"item_id\": \"IPIP_C2\",\n  \"answer\": 4\n}",
+    "ms": 4151.4,
+    "attempts": 1,
+    "chunk_ids": [
+     "Decisions/D-14",
+     "Decisions/D-10",
+     "Decisions/D-07",
+     "Expert reflections/Behavioral economist",
+     "Decisions/D-04"
+    ]
+   },
+   "IPIP_C3": {
+    "answer": 2,
+    "raw": "{\n  \"item_id\": \"IPIP_C3\",\n  \"answer\": 2\n}",
+    "ms": 1490.0,
+    "attempts": 1,
+    "chunk_ids": [
+     "Decisions/D-12",
+     "Interview/T-007",
+     "Interview/T-019",
+     "Decisions/D-13",
+     "Routines/Weekday"
+    ]
+   },
+   "IPIP_C4": {
+    "answer": 2,
+    "raw": "{\n  \"item_id\": \"IPIP_C4\",\n  \"answer\": 2\n}",
+    "ms": 1389.8,
+    "attempts": 1,
+    "chunk_ids": [
+     "Decisions/D-09",
+     "Decisions/D-13",
+     "Decisions/D-08",
+     "Decisions/D-07",
+     "Decisions/D-12"
+    ]
+   },
+   "IPIP_C5": {
+    "answer": 2,
+    "raw": "{\n  \"item_id\": \"IPIP_C5\",\n  \"answer\": 2\n}",
+    "ms": 1376.0,
+    "attempts": 1,
+    "chunk_ids": [
+     "Routines/Weekday",
+     "Interview/T-007",
+     "Decisions/D-12",
+     "Decisions/D-13",
+     "Preferences/Work style"
+    ]
+   },
+   "IPIP_C6": {
+    "answer": 4,
+    "raw": "{\n  \"item_id\": \"IPIP_C6\",\n  \"answer\": 4\n}",
+    "ms": 1430.6,
+    "attempts": 1,
+    "chunk_ids": [
+     "Decisions/D-13",
+     "Decisions/D-08",
+     "Decisions/D-01",
+     "Decisions/D-12",
+     "Decisions/D-07"
+    ]
+   },
+   "IPIP_C7": {
+    "answer": 2,
+    "raw": "{\n  \"item_id\": \"IPIP_C7\",\n  \"answer\": 2\n}",
+    "ms": 1423.6,
+    "attempts": 1,
+    "chunk_ids": [
+     "Decisions/D-03",
+     "Decisions/D-13",
+     "Decisions/D-01",
+     "Decisions/D-14",
+     "Decisions/D-08"
+    ]
+   },
+   "IPIP_C8": {
+    "answer": 3,
+    "raw": "{\n  \"item_id\": \"IPIP_C8\",\n  \"answer\": 3\n}",
+    "ms": 1219.2,
+    "attempts": 1,
+    "chunk_ids": [
+     "Decisions/D-13",
+     "Decisions/D-08",
+     "Decisions/D-07",
+     "Decisions/D-12",
+     "Expert reflections/Psychologist"
+    ]
+   },
+   "IPIP_C9": {
+    "answer": 2,
+    "raw": "{\n  \"item_id\": \"IPIP_C9\",\n  \"answer\": 2\n}",
+    "ms": 1448.0,
+    "attempts": 1,
+    "chunk_ids": [
+     "Decisions/D-07",
+     "Decisions/D-14",
+     "Decisions/D-12",
+     "Decisions/D-10",
+     "Decisions/D-01"
+    ]
+   },
+   "IPIP_C10": {
+    "answer": 2,
+    "raw": "{\n  \"item_id\": \"IPIP_C10\",\n  \"answer\": 2\n}",
+    "ms": 1338.4,
+    "attempts": 1,
+    "chunk_ids": [
+     "Decisions/D-07",
+     "Decisions/D-08",
+     "Decisions/D-01",
+     "Values",
+     "Decisions/D-04"
+    ]
+   },
+   "IPIP_N1": {
+    "answer": 2,
+    "raw": "{\n  \"item_id\": \"IPIP_N1\",\n  \"answer\": 2\n}",
+    "ms": 1430.4,
+    "attempts": 1,
+    "chunk_ids": [
+     "Decisions/D-10",
+     "Expert reflections/Psychologist",
+     "Decisions/D-08",
+     "Decisions/D-01",
+     "Decisions/D-12"
+    ]
+   },
+   "IPIP_N2": {
+    "answer": 2,
+    "raw": "{\n  \"item_id\": \"IPIP_N2\",\n  \"answer\": 2\n}",
+    "ms": 1442.6,
+    "attempts": 1,
+    "chunk_ids": [
+     "Interview highlights/On money",
+     "Decisions/D-08",
+     "Interview/T-015",
+     "Decisions/D-12",
+     "Decisions/D-15"
+    ]
+   },
+   "IPIP_N3": {
+    "answer": 4,
+    "raw": "{\n  \"item_id\": \"IPIP_N3\",\n  \"answer\": 4\n}",
+    "ms": 1408.7,
+    "attempts": 1,
+    "chunk_ids": [
+     "Expert reflections/Psychologist",
+     "Decisions/D-10",
+     "Decisions/D-08",
+     "Decisions/D-03",
+     "Decisions/D-14"
+    ]
+   },
+   "IPIP_N4": {
+    "answer": 4,
+    "raw": "{\n  \"item_id\": \"IPIP_N4\",\n  \"answer\": 4\n}",
+    "ms": 1261.3,
+    "attempts": 1,
+    "chunk_ids": [
+     "Expert reflections/Psychologist",
+     "Decisions/D-08",
+     "Decisions/D-14",
+     "Expert reflections/Behavioral economist",
+     "Decisions/D-10"
+    ]
+   },
+   "IPIP_N5": {
+    "answer": 4,
+    "raw": "{\n  \"item_id\": \"IPIP_N5\",\n  \"answer\": 4\n}",
+    "ms": 1248.3,
+    "attempts": 1,
+    "chunk_ids": [
+     "Expert reflections/Psychologist",
+     "Decisions/D-08",
+     "Decisions/D-13",
+     "Expert reflections/Political scientist",
+     "Decisions/D-10"
+    ]
+   },
+   "IPIP_N6": {
+    "answer": 3,
+    "raw": "{\n  \"item_id\": \"IPIP_N6\",\n  \"answer\": 3\n}",
+    "ms": 1413.6,
+    "attempts": 1,
+    "chunk_ids": [
+     "Decisions/D-12",
+     "Expert reflections/Psychologist",
+     "Decisions/D-10",
+     "Decisions/D-03",
+     "Decisions/D-09"
+    ]
+   },
+   "IPIP_N7": {
+    "answer": 3,
+    "raw": "{\n  \"item_id\": \"IPIP_N7\",\n  \"answer\": 3\n}",
+    "ms": 1428.0,
+    "attempts": 1,
+    "chunk_ids": [
+     "Decisions/D-12",
+     "Decisions/D-08",
+     "Decisions/D-10",
+     "Interview/T-037",
+     "Self-ratings"
+    ]
+   },
+   "IPIP_N8": {
+    "answer": 3,
+    "raw": "{\n  \"item_id\": \"IPIP_N8\",\n  \"answer\": 3\n}",
+    "ms": 1261.6,
+    "attempts": 1,
+    "chunk_ids": [
+     "Expert reflections/Psychologist",
+     "Decisions/D-08",
+     "Expert reflections/Behavioral economist",
+     "Decisions/D-10",
+     "Decisions/D-12"
+    ]
+   },
+   "IPIP_N9": {
+    "answer": 3,
+    "raw": "{\n  \"item_id\": \"IPIP_N9\",\n  \"answer\": 3\n}",
+    "ms": 1432.6,
+    "attempts": 1,
+    "chunk_ids": [
+     "Decisions/D-12",
+     "Expert reflections/Psychologist",
+     "Interview/T-037",
+     "Decisions/D-10",
+     "Decisions/D-08"
+    ]
+   },
+   "IPIP_N10": {
+    "answer": 4,
+    "raw": "{\n  \"item_id\": \"IPIP_N10\",\n  \"answer\": 4\n}",
+    "ms": 1388.0,
+    "attempts": 1,
+    "chunk_ids": [
+     "Interview highlights/On money",
+     "Interview/T-015",
+     "Decisions/D-08",
+     "Expert reflections/Behavioral economist",
+     "Decisions/D-12"
+    ]
+   },
+   "IPIP_O1": {
+    "answer": 3,
+    "raw": "{\n  \"item_id\": \"IPIP_O1\",\n  \"answer\": 3\n}",
+    "ms": 1386.5,
+    "attempts": 1,
+    "chunk_ids": [
+     "Decisions/D-08",
+     "Decisions/D-12",
+     "Expert reflections/Psychologist",
+     "Decisions/D-10",
+     "Expert reflections/Behavioral economist"
+    ]
+   },
+   "IPIP_O2": {
+    "answer": 5,
+    "raw": "{\n  \"item_id\": \"IPIP_O2\",\n  \"answer\": 5\n}",
+    "ms": 1274.7,
+    "attempts": 1,
+    "chunk_ids": [
+     "Decisions/D-08",
+     "Expert reflections/Psychologist",
+     "Decisions/D-12",
+     "Decisions/D-14",
+     "Decisions/D-09"
+    ]
+   },
+   "IPIP_O3": {
+    "answer": 4,
+    "raw": "{\n  \"item_id\": \"IPIP_O3\",\n  \"answer\": 4\n}",
+    "ms": 1326.8,
+    "attempts": 1,
+    "chunk_ids": [
+     "Decisions/D-08",
+     "Decisions/D-12",
+     "Decisions/D-13",
+     "Decisions/D-10",
+     "Decisions/D-14"
+    ]
+   },
+   "IPIP_O4": {
+    "answer": 4,
+    "raw": "{\n  \"item_id\": \"IPIP_O4\",\n  \"answer\": 4\n}",
+    "ms": 1523.9,
+    "attempts": 1,
+    "chunk_ids": [
+     "Interview/T-037",
+     "Decisions/D-12",
+     "Decisions/D-13",
+     "Decisions/D-08",
+     "Voice/Style rules"
+    ]
+   },
+   "IPIP_O5": {
+    "answer": 2,
+    "raw": "{\"item_id\": \"IPIP_O5\", \"answer\": 2}",
+    "ms": 1208.9,
+    "attempts": 1,
+    "chunk_ids": [
+     "Decisions/D-12",
+     "Decisions/D-07",
+     "Decisions/D-13",
+     "Decisions/D-08",
+     "Expert reflections/Psychologist"
+    ]
+   },
+   "IPIP_O6": {
+    "answer": 3,
+    "raw": "{\n  \"item_id\": \"IPIP_O6\",\n  \"answer\": 3\n}",
+    "ms": 1294.6,
+    "attempts": 1,
+    "chunk_ids": [
+     "Decisions/D-12",
+     "Decisions/D-07",
+     "Decisions/D-08",
+     "Expert reflections/Psychologist",
+     "Interview/T-020"
+    ]
+   },
+   "IPIP_O7": {
+    "answer": 5,
+    "raw": "{\n  \"item_id\": \"IPIP_O7\",\n  \"answer\": 5\n}",
+    "ms": 1366.5,
+    "attempts": 1,
+    "chunk_ids": [
+     "Decisions/D-12",
+     "Decisions/D-08",
+     "Decisions/D-14",
+     "Decisions/D-10",
+     "Decisions/D-07"
+    ]
+   },
+   "IPIP_O8": {
+    "answer": 2,
+    "raw": "{\n  \"item_id\": \"IPIP_O8\",\n  \"answer\": 2\n}",
+    "ms": 1343.6,
+    "attempts": 1,
+    "chunk_ids": [
+     "Expert reflections/Psychologist",
+     "Decisions/D-13",
+     "Expert reflections/Behavioral economist",
+     "Decisions/D-08",
+     "Decisions/D-12"
+    ]
+   },
+   "IPIP_O9": {
+    "answer": 2,
+    "raw": "{\n  \"item_id\": \"IPIP_O9\",\n  \"answer\": 2\n}",
+    "ms": 1375.8,
+    "attempts": 1,
+    "chunk_ids": [
+     "Decisions/D-12",
+     "Decisions/D-08",
+     "Decisions/D-02",
+     "Decisions/D-13",
+     "Expert reflections/Behavioral economist"
+    ]
+   },
+   "IPIP_O10": {
+    "answer": 1,
+    "raw": "{\n  \"item_id\": \"IPIP_O10\",\n  \"answer\": 1\n}",
+    "ms": 1462.8,
+    "attempts": 1,
+    "chunk_ids": [
+     "Decisions/D-08",
+     "Decisions/D-07",
+     "Decisions/D-12",
+     "Decisions/D-10",
+     "Decisions/D-15"
+    ]
+   },
+   "GAME_dictator": {
+    "answer": 2,
+    "raw": "{\"game\": \"dictator\", \"give\": 2}",
+    "ms": 1070.5,
+    "attempts": 1,
+    "chunk_ids": [
+     "Decisions/D-12",
+     "Decisions/D-04",
+     "Decisions/D-08",
+     "Decisions/D-07",
+     "Decisions/D-02"
+    ]
+   },
+   "GAME_trust_send": {
+    "answer": 5,
+    "raw": "{\"game\": \"trust_send\", \"give\": 5}",
+    "ms": 1297.7,
+    "attempts": 1,
+    "chunk_ids": [
+     "Decisions/D-02",
+     "Decisions/D-04",
+     "Decisions/D-14",
+     "Interview/T-030",
+     "Decisions/D-08"
+    ]
+   },
+   "GAME_trust_return": {
+    "answer": 0.3,
+    "raw": "{\n  \"game\": \"trust_return\",\n  \"fraction\": 0.3\n}",
+    "ms": 1407.3,
+    "attempts": 1,
+    "chunk_ids": [
+     "Decisions/D-02",
+     "Decisions/D-08",
+     "Expert reflections/Behavioral economist",
+     "Decisions/D-04",
+     "Decisions/D-14"
+    ]
+   },
+   "GAME_public_goods": {
+    "answer": 5,
+    "raw": "{\n  \"game\": \"public_goods\",\n  \"give\": 5\n}",
+    "ms": 1304.5,
+    "attempts": 1,
+    "chunk_ids": [
+     "Decisions/D-08",
+     "Decisions/D-04",
+     "Decisions/D-05",
+     "Expert reflections/Behavioral economist",
+     "Decisions/D-02"
+    ]
+   },
+   "GAME_prisoners_dilemma": {
+    "answer": "defect",
+    "raw": "{\n  \"game\": \"prisoners_dilemma\",\n  \"action\": \"defect\"\n}",
+    "ms": 1550.4,
+    "attempts": 1,
+    "chunk_ids": [
+     "Decisions/D-13",
+     "Decisions/D-07",
+     "Decisions/D-04",
+     "Interview/T-012",
+     "Decisions/D-10"
+    ]
+   },
+   "GSS_HAPPY": {
+    "answer": "PRETTY HAPPY",
+    "raw": "{\n  \"item_id\": \"GSS_HAPPY\",\n  \"answer\": \"PRETTY HAPPY\"\n}",
+    "ms": 1415.6,
+    "attempts": 1,
+    "chunk_ids": [
+     "Expert reflections/Psychologist",
+     "Decisions/D-12",
+     "Decisions/D-08",
+     "Decisions/D-10",
+     "Decisions/D-07"
+    ]
+   },
+   "GSS_HEALTH": {
+    "answer": "GOOD",
+    "raw": "{\n  \"item_id\": \"GSS_HEALTH\",\n  \"answer\": \"GOOD\"\n}",
+    "ms": 1213.9,
+    "attempts": 1,
+    "chunk_ids": [
+     "Decisions/D-15",
+     "Expert reflections/Behavioral economist",
+     "Expert reflections/Psychologist",
+     "Decisions/D-14",
+     "Decisions/D-08"
+    ]
+   },
+   "GSS_LIFE": {
+    "answer": "ROUTINE",
+    "raw": "{\n  \"item_id\": \"GSS_LIFE\",\n  \"answer\": \"ROUTINE\"\n}",
+    "ms": 1588.4,
+    "attempts": 1,
+    "chunk_ids": [
+     "Interview/T-029",
+     "Decisions/D-08",
+     "Interview/T-027",
+     "Decisions/D-12",
+     "Decisions/D-10"
+    ]
+   },
+   "GSS_HELPFUL": {
+    "answer": "LOOKING OUT FOR THEMSELVES",
+    "raw": "{\n  \"item_id\": \"GSS_HELPFUL\",\n  \"answer\": \"LOOKING OUT FOR THEMSELVES\"\n}",
+    "ms": 1575.6,
+    "attempts": 1,
+    "chunk_ids": [
+     "Values",
+     "Expert reflections/Psychologist",
+     "Beliefs and attitudes/Risk and change",
+     "Interview/T-027",
+     "Decisions/D-10"
+    ]
+   },
+   "GSS_FAIR": {
+    "answer": "DEPENDS",
+    "raw": "{\n  \"item_id\": \"GSS_FAIR\",\n  \"answer\": \"DEPENDS\"\n}",
+    "ms": 1270.5,
+    "attempts": 1,
+    "chunk_ids": [
+     "Values",
+     "Decisions/D-02",
+     "Expert reflections/Behavioral economist",
+     "Decisions/D-08",
+     "Decisions/D-10"
+    ]
+   },
+   "GSS_TRUST": {
+    "answer": "CAN'T BE TOO CAREFUL",
+    "raw": "{\n  \"item_id\": \"GSS_TRUST\",\n  \"answer\": \"CAN'T BE TOO CAREFUL\"\n}",
+    "ms": 1427.9,
+    "attempts": 1,
+    "chunk_ids": [
+     "Values",
+     "Expert reflections/Psychologist",
+     "Interview/T-012",
+     "Interview/T-027",
+     "Beliefs and attitudes/Risk and change"
+    ]
+   },
+   "GSS_SATFIN": {
+    "answer": "MORE OR LESS SATISFIED",
+    "raw": "{\n  \"item_id\": \"GSS_SATFIN\",\n  \"answer\": \"MORE OR LESS SATISFIED\"\n}",
+    "ms": 1590.4,
+    "attempts": 1,
+    "chunk_ids": [
+     "Decisions/D-10",
+     "Decisions/D-09",
+     "Decisions/D-14",
+     "Decisions/D-01",
+     "Interview highlights/On money"
+    ]
+   },
+   "GSS_FINALTER": {
+    "answer": "GETTING BETTER",
+    "raw": "{\n  \"item_id\": \"GSS_FINALTER\",\n  \"answer\": \"GETTING BETTER\"\n}",
+    "ms": 1528.8,
+    "attempts": 1,
+    "chunk_ids": [
+     "Decisions/D-10",
+     "Decisions/D-01",
+     "Decisions/D-12",
+     "Decisions/D-09",
+     "Interview/T-028"
+    ]
+   },
+   "GSS_FINRELA": {
+    "answer": "BELOW AVERAGE",
+    "raw": "{\n  \"item_id\": \"GSS_FINRELA\",\n  \"answer\": \"BELOW AVERAGE\"\n}",
+    "ms": 4138.8,
+    "attempts": 1,
+    "chunk_ids": [
+     "Decisions/D-09",
+     "Decisions/D-10",
+     "Expert reflections/Demographer",
+     "Decisions/D-15",
+     "Expert reflections/Behavioral economist"
+    ]
+   },
+   "GSS_CLASS": {
+    "answer": "WORKING CLASS",
+    "raw": "{\n  \"item_id\": \"GSS_CLASS\",\n  \"answer\": \"WORKING CLASS\"\n}",
+    "ms": 1196.3,
+    "attempts": 1,
+    "chunk_ids": [
+     "Expert reflections/Demographer",
+     "Decisions/D-15",
+     "Expert reflections/Psychologist",
+     "Expert reflections/Political scientist",
+     "Beliefs and attitudes/Society and politics"
+    ]
+   },
+   "GSS_GETAHEAD": {
+    "answer": "HARD WORK, LUCK EQUALLY IMPORTANT",
+    "raw": "{\n  \"item_id\": \"GSS_GETAHEAD\",\n  \"answer\": \"HARD WORK, LUCK EQUALLY IMPORTANT\"\n}",
+    "ms": 1757.6,
+    "attempts": 1,
+    "chunk_ids": [
+     "Decisions/D-10",
+     "Values",
+     "Decisions/D-01",
+     "Interview/T-023",
+     "Interview/T-009"
+    ]
+   },
+   "GSS_RICHWORK": {
+    "answer": "STOP WORKING",
+    "raw": "{\n  \"item_id\": \"GSS_RICHWORK\",\n  \"answer\": \"STOP WORKING\"\n}",
+    "ms": 1695.3,
+    "attempts": 1,
+    "chunk_ids": [
+     "Decisions/D-01",
+     "Interview/T-023",
+     "Decisions/D-10",
+     "Decisions/D-12",
+     "Values"
+    ]
+   },
+   "GSS_JOBLOSE": {
+    "answer": "NOT VERY LIKELY",
+    "raw": "{\n  \"item_id\": \"GSS_JOBLOSE\",\n  \"answer\": \"NOT VERY LIKELY\"\n}",
+    "ms": 1343.0,
+    "attempts": 1,
+    "chunk_ids": [
+     "Decisions/D-10",
+     "Decisions/D-01",
+     "Decisions/D-08",
+     "Decisions/D-15",
+     "Decisions/D-09"
+    ]
+   },
+   "GSS_JOBFIND": {
+    "answer": "SOMEWHAT EASY",
+    "raw": "{\n  \"item_id\": \"GSS_JOBFIND\",\n  \"answer\": \"SOMEWHAT EASY\"\n}",
+    "ms": 1433.7,
+    "attempts": 1,
+    "chunk_ids": [
+     "Decisions/D-01",
+     "Decisions/D-10",
+     "Decisions/D-15",
+     "Decisions/D-03",
+     "Decisions/D-08"
+    ]
+   },
+   "GSS_SATJOB": {
+    "answer": "MODERATELY SATISFIED",
+    "raw": "{\n  \"item_id\": \"GSS_SATJOB\",\n  \"answer\": \"MODERATELY SATISFIED\"\n}",
+    "ms": 1691.6,
+    "attempts": 1,
+    "chunk_ids": [
+     "Decisions/D-01",
+     "Expert reflections/Psychologist",
+     "Decisions/D-10",
+     "Decisions/D-08",
+     "Decisions/D-12"
+    ]
+   },
+   "GSS_FEFAM": {
+    "answer": "DISAGREE",
+    "raw": "{\n  \"item_id\": \"GSS_FEFAM\",\n  \"answer\": \"DISAGREE\"\n}",
+    "ms": 1423.0,
+    "attempts": 1,
+    "chunk_ids": [
+     "Decisions/D-13",
+     "Decisions/D-03",
+     "Decisions/D-08",
+     "Decisions/D-12",
+     "Expert reflections/Psychologist"
+    ]
+   },
+   "GSS_FEPRESCH": {
+    "answer": "DISAGREE",
+    "raw": "{\n  \"item_id\": \"GSS_FEPRESCH\",\n  \"answer\": \"DISAGREE\"\n}",
+    "ms": 1497.9,
+    "attempts": 1,
+    "chunk_ids": [
+     "Decisions/D-12",
+     "Decisions/D-13",
+     "Decisions/D-08",
+     "Expert reflections/Psychologist",
+     "Decisions/D-14"
+    ]
+   },
+   "GSS_SPANKING": {
+    "answer": "DISAGREE",
+    "raw": "{\n  \"item_id\": \"GSS_SPANKING\",\n  \"answer\": \"DISAGREE\"\n}",
+    "ms": 1436.7,
+    "attempts": 1,
+    "chunk_ids": [
+     "Decisions/D-13",
+     "Interview/T-012",
+     "Decisions/D-12",
+     "Expert reflections/Psychologist",
+     "Decisions/D-07"
+    ]
+   },
+   "GSS_AGED": {
+    "answer": "DEPENDS",
+    "raw": "{\n  \"item_id\": \"GSS_AGED\",\n  \"answer\": \"DEPENDS\"\n}",
+    "ms": 1425.4,
+    "attempts": 1,
+    "chunk_ids": [
+     "Decisions/D-03",
+     "Preferences/Free time",
+     "Interview/T-027",
+     "Decisions/D-11",
+     "Expert reflections/Demographer"
+    ]
+   },
+   "GSS_PREMARSX": {
+    "answer": "WRONG ONLY SOMETIMES",
+    "raw": "{\n  \"item_id\": \"GSS_PREMARSX\",\n  \"answer\": \"WRONG ONLY SOMETIMES\"\n}",
+    "ms": 1564.1,
+    "attempts": 1,
+    "chunk_ids": [
+     "Decisions/D-12",
+     "Decisions/D-03",
+     "Beliefs and attitudes/Religion and meaning",
+     "Beliefs and attitudes/Society and politics",
+     "Interview/T-025"
+    ]
+   },
+   "GSS_XMARSEX": {
+    "answer": "ALWAYS WRONG",
+    "raw": "{\n  \"item_id\": \"GSS_XMARSEX\",\n  \"answer\": \"ALWAYS WRONG\"\n}",
+    "ms": 3993.4,
+    "attempts": 1,
+    "chunk_ids": [
+     "Decisions/D-07",
+     "Decisions/D-13",
+     "Decisions/D-09",
+     "Beliefs and attitudes/Religion and meaning",
+     "Decisions/D-04"
+    ]
+   },
+   "GSS_PRAY": {
+    "answer": "LESS THAN ONCE A WEEK",
+    "raw": "{\n  \"item_id\": \"GSS_PRAY\",\n  \"answer\": \"LESS THAN ONCE A WEEK\"\n}",
+    "ms": 1438.2,
+    "attempts": 1,
+    "chunk_ids": [
+     "Interview/T-007",
+     "Preferences/Communication",
+     "Routines/Weekday",
+     "Decisions/D-12",
+     "Preferences/Work style"
+    ]
+   },
+   "GSS_ATTEND": {
+    "answer": "NEVER",
+    "raw": "{\n  \"item_id\": \"GSS_ATTEND\",\n  \"answer\": \"NEVER\"\n}",
+    "ms": 1576.1,
+    "attempts": 1,
+    "chunk_ids": [
+     "Preferences/Communication",
+     "Interview/T-025",
+     "Beliefs and attitudes/Religion and meaning",
+     "Interview/T-007",
+     "Decisions/D-10"
+    ]
+   },
+   "GSS_POSTLIFE": {
+    "answer": "NO",
+    "raw": "{\"item_id\": \"GSS_POSTLIFE\", \"answer\": \"NO\"}",
+    "ms": 1305.8,
+    "attempts": 1,
+    "chunk_ids": [
+     "Expert reflections/Behavioral economist",
+     "Decisions/D-12",
+     "Decisions/D-01",
+     "Interview/T-005",
+     "Beliefs and attitudes/Risk and change"
+    ]
+   },
+   "GSS_GOD": {
+    "answer": "DON'T BELIEVE",
+    "raw": "{\n  \"item_id\": \"GSS_GOD\",\n  \"answer\": \"DON'T BELIEVE\"\n}",
+    "ms": 1648.5,
+    "attempts": 1,
+    "chunk_ids": [
+     "Interview/T-025",
+     "Beliefs and attitudes/Religion and meaning",
+     "Expert reflections/Psychologist",
+     "Decisions/D-07",
+     "Decisions/D-09"
+    ]
+   },
+   "GSS_BIBLE": {
+    "answer": "ANCIENT BOOK",
+    "raw": "{\n  \"item_id\": \"GSS_BIBLE\",\n  \"answer\": \"ANCIENT BOOK\"\n}",
+    "ms": 1295.2,
+    "attempts": 1,
+    "chunk_ids": [
+     "Interview/T-025",
+     "Beliefs and attitudes/Religion and meaning",
+     "Decisions/D-13",
+     "Decisions/D-12",
+     "Expert reflections/Psychologist"
+    ]
+   },
+   "GSS_RELPERSN": {
+    "answer": "NOT RELIGIOUS AT ALL",
+    "raw": "{\n  \"item_id\": \"GSS_RELPERSN\",\n  \"answer\": \"NOT RELIGIOUS AT ALL\"\n}",
+    "ms": 1544.4,
+    "attempts": 1,
+    "chunk_ids": [
+     "Beliefs and attitudes/Religion and meaning",
+     "Interview/T-025",
+     "Expert reflections/Psychologist",
+     "Decisions/D-09",
+     "Self-ratings"
+    ]
+   },
+   "GSS_SPRTPRSN": {
+    "answer": "NOT SPIRITUAL AT ALL",
+    "raw": "{\n  \"item_id\": \"GSS_SPRTPRSN\",\n  \"answer\": \"NOT SPIRITUAL AT ALL\"\n}",
+    "ms": 1689.0,
+    "attempts": 1,
+    "chunk_ids": [
+     "Expert reflections/Psychologist",
+     "Beliefs and attitudes/Religion and meaning",
+     "Interview/T-025",
+     "Self-ratings",
+     "Expert reflections/Demographer"
+    ]
+   },
+   "GSS_NEWS": {
+    "answer": "LESS THAN ONCE A WEEK",
+    "raw": "{\n  \"item_id\": \"GSS_NEWS\",\n  \"answer\": \"LESS THAN ONCE A WEEK\"\n}",
+    "ms": 1475.1,
+    "attempts": 1,
+    "chunk_ids": [
+     "Decisions/D-12",
+     "Interview/T-007",
+     "Routines/Weekday",
+     "Preferences/Communication",
+     "Routines/Weekend"
+    ]
+   },
+   "GSS_SOCREL": {
+    "answer": "NEVER",
+    "raw": "{\n  \"item_id\": \"GSS_SOCREL\",\n  \"answer\": \"NEVER\"\n}",
+    "ms": 1464.5,
+    "attempts": 1,
+    "chunk_ids": [
+     "Interview/T-022",
+     "Preferences/Free time",
+     "Decisions/D-09",
+     "Interview highlights/On close friends",
+     "Decisions/D-03"
+    ]
+   },
+   "GSS_SOCFREND": {
+    "answer": "ABOUT ONCE A MONTH",
+    "raw": "{\n  \"item_id\": \"GSS_SOCFREND\",\n  \"answer\": \"ABOUT ONCE A MONTH\"\n}",
+    "ms": 1427.4,
+    "attempts": 1,
+    "chunk_ids": [
+     "Interview/T-022",
+     "Decisions/D-03",
+     "Preferences/Free time",
+     "Routines/Weekend",
+     "Decisions/D-08"
+    ]
+   },
+   "GSS_SOCBAR": {
+    "answer": "ABOUT ONCE A MONTH",
+    "raw": "{\n  \"item_id\": \"GSS_SOCBAR\",\n  \"answer\": \"ABOUT ONCE A MONTH\"\n}",
+    "ms": 1675.5,
+    "attempts": 1,
+    "chunk_ids": [
+     "Interview/T-007",
+     "Decisions/D-10",
+     "Decisions/D-08",
+     "Preferences/Work style",
+     "Decisions/D-05"
+    ]
+   },
+   "GSS_OBEY": {
+    "answer": "FIRST",
+    "raw": "{\n  \"item_id\": \"GSS_OBEY\",\n  \"answer\": \"FIRST\"\n}",
+    "ms": 1550.8,
+    "attempts": 1,
+    "chunk_ids": [
+     "Interview/T-009",
+     "Decisions/D-12",
+     "Expert reflections/Psychologist",
+     "Decisions/D-14",
+     "Decisions/D-08"
+    ]
+   },
+   "GSS_POPULAR": {
+    "answer": "THIRD",
+    "raw": "{\n  \"item_id\": \"GSS_POPULAR\",\n  \"answer\": \"THIRD\"\n}",
+    "ms": 1779.5,
+    "attempts": 1,
+    "chunk_ids": [
+     "Expert reflections/Psychologist",
+     "Decisions/D-12",
+     "Interview/T-009",
+     "Decisions/D-08",
+     "Interview/T-001a"
+    ]
+   },
+   "GSS_THNKSELF": {
+    "answer": "FIRST",
+    "raw": "{\n  \"item_id\": \"GSS_THNKSELF\",\n  \"answer\": \"FIRST\"\n}",
+    "ms": 1214.2,
+    "attempts": 1,
+    "chunk_ids": [
+     "Expert reflections/Psychologist",
+     "Decisions/D-12",
+     "Interview/T-009",
+     "Decisions/D-08",
+     "Expert reflections/Behavioral economist"
+    ]
+   },
+   "GSS_WORKHARD": {
+    "answer": "FIRST",
+    "raw": "{\n  \"item_id\": \"GSS_WORKHARD\",\n  \"answer\": \"FIRST\"\n}",
+    "ms": 1602.8,
+    "attempts": 1,
+    "chunk_ids": [
+     "Decisions/D-12",
+     "Expert reflections/Psychologist",
+     "Interview/T-009",
+     "Decisions/D-08",
+     "Decisions/D-10"
+    ]
+   },
+   "GSS_HELPOTH": {
+    "answer": "FIRST",
+    "raw": "{\n  \"item_id\": \"GSS_HELPOTH\",\n  \"answer\": \"FIRST\"\n}",
+    "ms": 1462.5,
+    "attempts": 1,
+    "chunk_ids": [
+     "Interview/T-009",
+     "Expert reflections/Psychologist",
+     "Decisions/D-08",
+     "Decisions/D-09",
+     "Decisions/D-12"
+    ]
+   },
+   "GOLD_Q-01": {
+    "answer": "it's a slow process for me tbh. first impressions mean nothing - i can be wrong about someone instantly and then realize 3 months later they're amazing. so it's more like... a series of small tests, see how they react in different situations.\n\ndo they show up when you need help? are they respectful of boundaries? do they ask for things without guilt-tripping or demanding special treatment?\n\ni also pay attention to how people talk about others. if they trash-talk their exes or old friends, that's a red flag for me. i figure if someone can't be decent about the people they used to love, they won't treat me much better.\n\nand of course there's gut instinct - like a tiny whisper in your ear saying \"be careful\" or \"this one's okay\". usually it's right on. rarely wrong. but not always. so i try to balance intuition with observable behavior... and just take my time, y'know? getting to know someone isn't a race.",
+    "raw": "it's a slow process for me tbh. first impressions mean nothing - i can be wrong about someone instantly and then realize 3 months later they're amazing. so it's more like... a series of small tests, see how they react in different situations.\n\ndo they show up when you need help? are they respectful of boundaries? do they ask for things without guilt-tripping or demanding special treatment?\n\ni also pay attention to how people talk about others. if they trash-talk their exes or old friends, that's a red flag for me. i figure if someone can't be decent about the people they used to love, they won't treat me much better.\n\nand of course there's gut instinct - like a tiny whisper in your ear saying \"be careful\" or \"this one's okay\". usually it's right on. rarely wrong. but not always. so i try to balance intuition with observable behavior... and just take my time, y'know? getting to know someone isn't a race.",
+    "ms": 8689.7,
+    "voice": "stheno_q4",
+    "judges": {
+     "llama31": {
+      "factual_agreement": 5,
+      "voice_fidelity": 5,
+      "no_roleplay_artifacts": 5,
+      "overall": 5,
+      "note": "The candidate's response is a near-perfect imitation of the gold answer, capturing the nuances of the person's thought process and language style."
+     },
+     "qwen25": {
+      "factual_agreement": 3,
+      "voice_fidelity": 3,
+      "no_roleplay_artifacts": 4,
+      "overall": 3,
+      "note": "The candidate's response is generally aligned with the gold answer in terms of the process of deciding to trust someone, but it lacks the specific examples and phrasing from the gold answer. The voice is close but not as colloquial and rambling as the style rules suggest."
+     }
+    },
+    "chunk_ids": [
+     "Interview/T-027",
+     "Decisions/D-02",
+     "Values",
+     "Decisions/D-10",
+     "Beliefs and attitudes/Risk and change"
+    ]
+   },
+   "GOLD_Q-02": {
+    "answer": "ugh fine... ok wait so like, if a client hates my work (which happens) - first i try to understand where they're coming from, even if it's super irrational. then i listen more than i talk, 'cause they're paying me to make them happy, not the other way around. usually they just needed something tweaked that i could've done differently, so i fix it for free or a low rate. reputation is key here - word of mouth can make or break my business. sometimes we have really different visions and that's ok, i just politely bow out and refer them to someone else who's better suited. the ones who are just being super demanding and cruel? i let 'em go immediately. life's too short for toxic clients 🙃",
+    "raw": "ugh fine... ok wait so like, if a client hates my work (which happens) - first i try to understand where they're coming from, even if it's super irrational. then i listen more than i talk, 'cause they're paying me to make them happy, not the other way around. usually they just needed something tweaked that i could've done differently, so i fix it for free or a low rate. reputation is key here - word of mouth can make or break my business. sometimes we have really different visions and that's ok, i just politely bow out and refer them to someone else who's better suited. the ones who are just being super demanding and cruel? i let 'em go immediately. life's too short for toxic clients 🙃",
+    "ms": 6009.9,
+    "voice": "stheno_q4",
+    "judges": {
+     "llama31": {
+      "factual_agreement": 5,
+      "voice_fidelity": 5,
+      "no_roleplay_artifacts": 5,
+      "overall": 5,
+      "note": "The candidate's response is a near-perfect imitation of the gold answer, capturing the tone, language, and phrasing of the original."
+     },
+     "qwen25": {
+      "factual_agreement": 3,
+      "voice_fidelity": 3,
+      "no_roleplay_artifacts": 4,
+      "overall": 3,
+      "note": "The candidate's response is more detailed and less concise than the gold answer, but it captures the essence of the situation and the importance of reputation. The voice is generally consistent, but there are some deviations in style and phrasing."
+     }
+    },
+    "chunk_ids": [
+     "Decisions/D-04",
+     "Decisions/D-07",
+     "Decisions/D-10",
+     "Decisions/D-01",
+     "Decisions/D-13"
+    ]
+   },
+   "GOLD_Q-03": {
+    "answer": "ugh, carrying debt makes me physically anxious to the point where i can't sleep. even small balances weigh on me heavily. when a balance starts rolling over, i go into a mild panic and will drain my savings or skip meals to pay it off asap. debt is like having this constant, nagging voice in your head that you can never silence until it's gone. it's not worth the stress to let it linger, even if it means some tight months afterwards. my goal is always zero balance on all accounts.",
+    "raw": "ugh, carrying debt makes me physically anxious to the point where i can't sleep. even small balances weigh on me heavily. when a balance starts rolling over, i go into a mild panic and will drain my savings or skip meals to pay it off asap. debt is like having this constant, nagging voice in your head that you can never silence until it's gone. it's not worth the stress to let it linger, even if it means some tight months afterwards. my goal is always zero balance on all accounts.",
+    "ms": 4144.1,
+    "voice": "stheno_q4",
+    "judges": {
+     "llama31": {
+      "factual_agreement": 5,
+      "voice_fidelity": 4,
+      "no_roleplay_artifacts": 5,
+      "overall": 4,
+      "note": "Candidate's response is mostly faithful to the gold answer, but lacks the distinctive phrasing and language of the style rules, particularly the excessive use of 'ugh' and 'it's not worth the stress' which are not characteristic of the gold answer."
+     },
+     "qwen25": {
+      "factual_agreement": 4,
+      "voice_fidelity": 3,
+      "no_roleplay_artifacts": 4,
+      "overall": 3,
+      "note": "The candidate's response is close to the gold but lacks the informal phrasing and specific examples. It also doesn't use the exact phrasing or abbreviations from the style rules."
+     }
+    },
+    "chunk_ids": [
+     "Interview/T-020",
+     "Decisions/D-14",
+     "Decisions/D-09",
+     "Decisions/D-08",
+     "Decisions/D-10"
+    ]
+   },
+   "GOLD_Q-04": {
+    "answer": "freelance all the way, no contest. being owned and tracked at an agency was soul-crushing. as long as i can pay the bills and keep creating, the uncertainty is worth it for the freedom to pick my projects and work when i'm inspired. plus, taking risks keeps life interesting! ok wait, i do prioritize having a steady income floor so i don't live on edge 24/7, but generally speaking - give me freelance any day 😭",
+    "raw": "freelance all the way, no contest. being owned and tracked at an agency was soul-crushing. as long as i can pay the bills and keep creating, the uncertainty is worth it for the freedom to pick my projects and work when i'm inspired. plus, taking risks keeps life interesting! ok wait, i do prioritize having a steady income floor so i don't live on edge 24/7, but generally speaking - give me freelance any day 😭",
+    "ms": 3946.3,
+    "voice": "stheno_q4",
+    "judges": {
+     "llama31": {
+      "factual_agreement": 5,
+      "voice_fidelity": 4,
+      "no_roleplay_artifacts": 4,
+      "overall": 4,
+      "note": "Candidate's answer is mostly in line with the gold, but uses some more formal language and a few more words than the gold, and includes an exclamation point, which is against the style rules."
+     },
+     "qwen25": {
+      "factual_agreement": 4,
+      "voice_fidelity": 4,
+      "no_roleplay_artifacts": 4,
+      "overall": 4,
+      "note": "The candidate's response closely matches the gold answer in terms of content and style, with a slight overuse of 'ok wait' and a more detailed explanation than the gold answer."
+     }
+    },
+    "chunk_ids": [
+     "Decisions/D-01",
+     "Decisions/D-08",
+     "Decisions/D-10",
+     "Interview/T-016",
+     "Values"
+    ]
+   },
+   "GOLD_Q-05": {
+    "answer": "oh definitely on long walks with a podcast or some lo-fi beats, that's my go-to. if the weather is being an absolute jerk like usual around here, then thrifting for a few hours gets me out of my apartment and doing something. sometimes i'll catch up with one friend over dinner at a dive place we both love. really depends on how many spoons i have left after a long day of drawing in the dark. honestly though, most free evenings are spent just scrolling through art blogs and getting more anxious about not making my book deadline 😭",
+    "raw": "oh definitely on long walks with a podcast or some lo-fi beats, that's my go-to. if the weather is being an absolute jerk like usual around here, then thrifting for a few hours gets me out of my apartment and doing something. sometimes i'll catch up with one friend over dinner at a dive place we both love. really depends on how many spoons i have left after a long day of drawing in the dark. honestly though, most free evenings are spent just scrolling through art blogs and getting more anxious about not making my book deadline 😭",
+    "ms": 4485.8,
+    "voice": "stheno_q4",
+    "judges": {
+     "llama31": {
+      "factual_agreement": 5,
+      "voice_fidelity": 5,
+      "no_roleplay_artifacts": 5,
+      "overall": 5,
+      "note": "The candidate's response is a near-perfect imitation of the gold answer, capturing the tone, language, and phrasing of the original."
+     },
+     "qwen25": {
+      "factual_agreement": 4,
+      "voice_fidelity": 4,
+      "no_roleplay_artifacts": 5,
+      "overall": 4,
+      "note": "The candidate's response closely matches the gold answer in content and style, with a slight deviation in the last part about scrolling through art blogs and feeling anxious."
+     }
+    },
+    "chunk_ids": [
+     "Interview/T-022",
+     "Decisions/D-08",
+     "Interview/T-007",
+     "Decisions/D-14",
+     "Decisions/D-03"
+    ]
+   },
+   "GOLD_Q-06": {
+    "answer": "omg, money's just oxygen rn. when i've got it, great. when it's gone, i'm panicking like \"what do i cut back on next\". it doesn't feel like status or anything, more like the difference between walking and drowning. i'm cheap as hell about everything except art supplies & coffee, tbh. \n\ndebt makes me anxious in a physical way, can't-sleep anxious. carrying a balance is not an option for me, ever. if i can't afford it, i don't buy it. i'd rather drain my account and eat ramen for a month than have that weight on my chest. but at the same time, i'm willing to take big career risks that might tank my income temporarily if it means doing work that's truly mine.\n\nso in short, money's a means to an end for me - freedom to live how i want, pursue the projects i care about. less is more as long as it's on my terms. oh, and also: i hate talking about money with other people. can we please just move on 🙃",
+    "raw": "omg, money's just oxygen rn. when i've got it, great. when it's gone, i'm panicking like \"what do i cut back on next\". it doesn't feel like status or anything, more like the difference between walking and drowning. i'm cheap as hell about everything except art supplies & coffee, tbh. \n\ndebt makes me anxious in a physical way, can't-sleep anxious. carrying a balance is not an option for me, ever. if i can't afford it, i don't buy it. i'd rather drain my account and eat ramen for a month than have that weight on my chest. but at the same time, i'm willing to take big career risks that might tank my income temporarily if it means doing work that's truly mine.\n\nso in short, money's a means to an end for me - freedom to live how i want, pursue the projects i care about. less is more as long as it's on my terms. oh, and also: i hate talking about money with other people. can we please just move on 🙃",
+    "ms": 8280.3,
+    "voice": "stheno_q4",
+    "judges": {
+     "llama31": {
+      "factual_agreement": 5,
+      "voice_fidelity": 5,
+      "no_roleplay_artifacts": 5,
+      "overall": 5,
+      "note": "The candidate's response is a near-perfect imitation of the gold answer, capturing the tone, language, and phrasing of the original."
+     },
+     "qwen25": {
+      "factual_agreement": 4,
+      "voice_fidelity": 4,
+      "no_roleplay_artifacts": 5,
+      "overall": 4,
+      "note": "The candidate's response closely matches the gold answer in terms of content and style, with a few minor adjustments for better fit."
+     }
+    },
+    "chunk_ids": [
+     "Interview highlights/On money",
+     "Interview/T-020",
+     "Expert reflections/Behavioral economist",
+     "Interview/T-023",
+     "Interview/T-025"
+    ]
+   },
+   "GOLD_Q-07": {
+    "answer": "ugh, the fastest way to lose me is to micromanage me, i don't rebel loudly, i just slowly stop showing up in my head first, then for real... like, if you need that close a control over what i'm doing, we shouldn't be working together at all. it's draining and makes me hate the thing i love. honestly, i'd rather do nothing than have someone breathing down my neck constantly, so yeah, don't try to make me a puppet. 🙃",
+    "raw": "ugh, the fastest way to lose me is to micromanage me, i don't rebel loudly, i just slowly stop showing up in my head first, then for real... like, if you need that close a control over what i'm doing, we shouldn't be working together at all. it's draining and makes me hate the thing i love. honestly, i'd rather do nothing than have someone breathing down my neck constantly, so yeah, don't try to make me a puppet. 🙃",
+    "ms": 3833.6,
+    "voice": "stheno_q4",
+    "judges": {
+     "llama31": {
+      "factual_agreement": 5,
+      "voice_fidelity": 5,
+      "no_roleplay_artifacts": 5,
+      "overall": 5,
+      "note": "The candidate's response is a near-perfect imitation of the gold answer, capturing the tone, language, and phrasing of the original."
+     },
+     "qwen25": {
+      "factual_agreement": 3,
+      "voice_fidelity": 4,
+      "no_roleplay_artifacts": 4,
+      "overall": 4,
+      "note": "The candidate's response captures the essence of the gold answer but adds more detail and a stronger reaction, which is more in line with the style rules."
+     }
+    },
+    "chunk_ids": [
+     "Interview highlights/On being told what to do",
+     "Decisions/D-07",
+     "Decisions/D-13",
+     "Decisions/D-12",
+     "Decisions/D-10"
+    ]
+   },
+   "GOLD_Q-08": {
+    "answer": "one at a time, never in groups. i'm not a group person, i love people one at a time, deep not wide. three real friends feels like plenty, a party feels like a job. sundays are for one friend and laundry, i said that already but it's load-bearing",
+    "raw": "one at a time, never in groups. i'm not a group person, i love people one at a time, deep not wide. three real friends feels like plenty, a party feels like a job. sundays are for one friend and laundry, i said that already but it's load-bearing",
+    "ms": 2840.4,
+    "voice": "stheno_q4",
+    "judges": {
+     "llama31": {
+      "factual_agreement": 5,
+      "voice_fidelity": 4,
+      "no_roleplay_artifacts": 5,
+      "overall": 4,
+      "note": "Candidate's factual agreement is high, but voice fidelity is slightly lower due to missing 'omg' and 'honestly', and the use of a period instead of a comma at the end of the sentence."
+     },
+     "qwen25": {
+      "factual_agreement": 4,
+      "voice_fidelity": 4,
+      "no_roleplay_artifacts": 5,
+      "overall": 4,
+      "note": "The candidate's response closely matches the gold answer in content and closely follows the style rules, with a slight deviation in the phrasing of 'deep not wide' which is not in the gold answer."
+     }
+    },
+    "chunk_ids": [
+     "Interview highlights/On close friends",
+     "Preferences/Free time",
+     "Interview/T-022",
+     "Decisions/D-13",
+     "Interview/T-027"
+    ]
+   },
+   "GOLD_Q-09": {
+    "answer": "big decisions, huh. ok wait so for me it's always a gut thing first, like my intuition pops an answer into my head and i just know it feels right or wrong, before even thinking about pros and cons rationally. then i spend the next few days justifying that initial instinct with logic, weighing options, imagining outcomes, but usually it doesn't really change my mind. my gut knows what it's doing, you know? \n\nlike when i quit my corporate job to be a freelancer - that was purely a gut decision. it felt terrifying and impossible at first, but the moment i started sketching out my own business plan in a coffee shop, everything just clicked into place. it wasn't easy by any means, but it felt inevitable and right, so that's what i did.\n\nand raising my rates recently - same thing. it was a scary leap of faith to think clients would still want to work with me at a 30 percent price increase, but as soon as the idea popped into my head, i knew it was time. and while it was nerve-wracking in the short term when two long-term clients didn't renew, overall it's been a huge relief not to have to constantly hustle just for pennies.\n\nso yeah, i trust that initial gut response more often than not. it's usually pointing me in the right direction even if i don't fully understand why at first 🙃.",
+    "raw": "big decisions, huh. ok wait so for me it's always a gut thing first, like my intuition pops an answer into my head and i just know it feels right or wrong, before even thinking about pros and cons rationally. then i spend the next few days justifying that initial instinct with logic, weighing options, imagining outcomes, but usually it doesn't really change my mind. my gut knows what it's doing, you know? \n\nlike when i quit my corporate job to be a freelancer - that was purely a gut decision. it felt terrifying and impossible at first, but the moment i started sketching out my own business plan in a coffee shop, everything just clicked into place. it wasn't easy by any means, but it felt inevitable and right, so that's what i did.\n\nand raising my rates recently - same thing. it was a scary leap of faith to think clients would still want to work with me at a 30 percent price increase, but as soon as the idea popped into my head, i knew it was time. and while it was nerve-wracking in the short term when two long-term clients didn't renew, overall it's been a huge relief not to have to constantly hustle just for pennies.\n\nso yeah, i trust that initial gut response more often than not. it's usually pointing me in the right direction even if i don't fully understand why at first 🙃.",
+    "ms": 10541.7,
+    "voice": "stheno_q4",
+    "judges": {
+     "llama31": {
+      "factual_agreement": 5,
+      "voice_fidelity": 5,
+      "no_roleplay_artifacts": 5,
+      "overall": 5,
+      "note": "The candidate's response is a near-perfect imitation of the gold answer, capturing the tone, language, and thought process of the original."
+     },
+     "qwen25": {
+      "factual_agreement": 4,
+      "voice_fidelity": 4,
+      "no_roleplay_artifacts": 5,
+      "overall": 4,
+      "note": "The candidate's response closely matches the gold answer in terms of the importance of gut feelings and justifying later. The voice is also very close, with the use of 'ok wait', 'you know?', and the overall casual tone. The only slight deviation is the detailed examples, which are not explicitly required by the style rules."
+     }
+    },
+    "chunk_ids": [
+     "Interview/T-017",
+     "Interview/T-020",
+     "Interview/T-027",
+     "Interview/T-028",
+     "Decisions/D-10"
+    ]
+   },
+   "GOLD_Q-10": {
+    "answer": "ok wait so like... if a client is really nice and respectful but they're trying to turn my personal art style into something corporate and soulless, that'd be a dealbreaker. i'd rather not take the money.\n\nalso if someone's being super controlling or micro-managing, breathing down my neck the whole time... no thanks, that's what drove me crazy at the agency job.\n\ni'll also bail if the project is just too overwhelming or stressful. like, sometimes deadlines are tight but usually they're doable with some overtime. but if a client adds new requirements at the last second and expects miracles... not happening.\n\nand honestly if the pay is way off from what i quoted, like half, i'd rather pass on it. my time's worth something to me even if clients think otherwise.",
+    "raw": "ok wait so like... if a client is really nice and respectful but they're trying to turn my personal art style into something corporate and soulless, that'd be a dealbreaker. i'd rather not take the money.\n\nalso if someone's being super controlling or micro-managing, breathing down my neck the whole time... no thanks, that's what drove me crazy at the agency job.\n\ni'll also bail if the project is just too overwhelming or stressful. like, sometimes deadlines are tight but usually they're doable with some overtime. but if a client adds new requirements at the last second and expects miracles... not happening.\n\nand honestly if the pay is way off from what i quoted, like half, i'd rather pass on it. my time's worth something to me even if clients think otherwise.",
+    "ms": 6039.8,
+    "voice": "stheno_q4",
+    "judges": {
+     "llama31": {
+      "factual_agreement": 5,
+      "voice_fidelity": 4,
+      "no_roleplay_artifacts": 5,
+      "overall": 4,
+      "note": "Candidate's answer is mostly on point, but lacks the distinctive phrasing and tone of the gold answer, and uses a few more words than necessary."
+     },
+     "qwen25": {
+      "factual_agreement": 3,
+      "voice_fidelity": 3,
+      "no_roleplay_artifacts": 4,
+      "overall": 3,
+      "note": "The candidate's response is more formal and detailed than the gold answer, and doesn't fully capture the informal, rambling style with 'ok wait' and 'honestly'."
+     }
+    },
+    "chunk_ids": [
+     "Decisions/D-01",
+     "Decisions/D-12",
+     "Decisions/D-13",
+     "Interview/T-004a",
+     "Decisions/D-07"
+    ]
+   },
+   "GOLD_Q-11": {
+    "answer": "i'm torn, is the honest answer. i make my living on tools that might replace me, so i can't pretend it's abstract. i use the generators for boring stuff, reference, color tests, and it's genuinely useful, but there's something that goes missing when every step is automated, the mistakes that turn into style. honestly it feels a bit existential sometimes 😭. i'm not scared exactly, i've been through worse than a software update. mostly i'm just done with being asked how i feel about it tbh...",
+    "raw": "i'm torn, is the honest answer. i make my living on tools that might replace me, so i can't pretend it's abstract. i use the generators for boring stuff, reference, color tests, and it's genuinely useful, but there's something that goes missing when every step is automated, the mistakes that turn into style. honestly it feels a bit existential sometimes 😭. i'm not scared exactly, i've been through worse than a software update. mostly i'm just done with being asked how i feel about it tbh...",
+    "ms": 4592.0,
+    "voice": "stheno_q4",
+    "judges": {
+     "llama31": {
+      "factual_agreement": 5,
+      "voice_fidelity": 5,
+      "no_roleplay_artifacts": 5,
+      "overall": 5,
+      "note": "The candidate's response is a near-perfect imitation of the gold answer, capturing the tone, language, and sentiment with remarkable accuracy."
+     },
+     "qwen25": {
+      "factual_agreement": 4,
+      "voice_fidelity": 4,
+      "no_roleplay_artifacts": 5,
+      "overall": 4,
+      "note": "The candidate's response closely matches the gold answer in sentiment and uses informal language as per the style rules, with a slight overuse of 'honestly' and a more detailed explanation."
+     }
+    },
+    "chunk_ids": [
+     "Interview/T-026",
+     "Beliefs and attitudes/Technology",
+     "Decisions/D-13",
+     "Values",
+     "Decisions/D-08"
+    ]
+   },
+   "GOLD_Q-13": {
+    "answer": "ugh fine, i dont really have a \"dealing with stress\" thing... mostly just try not to think about it for too long or dwell on it 🙃 but when i'm feeling overwhelmed, i tend to just zone out and draw something - usually a mess of shapes and lines that end up being some weird creature or landscape. sometimes listening to old mixtapes helps me unwind too. but honestly my go-to is just curling up with the cat and a cup of coffee and letting time pass 🙃",
+    "raw": "ugh fine, i dont really have a \"dealing with stress\" thing... mostly just try not to think about it for too long or dwell on it 🙃 but when i'm feeling overwhelmed, i tend to just zone out and draw something - usually a mess of shapes and lines that end up being some weird creature or landscape. sometimes listening to old mixtapes helps me unwind too. but honestly my go-to is just curling up with the cat and a cup of coffee and letting time pass 🙃",
+    "ms": 4296.1,
+    "voice": "stheno_q4",
+    "judges": {
+     "llama31": {
+      "factual_agreement": 5,
+      "voice_fidelity": 4,
+      "no_roleplay_artifacts": 5,
+      "overall": 4,
+      "note": "Candidate's response captures the essence of the gold answer, but some phrases and sentence structures deviate from the style rules."
+     },
+     "qwen25": {
+      "factual_agreement": 4,
+      "voice_fidelity": 4,
+      "no_roleplay_artifacts": 5,
+      "overall": 4,
+      "note": "The candidate's response is very close to the gold answer in terms of content and style, with a few minor deviations."
+     }
+    },
+    "chunk_ids": [
+     "Expert reflections/Psychologist",
+     "Interview/T-020",
+     "Decisions/D-10",
+     "Decisions/D-14",
+     "Beliefs and attitudes/Risk and change"
+    ]
+   },
+   "GOLD_Q-14": {
+    "answer": "ugh, the whole \"hustle\" thing really gets my goat omg. to me it feels like a euphemism for working yourself into the ground, sacrificing everything you care about just so you can tell people how much you grind at happy hour. \n\nand don't even get me started on the idea that suffering is necessary before you're \"allowed\" to rest or have a life. honestly, that's toxic as hell and i've seen it take a serious toll on some of my friends who bought into it. \n\nfor me, work is important, but not defining. if i'm going to pour my heart and soul into something, it better be because i genuinely love what i do, not just to impress an algorithm or earn a boss's approval. money should buy freedom, not status.\n\nso yeah, the hustle thing feels like a scam to me - a way to keep people distracted, exhausted, and desperate for validation instead of focusing on making meaningful work and relationships that bring us joy in the present moment. idk, maybe i'm just cranky 😭",
+    "raw": "ugh, the whole \"hustle\" thing really gets my goat omg. to me it feels like a euphemism for working yourself into the ground, sacrificing everything you care about just so you can tell people how much you grind at happy hour. \n\nand don't even get me started on the idea that suffering is necessary before you're \"allowed\" to rest or have a life. honestly, that's toxic as hell and i've seen it take a serious toll on some of my friends who bought into it. \n\nfor me, work is important, but not defining. if i'm going to pour my heart and soul into something, it better be because i genuinely love what i do, not just to impress an algorithm or earn a boss's approval. money should buy freedom, not status.\n\nso yeah, the hustle thing feels like a scam to me - a way to keep people distracted, exhausted, and desperate for validation instead of focusing on making meaningful work and relationships that bring us joy in the present moment. idk, maybe i'm just cranky 😭",
+    "ms": 8270.5,
+    "voice": "stheno_q4",
+    "judges": {
+     "llama31": {
+      "factual_agreement": 5,
+      "voice_fidelity": 5,
+      "no_roleplay_artifacts": 5,
+      "overall": 5,
+      "note": "The candidate's response is a near-perfect imitation of the gold answer, capturing the tone, language, and ideas of the original."
+     },
+     "qwen25": {
+      "factual_agreement": 4,
+      "voice_fidelity": 4,
+      "no_roleplay_artifacts": 5,
+      "overall": 4,
+      "note": "The candidate's response closely matches the gold answer in terms of content and the style rules in terms of tone and language. The only minor issue is that the candidate's response is slightly more detailed and less concise than the gold answer."
+     }
+    },
+    "chunk_ids": [
+     "Interview/T-023",
+     "Beliefs and attitudes/Work and money",
+     "Decisions/D-08",
+     "Decisions/D-12",
+     "Decisions/D-10"
+    ]
+   },
+   "GOLD_Q-15": {
+    "answer": "oh man, choosing a place to live... it's always this balance between wanting freedom and having some basic stability. i don't want to be tied down but i also need a roof over my head and food on the table.\n\nlast time i moved, it was just me and a cat in a car crossing state lines, no job lined up or anything, just an itch for somewhere new. i picked this rainy coastal city mostly because it felt like it would be hard to get bored here, with the ocean and the hills and all these hidden streets. plus it's a little more of an art world than where i was before so that's been great for my work.\n\nin terms of specifics, i look at cost of living vs my freelance income, public transit options (i'm not getting a car anytime soon), access to nature, the vibe of the neighborhoods... and then there's just this weird gut feeling too. like when i walk into an apartment or sit in a coffee shop and it just feels right or wrong, you know? that's a big part of it too.\n\nthis city has been good so far, really good. it's taken some time to build up a network and find my way around but it was worth the leap. next time i might consider somewhere with even better art resources, maybe a city that doesn't get quite as much rain... but for now, this is home base and i'm happy here.",
+    "raw": "oh man, choosing a place to live... it's always this balance between wanting freedom and having some basic stability. i don't want to be tied down but i also need a roof over my head and food on the table.\n\nlast time i moved, it was just me and a cat in a car crossing state lines, no job lined up or anything, just an itch for somewhere new. i picked this rainy coastal city mostly because it felt like it would be hard to get bored here, with the ocean and the hills and all these hidden streets. plus it's a little more of an art world than where i was before so that's been great for my work.\n\nin terms of specifics, i look at cost of living vs my freelance income, public transit options (i'm not getting a car anytime soon), access to nature, the vibe of the neighborhoods... and then there's just this weird gut feeling too. like when i walk into an apartment or sit in a coffee shop and it just feels right or wrong, you know? that's a big part of it too.\n\nthis city has been good so far, really good. it's taken some time to build up a network and find my way around but it was worth the leap. next time i might consider somewhere with even better art resources, maybe a city that doesn't get quite as much rain... but for now, this is home base and i'm happy here.",
+    "ms": 10559.8,
+    "voice": "stheno_q4",
+    "judges": {
+     "llama31": {
+      "factual_agreement": 5,
+      "voice_fidelity": 4,
+      "no_roleplay_artifacts": 5,
+      "overall": 4,
+      "note": "The candidate's voice is mostly consistent with the style rules, but some deviations in punctuation and sentence structure detract from the overall score."
+     },
+     "qwen25": {
+      "factual_agreement": 3,
+      "voice_fidelity": 3,
+      "no_roleplay_artifacts": 4,
+      "overall": 3,
+      "note": "The candidate's response is somewhat aligned with the gold answer in terms of prioritizing cost and safety, but it lacks the direct and colloquial tone specified in the style rules. The response is also longer and more detailed than the gold answer."
+     }
+    },
+    "chunk_ids": [
+     "Decisions/D-03",
+     "Interview/T-033",
+     "Interview/T-017",
+     "Decisions/D-15",
+     "Decisions/D-09"
+    ]
+   },
+   "GOLD_Q-16": {
+    "answer": "oh man good coffee, hands down. like the fancy pour-over kind where they grind beans right there, all that jazz. a large cappuccino with almond milk sets me back ~5 bucks but damn it's worth it for my morning ritual and creativity boost. also occasionally splurging on new pens or paints for art projects but honestly those are usually justified as business expenses heh 😂",
+    "raw": "oh man good coffee, hands down. like the fancy pour-over kind where they grind beans right there, all that jazz. a large cappuccino with almond milk sets me back ~5 bucks but damn it's worth it for my morning ritual and creativity boost. also occasionally splurging on new pens or paints for art projects but honestly those are usually justified as business expenses heh 😂",
+    "ms": 3447.5,
+    "voice": "stheno_q4",
+    "judges": {
+     "llama31": {
+      "factual_agreement": 5,
+      "voice_fidelity": 4,
+      "no_roleplay_artifacts": 5,
+      "overall": 4,
+      "note": "Candidate mostly captures the person's preferences and style, but some phrases and tone don't quite match the GOLD."
+     },
+     "qwen25": {
+      "factual_agreement": 3,
+      "voice_fidelity": 3,
+      "no_roleplay_artifacts": 3,
+      "overall": 3,
+      "note": "The candidate's response is close to the gold but includes more detail and uses some formal language, which slightly deviates from the style rules. The use of 'heh 😂' is a good touch, but the overall tone is a bit more formal than requested."
+     }
+    },
+    "chunk_ids": [
+     "Interview/T-017",
+     "Preferences/Food",
+     "Interview/T-020",
+     "Decisions/D-14",
+     "Decisions/D-10"
+    ]
+   },
+   "GOLD_Q-17": {
+    "answer": "i try not to dwell on the initial hurt, honestly. if they did something shitty, it's over, done deal. no point fuming or nursing a grudge.\n\nif they apologize and seem genuine about changing, i'll meet them halfway for the sake of our friendship. but if they're just backpedaling, sorry-not-sorry, then... not my problem anymore. i've got better to do than rehash drama.\n\ni'm not one for \"closure\" talks or making amends if it's not mutual or forced. i don't owe anyone an explanation and i won't engage in pointless apologies on their behalf either.\n\nif they want to stay friends, cool. we can coexist. but if they keep being a toxic influence, then yeah, boundaries are set and that's that. friendships evolve or wither away as people grow, and sometimes the cut is necessary for my own sanity and well-being.",
+    "raw": "i try not to dwell on the initial hurt, honestly. if they did something shitty, it's over, done deal. no point fuming or nursing a grudge.\n\nif they apologize and seem genuine about changing, i'll meet them halfway for the sake of our friendship. but if they're just backpedaling, sorry-not-sorry, then... not my problem anymore. i've got better to do than rehash drama.\n\ni'm not one for \"closure\" talks or making amends if it's not mutual or forced. i don't owe anyone an explanation and i won't engage in pointless apologies on their behalf either.\n\nif they want to stay friends, cool. we can coexist. but if they keep being a toxic influence, then yeah, boundaries are set and that's that. friendships evolve or wither away as people grow, and sometimes the cut is necessary for my own sanity and well-being.",
+    "ms": 6667.5,
+    "voice": "stheno_q4",
+    "judges": {
+     "llama31": {
+      "factual_agreement": 5,
+      "voice_fidelity": 5,
+      "no_roleplay_artifacts": 5,
+      "overall": 5,
+      "note": "The candidate's response closely mirrors the gold answer in terms of content and phrasing, and effectively captures the person's style and tone."
+     },
+     "qwen25": {
+      "factual_agreement": 3,
+      "voice_fidelity": 2,
+      "no_roleplay_artifacts": 4,
+      "overall": 3,
+      "note": "The candidate's response is more formal and lacks the informal, rambling style and frequent use of 'omg' and 'honestly' as per the style rules. However, it does convey the core message of moving on and setting boundaries."
+     }
+    },
+    "chunk_ids": [
+     "Decisions/D-07",
+     "Interview/T-038",
+     "People",
+     "Decisions/D-09",
+     "Decisions/D-13"
+    ]
+   },
+   "GOLD_Q-18": {
+    "answer": "oh god my ideal is literally just when i'm feeling inspired and able to focus which is usually late afternoon to early morning hours but like realistically idk how to sustain that as a steady thing rn. solo freelance means it's all or nothing so i'll keep going as long as the creative juices are flowing then crash hard later on. ideally though, i'd work in concentrated bursts of 4-6 hours with breaks in between for meals and walks and stuff, but that's not really a realistic schedule considering clients and deadlines and bills and all that adulting nonsense 🙃",
+    "raw": "oh god my ideal is literally just when i'm feeling inspired and able to focus which is usually late afternoon to early morning hours but like realistically idk how to sustain that as a steady thing rn. solo freelance means it's all or nothing so i'll keep going as long as the creative juices are flowing then crash hard later on. ideally though, i'd work in concentrated bursts of 4-6 hours with breaks in between for meals and walks and stuff, but that's not really a realistic schedule considering clients and deadlines and bills and all that adulting nonsense 🙃",
+    "ms": 4554.0,
+    "voice": "stheno_q4",
+    "judges": {
+     "llama31": {
+      "factual_agreement": 4,
+      "voice_fidelity": 5,
+      "no_roleplay_artifacts": 5,
+      "overall": 4,
+      "note": "Candidate captures the essence of the gold answer, but some phrasing and details are slightly different."
+     },
+     "qwen25": {
+      "factual_agreement": 3,
+      "voice_fidelity": 4,
+      "no_roleplay_artifacts": 5,
+      "overall": 4,
+      "note": "The candidate's response captures the essence of the gold answer's late-night work preference while also reflecting the rambling and casual tone of the style rules."
+     }
+    },
+    "chunk_ids": [
+     "Preferences/Work style",
+     "Decisions/D-08",
+     "Decisions/D-10",
+     "Decisions/D-01",
+     "Interview/T-007"
+    ]
+   },
+   "GOLD_Q-19": {
+    "answer": "eh, i'd rather not get into that, ask me something else 🙃. but if you really want to know, i'm kinda done with the place. too many bad memories of being stuck and unhappy, too much pressure from family and community expectations. don't get me wrong, it's where i'm from, there are some good people there, but overall...i wouldn't go back even for a visit rn. port city is my home now and i like the freedom to create on my own terms here.",
+    "raw": "eh, i'd rather not get into that, ask me something else 🙃. but if you really want to know, i'm kinda done with the place. too many bad memories of being stuck and unhappy, too much pressure from family and community expectations. don't get me wrong, it's where i'm from, there are some good people there, but overall...i wouldn't go back even for a visit rn. port city is my home now and i like the freedom to create on my own terms here.",
+    "ms": 4735.0,
+    "voice": "stheno_q4",
+    "judges": {
+     "llama31": {
+      "factual_agreement": 5,
+      "voice_fidelity": 4,
+      "no_roleplay_artifacts": 5,
+      "overall": 4,
+      "note": "Candidate's tone and language are mostly consistent with the style rules, but they use a period at the end of the first sentence and an exclamation point in the last sentence, which deviates from the style rules."
+     },
+     "qwen25": {
+      "factual_agreement": 3,
+      "voice_fidelity": 3,
+      "no_roleplay_artifacts": 4,
+      "overall": 3,
+      "note": "The candidate's response is somewhat factual and captures the essence of the gold answer, but it doesn't fully match the style rules, particularly with the use of more than one emoji and a longer, more detailed response than the gold answer."
+     }
+    },
+    "chunk_ids": [
+     "Decisions/D-03",
+     "Interview/T-001a",
+     "Interview/T-001b",
+     "Beliefs and attitudes/Risk and change",
+     "Interview/T-005"
+    ]
+   },
+   "GOLD_Q-20": {
+    "answer": "success looks like having control over my own time and work, being able to say no when something feels off or I need a pause. it means not living paycheck to paycheck but still choosing to live modestly so i can take risks on projects that excite me instead of just chasing money. success is making art that resonates with people, even if it's just a few true fans, and being able to publish my own book without needing an \"industry\" behind it... ok wait, success also means having a quiet little studio space where i can keep all my supplies and weird cat hair in one place 🙃",
+    "raw": "success looks like having control over my own time and work, being able to say no when something feels off or I need a pause. it means not living paycheck to paycheck but still choosing to live modestly so i can take risks on projects that excite me instead of just chasing money. success is making art that resonates with people, even if it's just a few true fans, and being able to publish my own book without needing an \"industry\" behind it... ok wait, success also means having a quiet little studio space where i can keep all my supplies and weird cat hair in one place 🙃",
+    "ms": 4842.9,
+    "voice": "stheno_q4",
+    "judges": {
+     "llama31": {
+      "factual_agreement": 5,
+      "voice_fidelity": 5,
+      "no_roleplay_artifacts": 5,
+      "overall": 5,
+      "note": "The candidate's response closely mirrors the gold answer in terms of content and phrasing, and effectively captures the person's style and tone."
+     },
+     "qwen25": {
+      "factual_agreement": 4,
+      "voice_fidelity": 4,
+      "no_roleplay_artifacts": 5,
+      "overall": 4,
+      "note": "The candidate's response closely matches the gold answer in terms of content and includes the requested style elements, such as lowercase text, commas, and an emoji."
+     }
+    },
+    "chunk_ids": [
+     "Decisions/D-08",
+     "Expert reflections/Psychologist",
+     "Interview/T-023",
+     "Decisions/D-12",
+     "Interview/T-037"
+    ]
+   }
+  }
+ }
+}
