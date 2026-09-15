@@ -10,14 +10,14 @@ The twin models one person from a structured profile and a redacted interview tr
 
 | Item | Value | Source |
 |---|---|---|
-| Machine | Windows 11, RTX 2070 (8 GB VRAM), 32 GB RAM | `README.md:3` |
+| Machine | Windows 11, RTX 2070 (8 GB VRAM), 32 GB RAM | `docs/WINDOWS_SETUP.md:3` |
 | Model servers | Ollama `http://127.0.0.1:11434`, LM Studio `http://127.0.0.1:1234` | `twin/config.py:56-57` |
-| Network exposure | both model servers listen on 127.0.0.1 only; the app binds `127.0.0.1` by default | `README.md:4`, `app.py:66-68` |
+| Network exposure | both model servers listen on 127.0.0.1 only; the app binds `127.0.0.1` by default | `docs/WINDOWS_SETUP.md:4`, `app.py:66-68` |
 | App port | first free port from `--port` (default 7861), probing 10 ports | `app.py:26`, `app.py:38-48` |
-| Authentication | none: the app launches without auth, LM Studio auth is off (any API key string works), Ollama has none | `app.py:81-82`, `README.md:130`, `README.md:152`, `CLAUDE.md` (endpoint table) |
-| GPU budget | only one of the big models fits fully at a time; Qwen at context 8192 plus Stheno Q4_K_M measured 7880 of 8192 MiB | `README.md:42`, `README.md:47` |
+| Authentication | none: the app launches without auth, LM Studio auth is off (any API key string works), Ollama has none | `app.py:81-82`, `docs/WINDOWS_SETUP.md:130`, `docs/WINDOWS_SETUP.md:152`, `CLAUDE.md` (endpoint table) |
+| GPU budget | only one of the big models fits fully at a time; Qwen at context 8192 plus Stheno Q4_K_M measured 7880 of 8192 MiB | `docs/WINDOWS_SETUP.md:42`, `docs/WINDOWS_SETUP.md:47` |
 | Example resident size | `qwen3-8b-8k` at `size_vram` 5620231044 bytes, context 8192, 100% on GPU | `docs/EVIDENCE2.md` row 3.1 (size and context), row 1.2 and `docs/EVIDENCE2.md:122` (100% GPU) |
-| Ollama environment | `OLLAMA_MAX_LOADED_MODELS=1` (one of six `OLLAMA_*` user variables) | `README.md:156` |
+| Ollama environment | `OLLAMA_MAX_LOADED_MODELS=1` (one of six `OLLAMA_*` user variables) | `docs/WINDOWS_SETUP.md:156` |
 | Cloud dependency | none at run time; the optional Claude judge (`claude-sonnet-5`) needs `ANTHROPIC_API_KEY`, which is not set, so it never ran | `twin/config.py:63`, `docs/EVIDENCE2.md:184-185` |
 
 ## 2. System context diagram
@@ -45,7 +45,7 @@ flowchart LR
     PIPE --> AUD["data/audit.jsonl via twin/audit.py"]
 ```
 
-- The browser and `gradio_client` use the same endpoints. Every button has an `api_name` (`README.md:180`; the endpoint table is in the `docs/CONTRACTS.md` section "Tab modules and endpoints").
+- The browser and `gradio_client` use the same endpoints. Every button has an `api_name` (`docs/WINDOWS_SETUP.md:180`; the endpoint table is in the `docs/CONTRACTS.md` section "Tab modules and endpoints").
 - Model calls go through `twin/clients.py` from four places: the pipelines, `twin/index.py` (query and build embeddings, `twin/index.py:105-111`), `twin/redact.py` (the `qwen3_8k` names pass, `twin/redact.py:213-216`) and `twin/gpu.py` (warms, eviction stops and unloads, and `free_all`; `twin/gpu.py:57-132`). UI modules send no model request through a client; their only client call is the environment check `clients.anthropic_client.available()` (`twin/ui/state.py:184`, `twin/ui/status.py:197`, `twin/ui/evals.py:65`). They trigger warms, frees and rebuilds only through `twin/gpu.py` and `twin/index.py`: the tab pre-warm (`twin/ui/frame.py:183`) and the Status `/free_gpu`, `/warm` and `/rebuild_index` handlers (`twin/ui/status.py:311`, `twin/ui/status.py:333`, `twin/ui/status.py:352`).
 - `twin/clients.py` is the only module that sends HTTP requests to the model servers. It records one telemetry row per model call: a chat, a warm, a stop, or one embed batch of up to 32 inputs. State requests such as `ps`, `tags`, `show` (a POST) and the LM Studio load check record nothing (`twin/clients.py:195-208`, `twin/clients.py:231-244`). LM Studio unloads go through the `lms` CLI as a subprocess (`LMSClient.unload_all`, `docs/CONTRACTS.md` section "twin/clients.py").
 
@@ -306,14 +306,14 @@ The columns up to keep_alive are copied from `twin/config.py:85-114`; the job co
   - An LM Studio big model stops every big or huge Ollama model in `/api/ps`; unknown names count as big, and small Ollama models stay.
   - An Ollama big or huge model runs `lms unload --all` when LM Studio has a non-embedding model loaded.
   - Small Ollama models, LM Studio embedders and Anthropic trigger nothing; Ollama evicts its own models.
-- **`OLLAMA_MAX_LOADED_MODELS=1`** (set as a user variable, `README.md:156`) lets Ollama hold one model at a time, small ones included (`docs/PLAN_DEMO.md:49`; the router took 3.51 s in `docs/EVIDENCE2.md` row 2.1, 0.12-0.15 s in rows 2.2-2.3, and 3.70 s again in row 2.4 after row 2.3's retrieval; in rehearsal the router took 2.97-4.48 s whenever it had to reload, `scripts/dev/demo/rehearsal.md` section 6, `scripts/dev/demo/run2_B4.1.txt:43` and `scripts/dev/demo/run8_B4.1.txt:41`). An interview Ask turn calls the `llama3.2:1b` router and the `nomic-embed-text` embedder, both on Ollama, so each loads in place of the other, and a follow-up adds `llama3.2:3b` to the sequence. Decide and Act embed through LM Studio for this reason (`twin/pipelines/decide.py:102-105`, `twin/pipelines/act.py:24`).
+- **`OLLAMA_MAX_LOADED_MODELS=1`** (set as a user variable, `docs/WINDOWS_SETUP.md:156`) lets Ollama hold one model at a time, small ones included (`docs/PLAN_DEMO.md:49`; the router took 3.51 s in `docs/EVIDENCE2.md` row 2.1, 0.12-0.15 s in rows 2.2-2.3, and 3.70 s again in row 2.4 after row 2.3's retrieval; in rehearsal the router took 2.97-4.48 s whenever it had to reload, `scripts/dev/demo/rehearsal.md` section 6, `scripts/dev/demo/run2_B4.1.txt:43` and `scripts/dev/demo/run8_B4.1.txt:41`). An interview Ask turn calls the `llama3.2:1b` router and the `nomic-embed-text` embedder, both on Ollama, so each loads in place of the other, and a follow-up adds `llama3.2:3b` to the sequence. Decide and Act embed through LM Studio for this reason (`twin/pipelines/decide.py:102-105`, `twin/pipelines/act.py:24`).
 - **One GPU queue.** The app queues with `default_concurrency_limit=1` (`app.py:79`). Every model endpoint and the tab-select hooks for ask, decide, act, see and eval share `concurrency_id="gpu"` (`twin/ui/frame.py:66`, `twin/ui/frame.py:229-231`; `docs/CONTRACTS.md` section "Tab modules and endpoints"). Work on that queue runs one event at a time, so a click during a pre-warm waits behind it. That queued cost was never measured end to end; as an estimate, B1 pressed during the Act pre-warm waits about 16-30 s (the hermes3 pre-warm 3.5-9.1 s, a cold `qwen3-8b-8k` load 4.2-8.5 s, then the 8.6-12.0 s verdict; `scripts/dev/demo/rehearsal.md` section 17.11).
 - **Pre-warm on select.** `make_tab_select` marks the tab active and warms `MANAGER.tab_key(tab)`: the `TAB_MODEL` key (ask `stheno_q4`, decide `qwen3_8k`, act `hermes3`, see `qwen35_vision`; `twin/gpu.py:11`) unless an override is set, so with the Q8 toggle on, selecting Ask pre-warms `stheno_q8` (`twin/ui/frame.py:178`). It then posts `Active tab: <tab>. Pre-warmed <key> (<name>) in <n> s.` to the GPU note (`twin/ui/frame.py:167-189`). The wait for that note, measured through the `/warm` stand-in (rehearsal never selects a tab; `scripts/dev/demo/rehearsal.md` sections 4 and 17.7): 0.3-0.8 s when the tab's model is already loaded (Decide and Ask, runs 1, 2 and 8; Act 0.4 s, runs 10-11); from cold or another model, Decide 4.2 s (run 7), Ask 4.9 s (run 7), Act 3.5-9.1 s (runs 1, 2, 8, 9) and See 10.9 s (run 3). The machine time adds about 2.5 s. A warm is a prompt-less `/api/generate` for Ollama, a 1-token chat for LM Studio chat models, and one embed for LM Studio embedders (`twin/gpu.py:88-101`).
 - **Tabs without a model.** Selecting Eval, Items or Onboarding sets an active tab with no model, which pauses the heartbeat. Selecting Status leaves the active tab unchanged (`twin/ui/frame.py:171-180`, `twin/ui/frame.py:233-238`).
 - **Page load.** `default_tab()` opens Onboarding while `data/twin_profile.md` is missing, else Ask (`twin/ui/frame.py:192-194`). The page-load hook marks a tab active only when that tab has a model and no tab is active yet, so a page opened on Onboarding leaves no active tab. `?tab=<id>` opens a tab directly (`twin/ui/frame.py:197-208`).
 - **Heartbeat.** One daemon thread re-warms the active tab's model every 240 s, and only when the lock is free (`twin/gpu.py:155-186`). With no active tab it does nothing. `/warm` warms a tab's model without changing the active tab (`twin/ui/status.py:319-338`). `/free_gpu` clears the active tab, stops every loaded Ollama model and runs `lms unload --all` (`twin/ui/status.py:307-316`, `twin/gpu.py:114-132`).
-- **Keep-alive.** Big Ollama models use `"10m"`, small ones `"30m"`, and `qwen3_long` uses 0 (`twin/config.py:88-109`). LM Studio's JIT unload time is 600 s (`README.md:184`). The 240 s heartbeat is shorter than either, so the model of an active model tab stays loaded.
-- **Q8 toggle.** `set_tab_model("ask", "stheno_q8")` makes Q8 the heartbeat target (`twin/gpu.py:139-145`). The Q8_0 weights run only 67% on the GPU (`README.md:21`).
+- **Keep-alive.** Big Ollama models use `"10m"`, small ones `"30m"`, and `qwen3_long` uses 0 (`twin/config.py:88-109`). LM Studio's JIT unload time is 600 s (`docs/WINDOWS_SETUP.md:184`). The 240 s heartbeat is shorter than either, so the model of an active model tab stays loaded.
+- **Q8 toggle.** `set_tab_model("ask", "stheno_q8")` makes Q8 the heartbeat target (`twin/gpu.py:139-145`). The Q8_0 weights run only 67% on the GPU (`docs/WINDOWS_SETUP.md:21`).
 - **`TWIN_NO_WARM`.** It is read at call time (`twin/config.py:45-48`). When it is set:
   - no heartbeat thread starts and `heartbeat_tick` returns None (`twin/gpu.py:158-159`, `twin/gpu.py:173-176`);
   - a tab select only records the tab (`twin/ui/frame.py:176-177`);
@@ -562,7 +562,7 @@ Lifecycle:
     - Persona wins games: acc 0.825.
     - The decision reads `partial`, and `prisoners_dilemma` accuracy is 0.0 under every condition.
   - Retrieval recall@5: `nomic` 0.65, `gemma` 0.8, `lms_nomic` 0.65 (`data/eval_results.json`). Ask and See use `nomic`.
-- **Small local models.** Voice is an 8B model at Q4_K_M (`README.md:10`), decisions use `qwen3-8b-8k`, and tools use `hermes3:8b` (`twin/config.py:85-114`). A twin serves one person, from one resolved profile path (`twin/profile.py:100`).
+- **Small local models.** Voice is an 8B model at Q4_K_M (`docs/WINDOWS_SETUP.md:10`), decisions use `qwen3-8b-8k`, and tools use `hermes3:8b` (`twin/config.py:85-114`). A twin serves one person, from one resolved profile path (`twin/profile.py:100`).
 - **Latency behaviour** follows from the GPU envelope (section 6):
   - The router and embedder evict each other on every interview Ask turn under `OLLAMA_MAX_LOADED_MODELS=1`: in rehearsal the router took 2.97-4.48 s whenever it reloaded (B4.1, B4.2 and B4.4), and retrieval 2.64-2.98 s (B4.1 and B4.2), in runs 1, 2 and 8 (`scripts/dev/demo/rehearsal.md` section 6, `scripts/dev/demo/run2_B4.1.txt:43`, `scripts/dev/demo/run8_B4.1.txt:41-43`, `scripts/dev/demo/run8_B4.2.txt:57-59`).
   - A follow-up adds a `llama3.2:3b` load for the rewrite: the rewrite step took 4.94-6.49 s in runs 1, 2 and 8, most of it the load (6022.7 of 6488.6 ms in run 1; `scripts/dev/demo/rehearsal.md` section 6).
@@ -584,6 +584,6 @@ Lifecycle:
   - `twin/ui/frame.py:39-42`, `twin/ui/frame.py:243-246` and `app.py:77` say the app opens on Ask, but `default_tab()` opens Onboarding while `data/twin_profile.md` is missing (`twin/ui/frame.py:192-194`).
   - The lint warning claims chat-level politics deflection (`twin/profile.py:304-305`).
 - **Operations.**
-  - LM Studio's "run server on login" is unconfirmed by a reboot (`README.md:80`), and port 1234 refused connections at the pre-launch snapshot (`scripts/dev/demo/pre_snapshot.json:15`).
+  - LM Studio's "run server on login" is unconfirmed by a reboot (`docs/WINDOWS_SETUP.md:80`), and port 1234 refused connections at the pre-launch snapshot (`scripts/dev/demo/pre_snapshot.json:15`).
   - The app has no authentication, so anyone with access to the laptop's loopback interface can use it, including the endpoints that return derived views of `data/`: the audit tail, telemetry, the cached bake-off score tables (`/eval_show`), item scores (`/items_score`) and the redaction report; the probe reply excerpts show on the Eval tab's page (section 1; `twin/ui/status.py:417-427`, `twin/ui/evals.py:135-137`, `twin/ui/items.py:334`).
   - `delete_twin.ps1` covers `data/` only (section 9, item 5).

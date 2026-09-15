@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # start.sh: set up and start the digital twin app on macOS or Linux.
-# (On Windows use the PowerShell commands in README.md, section "Run".)
+# (On Windows use the PowerShell commands in docs/WINDOWS_SETUP.md, section "Run".)
 #
 # Usage:
 #   ./start.sh              first run: create .venv and install requirements.txt, then start the app

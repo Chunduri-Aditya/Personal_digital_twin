@@ -156,7 +156,7 @@ Source: `docs/ARCHITECTURE.md` sections 3 and 5, plus the code lines named above
 
 ### It runs on one laptop, with no cloud model at run time
 
-- **today:** Once built, every model the twin uses runs on one laptop, with an RTX 2070 graphics card (8 GB of memory) and 32 GB of RAM (`README.md:3`). The model servers accept connections only from the laptop itself (`docs/ARCHITECTURE.md` section 1).
+- **today:** Once built, every model the twin uses runs on one laptop, with an RTX 2070 graphics card (8 GB of memory) and 32 GB of RAM (`docs/WINDOWS_SETUP.md:3`). The model servers accept connections only from the laptop itself (`docs/ARCHITECTURE.md` section 1).
 - **today:** Nothing is sent to a cloud model while the twin is in use. The optional Claude judge would need an API key, which is not set, so it has never run (`docs/EVIDENCE2.md:184-185`).
 - **today:** The demo runs live, and it was rehearsed first. Every model step ran for real on this laptop against the local models, with nothing mocked (See included, in run 3), and a separate test of each model on its own passed for all 8 models (`scripts/dev/demo/rehearsal.md` sections 0 and 9; `docs/ARCHITECTURE.md` section 11).
 - **The trade-off:** only one large model fits on the graphics card at a time, so moving between Ask, Decide and Act swaps models. In rehearsal, loading the next feature's model took 3.5-9.1 seconds for the drafting assistant, 4.2 seconds for Decide and 4.9 seconds for Ask from cold, and "Say it in my voice" took about 9 seconds including its swap (`scripts/dev/demo/rehearsal.md` sections 4 and 17.7).
@@ -522,7 +522,7 @@ Be ready for:
 - **Money:** we have no pricing, cost figures or return-on-investment numbers to share. Don't estimate them in the room.
 - **Other hardware:** not tested yet; **roadmap**.
 
-Source: `README.md:3`, `docs/INPUTS.md:41-44`.
+Source: `docs/WINDOWS_SETUP.md:3`, `docs/INPUTS.md:41-44`.
 
 ### Consent and ownership: "Who agrees to this, and who owns the result?"
 

@@ -1,7 +1,7 @@
 # Personal_digital_twin
 
 A local "digital twin" project on a Windows 11 laptop: RTX 2070 (8 GB VRAM), 32 GB RAM. The shell is Windows PowerShell 5.1.
-Full setup details, measured numbers, and troubleshooting are in `README.md`. Read it before changing the model setup.
+Full setup details, measured numbers, and troubleshooting are in `docs/WINDOWS_SETUP.md`. Read it before changing the model setup.
 
 ## Local model endpoints (both on 127.0.0.1 only, no auth)
 

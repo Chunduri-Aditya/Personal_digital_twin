@@ -249,7 +249,7 @@ The registry in `twin/config.py` holds 14 entries: 13 local models and the optio
 | Always send a system message to Stheno Q8_0. | Its built-in default holds unfilled `{{char}}`/`{{user}}` placeholders. The client raises an error if a Q8 request lacks one. |
 | Put hermes3's instructions in the first user turn too. | Its template drops the system slot when tools are sent. |
 
-**Go deeper:** `README.md`, `twin/config.py`, `twin/clients.py`, `docs/ARCHITECTURE.md` section 6.
+**Go deeper:** `docs/WINDOWS_SETUP.md`, `twin/config.py`, `twin/clients.py`, `docs/ARCHITECTURE.md` section 6.
 
 ---
 
@@ -582,7 +582,7 @@ Dependencies (`requirements.txt`): gradio 6, gradio_client, openai, httpx, numpy
 
 | Date | What happened |
 |---|---|
-| 2026-09-13 | **Machine setup.** LM Studio and Ollama installed, models downloaded into the project, the junction created, `qwen3-8b-8k` made, speeds measured, rules recorded in `README.md`. |
+| 2026-09-13 | **Machine setup.** LM Studio and Ollama installed, models downloaded into the project, the junction created, `qwen3-8b-8k` made, speeds measured, rules recorded in `docs/WINDOWS_SETUP.md`. |
 | 2026-09-13 | **Phase 1** (`docs/PLAN.md`). Built with Claude Code in multi-agent "ultracode" workflows (foundation, pipelines, integrate). Result: six tabs, 215 tests, live evidence for every stage, on the synthetic "Ari". |
 | 2026-09-14 | **Research and unified plan** (`docs/PLAN_UNIFIED.md`). The D1-D4 briefs and Mara arrived. Four workflows, roughly 45 agents: A foundation v2 + UI split + tokens + item bank; B conditions, items, safeguards; C restyle; D integrate. |
 | 2026-09-14 | **Demo plan** (`docs/PLAN_DEMO.md`). Run sheet, beats, prep and rehearsal scripts, architecture doc and client talking points. The rehearsal found three problems (Act never drafted, reply cut mid-sentence, income boundary unreliable). Two were fixed; the third was taken out of the live flow. |
@@ -643,7 +643,7 @@ Open `http://127.0.0.1:7861`. Starting the app loads no model; selecting a model
 |---|---|---|
 | "Pre-warm of stheno_q4 failed: APIConnectionError" | LM Studio server not running | `lms server start` (above) |
 | Decide shows **Error:** | LM Studio down (Decide embeds there) | Start LM Studio |
-| `ollama list` empty | The `.ollama\models` junction is missing | Recreate it (`README.md` troubleshooting) |
+| `ollama list` empty | The `.ollama\models` junction is missing | Recreate it (`docs/WINDOWS_SETUP.md` troubleshooting) |
 | Everything slow | Two big models loaded, or a model at 65,536 context | Free GPU; check `ollama ps` shows 100% GPU and context 8192 |
 | Header says indexes or digest stale | Profile changed | Status → Rebuild index + digest (loads models, rewrites files) |
 | Port busy | Another app instance | The app takes the next free port; check the printed URL |
@@ -698,7 +698,7 @@ Open `http://127.0.0.1:7861`. Starting the app loads no model; selecting a model
 
 | Doc | Use it for |
 |---|---|
-| `README.md` | Model setup, measured speeds, troubleshooting |
+| `docs/WINDOWS_SETUP.md` | Model setup, measured speeds, troubleshooting |
 | `docs/ARCHITECTURE.md` | The technical reference with file:line citations |
 | `docs/CONTRACTS.md` | Every module's API, the endpoints, the UI styling rules |
 | `docs/PLAN.md`, `docs/PLAN_UNIFIED.md`, `docs/PLAN_FINISH.md`, `docs/PLAN_DEMO.md` | Why things were built the way they were, in order |

@@ -47,7 +47,7 @@ Anything that loads a model still needs the Windows laptop, or models you instal
 A "digital twin" here is a set of small local language models that answer questions as one specific person, in that person's texting voice, and predict what that person would decide. The twin knows only what one structured markdown profile says about the person, plus a redacted interview transcript and short expert "reflections" built from it. It is not a general chatbot.
 
 - The original goal was a local web demo of an "answer as me" twin that gives every model in the folder a visible job (`docs/PLAN.md:15`).
-- Everything runs on one laptop, and both model servers listen on 127.0.0.1 only (`README.md:3-4`).
+- Everything runs on one laptop, and both model servers listen on 127.0.0.1 only (`docs/WINDOWS_SETUP.md:3-4`).
 - The profile resolves in this order: the real profile `data/twin_profile.md`, then the Mara example, then the Ari example (`twin/profile.py:100-106`).
 - The method adapts Park et al., "Generative Agent Simulations of 1,000 People" (arXiv 2411.10109) to an 8 GB GPU (`docs/PLAN2.md:15`).
 
@@ -281,7 +281,7 @@ unzip -q ~/Downloads/Personal_digital_twin_claude_env_v2.zip -d ~/twin_zips
 ls ~/twin_zips/memory ~/twin_zips/claude_env
 ```
 
-`.claude` is a hidden folder. Finder hides it, but `ls -a` shows it. The empty `models/` folders are not used on the Mac: they were LM Studio's and Ollama's model stores on Windows (`README.md:56-73`).
+`.claude` is a hidden folder. Finder hides it, but `ls -a` shows it. The empty `models/` folders are not used on the Mac: they were LM Studio's and Ollama's model stores on Windows (`docs/WINDOWS_SETUP.md:56-73`).
 
 ## 4. Claude Code on the Mac
 
@@ -441,7 +441,7 @@ Run these inside `claude` started in `~/Personal_digital_twin`. All are untested
 ```text
 Personal_digital_twin/
   CLAUDE.md                  project instructions Claude Code loads (written for the Windows laptop)
-  README.md                  Windows model setup, measured numbers, run line, UI styling notes
+  docs/WINDOWS_SETUP.md                  Windows model setup, measured numbers, run line, UI styling notes
   app.py                     assembler: port probing, heartbeat, build_app, queue, launch
   requirements.txt           gradio>=6,<7 plus eight unpinned packages
   pytest.ini                 testpaths = tests
@@ -806,8 +806,8 @@ The module singletons `clients.ollama`, `clients.lms` and `clients.anthropic_cli
   - `"30m"` for llama3.2 and both Ollama embedders;
   - `0` for `qwen3:8b`.
   
-  CLAUDE.md's "Ollama after 5 min" (`CLAUDE.md:24`) is Ollama's own default for requests without keep_alive. The code wins. LM Studio requests carry no TTL; on Windows LM Studio's JIT TTL was set to 600 s (`README.md:202`).
-- **One Ollama model at a time.** Windows sets `OLLAMA_MAX_LOADED_MODELS=1` for the Ollama app (`README.md:156`), and Decide's index choice relies on it (`twin/pipelines/decide.py:102-105`). With that setting, the router and the Ollama embedder evict each other on every interview Ask turn (`docs/DEMO.md:141-145`).
+  CLAUDE.md's "Ollama after 5 min" (`CLAUDE.md:24`) is Ollama's own default for requests without keep_alive. The code wins. LM Studio requests carry no TTL; on Windows LM Studio's JIT TTL was set to 600 s (`docs/WINDOWS_SETUP.md:202`).
+- **One Ollama model at a time.** Windows sets `OLLAMA_MAX_LOADED_MODELS=1` for the Ollama app (`docs/WINDOWS_SETUP.md:156`), and Decide's index choice relies on it (`twin/pipelines/decide.py:102-105`). With that setting, the router and the Ollama embedder evict each other on every interview Ask turn (`docs/DEMO.md:141-145`).
 
 ### 8.4 Environment variables
 
@@ -818,11 +818,11 @@ The module singletons `clients.ollama`, `clients.lms` and `clients.anthropic_cli
 | `ANTHROPIC_API_KEY` | unset | Only its presence is checked. The Claude judge is available when it is set and `anthropic` imports. Never print it. | `twin/clients.py:329-336` |
 | `LOCALAPPDATA` | `~/AppData/Local` | Builds the Windows `lms.exe` and `ollama.exe` paths. `OLLAMA_CLI` has no Python user. | `twin/config.py:59-61` |
 | `PYTHONUTF8` | unset | Set to 1 on Windows for UTF-8 I/O. Harmless on macOS, which already defaults to UTF-8. | `app.py:7` |
-| `GRADIO_ANALYTICS_ENABLED` | Gradio default | Set to `False` in the run line. | `README.md:166` |
+| `GRADIO_ANALYTICS_ENABLED` | Gradio default | Set to `False` in the run line. | `docs/WINDOWS_SETUP.md:166` |
 | `TWIN_OLLAMA_URL` | `http://127.0.0.1:11434` | Overrides `config.OLLAMA_URL` (added for the Docker image, section 3: lets a containerized app reach an Ollama server on the host via `http://host.docker.internal:11434`). | `twin/config.py:56` |
 | `TWIN_LMS_URL` | `http://127.0.0.1:1234` | Overrides `config.LMS_URL`, same reason (`http://host.docker.internal:1234`). | `twin/config.py:57` |
 
-The Python code reads no `OLLAMA_*` variable; those only configure the Ollama server (`README.md:156-157`).
+The Python code reads no `OLLAMA_*` variable; those only configure the Ollama server (`docs/WINDOWS_SETUP.md:156-157`).
 `TWIN_OLLAMA_URL`/`TWIN_LMS_URL` are twin's own variables, unrelated to Ollama's own `OLLAMA_*` set.
 
 ### 8.5 Telemetry and audit
@@ -839,14 +839,14 @@ The Python code reads no `OLLAMA_*` variable; those only configure the Ollama se
 
 | Rule | Status on macOS | Source |
 |---|---|---|
-| The Ollama desktop app ignores `OLLAMA_MODELS` and `OLLAMA_CONTEXT_LENGTH=8192`, and forces a 65536 context. | **Observed on Windows.** Ollama's docs give a 4096 default context and `~/.ollama/models` as the Mac store (https://docs.ollama.com/faq); untested on this Mac. The app sends `num_ctx` on every Ollama request anyway (`twin/clients.py:60-61`), so its calls don't depend on the default. | `CLAUDE.md:21`, `README.md:157` |
-| `C:\Users\Adity\.ollama\models` is a junction to `models\ollama`. **Never delete or replace it on Windows.** | **Windows only.** A Mac install needs no junction. | `CLAUDE.md:30`, `README.md:73` |
-| Request LM Studio's Stheno as `l3-8b-stheno-v3.2`; the identifier `stheno-8b` returns HTTP 400 once the model has idled out. | **Observed on Windows.** Confirm the id your Mac LM Studio lists (`curl -s http://127.0.0.1:1234/v1/models`) matches `twin/config.py:86`. | `CLAUDE.md:19`, `README.md:37` |
-| Use `qwen3-8b-8k`, not `qwen3:8b`, for decisions. | Observed on Windows (VRAM). Keep it: the registry names `qwen3-8b-8k`. | `CLAUDE.md:20`, `README.md:32` |
-| Turn Qwen3 thinking off (`think: false` on `/api/chat`, `reasoning_effort: "none"` on `/v1`), or replies can come back empty. | An API behaviour; the code sends `think: false` for `qwen3_8k`, `qwen3_long` and `qwen35_vision` (`twin/clients.py:71-72`). | `CLAUDE.md:22`, `README.md:33-35` |
-| Always send a system message to the Q8_0 Stheno; its built-in default has unfilled `{{char}}`/`{{user}}`. | A model property, enforced in code (`twin/clients.py:53-54`). | `CLAUDE.md:23`, `README.md:31` |
+| The Ollama desktop app ignores `OLLAMA_MODELS` and `OLLAMA_CONTEXT_LENGTH=8192`, and forces a 65536 context. | **Observed on Windows.** Ollama's docs give a 4096 default context and `~/.ollama/models` as the Mac store (https://docs.ollama.com/faq); untested on this Mac. The app sends `num_ctx` on every Ollama request anyway (`twin/clients.py:60-61`), so its calls don't depend on the default. | `CLAUDE.md:21`, `docs/WINDOWS_SETUP.md:157` |
+| `C:\Users\Adity\.ollama\models` is a junction to `models\ollama`. **Never delete or replace it on Windows.** | **Windows only.** A Mac install needs no junction. | `CLAUDE.md:30`, `docs/WINDOWS_SETUP.md:73` |
+| Request LM Studio's Stheno as `l3-8b-stheno-v3.2`; the identifier `stheno-8b` returns HTTP 400 once the model has idled out. | **Observed on Windows.** Confirm the id your Mac LM Studio lists (`curl -s http://127.0.0.1:1234/v1/models`) matches `twin/config.py:86`. | `CLAUDE.md:19`, `docs/WINDOWS_SETUP.md:37` |
+| Use `qwen3-8b-8k`, not `qwen3:8b`, for decisions. | Observed on Windows (VRAM). Keep it: the registry names `qwen3-8b-8k`. | `CLAUDE.md:20`, `docs/WINDOWS_SETUP.md:32` |
+| Turn Qwen3 thinking off (`think: false` on `/api/chat`, `reasoning_effort: "none"` on `/v1`), or replies can come back empty. | An API behaviour; the code sends `think: false` for `qwen3_8k`, `qwen3_long` and `qwen35_vision` (`twin/clients.py:71-72`). | `CLAUDE.md:22`, `docs/WINDOWS_SETUP.md:33-35` |
+| Always send a system message to the Q8_0 Stheno; its built-in default has unfilled `{{char}}`/`{{user}}`. | A model property, enforced in code (`twin/clients.py:53-54`). | `CLAUDE.md:23`, `docs/WINDOWS_SETUP.md:31` |
 | Stheno samplers: temperature 1.12 to 1.22, min_p 0.075, top_k 50, repeat penalty 1.1. | The code sends min_p, top_k and repeat_penalty. Temperature is 1.15 in Eval and Items, but 1.0 in Ask (slider default), Say it, See and polish (`twin/pipelines/decide.py:414`, `twin/pipelines/act.py:422`, `twin/pipelines/see.py:151`). | `CLAUDE.md:25`, `twin/config.py:64` |
-| 8 GB VRAM holds only one of these models fully at a time. | **Windows hardware.** Apple Silicon has unified memory; the sequencing rules still run: the Ollama stops work, but the LM Studio unload fails silently (`twin/gpu.py:82-85`, section 10). | `CLAUDE.md:24`, `README.md:40-47` |
+| 8 GB VRAM holds only one of these models fully at a time. | **Windows hardware.** Apple Silicon has unified memory; the sequencing rules still run: the Ollama stops work, but the LM Studio unload fails silently (`twin/gpu.py:82-85`, section 10). | `CLAUDE.md:24`, `docs/WINDOWS_SETUP.md:40-47` |
 | Some `lms` commands (for example `lms import`) prompt Y/n even with `--yes`; feed them `y`. | **Observed on Windows**; untested on macOS. | `CLAUDE.md:35` |
 | In PowerShell use `curl.exe`, not `curl`. | **Windows only.** On macOS, `curl` is the real curl. | `CLAUDE.md:34` |
 
@@ -959,7 +959,7 @@ python scripts/dev/finish/view_api_check.py 7871 /tmp/view_api.json --snapshot s
 PYTHONUTF8=1 python scripts/dev/live_drive.py view_api --port 7871
 ```
 
-Sources for these: `scripts/demo_rehearse.py:7-14` and `:1513-1521`, `README.md:187`, `twin/pipelines/evals.py:777`, `twin/pipelines/items.py:1063`, `twin/pipelines/probes.py:387`, `scripts/dev/finish/view_api_check.py:1-11` and `scripts/dev/live_drive.py:4`, `:47`. `view_api_check.py` compares the api names with the baseline plus the six new names, and the parameters and returns with the pre-restyle snapshot. It calls no model.
+Sources for these: `scripts/demo_rehearse.py:7-14` and `:1513-1521`, `docs/WINDOWS_SETUP.md:187`, `twin/pipelines/evals.py:777`, `twin/pipelines/items.py:1063`, `twin/pipelines/probes.py:387`, `scripts/dev/finish/view_api_check.py:1-11` and `scripts/dev/live_drive.py:4`, `:47`. `view_api_check.py` compares the api names with the baseline plus the six new names, and the parameters and returns with the pre-restyle snapshot. It calls no model.
 
 ### 9.5 Optional: Ollama and LM Studio on the Mac (untested on macOS)
 
@@ -974,28 +974,28 @@ Sources for these: `scripts/demo_rehearse.py:7-14` and `:1513-1521`, `README.md:
   # evaluations, the gemma index and the Q8 voice toggle
   for m in llama3.1:8b qwen2.5:7b embeddinggemma:300m-qat-q4_0 fluffy/l3-8b-stheno-v3.2:q8_0; do ollama pull "$m"; done
   ollama list
-  # suggested, to mirror Windows (README.md:156): one Ollama model at a time
+  # suggested, to mirror Windows (docs/WINDOWS_SETUP.md:156): one Ollama model at a time
   launchctl setenv OLLAMA_MAX_LOADED_MODELS 1   # then quit and reopen the Ollama app
   ```
 
-  Windows ran Ollama 0.34.0 (`README.md:207`). Whether your Mac's Ollama version serves `qwen3.5:4b-q8_0` and honours `think: false` is unverified.
+  Windows ran Ollama 0.34.0 (`docs/WINDOWS_SETUP.md:207`). Whether your Mac's Ollama version serves `qwen3.5:4b-q8_0` and honours `think: false` is unverified.
 - **LM Studio for Mac.**
   - `lms` ships with LM Studio (https://lmstudio.ai/docs/cli). Where it lands on PATH is not in those docs; `~/.lmstudio/bin/lms` is a common location but unverified. Suggested first step (unverified): run LM Studio once, then `~/.lmstudio/bin/lms bootstrap` and reopen the terminal, so the `lms` lines below find the CLI.
-  - The Stheno file on Windows was `L3-8B-Stheno-v3.2-Q4_K_M.gguf`: 4,920,734,240 bytes, SHA256 `8e98c1953f9c04e060fd9640bbe866685c844363a2360f09099b79c6c9195fc4` (`README.md:26`).
+  - The Stheno file on Windows was `L3-8B-Stheno-v3.2-Q4_K_M.gguf`: 4,920,734,240 bytes, SHA256 `8e98c1953f9c04e060fd9640bbe866685c844363a2360f09099b79c6c9195fc4` (`docs/WINDOWS_SETUP.md:26`).
   - The LM Studio embedder was bundled with LM Studio on Windows. On the Mac, check `lms ls`; if it is missing, use the nomic GGUF below (84,106,624 bytes).
 
   ```zsh
   # untested on macOS
   mkdir -p ~/gguf && cd ~/gguf
   curl -L -o L3-8B-Stheno-v3.2-Q4_K_M.gguf https://huggingface.co/bartowski/L3-8B-Stheno-v3.2-GGUF/resolve/main/L3-8B-Stheno-v3.2-Q4_K_M.gguf
-  shasum -a 256 L3-8B-Stheno-v3.2-Q4_K_M.gguf          # compare with README.md:26
+  shasum -a 256 L3-8B-Stheno-v3.2-Q4_K_M.gguf          # compare with docs/WINDOWS_SETUP.md:26
   echo y | lms import L3-8B-Stheno-v3.2-Q4_K_M.gguf    # lms import may ask Y/n even with --yes (CLAUDE.md:35)
   lms ls                                                # is text-embedding-nomic-embed-text-v1.5 listed?
   # only if it is not:
   curl -L -o nomic-embed-text-v1.5.Q4_K_M.gguf https://huggingface.co/nomic-ai/nomic-embed-text-v1.5-GGUF/resolve/main/nomic-embed-text-v1.5.Q4_K_M.gguf
   echo y | lms import nomic-embed-text-v1.5.Q4_K_M.gguf
   lms ls
-  lms server start --port 1234 --bind 127.0.0.1         # the flags used on Windows (README.md:86)
+  lms server start --port 1234 --bind 127.0.0.1         # the flags used on Windows (docs/WINDOWS_SETUP.md:86)
   curl -s http://127.0.0.1:1234/v1/models               # must include l3-8b-stheno-v3.2 and text-embedding-nomic-embed-text-v1.5
   ```
 
@@ -1009,7 +1009,7 @@ Sources for these: `scripts/demo_rehearse.py:7-14` and `:1513-1521`, `README.md:
   | Stheno Q8_0 at 8192 | 9.3 GB total |
   | `qwen3:8b` at 40960 | 8.8 GB |
 
-  Source: `README.md:18-24`. On a Mac these share unified memory with macOS and your apps. Check your memory size in About This Mac and plan for one big model at a time. The app's sequencing still runs (`twin/gpu.py:57-86`), but on the Mac it cannot unload LM Studio (section 10), so unload Stheno in LM Studio (or `lms unload --all`) before heavy Ollama work. Speeds will differ from the RTX 2070 figures.
+  Source: `docs/WINDOWS_SETUP.md:18-24`. On a Mac these share unified memory with macOS and your apps. Check your memory size in About This Mac and plan for one big model at a time. The app's sequencing still runs (`twin/gpu.py:57-86`), but on the Mac it cannot unload LM Studio (section 10), so unload Stheno in LM Studio (or `lms unload --all`) before heavy Ollama work. Speeds will differ from the RTX 2070 figures.
 - **With servers up,** boot with warming on: `PYTHONUTF8=1 GRADIO_ANALYTICS_ENABLED=False python app.py --port 7861`.
 - **Rebuild the indexes once (suggested).** Index staleness compares only the shas, never the embedder build (`twin/index.py:319-341`). If your Mac embedders differ from Windows', rebuild each index once:
 
@@ -1067,10 +1067,10 @@ Every Mac equivalent below is untested on macOS.
 | `scripts/demo_prep.ps1` (`lms.exe`, `Get-NetTCPConnection`, `Get-CimInstance`, `nvidia-smi`, `Start-Process python`) | `scripts/demo_prep.ps1:32`, `:307`, `:325`, `:352`, `:404` | None needed: the demo runs on the Windows laptop. Manual subset: the curl checks, `lms server start --port 1234 --bind 127.0.0.1`, `python scripts/demo_rehearse.py --check-profile`, `python app.py`. |
 | `scripts/dev/finish/ui_check.ps1` and the other `scripts/dev/finish/*.ps1` harnesses (boot, check and stop in one PowerShell command) | `scripts/dev/finish/ui_check.ps1:1-11`, `:33` | Terminal 1: `TWIN_NO_WARM=1 PYTHONUTF8=1 python app.py --port 7871`. Terminal 2: `python scripts/dev/finish/view_api_check.py 7871 /tmp/view_api.json --snapshot scripts/dev/finish/view_api_pre_c.json`. Then Ctrl+C the app. |
 | `curl.exe` instead of the `curl` alias | `CLAUDE.md:34` | `curl` |
-| `lms.exe` at `%LOCALAPPDATA%\Programs\LM Studio\resources\app\.webpack\` | `README.md:85-86`, `twin/config.py:60`, `scripts/demo_rehearse.py:1146-1150` | `lms` from LM Studio for Mac (https://lmstudio.ai/docs/cli); PATH location unverified |
-| `ollama.exe` and `ollama app.exe` under `%LOCALAPPDATA%\Programs\Ollama\` | `README.md:87`, `twin/config.py:61` | `ollama` on PATH, installed by Ollama.app (https://docs.ollama.com/macos) |
+| `lms.exe` at `%LOCALAPPDATA%\Programs\LM Studio\resources\app\.webpack\` | `docs/WINDOWS_SETUP.md:85-86`, `twin/config.py:60`, `scripts/demo_rehearse.py:1146-1150` | `lms` from LM Studio for Mac (https://lmstudio.ai/docs/cli); PATH location unverified |
+| `ollama.exe` and `ollama app.exe` under `%LOCALAPPDATA%\Programs\Ollama\` | `docs/WINDOWS_SETUP.md:87`, `twin/config.py:61` | `ollama` on PATH, installed by Ollama.app (https://docs.ollama.com/macos) |
 | `nvidia-smi` | `twin/gpu.py:14-22`, `scripts/check_servers.ps1:17`, `scripts/demo_prep.ps1:352` | None on Apple Silicon. The UI shows n/a; use `ollama ps` or Activity Monitor. |
-| The `C:\Users\Adity\.ollama\models` junction and six `OLLAMA_*` user variables | `README.md:73`, `README.md:156-157` | No junction; `~/.ollama/models` is the default store. Server variables go through `launchctl setenv` (https://docs.ollama.com/faq). |
+| The `C:\Users\Adity\.ollama\models` junction and six `OLLAMA_*` user variables | `docs/WINDOWS_SETUP.md:73`, `docs/WINDOWS_SETUP.md:156-157` | No junction; `~/.ollama/models` is the default store. Server variables go through `launchctl setenv` (https://docs.ollama.com/faq). |
 | `Start-Process`, the PID file `scripts/dev/demo/app.pid` (written during GPU stages; absent from the snapshot the zip is built from) and PID checks; the Claude Code PowerShell tool ends processes a command started | `docs/PLAN_FINISH.md:152`, `docs/PLAN_FINISH.md:347`, memory note `twin-workflow-lessons.md:34` | A second terminal or a background job; `lsof -iTCP:7871 -sTCP:LISTEN` to find the listener; `kill <pid>`. Whether Claude Code's shell tool on macOS ends processes the same way is untested. |
 | `PYTHONUTF8=1` | `app.py:7` | Harmless: macOS defaults to UTF-8. |
 | Backslash paths and PowerShell in UI text and docstrings | `twin/ui/onboarding.py:37-42`, `twin/ui/status.py:29`, `app.py:7`, `twin/ui/frame.py:7`, `modelfiles/qwen3-8b-8k.Modelfile:3` | Read them as zsh: `pbcopy < docs/opus_interview_prompt.md`; `PYTHONUTF8=1 python -m twin.redact data/interview_transcript.md`; `ollama create qwen3-8b-8k -f modelfiles/qwen3-8b-8k.Modelfile` |
@@ -1337,7 +1337,7 @@ On the Mac (suggested):
   - `twin.redact` rewrites `data/redaction_report.json` (`twin/redact.py:409-410`).
 - **Editing the example profile** changes its sha and invalidates the digest, the indexes and every cached score (section 5).
 - **`scripts/delete_twin.ps1 -Confirm`** deletes 18 `data/` files that a Mac without models cannot rebuild (`scripts/delete_twin.ps1:26-45`). It covers `data/` only (`docs/ARCHITECTURE.md:589`).
-- **Local only.** Both servers and the app bind 127.0.0.1 (`README.md:4`, `app.py:68`), and the app has no authentication (`docs/ARCHITECTURE.md:588`). Don't pass `--host 0.0.0.0`.
+- **Local only.** Both servers and the app bind 127.0.0.1 (`docs/WINDOWS_SETUP.md:4`, `app.py:68`), and the app has no authentication (`docs/ARCHITECTURE.md:588`). Don't pass `--host 0.0.0.0`.
 - **On Windows, never touch the `.ollama` junction or the `OLLAMA_*` variables** (`docs/PLAN_FINISH.md:353`).
 - **UI work uses `TWIN_NO_WARM=1` on ports 7871-7879**, never 7861-7870 (`docs/PLAN_FINISH.md:346`).
 - **Stop a process only after confirming** it is the python listener on the recorded port (`docs/PLAN_FINISH.md:347`).
@@ -1378,7 +1378,7 @@ Every macOS command here is untested on macOS. Run the commands from the project
 | Start Claude Code | `claude`, then `/model`, `/effort ultracode` | `cd ~/Personal_digital_twin && source ~/.venvs/twin/bin/activate && claude`, then `/model`, `/effort ultracode` |
 | Build the zips (P8, Windows only) | `python scripts\dev\finish\build_zips.py --pytest-count 598` | not applicable |
 
-Sources: `docs/PLAN_FINISH.md:156`, `README.md:86`, `README.md:93`, `README.md:166`, `README.md:187`, `README.md:191`, `twin/ui/onboarding.py:37-42`, `scripts/delete_twin.ps1:5-6`, `scripts/dev/finish/build_zips.py:4`, `scripts/dev/finish/state.json:39`, and the scripts named in each row.
+Sources: `docs/PLAN_FINISH.md:156`, `docs/WINDOWS_SETUP.md:86`, `docs/WINDOWS_SETUP.md:93`, `docs/WINDOWS_SETUP.md:166`, `docs/WINDOWS_SETUP.md:187`, `docs/WINDOWS_SETUP.md:191`, `twin/ui/onboarding.py:37-42`, `scripts/delete_twin.ps1:5-6`, `scripts/dev/finish/build_zips.py:4`, `scripts/dev/finish/state.json:39`, and the scripts named in each row.
 
 ## Appendix B: glossary
 

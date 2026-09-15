@@ -10,7 +10,7 @@ __pycache__/
 *.pyo
 .pytest_cache/
 
-# Model weights (tens of GB; pulled through Ollama and LM Studio, see README.md)
+# Model weights (tens of GB; pulled through Ollama and LM Studio, see docs/WINDOWS_SETUP.md)
 models/**
 !models/**/
 !models/**/.gitkeep

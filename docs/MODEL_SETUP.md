@@ -48,7 +48,7 @@ The app finds models only by these exact names. A model pulled or imported under
 
 ## 2. Windows (verified)
 
-`README.md` has the full record of the Windows laptop: measured cold-start and warm timings, the troubleshooting
+`docs/WINDOWS_SETUP.md` has the full record of the Windows laptop: measured cold-start and warm timings, the troubleshooting
 table, and the `.ollama\models` junction that laptop uses to keep the weights inside the project's `models\`
 folder. You don't need that junction: with default install locations, Ollama and LM Studio keep their models in
 their own folders, and this repository's `models\` folder stays empty.
@@ -287,7 +287,7 @@ curl -s http://127.0.0.1:11434/api/tags       # Ollama: lists every pulled model
 
 Then open the app and check the **Status** tab. It shows every registry model's state (`loaded` / `on disk` /
 `not pulled` / `not listed`) and the GPU reading, and lets you **Warm** or **Free GPU** without leaving the page.
-`README.md` sections "Quick checks" and "Troubleshooting" have one-line requests for each model plus a
+`docs/WINDOWS_SETUP.md` sections "Quick checks" and "Troubleshooting" have one-line requests for each model plus a
 symptom-to-fix table (empty replies, HTTP 400, slow Q8_0, `qwen3:8b` vs `qwen3-8b-8k`, port refused, 401).
 
 ## 7. Settings the app reads
@@ -302,6 +302,6 @@ symptom-to-fix table (empty replies, HTTP 400, slow Q8_0, `qwen3:8b` vs `qwen3-8
 ## 8. Where this comes from
 
 `twin/config.py` (`MODELS`, exact names and per-model request settings) is the source of truth in code.
-`README.md` has the Windows laptop's full setup with measured timings and a troubleshooting table.
+`docs/WINDOWS_SETUP.md` has the Windows laptop's full setup with measured timings and a troubleshooting table.
 `docs/CONTRACTS.md` "twin/config.py" documents the registry's fields. `docs/REPLICATE_ON_MAC.md` section 8 has the
 per-model request-settings table and section 9.5 has the macOS commands section 3 is drawn from.
