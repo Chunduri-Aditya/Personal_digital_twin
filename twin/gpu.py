@@ -2,7 +2,9 @@
 from __future__ import annotations
 
 import contextlib
+import re
 import subprocess
+import sys
 import threading
 
 from . import clients, config
@@ -11,7 +13,30 @@ from .config import by_name, spec
 TAB_MODEL = {"ask": "stheno_q4", "decide": "qwen3_8k", "act": "hermes3", "see": "qwen35_vision"}
 
 
+def _darwin_memory_line() -> str:
+    """`<used> MiB, <total> MiB, unified` from sysctl and vm_stat. Apple Silicon has no separate VRAM: models
+    live in the same memory the OS reports, and used is active + wired + compressor pages (Activity Monitor's
+    "Memory Used"). Returns '' when either command fails."""
+    try:
+        total = int(subprocess.run(["sysctl", "-n", "hw.memsize"], capture_output=True, text=True,
+                                   timeout=10, check=True).stdout.strip())
+        out = subprocess.run(["vm_stat"], capture_output=True, text=True, timeout=10, check=True).stdout
+    except Exception:  # noqa: BLE001
+        return ""
+    page_match = re.search(r"page size of (\d+) bytes", out)
+    page = int(page_match.group(1)) if page_match else 4096
+    pages = 0
+    for label in ("Pages active", "Pages wired down", "Pages occupied by compressor"):
+        m = re.search(rf"{label}:\s+(\d+)", out)
+        pages += int(m.group(1)) if m else 0
+    return f"{pages * page // 1048576} MiB, {total // 1048576} MiB, unified"
+
+
 def gpu_line() -> str:
+    """One-line accelerator reading for the Status tab: nvidia-smi's `used, total, utilization` where that
+    exists, the unified-memory equivalent on macOS, '' when neither can be read."""
+    if sys.platform == "darwin":
+        return _darwin_memory_line()
     try:
         p = subprocess.run(
             ["nvidia-smi", "--query-gpu=memory.used,memory.total,utilization.gpu", "--format=csv,noheader"],

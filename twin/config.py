@@ -2,6 +2,8 @@
 from __future__ import annotations
 
 import os
+import shutil
+import sys
 from dataclasses import dataclass, field
 from pathlib import Path
 
@@ -57,8 +59,34 @@ OLLAMA_URL = os.environ.get("TWIN_OLLAMA_URL", "http://127.0.0.1:11434")
 LMS_URL = os.environ.get("TWIN_LMS_URL", "http://127.0.0.1:1234")  # OpenAI base is LMS_URL + "/v1"
 
 _LOCALAPPDATA = Path(os.environ.get("LOCALAPPDATA", Path.home() / "AppData" / "Local"))
-LMS_CLI: Path = _LOCALAPPDATA / "Programs" / "LM Studio" / "resources" / "app" / ".webpack" / "lms.exe"
-OLLAMA_CLI: Path = _LOCALAPPDATA / "Programs" / "Ollama" / "ollama.exe"
+
+
+def _cli_path(env_var: str, windows: Path, unix_name: str, unix_default: Path) -> Path:
+    """Where a vendor CLI lives: `env_var` wins, then the Windows installer path, then `unix_name` on PATH,
+    then `unix_default`. Windows puts both CLIs under LOCALAPPDATA; macOS and Linux do not."""
+    override = os.environ.get(env_var, "").strip()
+    if override:
+        return Path(override)
+    if sys.platform == "win32":
+        return windows
+    found = shutil.which(unix_name)
+    return Path(found) if found else unix_default
+
+
+# LM Studio's CLI is the only one the code runs (LMSClient.unload_all). On macOS and Linux the app bootstraps
+# it into ~/.lmstudio/bin, which is not on PATH by default.
+LMS_CLI: Path = _cli_path(
+    "TWIN_LMS_CLI",
+    _LOCALAPPDATA / "Programs" / "LM Studio" / "resources" / "app" / ".webpack" / "lms.exe",
+    "lms",
+    Path.home() / ".lmstudio" / "bin" / "lms",
+)
+OLLAMA_CLI: Path = _cli_path(
+    "TWIN_OLLAMA_CLI",
+    _LOCALAPPDATA / "Programs" / "Ollama" / "ollama.exe",
+    "ollama",
+    Path("/usr/local/bin/ollama"),
+)
 
 ANTHROPIC_MODEL = "claude-sonnet-5"
 STHENO_SAMPLERS = {"temperature": 1.15, "min_p": 0.075, "top_k": 50, "repeat_penalty": 1.1}
