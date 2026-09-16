@@ -12,7 +12,9 @@
 #   ./start.sh --dry-run    show what would happen without changing anything
 #   ./start.sh --help
 #
-# Model servers are optional: Ollama on http://127.0.0.1:11434 and LM Studio on http://127.0.0.1:1234.
+# Model servers: Ollama on http://127.0.0.1:11434 and LM Studio on http://127.0.0.1:1234. Neither survives a
+# reboot on its own, so this script starts whichever one is not answering (Ollama.app or `ollama serve`, and
+# `lms server start`); --no-warm and --dry-run skip that.
 # When neither answers, the app starts with TWIN_NO_WARM=1: every tab renders, Eval and Items show cached results,
 # and buttons that need a model fail or say "skipped" until you start a model server and rerun ./start.sh.
 # Needs Python 3.10 or newer (Gradio 6) and curl. Stop the app with Ctrl+C.
@@ -27,7 +29,7 @@ OPEN_BROWSER=0
 DRY_RUN=0
 
 usage() {
-  sed -n '2,20p' "$0" | sed 's/^# \{0,1\}//'
+  sed -n '2,21p' "$0" | sed 's/^# \{0,1\}//'
 }
 
 while [ $# -gt 0 ]; do
@@ -145,12 +147,75 @@ export GRADIO_ANALYTICS_ENABLED=False
 if ! command -v curl >/dev/null 2>&1; then
   say "start.sh: curl not found, so the model-server check and --open can't work (install curl, or pass --warm)."
 fi
+
+wait_http() {
+  # wait_http <url> <seconds>: 0 as soon as the URL answers 200, 1 when the wait runs out.
+  waited=0
+  while [ "$waited" -lt "$2" ]; do
+    if http_ok "$1"; then return 0; fi
+    sleep 1
+    waited=$((waited + 1))
+  done
+  return 1
+}
+
+lms_cli() {
+  # Same order as twin/config.py's LMS_CLI: TWIN_LMS_CLI, then PATH, then the location the LM Studio app
+  # bootstraps the CLI into (not on PATH by default on macOS or Linux).
+  if [ -n "${TWIN_LMS_CLI:-}" ] && [ -x "${TWIN_LMS_CLI}" ]; then printf '%s\n' "$TWIN_LMS_CLI"; return 0; fi
+  if command -v lms >/dev/null 2>&1; then command -v lms; return 0; fi
+  if [ -x "$HOME/.lmstudio/bin/lms" ]; then printf '%s\n' "$HOME/.lmstudio/bin/lms"; return 0; fi
+  return 1
+}
+
+start_lms() {
+  cli="$(lms_cli)" || { say "  LM Studio's lms CLI not found; start its server from the app's Developer tab."; return 1; }
+  say "  starting the LM Studio server with $cli ..."
+  "$cli" server start --port 1234 >/dev/null 2>&1 || true
+  wait_http "http://127.0.0.1:1234/api/v0/models" 20
+}
+
+start_ollama() {
+  if [ "$(uname -s)" = "Darwin" ] && [ -d "/Applications/Ollama.app" ]; then
+    say "  starting Ollama.app ..."
+    open -a Ollama >/dev/null 2>&1 || return 1
+  elif command -v ollama >/dev/null 2>&1; then
+    say "  starting 'ollama serve' in the background ..."
+    ollama serve >/dev/null 2>&1 &
+  else
+    say "  Ollama not found; install it from https://ollama.com/download."
+    return 1
+  fi
+  wait_http "http://127.0.0.1:11434/api/tags" 20
+}
+
 OLLAMA_UP=0
 LMS_UP=0
 if http_ok "http://127.0.0.1:11434/api/tags"; then OLLAMA_UP=1; fi
 if http_ok "http://127.0.0.1:1234/api/v0/models"; then LMS_UP=1; fi
+
+# Neither server survives a reboot on its own, so start whichever is down. --no-warm means "never load a
+# model", and --dry-run changes nothing, so both skip this.
+if [ "$DRY_RUN" -eq 0 ] && [ "$WARM" != "off" ]; then
+  if [ "$OLLAMA_UP" -eq 0 ]; then
+    say "Ollama (127.0.0.1:11434): not answering"
+    if start_ollama; then OLLAMA_UP=1; fi
+  fi
+  if [ "$LMS_UP" -eq 0 ]; then
+    say "LM Studio (127.0.0.1:1234): not answering"
+    if start_lms; then LMS_UP=1; fi
+  fi
+fi
+
 if [ "$OLLAMA_UP" -eq 1 ]; then say "Ollama (127.0.0.1:11434): up"; else say "Ollama (127.0.0.1:11434): not answering"; fi
 if [ "$LMS_UP" -eq 1 ]; then say "LM Studio (127.0.0.1:1234): up"; else say "LM Studio (127.0.0.1:1234): not answering"; fi
+
+# A missing LM Studio is not a crash: twin/pipelines/voice.py falls back to llama3.2:3b on Ollama. Say what
+# that costs, because the app only notes it in the Ask trace.
+if [ "$LMS_UP" -eq 0 ] && [ "$OLLAMA_UP" -eq 1 ]; then
+  say "  -> without LM Studio the Ask reply, Decide 'say it', Act polish and See react run on llama3.2:3b,"
+  say "     so the twin answers but does not sound like the profile."
+fi
 
 case "$WARM" in
   off)
