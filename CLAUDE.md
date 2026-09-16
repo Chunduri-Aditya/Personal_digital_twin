@@ -1,6 +1,6 @@
 # Personal_digital_twin
 
-A local "digital twin" project on a Windows 11 laptop: RTX 2070 (8 GB VRAM), 32 GB RAM. The shell is Windows PowerShell 5.1.
+A local "digital twin" project, running on two machines. It was built on a Windows 11 laptop (RTX 2070, 8 GB VRAM, 32 GB RAM, Windows PowerShell 5.1), which is where every measured number in the docs comes from. Since 2026-09-15 it also runs on a MacBook (M3 Pro, 18 GB unified memory, zsh), where all 13 local models are installed and `./start.sh` is the entry point. Anything sized for 8 GB of VRAM (`modelfiles/qwen3-8b-8k.Modelfile`, the one-model-at-a-time rule in `twin/gpu.py`) is a Windows constraint, not a Mac one.
 Full setup details, measured numbers, and troubleshooting are in `docs/WINDOWS_SETUP.md`. Read it before changing the model setup.
 
 ## Local model endpoints (both on 127.0.0.1 only, no auth)
@@ -50,7 +50,9 @@ Full setup details, measured numbers, and troubleshooting are in `docs/WINDOWS_S
   - P6: demo re-signed on the restyled UI.
   - P7: Mac guide docs/REPLICATE_ON_MAC.md.
   - P8: v2 zips C:\Users\Adity\Personal_digital_twin_no_models_v2.zip, ..._claude_memory_v2.zip and ..._claude_env_v2.zip.
-- macOS/Linux: `./start.sh` creates .venv, installs requirements.txt and starts the app. It sets TWIN_NO_WARM=1 when no model server answers. Flags: --port, --no-warm, --warm, --test, --open, --dry-run. It hasn't been run on a Mac yet.
+- macOS/Linux: `./start.sh` creates .venv, installs requirements.txt, starts whichever model server is not answering (Ollama.app or `ollama serve`, and `lms server start`), then starts the app. It sets TWIN_NO_WARM=1 when no model server answers. Flags: --port, --no-warm, --warm, --test, --open, --dry-run; --no-warm and --dry-run skip the server start. Verified on the Mac 2026-09-15 from a stopped LM Studio server.
+- On macOS the `lms` CLI lives at `~/.lmstudio/bin/lms` and is not on PATH. `twin/config.py` resolves it (and `ollama`) per platform: `TWIN_LMS_CLI` / `TWIN_OLLAMA_CLI`, then the Windows installer path, then PATH, then the platform default. Before that fix `LMSClient.unload_all` raised FileNotFoundError and `gpu.ensure`/`free_all` swallowed it, so LM Studio was never unloaded and nothing said so.
+- An interrupted `ollama pull` leaves `~/.ollama/models/blobs/sha256-<digest>-partial*` behind, including zero-byte `-partial-N` chunk files. Every later pull of that model then fails with `Error: EOF` (the server returns `{"error":"EOF"}` right after "pulling manifest") even though the manifest fetches fine over curl and other models pull normally. Delete that digest's `-partial*` files and pull again. Note `ollama pull` exits 0 on this failure, so check `ollama list`, not `$?`.
 - Working preferences (2026-09-14): complete, not perfect (one review plus at most one fix per cycle, blockers only). Write a checkpoint after each phase and ask before starting the next, unless the user says to continue.
 - Demo deliverables and evidence:
   - docs/DEMO.md and docs/demo/beats.json.
