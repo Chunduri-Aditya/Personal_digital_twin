@@ -38,6 +38,8 @@ scripts/dev/finish/backup_pre_c/
 scripts/dev/finish/items_backup/
 *.png
 *.jpg
+# README demo stills are published, not evidence
+!docs/demo/*.png
 
 # Machine-specific Claude Code launch config
 .claude/launch.json

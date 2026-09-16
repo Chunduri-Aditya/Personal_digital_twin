@@ -13,7 +13,8 @@ What has been run and what hasn't:
 |---|---|
 | Windows 11, native (section 2) | Verified 2026-09-13 on an RTX 2070 (8 GB VRAM), 32 GB RAM, Ollama 0.34.0, LM Studio 0.4.24 |
 | Docker Desktop on Windows (section 4) | Verified 2026-09-15: image build, app boot, container reaching both host servers, GPU visible in containers |
-| macOS / Linux (section 3) | **Not run.** Written from Ollama's and LM Studio's own docs, like `docs/REPLICATE_ON_MAC.md`. If you run it, please correct this file with what actually happened |
+| macOS (section 3) | Partly verified 2026-09-15 on an M3 Pro (18 GB unified memory), Ollama 0.34.0, LM Studio 0.4.24. Run live: `./start.sh` from a cold boot (it starts both servers), an index + digest rebuild across all three embedders, and the demo set end to end through Ask, Decide and Act — `l3-8b-stheno-v3.2`, `qwen3-8b-8k`, `hermes3:8b`, `llama3.2:1b`, `nomic-embed-text`, `text-embedding-nomic-embed-text-v1.5`, plus `qwen3:8b` and `embeddinggemma` during the build. **Not exercised:** the section 3 download commands (the models were already installed), the See tab's `qwen3.5:4b-q8_0`, and live Eval/Items judge runs (`llama3.1:8b`, `qwen2.5:7b` are installed, but the Eval tab was read from cache) |
+| Linux (section 3) | **Not run.** Written from Ollama's and LM Studio's own docs, like `docs/REPLICATE_ON_MAC.md`. If you run it, please correct this file with what actually happened |
 
 Run every command below from the project root (the folder that holds `app.py`).
 
